@@ -1,7 +1,7 @@
 ---
 title: "Image generation"
 api: "POST https://api.jigsawstack.com/v1/ai/image_generation"
-description: "Generate an image based on the given text by employing AI models like stable diffusion, DALL·E, and other pertinent models."
+description: "Generate an image based on the given text by employing AI models like Flux, Stable Diffusion, DALL·E, and other top models."
 ---
 
 <Tip>
@@ -20,9 +20,12 @@ description: "Generate an image based on the given text by employing AI models l
   1000.
 </ParamField>
 
-<ParamField body="model" type="string" default="sdxl" initialValue="sdxl">
-  The model to use for the generation. Default is `sdxl`
+<ParamField body="model" type="string" default="flux" initialValue="flux">
+  The model to use for the generation. Default is `flux`
   <ul>
+
+    <li>`flux` - Flux 1.1 Pro Ultra</li>
+    <li>`sd1.5` - Stable Diffusion v1.5</li>
     <li>`sd1.5` - Stable Diffusion v1.5</li>
     <li>`sdxl` - Stable Diffusion XL</li>
     <li>`ead1.0` - Anime Diffusion </li>
