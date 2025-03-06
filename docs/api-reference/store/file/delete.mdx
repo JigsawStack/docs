@@ -1,6 +1,6 @@
 ---
 title: "Delete"
-api: "DELETE https://api.jigsawstack.com/v1/store/file/{key}"
+api: "DELETE https://api.jigsawstack.com/v1/store/file/read/{key}"
 description: "Delete a file."
 ---
 
@@ -39,7 +39,7 @@ result = jigsawstack.store.delete("jigsaw")
 ```
 
 ```bash cURL
-curl --location --request DELETE 'https://api.jigsawstack.com/v1/store/file/{key}' \
+curl --location --request DELETE 'https://api.jigsawstack.com/v1/store/file/read/{key}' \
 --header 'Content-Type: application/json' \
 --header 'x-api-key: <your-api-key>'
 ```

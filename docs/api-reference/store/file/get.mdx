@@ -1,6 +1,6 @@
 ---
 title: "Retrieve"
-api: "GET https://api.jigsawstack.com/v1/store/file/{key}"
+api: "GET https://api.jigsawstack.com/v1/store/file/read/{key}"
 description: "Retrieve a file."
 ---
 
@@ -59,7 +59,7 @@ except JigsawStackError as err:
 ```
 
 ```bash cURL
-curl --location --request GET 'https://api.jigsawstack.com/v1/store/file/{key}' \
+curl --location --request GET 'https://api.jigsawstack.com/v1/store/file/read/{key}' \
 --header 'x-api-key: <your-api-key>'
 ```
 

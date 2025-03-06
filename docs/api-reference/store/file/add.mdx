@@ -1,6 +1,6 @@
 ---
 title: "Upload"
-api: "POST https://api.jigsawstack.com/v1/store/file"
+api: "POST https://api.jigsawstack.com/v1/store/file/"
 description: "Upload images, videos and documents effortlessly."
 ---
 
@@ -84,7 +84,7 @@ except JigsawStackError as err:
 ```
 
 ```bash cURL
-curl -X POST 'https://api.jigsawstack.com/v1/store/file?key=jigsaw-logo' \
+curl -X POST 'https://api.jigsawstack.com/v1/store/file/?key=jigsaw-logo' \
   -H "Content-Type: multipart/form-data" \
   -H "x-api-key: <your-api-key>" \
   -F "key=@fileToSend"
