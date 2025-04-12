@@ -18,8 +18,12 @@ import AIScrapeSnippet from "/snippets/code-req-examples/ai-scrape.mdx";
   HTML content to scrape. Either `url` or `html` is required, but not both.
 </ParamField>
 
-<ParamField body="element_prompts" type="array<string>" required>
-  Items on the page to scrape (maximum 5). E.g. "Plan price", "Plan title"
+<ParamField body="element_prompts" type="array<string>">
+  Items on the page to scrape (maximum 5). E.g. "Plan price", "Plan title". Either `element_prompts` or `selectors` is required, or both.
+</ParamField>
+
+<ParamField body="selectors" type="array<string>">
+  CSS selectors to scrape (maximum 5). E.g. "li > a", "div > .points". Either `element_prompts` or `selectors` is required, or both.
 </ParamField>
 
 <ParamField body="root_element_selector" type="string" default="main">
