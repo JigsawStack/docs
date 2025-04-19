@@ -87,7 +87,7 @@
           },
           {
             "group": "Web",
-            "pages": ["docs/examples/web/web-scraper"]
+            "pages": ["docs/examples/web/web-scraper", "docs/examples/web/web-search"]
           },
           {
             "group": "Data",
@@ -114,11 +114,16 @@
             "pages": ["docs/examples/file-management/file-upload"]
           },
           {
+            "group": "Webhooks",
+            "pages": [ 
+              "docs/examples/web/introduction",
+              "docs/examples/web/secure"
+            ]
+          },
+          {
             "group": "Resources",
             "pages": [
               "docs/additional-resources/security",
-              "docs/examples/web/introduction",
-              "docs/examples/web/secure",
               "docs/additional-resources/jigsawstack-badge",
               "docs/additional-resources/size-preset",
               "docs/additional-resources/selector",

@@ -1,0 +1,152 @@
+---
+title: "Web Search"
+description: "Learn how to use JigsawStack's Web Search API to access high-quality search results with built-in geo search capabilities"
+---
+
+## Overview
+
+The Web Search API provides access to high-quality search results with built-in AI overviews, comprehensive metadata, and geo-spatial search capabilities. This API makes it easy to integrate powerful search functionality into your applications while also providing location-based context for search queries.
+
+- Get comprehensive search results with rich metadata
+- AI-generated overviews for quick content digestion
+- Built-in geo search capabilities for location-aware applications
+- Safe search filtering options
+- Customizable search parameters
+
+## API Endpoint
+
+```
+POST /v1/web/search
+```
+
+## Quick Start
+
+```javascript Javascript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.web.search({
+  query: "capital of France",
+  ai_overview: true,
+  safe_search: "moderate"
+});
+
+console.log(response);
+console.log(response.geo_results[0].geoloc);
+```
+
+## Response 
+
+```json
+{
+  "success": true,
+  "query": "capital of France",
+  "ai_overview": "The capital of France is Paris. It has been the capital since its liberation in 1944.",
+  "is_safe": true,
+  "results": [
+    {
+      "title": "List of capitals of France - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/List_of_capitals_of_France",
+      "description": "This is a chronological list of capitals of France. The capital of France has been Paris since its liberation in 1944...",
+      "content": "List of capitals of France\nContents\nChronology\nReferences\nThis is a chronological list of capitals of France. The capital of France has been Paris since its liberation in 1944...",
+      "site_name": "Wikipedia",
+      "site_long_name": "en.wikipedia.org",
+      "age": "2023-12-02T17:44:00.000Z",
+      "language": "en",
+      "image_urls": [],
+      "is_safe": true,
+      "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://en.wikipedia.org&size=96",
+      "snippets": [...]
+    },
+    // Additional results...
+  ],
+  "geo_results": [
+    {
+      "type": "place",
+      "name": "Paris",
+      "place_formatted": "France",
+      "country": {...},
+      "language": "need_request_lang",
+      "geoloc": {
+        "type": "Point", 
+        "coordinates": [42.947813, 1.957948]
+      },
+      "additional_properties": {}
+    },
+    // Additional geo results...
+  ],
+  "image_urls": [...]
+}
+```
+
+## Search Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `query` | string | The search query (1-400 characters) |
+| `spell_check` | boolean | Enable or disable spell check (default: true) |
+| `safe_search` | string | Safe search level: "strict", "moderate", or "off" (default: "moderate") |
+| `ai_overview` | boolean | Include AI-generated overview of results (default: true) |
+| `byo_urls` | array | Optional array of up to 3 URLs to include in search results |
+| `country_code` | string | ISO-3 country code to localize search results |
+| `auto_scrape` | boolean | Automatically scrape and extract content from results (default: true) |
+
+## Working with Geo Results
+
+The API automatically includes geolocation data when relevant to your search query. The `geo_results` array contains location information with the following structure:
+
+- `type`: Type of location (place, street, etc.)
+- `name`: Name of the location
+- `place_formatted`: Formatted place name
+- `country`: Country information
+- `geoloc`: GeoJSON object with coordinates
+- Additional fields depending on the location type
+
+## Examples
+
+### Basic Search
+
+```javascript
+const basicSearch = await jigsaw.web.search({
+  query: "best restaurants in New York",
+});
+
+console.log(basicSearch.ai_overview);
+console.log(basicSearch.results.length);
+```
+
+### Location-Based Search
+
+```javascript
+const locationSearch = await jigsaw.web.search({
+  query: "nearest national parks",
+  country_code: "USA", 
+});
+
+// Access geo results
+locationSearch.geo_results.forEach(location => {
+  console.log(`${location.name}: ${location.geoloc.coordinates}`);
+});
+```
+
+### Custom URL Inclusion
+
+```javascript
+const customSearch = await jigsaw.web.search({
+  query: "climate change solutions",
+  byo_urls: [
+    "https://www.un.org/en/climatechange/",
+    "https://climate.nasa.gov/solutions/resources/"
+  ],
+  ai_overview: true
+});
+```
+
+## Tips for Effective Searches
+
+1. **Be specific**: More detailed queries yield more precise results
+2. **Use location context**: For geo-aware searches, include location names in your query
+3. **Leverage AI overviews**: Enable `ai_overview` to get concise summaries of search results
+4. **Filter appropriately**: Use `safe_search` levels based on your application needs
+5. **Consider rate limits**: Be mindful of your API usage limits, especially for high-volume applications
