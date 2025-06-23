@@ -6,7 +6,15 @@ import { JigsawStack } from "jigsawstack";
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
 const response = await jigsaw.vision.object_detection({
-      "url": "https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z"
+      "url": "https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z",
+      "prompts": [
+            "things that i use to drink beverage with"
+      ],
+      "features": [
+            "object_detection"
+      ],
+      "annotated_image": true,
+      "return_type": "url"
 })
     ```
     ```python Python
@@ -15,7 +23,15 @@ from jigsawstack import JigsawStack
 jigsaw = JigsawStack(api_key="your-api-key")
 
 response = jigsaw.vision.object_detection({
-      "url": "https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z"
+      "url": "https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z",
+      "prompts": [
+            "things that i use to drink beverage with"
+      ],
+      "features": [
+            "object_detection"
+      ],
+      "annotated_image": true,
+      "return_type": "url"
 })
     ```
     ```bash Curl
@@ -23,7 +39,7 @@ curl https://api.jigsawstack.com/v1/ai/object_detection \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
- -d '{"url":"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z"}'
+ -d '{"url":"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z","prompts":["things that i use to drink beverage with"],"features":["object_detection"],"annotated_image":true,"return_type":"url"}'
     ```
     ```php PHP
 <?php
@@ -35,7 +51,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
     'x-api-key: your-api-key',
 ]);
-curl_setopt($ch, CURLOPT_POSTFIELDS, '{"url":"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z"}');
+curl_setopt($ch, CURLOPT_POSTFIELDS, '{"url":"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z","prompts":["things that i use to drink beverage with"],"features":["object_detection"],"annotated_image":true,"return_type":"url"}');
 
 $response = curl_exec($ch);
 
@@ -52,7 +68,15 @@ req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
 
 req.body = {
-  'url' => 'https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z'
+  'url' => 'https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z',
+  'prompts' => [
+    'things that i use to drink beverage with'
+  ],
+  'features' => [
+    'object_detection'
+  ],
+  'annotated_image' => true,
+  'return_type' => 'url'
 }.to_json
 
 req_options = {
@@ -76,7 +100,7 @@ import (
 
 func main() {
 	client := &http.Client{}
-	var data = strings.NewReader(`{"url":"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z"}`)
+	var data = strings.NewReader(`{"url":"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z","prompts":["things that i use to drink beverage with"],"features":["object_detection"],"annotated_image":true,"return_type":"url"}`)
 	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/ai/object_detection", data)
 	if err != nil {
 		log.Fatal(err)
@@ -108,7 +132,7 @@ HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
     .uri(URI.create("https://api.jigsawstack.com/v1/ai/object_detection"))
-    .POST(BodyPublishers.ofString("{\"url\":\"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z\"}"))
+    .POST(BodyPublishers.ofString("{\"url\":\"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z\",\"prompts\":[\"things that i use to drink beverage with\"],\"features\":[\"object_detection\"],\"annotated_image\":true,\"return_type\":\"url\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
     .build();
@@ -120,7 +144,15 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
 import Foundation
 
 let jsonData = [
-    "url": "https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z"
+    "url": "https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z",
+    "prompts": [
+        "things that i use to drink beverage with"
+    ],
+    "features": [
+        "object_detection"
+    ],
+    "annotated_image": true,
+    "return_type": "url"
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
@@ -156,7 +188,7 @@ void main() async {
     'x-api-key': 'your-api-key',
   };
 
-  final data = '{"url":"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z"}';
+  final data = '{"url":"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z","prompts":["things that i use to drink beverage with"],"features":["object_detection"],"annotated_image":true,"return_type":"url"}';
 
   final url = Uri.parse('https://api.jigsawstack.com/v1/ai/object_detection');
 
@@ -179,7 +211,7 @@ val client = OkHttpClient()
 
 val MEDIA_TYPE = "application/json".toMediaType()
 
-val requestBody = "{\"url\":\"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z\"}"
+val requestBody = "{\"url\":\"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z\",\"prompts\":[\"things that i use to drink beverage with\"],\"features\":[\"object_detection\"],\"annotated_image\":true,\"return_type\":\"url\"}"
 
 val request = Request.Builder()
   .url("https://api.jigsawstack.com/v1/ai/object_detection")
@@ -204,7 +236,7 @@ HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://ap
 
 request.Headers.Add("x-api-key", "your-api-key");
 
-request.Content = new StringContent("{\"url\":\"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z\"}");
+request.Content = new StringContent("{\"url\":\"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z\",\"prompts\":[\"things that i use to drink beverage with\"],\"features\":[\"object_detection\"],\"annotated_image\":true,\"return_type\":\"url\"}");
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
@@ -217,127 +249,230 @@ string responseBody = await response.Content.ReadAsStringAsync();
     ```json Response
 {
       "success": true,
-      "width": 1080,
-      "height": 842,
-      "tags": [
-            "clothing",
-            "human face",
-            "person",
-            "man",
-            "woman",
-            "wall",
-            "table",
-            "indoor",
-            "smile",
-            "sharing",
-            "food",
-            "people",
-            "group",
-            "eating"
-      ],
+      "annotated_image": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/c321be1e-a21d-4fcb-b2b5-ee5867aa1c6d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154011Z&X-Amz-Expires=604800&X-Amz-Signature=50bae07bda6d654c362a6f3fd269f2befa80d95a9b98056cd5b650ebde489e0f&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
       "objects": [
             {
-                  "name": "person",
-                  "confidence": 0.599,
                   "bounds": {
                         "top_left": {
-                              "x": 430,
-                              "y": 290
+                              "x": 674,
+                              "y": 96
                         },
                         "top_right": {
-                              "x": 631,
-                              "y": 290
-                        },
-                        "bottom_right": {
-                              "x": 631,
-                              "y": 523
+                              "x": 741,
+                              "y": 96
                         },
                         "bottom_left": {
-                              "x": 430,
-                              "y": 523
+                              "x": 674,
+                              "y": 227
                         },
-                        "width": 201,
-                        "height": 233
-                  }
+                        "bottom_right": {
+                              "x": 741,
+                              "y": 227
+                        },
+                        "width": 67,
+                        "height": 131
+                  },
+                  "label": "glass_0",
+                  "mask": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/ea450a4d-33d1-4be2-9d05-04af6e3a2ba8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154010Z&X-Amz-Expires=604800&X-Amz-Signature=82812a330f6b7e4b086579b2e14bc64d6121872fa8678cb05c18061d018bacb0&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
             },
             {
-                  "name": "person",
-                  "confidence": 0.542,
                   "bounds": {
                         "top_left": {
-                              "x": 230,
-                              "y": 273
+                              "x": 567,
+                              "y": 278
                         },
                         "top_right": {
-                              "x": 440,
-                              "y": 273
-                        },
-                        "bottom_right": {
-                              "x": 440,
-                              "y": 610
+                              "x": 630,
+                              "y": 278
                         },
                         "bottom_left": {
-                              "x": 230,
-                              "y": 610
+                              "x": 567,
+                              "y": 403
                         },
-                        "width": 210,
-                        "height": 337
-                  }
+                        "bottom_right": {
+                              "x": 630,
+                              "y": 403
+                        },
+                        "width": 63,
+                        "height": 125
+                  },
+                  "label": "glass_1",
+                  "mask": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/4d215260-112c-49f0-846e-c1adee7352bc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154010Z&X-Amz-Expires=604800&X-Amz-Signature=05ccb30960272a3d5f0c8b5a7427b51a96393ba2a0e11e379c7013b807575024&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
             },
             {
-                  "name": "person",
-                  "confidence": 0.869,
                   "bounds": {
                         "top_left": {
-                              "x": 16,
-                              "y": 279
+                              "x": 467,
+                              "y": 275
                         },
                         "top_right": {
-                              "x": 397,
-                              "y": 279
-                        },
-                        "bottom_right": {
-                              "x": 397,
-                              "y": 818
+                              "x": 532,
+                              "y": 275
                         },
                         "bottom_left": {
-                              "x": 16,
-                              "y": 818
+                              "x": 467,
+                              "y": 402
                         },
-                        "width": 381,
-                        "height": 539
-                  }
+                        "bottom_right": {
+                              "x": 532,
+                              "y": 402
+                        },
+                        "width": 65,
+                        "height": 127
+                  },
+                  "label": "glass_2",
+                  "mask": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/e5e4218a-e71f-4e3e-96a1-ff14af412ef0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154010Z&X-Amz-Expires=604800&X-Amz-Signature=8eec96d923153172313cd1fd526c9521c25cb643175253e9e8f8b0ada6d319b4&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
             },
             {
-                  "name": "person",
-                  "confidence": 0.847,
                   "bounds": {
                         "top_left": {
-                              "x": 546,
-                              "y": 226
+                              "x": 672,
+                              "y": 274
                         },
                         "top_right": {
-                              "x": 1078,
-                              "y": 226
-                        },
-                        "bottom_right": {
-                              "x": 1078,
-                              "y": 825
+                              "x": 706,
+                              "y": 274
                         },
                         "bottom_left": {
-                              "x": 546,
-                              "y": 825
+                              "x": 672,
+                              "y": 386
                         },
-                        "width": 532,
-                        "height": 599
-                  }
+                        "bottom_right": {
+                              "x": 706,
+                              "y": 386
+                        },
+                        "width": 34,
+                        "height": 112
+                  },
+                  "label": "glass_3",
+                  "mask": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/19d03613-338c-4205-be40-dc2731c29bee.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154010Z&X-Amz-Expires=604800&X-Amz-Signature=31fc06adfaf970c46a31d3c9f21caf3a8d2029c7247f4dcea4601db370f2c5eb&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+            },
+            {
+                  "bounds": {
+                        "top_left": {
+                              "x": 431,
+                              "y": 376
+                        },
+                        "top_right": {
+                              "x": 486,
+                              "y": 376
+                        },
+                        "bottom_left": {
+                              "x": 431,
+                              "y": 465
+                        },
+                        "bottom_right": {
+                              "x": 486,
+                              "y": 465
+                        },
+                        "width": 55,
+                        "height": 89
+                  },
+                  "label": "glass_4",
+                  "mask": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/d6ac37a8-9363-4979-94db-4182ef44270f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154010Z&X-Amz-Expires=604800&X-Amz-Signature=7f2e818710bacddbd53a347f69ad1fb62b366fa204e4273566287bd4ee92de35&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+            },
+            {
+                  "bounds": {
+                        "top_left": {
+                              "x": 675,
+                              "y": 95
+                        },
+                        "top_right": {
+                              "x": 742,
+                              "y": 95
+                        },
+                        "bottom_left": {
+                              "x": 675,
+                              "y": 228
+                        },
+                        "bottom_right": {
+                              "x": 742,
+                              "y": 228
+                        },
+                        "width": 67,
+                        "height": 133
+                  },
+                  "label": "wine glass_0",
+                  "mask": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/758e1b7e-49b2-4a8e-ad29-0cd153660440.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154010Z&X-Amz-Expires=604800&X-Amz-Signature=747502a22aedff3b2e0cbe3c2077880978dbd7840fd4dff51f28c798359ed921&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+            },
+            {
+                  "bounds": {
+                        "top_left": {
+                              "x": 566,
+                              "y": 278
+                        },
+                        "top_right": {
+                              "x": 629,
+                              "y": 278
+                        },
+                        "bottom_left": {
+                              "x": 566,
+                              "y": 403
+                        },
+                        "bottom_right": {
+                              "x": 629,
+                              "y": 403
+                        },
+                        "width": 63,
+                        "height": 125
+                  },
+                  "label": "wine glass_1",
+                  "mask": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/577daeaf-3a7e-4191-8662-36f21483a75a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154010Z&X-Amz-Expires=604800&X-Amz-Signature=9b3d19574b90bba733d0ad2a4ba11fc8888779d29852feb919cfab0e5c02e140&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+            },
+            {
+                  "bounds": {
+                        "top_left": {
+                              "x": 468,
+                              "y": 275
+                        },
+                        "top_right": {
+                              "x": 533,
+                              "y": 275
+                        },
+                        "bottom_left": {
+                              "x": 468,
+                              "y": 402
+                        },
+                        "bottom_right": {
+                              "x": 533,
+                              "y": 402
+                        },
+                        "width": 65,
+                        "height": 127
+                  },
+                  "label": "wine glass_2",
+                  "mask": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/b09f8813-47fd-4417-a0db-1516974ba4a5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154010Z&X-Amz-Expires=604800&X-Amz-Signature=9d9693922016754ba808e10d9c2d02ef27f201040bf0232f9deb6434cefcf30f&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
+            },
+            {
+                  "bounds": {
+                        "top_left": {
+                              "x": 434,
+                              "y": 376
+                        },
+                        "top_right": {
+                              "x": 487,
+                              "y": 376
+                        },
+                        "bottom_left": {
+                              "x": 434,
+                              "y": 465
+                        },
+                        "bottom_right": {
+                              "x": 487,
+                              "y": 465
+                        },
+                        "width": 53,
+                        "height": 89
+                  },
+                  "label": "wine glass_3",
+                  "mask": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/d2664add-9a30-46fa-bba8-9910f806b253.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154010Z&X-Amz-Expires=604800&X-Amz-Signature=27adf0b5dd323b35ace8708067d229ece3d4acfe324f7525c33d952c2eda393a&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject"
             }
       ],
       "_usage": {
-            "input_tokens": 34,
-            "output_tokens": 244,
-            "inference_time_tokens": 2354,
-            "total_tokens": 2632
+            "input_tokens": 67,
+            "output_tokens": 1654,
+            "inference_time_tokens": 12540,
+            "total_tokens": 14261
       }
 }
     ```

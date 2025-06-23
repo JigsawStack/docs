@@ -6,7 +6,8 @@ import { JigsawStack } from "jigsawstack";
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
 const response = await jigsaw.image_generation({
-      "prompt": "A beautiful sunset over a calm ocean"
+      "prompt": "A beautiful sunset over a calm ocean",
+      "return_type": "url"
 })
     ```
     ```python Python
@@ -15,7 +16,8 @@ from jigsawstack import JigsawStack
 jigsaw = JigsawStack(api_key="your-api-key")
 
 response = jigsaw.image_generation({
-      "prompt": "A beautiful sunset over a calm ocean"
+      "prompt": "A beautiful sunset over a calm ocean",
+      "return_type": "url"
 })
     ```
     ```bash Curl
@@ -23,7 +25,7 @@ curl https://api.jigsawstack.com/v1/ai/image_generation \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
- -d '{"prompt":"A beautiful sunset over a calm ocean"}'
+ -d '{"prompt":"A beautiful sunset over a calm ocean","return_type":"url"}'
     ```
     ```php PHP
 <?php
@@ -35,7 +37,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
     'x-api-key: your-api-key',
 ]);
-curl_setopt($ch, CURLOPT_POSTFIELDS, '{"prompt":"A beautiful sunset over a calm ocean"}');
+curl_setopt($ch, CURLOPT_POSTFIELDS, '{"prompt":"A beautiful sunset over a calm ocean","return_type":"url"}');
 
 $response = curl_exec($ch);
 
@@ -52,7 +54,8 @@ req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
 
 req.body = {
-  'prompt' => 'A beautiful sunset over a calm ocean'
+  'prompt' => 'A beautiful sunset over a calm ocean',
+  'return_type' => 'url'
 }.to_json
 
 req_options = {
@@ -76,7 +79,7 @@ import (
 
 func main() {
 	client := &http.Client{}
-	var data = strings.NewReader(`{"prompt":"A beautiful sunset over a calm ocean"}`)
+	var data = strings.NewReader(`{"prompt":"A beautiful sunset over a calm ocean","return_type":"url"}`)
 	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/ai/image_generation", data)
 	if err != nil {
 		log.Fatal(err)
@@ -108,7 +111,7 @@ HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
     .uri(URI.create("https://api.jigsawstack.com/v1/ai/image_generation"))
-    .POST(BodyPublishers.ofString("{\"prompt\":\"A beautiful sunset over a calm ocean\"}"))
+    .POST(BodyPublishers.ofString("{\"prompt\":\"A beautiful sunset over a calm ocean\",\"return_type\":\"url\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
     .build();
@@ -120,7 +123,8 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
 import Foundation
 
 let jsonData = [
-    "prompt": "A beautiful sunset over a calm ocean"
+    "prompt": "A beautiful sunset over a calm ocean",
+    "return_type": "url"
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
@@ -156,7 +160,7 @@ void main() async {
     'x-api-key': 'your-api-key',
   };
 
-  final data = '{"prompt":"A beautiful sunset over a calm ocean"}';
+  final data = '{"prompt":"A beautiful sunset over a calm ocean","return_type":"url"}';
 
   final url = Uri.parse('https://api.jigsawstack.com/v1/ai/image_generation');
 
@@ -179,7 +183,7 @@ val client = OkHttpClient()
 
 val MEDIA_TYPE = "application/json".toMediaType()
 
-val requestBody = "{\"prompt\":\"A beautiful sunset over a calm ocean\"}"
+val requestBody = "{\"prompt\":\"A beautiful sunset over a calm ocean\",\"return_type\":\"url\"}"
 
 val request = Request.Builder()
   .url("https://api.jigsawstack.com/v1/ai/image_generation")
@@ -204,7 +208,7 @@ HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://ap
 
 request.Headers.Add("x-api-key", "your-api-key");
 
-request.Content = new StringContent("{\"prompt\":\"A beautiful sunset over a calm ocean\"}");
+request.Content = new StringContent("{\"prompt\":\"A beautiful sunset over a calm ocean\",\"return_type\":\"url\"}");
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
@@ -213,7 +217,18 @@ string responseBody = await response.Content.ReadAsStringAsync();
 
     ```
     </RequestExample>
+    <ResponseExample>
+    ```json Response
+{
+      "url": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/f86d418d-7385-4ff6-9ec7-4dbabdc2a03f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154004Z&X-Amz-Expires=604800&X-Amz-Signature=0875f8ad8a61e078b92714cfdee4956435a34f4c82df6a68e85640af509c21d5&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "_usage": {
+            "input_tokens": 11,
+            "output_tokens": 75,
+            "inference_time_tokens": 2577,
+            "total_tokens": 2663
+      }
+}
+    ```
+    </ResponseExample>
     
-
-<ResponseExample></ResponseExample>
     

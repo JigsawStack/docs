@@ -7,7 +7,8 @@ const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
 const response = await jigsaw.translate.image({
       "url": "https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "target_language": "hi"
+      "target_language": "hi",
+      "return_type": "url"
 })
     ```
     ```python Python
@@ -17,7 +18,8 @@ jigsaw = JigsawStack(api_key="your-api-key")
 
 response = jigsaw.translate.image({
       "url": "https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "target_language": "hi"
+      "target_language": "hi",
+      "return_type": "url"
 })
     ```
     ```bash Curl
@@ -25,7 +27,7 @@ curl https://api.jigsawstack.com/v1/ai/translate/image \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
- -d '{"url":"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","target_language":"hi"}'
+ -d '{"url":"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","target_language":"hi","return_type":"url"}'
     ```
     ```php PHP
 <?php
@@ -37,7 +39,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
     'x-api-key: your-api-key',
 ]);
-curl_setopt($ch, CURLOPT_POSTFIELDS, '{"url":"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","target_language":"hi"}');
+curl_setopt($ch, CURLOPT_POSTFIELDS, '{"url":"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","target_language":"hi","return_type":"url"}');
 
 $response = curl_exec($ch);
 
@@ -55,7 +57,8 @@ req['x-api-key'] = 'your-api-key'
 
 req.body = {
   'url' => 'https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'target_language' => 'hi'
+  'target_language' => 'hi',
+  'return_type' => 'url'
 }.to_json
 
 req_options = {
@@ -79,7 +82,7 @@ import (
 
 func main() {
 	client := &http.Client{}
-	var data = strings.NewReader(`{"url":"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","target_language":"hi"}`)
+	var data = strings.NewReader(`{"url":"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","target_language":"hi","return_type":"url"}`)
 	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/ai/translate/image", data)
 	if err != nil {
 		log.Fatal(err)
@@ -111,7 +114,7 @@ HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
     .uri(URI.create("https://api.jigsawstack.com/v1/ai/translate/image"))
-    .POST(BodyPublishers.ofString("{\"url\":\"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\"target_language\":\"hi\"}"))
+    .POST(BodyPublishers.ofString("{\"url\":\"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\"target_language\":\"hi\",\"return_type\":\"url\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
     .build();
@@ -124,7 +127,8 @@ import Foundation
 
 let jsonData = [
     "url": "https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "target_language": "hi"
+    "target_language": "hi",
+    "return_type": "url"
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
@@ -160,7 +164,7 @@ void main() async {
     'x-api-key': 'your-api-key',
   };
 
-  final data = '{"url":"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","target_language":"hi"}';
+  final data = '{"url":"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","target_language":"hi","return_type":"url"}';
 
   final url = Uri.parse('https://api.jigsawstack.com/v1/ai/translate/image');
 
@@ -183,7 +187,7 @@ val client = OkHttpClient()
 
 val MEDIA_TYPE = "application/json".toMediaType()
 
-val requestBody = "{\"url\":\"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\"target_language\":\"hi\"}"
+val requestBody = "{\"url\":\"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\"target_language\":\"hi\",\"return_type\":\"url\"}"
 
 val request = Request.Builder()
   .url("https://api.jigsawstack.com/v1/ai/translate/image")
@@ -208,7 +212,7 @@ HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://ap
 
 request.Headers.Add("x-api-key", "your-api-key");
 
-request.Content = new StringContent("{\"url\":\"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\"target_language\":\"hi\"}");
+request.Content = new StringContent("{\"url\":\"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\"target_language\":\"hi\",\"return_type\":\"url\"}");
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
@@ -217,7 +221,18 @@ string responseBody = await response.Content.ReadAsStringAsync();
 
     ```
     </RequestExample>
+    <ResponseExample>
+    ```json Response
+{
+      "url": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/8da8b28f-c0f6-45eb-8839-b6517b4f0592.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154012Z&X-Amz-Expires=604800&X-Amz-Signature=1739b2d180f7d7001e6cc04cba6ef1ee064980b5823b91ade06f976cb2b01874&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "_usage": {
+            "input_tokens": 83,
+            "output_tokens": 186,
+            "inference_time_tokens": 20075,
+            "total_tokens": 20344
+      }
+}
+    ```
+    </ResponseExample>
     
-
-<ResponseExample></ResponseExample>
     
