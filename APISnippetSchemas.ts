@@ -113,6 +113,10 @@ export const APISchemas: {
     method: "POST",
     body: {
       url: "https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z",
+      prompts: ["things that i use to drink beverage with"],
+      features: ["object_detection"],
+      annotated_image: true,
+      return_type: "url",
     },
     sdk_key_string: "vision.object_detection",
   },
@@ -263,6 +267,7 @@ export const APISchemas: {
     method: "POST",
     body: {
       prompt: "A beautiful sunset over a calm ocean",
+      return_type: "url",
     },
     sdk_key_string: "image_generation",
   },
@@ -272,6 +277,7 @@ export const APISchemas: {
     body: {
       url: "https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       target_language: "hi",
+      return_type: "url",
     },
     sdk_key_string: "translate.image",
   },
@@ -281,6 +287,7 @@ export const APISchemas: {
     body: {
       text: "Hello, world!",
       accent: "en-US-female-27",
+      return_type: "url"
     },
     sdk_key_string: "audio.text_to_speech",
   },
@@ -309,6 +316,7 @@ export const APISchemas: {
     method: "POST",
     body: {
       url: "https://news.ycombinator.com/",
+      return_type: "url",
     },
     sdk_key_string: "web.html_to_any",
   },

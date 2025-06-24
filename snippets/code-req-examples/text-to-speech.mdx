@@ -7,7 +7,8 @@ const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
 const response = await jigsaw.audio.text_to_speech({
       "text": "Hello, world!",
-      "accent": "en-US-female-27"
+      "accent": "en-US-female-27",
+      "return_type": "url"
 })
     ```
     ```python Python
@@ -17,7 +18,8 @@ jigsaw = JigsawStack(api_key="your-api-key")
 
 response = jigsaw.audio.text_to_speech({
       "text": "Hello, world!",
-      "accent": "en-US-female-27"
+      "accent": "en-US-female-27",
+      "return_type": "url"
 })
     ```
     ```bash Curl
@@ -25,7 +27,7 @@ curl https://api.jigsawstack.com/v1/ai/tts \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
- -d '{"text":"Hello, world!","accent":"en-US-female-27"}'
+ -d '{"text":"Hello, world!","accent":"en-US-female-27","return_type":"url"}'
     ```
     ```php PHP
 <?php
@@ -37,7 +39,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
     'x-api-key: your-api-key',
 ]);
-curl_setopt($ch, CURLOPT_POSTFIELDS, '{"text":"Hello, world!","accent":"en-US-female-27"}');
+curl_setopt($ch, CURLOPT_POSTFIELDS, '{"text":"Hello, world!","accent":"en-US-female-27","return_type":"url"}');
 
 $response = curl_exec($ch);
 
@@ -55,7 +57,8 @@ req['x-api-key'] = 'your-api-key'
 
 req.body = {
   'text' => 'Hello, world!',
-  'accent' => 'en-US-female-27'
+  'accent' => 'en-US-female-27',
+  'return_type' => 'url'
 }.to_json
 
 req_options = {
@@ -79,7 +82,7 @@ import (
 
 func main() {
 	client := &http.Client{}
-	var data = strings.NewReader(`{"text":"Hello, world!","accent":"en-US-female-27"}`)
+	var data = strings.NewReader(`{"text":"Hello, world!","accent":"en-US-female-27","return_type":"url"}`)
 	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/ai/tts", data)
 	if err != nil {
 		log.Fatal(err)
@@ -111,7 +114,7 @@ HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
     .uri(URI.create("https://api.jigsawstack.com/v1/ai/tts"))
-    .POST(BodyPublishers.ofString("{\"text\":\"Hello, world!\",\"accent\":\"en-US-female-27\"}"))
+    .POST(BodyPublishers.ofString("{\"text\":\"Hello, world!\",\"accent\":\"en-US-female-27\",\"return_type\":\"url\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
     .build();
@@ -124,7 +127,8 @@ import Foundation
 
 let jsonData = [
     "text": "Hello, world!",
-    "accent": "en-US-female-27"
+    "accent": "en-US-female-27",
+    "return_type": "url"
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
@@ -160,7 +164,7 @@ void main() async {
     'x-api-key': 'your-api-key',
   };
 
-  final data = '{"text":"Hello, world!","accent":"en-US-female-27"}';
+  final data = '{"text":"Hello, world!","accent":"en-US-female-27","return_type":"url"}';
 
   final url = Uri.parse('https://api.jigsawstack.com/v1/ai/tts');
 
@@ -183,7 +187,7 @@ val client = OkHttpClient()
 
 val MEDIA_TYPE = "application/json".toMediaType()
 
-val requestBody = "{\"text\":\"Hello, world!\",\"accent\":\"en-US-female-27\"}"
+val requestBody = "{\"text\":\"Hello, world!\",\"accent\":\"en-US-female-27\",\"return_type\":\"url\"}"
 
 val request = Request.Builder()
   .url("https://api.jigsawstack.com/v1/ai/tts")
@@ -208,7 +212,7 @@ HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://ap
 
 request.Headers.Add("x-api-key", "your-api-key");
 
-request.Content = new StringContent("{\"text\":\"Hello, world!\",\"accent\":\"en-US-female-27\"}");
+request.Content = new StringContent("{\"text\":\"Hello, world!\",\"accent\":\"en-US-female-27\",\"return_type\":\"url\"}");
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
@@ -217,7 +221,18 @@ string responseBody = await response.Content.ReadAsStringAsync();
 
     ```
     </RequestExample>
+    <ResponseExample>
+    ```json Response
+{
+      "url": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/664293fa-77ec-44d2-8f2e-35ca61683f15.mp3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250623%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250623T154001Z&X-Amz-Expires=604800&X-Amz-Signature=b0235ffdb996d9a132061c4273cfcda9b1bc2d5659084009338e2c11e4a02510&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "_usage": {
+            "input_tokens": 6,
+            "output_tokens": 38,
+            "inference_time_tokens": 612,
+            "total_tokens": 656
+      }
+}
+    ```
+    </ResponseExample>
     
-
-<ResponseExample></ResponseExample>
     

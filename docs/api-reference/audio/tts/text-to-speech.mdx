@@ -32,6 +32,15 @@ The Text to Speech API converts written text into lifelike speech with options f
   creating a new one.
 </ParamField>
 
+<ParamField body="return_type" type="string">
+  The specified return type for the response
+  <ul>
+    <li>`url`</li>
+    <li>`base64`</li>
+    <li>`binary`</li>
+  </ul>
+</ParamField>
+
 <Info>
   For best results, the `accent` should match the language of the text for accurate pronunciation, even when using a cloned voice. You can use either a built-in voice by specifying just the `accent`, or provide both an `accent` and a `voice_clone_id` to use a previously cloned voice.
 </Info>
