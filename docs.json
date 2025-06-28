@@ -74,7 +74,8 @@
               "docs/integration/groq",
               "docs/integration/langchain",
               "docs/integration/zapier",
-              "docs/integration/aries"
+              "docs/integration/aries",
+              "docs/integration/replicate"
             ]
           },
           {

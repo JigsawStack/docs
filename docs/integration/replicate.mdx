@@ -1,0 +1,161 @@
+---
+title: "Replicate"
+description: "Explore and run JigsawStack models on Replicate with interactive inference UIs and programmatic access"
+---
+
+<img 
+  className="mx-auto text-black dark:text-white hidden dark:block" 
+  src="/images/replicate/dark.png" 
+  alt="Replicate Logo" 
+  height="150" 
+  width="300"
+/>
+
+<img 
+  className="mx-auto text-black dark:hidden" 
+  src="/images/replicate/light.png" 
+  alt="Replicate Logo" 
+  height="150" 
+  width="300"
+/>
+## Access JigsawStack APIs on Replicate
+
+[Replicate](https://replicate.com/) is a cloud platform for running machine learning models in production with a simple API. It also provides a beautiful frontend for developers and non-developers alike to test and share model outputs.
+
+With JigsawStack on Replicate, you can:
+
+- **Run powerful AI models** without setting up infrastructure
+- **Use the hosted playground** to quickly test inputs/outputs
+- **Get production-ready REST endpoints** for inference
+- **Integrate models via cURL, Python, JS, or serverless functions**
+- **Build on open-source workflows using our public models**
+
+---
+
+## Getting Started with JigsawStack on Replicate
+
+You can try our models on Replicate in two ways: through the interactive web interface or programmatically via their API.
+
+### Interactive Playground
+
+The easiest way to start is by using the playground on the Replicate website. No account is needed to test models this way — just open a model page in your browser and experiment with different inputs. You will, however, need to provide your JigsawStack API key.
+
+<div className="border p-4 rounded-md my-4">
+**Note:** To use the interactive playground, you'll need a JigsawStack API key. You can get one for free from the [JigsawStack Dashboard](https://jigsawstack.com/dashboard).
+</div>
+
+Here are some of our popular models you can try right now:
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+
+  <a 
+    href="https://replicate.com/jigsawstack/embedding" 
+    className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 block no-underline text-inherit"
+  >
+    <h3 className="text-lg font-bold mb-2">Text Embedding</h3>
+    <p className="mb-4">Generate embeddings for semantic search, recommendation engines, and more.</p>
+  </a>
+
+  <a 
+    href="https://replicate.com/jigsawstack/text-sentiment" 
+    className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 block no-underline text-inherit"
+  >
+    <h3 className="text-lg font-bold mb-2">Sentiment Analysis</h3>
+    <p className="mb-4">Analyze user sentiment with high-accuracy emotion classification.</p>
+  </a>
+
+  <a 
+    href="https://replicate.com/jigsawstack/text-translate" 
+    className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 block no-underline text-inherit"
+  >
+    <h3 className="text-lg font-bold mb-2">Translate Text</h3>
+    <p className="mb-4">Translate across 160+ languages with lightning-fast response times.</p>
+  </a>
+
+  <a 
+    href="https://replicate.com/jigsawstack/tts" 
+    className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 block no-underline text-inherit"
+  >
+    <h3 className="text-lg font-bold mb-2">Text to Speech</h3>
+    <p className="mb-4">Convert any text to natural-sounding speech with our multilingual TTS model.</p>
+  </a>
+
+  <a 
+    href="https://replicate.com/jigsawstack/object-detection" 
+    className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 block no-underline text-inherit"
+  >
+    <h3 className="text-lg font-bold mb-2">Object Detection</h3>
+    <p className="mb-4">Detect and localize objects in images with bounding boxes.</p>
+  </a>
+
+  <a 
+    href="https://replicate.com/jigsawstack/nsfw" 
+    className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 block no-underline text-inherit"
+  >
+    <h3 className="text-lg font-bold mb-2">NSFW Detection</h3>
+    <p className="mb-4">Screen images for explicit or inappropriate content in real time.</p>
+  </a>
+
+  <a 
+    href="https://replicate.com/jigsawstack/ai-scrape" 
+    className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 block no-underline text-inherit"
+  >
+    <h3 className="text-lg font-bold mb-2">AI Web Scraper</h3>
+    <p className="mb-4">Extract structured content from any public webpage using AI agents.</p>
+  </a>
+
+  <a 
+    href="https://replicate.com/jigsawstack/ai-search" 
+    className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 block no-underline text-inherit"
+  >
+    <h3 className="text-lg font-bold mb-2">AI Web Search</h3>
+    <p className="mb-4">Search the internet intelligently with AI-powered relevance scoring.</p>
+  </a>
+
+  <a 
+    href="https://replicate.com/jigsawstack/image-generation" 
+    className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 block no-underline text-inherit"
+  >
+    <h3 className="text-lg font-bold mb-2">Image Generation</h3>
+    <p className="mb-4">Generate stunning images from text prompts with fast inference.</p>
+  </a>
+
+  <a 
+    href="https://replicate.com/jigsawstack/vocr" 
+    className="border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 block no-underline text-inherit"
+  >
+    <h3 className="text-lg font-bold mb-2">vOCR</h3>
+    <p className="mb-4">Visual OCR model that reads complex layouts, documents, and forms.</p>
+  </a>
+
+</div>
+
+---
+
+## Community & Support
+
+* **Need help?** Email us at [support@jigsawstack.com](mailto:support@jigsawstack.com)
+* **Join our Discord** for model requests, feedback, and ideas: [https://jigsawstack.com/discord](https://jigsawstack.com/discord)
+* **Open a GitHub issue** or contact us to contribute a new model
+
+<div className="border border-gray-200 rounded-lg shadow-sm p-6 my-8">
+  <h3 className="text-lg font-bold mb-2">Want to Embed a Model?</h3>
+  <p>You can embed any Replicate model widget using the iframe embed option on the model page — great for documentation, blogs, or onboarding flows.</p>
+</div>
+
+---
+
+## Explore All Our Models on Replicate
+
+Browse the full catalog of models by JigsawStack:
+🔗 [https://replicate.com/jigsawstack](https://replicate.com/jigsawstack)
+
+---
+
+## Related Resources
+
+* [JigsawStack API Reference](/docs/api-reference)
+* [Replicate Developer Docs](https://replicate.com/docs)
+* [Replicate Python SDK](https://replicate.com/docs/getting-started/python)
+* [Replicate Pricing](https://replicate.com/account/billing)
+
