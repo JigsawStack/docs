@@ -71,11 +71,12 @@
             "pages": [
               "docs/integration/postman",
               "docs/integration/vercel",
+              "docs/integration/huggingface",
+              "docs/integration/replicate",
               "docs/integration/groq",
               "docs/integration/langchain",
               "docs/integration/zapier",
-              "docs/integration/aries",
-              "docs/integration/huggingface"
+              "docs/integration/aries"
             ]
           },
           {
