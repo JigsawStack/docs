@@ -25,8 +25,12 @@ description: "Upload images, videos and documents effortlessly."
   key. E.g `image-key.png`
 </ParamField>
 
-<ParamField query="overwrite" type="string" default="false">
+<ParamField query="overwrite" type="boolean" default="false">
   Overwrite the file if key already exists.
+</ParamField>
+
+<ParamField query="temp_public_url" type="boolean" default="false">
+  Returns a temporary public url which the user can access. This url will only last for 10 minutes.
 </ParamField>
 
 <Info>
