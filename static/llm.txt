@@ -954,7 +954,7 @@ The API returns the generated image directly in the response body as binary data
 
  ---
 title: "Object Detection"
-api: "POST https://api.jigsawstack.com/v1/ai/object_detection"
+api: "POST https://api.jigsawstack.com/v1/object_detection"
 description: "Recognise objects within an image with great accuracy."
 ---
 
@@ -25832,7 +25832,7 @@ response = jigsaw.vision.object_detection({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com/v1/ai/object_detection \
+curl https://api.jigsawstack.com/v1/object_detection \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -25841,7 +25841,7 @@ curl https://api.jigsawstack.com/v1/ai/object_detection \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/ai/object_detection');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/object_detection');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -25859,7 +25859,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com/v1/ai/object_detection')
+uri = URI('https://api.jigsawstack.com/v1/object_detection')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -25890,7 +25890,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"url":"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z"}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/ai/object_detection", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/object_detection", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -25920,7 +25920,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com/v1/ai/object_detection"))
+    .uri(URI.create("https://api.jigsawstack.com/v1/object_detection"))
     .POST(BodyPublishers.ofString("{\"url\":\"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -25937,7 +25937,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com/v1/ai/object_detection")!
+let url = URL(string: "https://api.jigsawstack.com/v1/object_detection")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -25971,7 +25971,7 @@ void main() async {
 
   final data = '{"url":"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z"}';
 
-  final url = Uri.parse('https://api.jigsawstack.com/v1/ai/object_detection');
+  final url = Uri.parse('https://api.jigsawstack.com/v1/object_detection');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -25995,7 +25995,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"url\":\"https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z\"}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com/v1/ai/object_detection")
+  .url("https://api.jigsawstack.com/v1/object_detection")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -26013,7 +26013,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/ai/object_detection");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/object_detection");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
