@@ -109,7 +109,7 @@ export const APISchemas: {
     sdk_key_string: "embedding",
   },
   "object-detection": {
-    path: "/ai/object_detection",
+    path: "/object_detection",
     method: "POST",
     body: {
       url: "https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z",
