@@ -258,4 +258,27 @@ import AIScrapeSnippet from "/snippets/code-req-examples/ai-scrape.mdx";
   </Expandable>
 </ResponseField>
 
+<ResponseField name="used_proxy" type="any">
+  Information about the proxy used for the request, if any
+</ResponseField>
+
+<ResponseField name="meta" type="object | undefined">
+  Metadata about the page, such as title, description, keywords, and Open Graph image
+  <Expandable title="Meta Object">
+    <ResponseField name="title" type="string | undefined">
+      The page title
+    </ResponseField>
+    <ResponseField name="description" type="string | undefined">
+      The page description
+    </ResponseField>
+    <ResponseField name="keywords" type="string | undefined">
+      The page keywords
+    </ResponseField>
+    <ResponseField name="og_image" type="string | undefined">
+      The Open Graph image URL
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+
 <AIScrapeSnippet />
