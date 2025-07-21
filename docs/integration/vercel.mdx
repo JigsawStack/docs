@@ -51,7 +51,7 @@ You can pass JigsawStack into Vercel AI. This allows you to extend the functiona
 To use JigsawStack with Vercel AI, simply instantiate the JigsawStack SDK by specifying Vercel AI as your provider:
 
 ```javascript
-import { JigsawStackToolSet } from 'jigsawstack/vercel-ai-toolkit';
+import { JigsawStackToolSet } from 'jigsawstack';
 
 const toolset = new JigsawStackToolSet({
   apiKey,
@@ -66,7 +66,7 @@ This configures JigsawStack to return tools that can be used into your AI functi
 Here is a simple example using all the tools available with JigsawStack
 
 ```javascript 
-import { JigsawStackToolSet } from 'jigsawstack/vercel-ai-toolkit';
+import { JigsawStackToolSet } from 'jigsawstack';
 import { openai } from "@ai-sdk/openai";
 import { generateText } from "ai";
 
