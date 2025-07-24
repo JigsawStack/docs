@@ -165,7 +165,7 @@
           },
           {
             "group": "Web Search",
-            "pages": ["docs/api-reference/web/ai-search", "docs/api-reference/web/search-suggestion"]
+            "pages": ["docs/api-reference/web/ai-search", "docs/api-reference/web/search-suggestion",  "docs/api-reference/web/deep-research"]
           },
           {
             "group": "Prompt Engine",
