@@ -1,0 +1,55 @@
+---
+title: "Deep Research"
+api: "POST https://api.jigsawstack.com/v1/web/deep_research"
+description: "Effortlessly run deep research and get high-quality results powered with AI."
+---
+
+import SearchSnippet from "/snippets/code-req-examples/deep-research.mdx";
+
+### Body
+
+<ParamField body="query" type="string" required>
+  The search value. The maximum query character length is 400.
+</ParamField>
+
+<ParamField body="safe_search" type="string" default="moderate">
+  Controls the inclusion of offensive results in the search results.
+  <ul>
+    <li>`moderate`</li>
+    <li>`strict`</li>
+    <li>`off`</li>
+  </ul>
+</ParamField>
+
+<ParamField body="spell_check" type="boolean" default="true">
+  Spell check the search query.
+</ParamField>
+
+
+<ParamField body="max_depth" type="number" default="3">
+      Specifies the depth of research by controlling the number of recursive iterations the framework performs. A higher value enables more thorough but longer searches.
+</ParamField>
+
+ <ParamField body="max_breadth" type="number" default="3">
+      Determines the breadth of research by limiting the number of parallel subqueries generated at each depth level. A higher value provides wider coverage of related topics.
+</ParamField>
+
+<ParamField body="max_output_tokens" type="number" default="32000">
+      The maximum number of tokens in the generated output report.
+</ParamField>
+
+<ParamField body="target_output_tokens" type="number">
+      The target number of tokens for the generated output report.
+</ParamField>
+
+
+<Snippet file="header.mdx" />
+
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<SearchSnippet />
