@@ -73,8 +73,8 @@ import SearchSnippet from "/snippets/code-req-examples/ai-search.mdx";
       Brief description of the search result.
     </ResponseField>
     
-    <ResponseField name="content" type="string | object">
-      The content of the result, either as plain text or structured object with text, image_urls, and links.
+    <ResponseField name="content" type="string">
+      The content of the result, as plain text or structured object .
     </ResponseField>
     
     <ResponseField name="is_safe" type="boolean">
@@ -168,7 +168,17 @@ import SearchSnippet from "/snippets/code-req-examples/ai-search.mdx";
     </ResponseField>
     
     <ResponseField name="geoloc" type="object">
-      Geographic coordinates object with type and coordinates array.
+      GeoJSON Point object with "type": "Point" and "coordinates" array containing [longitude, latitude].
+      
+      <Expandable title="Geoloc Object Properties">
+        <ResponseField name="type" type="string">
+          The type of GeoJSON object. Always "Point" for location coordinates.
+        </ResponseField>
+        
+        <ResponseField name="coordinates" type="number[]">
+          Array containing [longitude, latitude] coordinates for the location.
+        </ResponseField>
+      </Expandable>
     </ResponseField>
     
     <ResponseField name="poi_category" type="string" optional>
