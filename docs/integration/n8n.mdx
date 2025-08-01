@@ -17,6 +17,88 @@ n8n is a visual, node based workflow automation tool. With JigsawStack’s offic
 
 JigsawStack delivers **custom small models trained for specialized use cases**, all served through fast and scalable API endpoints. These APIs plug directly into your tech stack, giving you reliable, production ready AI building blocks for your automation needs.
 
+
+## How to add JigsawStack Node in your workflow ? 
+
+### n8n.cloud
+
+If you're using [n8n.cloud](https://n8n.cloud), follow these simple steps to add JigsawStack to your workflow:
+
+1. **Click on the + icon**
+   
+   
+   <img
+     className="mx-auto"
+     src="/images/n8n/step1.png"
+     alt="Click on the + icon"
+     height="400"
+     width="600"
+   />
+
+2. **Search JigsawStack**
+   
+   Use the search input field to search for our node
+   <img
+     className="mx-auto"
+     src="/images/n8n/step2.png"
+     alt="Search jigsawstack"
+     height="400"
+     width="600"
+   />
+
+3. **Install Node**
+   
+   Hit the `install node` if not already installed
+   <img
+     className="mx-auto"
+     src="/images/n8n/step3.png"
+     alt="Make sure it is installed"
+     height="400"
+     width="600"
+   />
+
+4. **Add credentials**
+   
+   Get your API Key from your [JigsawStack dashboard](https://jigsawstack.com/dashboard).
+   
+   <img
+     className="mx-auto"
+     src="/images/n8n/step4.png"
+     alt="Add credentials"
+     height="400"
+     width="600"
+   />
+
+5. **Hit execute**
+   
+   Execute the node that you have selected.
+   <img
+     className="mx-auto"
+     src="/images/n8n/step5.png"
+     alt="Hit execute"
+     height="400"
+     width="600"
+   />
+
+### Self-hosted n8n
+
+For self-hosted n8n installations, you'll need to install the JigsawStack node manually:
+
+1. **Install the Node:**
+   ```bash
+   npm install n8n-nodes-jigsawstack
+   ```
+2. **Add Your API Key:**
+   In n8n, go to Settings > Credentials  
+   Click "New" and select "JigsawStack API"  
+   Enter your API key from your [JigsawStack dashboard](https://jigsawstack.com)
+3. **Add the Node to Your Workflow:**
+   Drag the JigsawStack node into your workflow  
+   Select the operation you want (e.g., Sentiment Analysis, Image Generation)  
+   Configure the parameters as needed  
+   Connect with other nodes to automate your process
+
+
 ## Why Use JigsawStack in n8n?
 
   **Optimized for speed and cost** – Lightweight models that work fast and scale well  
@@ -34,6 +116,7 @@ Whether you're classifying content, processing images, analyzing sentiment, or e
   - Convert natural language to SQL for database queries
   - Moderate images for NSFW content before publishing
   - Build custom AI powered bots and automations
+
 
 ## Nodes available
 
@@ -58,21 +141,6 @@ Whether you're classifying content, processing images, analyzing sentiment, or e
   - Translate Image
   - Web Suggestion
 
-## Quickstart
-
-1. **Install the Node:**
-   ```bash
-   npm install n8n-nodes-jigsawstack
-   ```
-2. **Add Your API Key:**
-   In n8n, go to Settings > Credentials  
-   Click "New" and select "JigsawStack API"  
-   Enter your API key from your [JigsawStack dashboard](https://jigsawstack.com)
-3. **Add the Node to Your Workflow:**
-   Drag the JigsawStack node into your workflow  
-   Select the operation you want (e.g., Sentiment Analysis, Image Generation)  
-   Configure the parameters as needed  
-   Connect with other nodes to automate your process
 
 ## Resources & Support
 
