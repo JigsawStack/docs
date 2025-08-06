@@ -33,6 +33,16 @@ import SearchSnippet from "/snippets/code-req-examples/ai-search.mdx";
   Return results from the specified URLs.
 </ParamField>
 
+
+<ParamField body="country_code" type="string">
+  Country Code ( Example - "BEN" )
+</ParamField>
+
+<ParamField body="auto_scrape" type="boolean" default="true">
+  Allow auto scraping of urls, defaults to true.
+</ParamField>
+
+
 <ParamField body="max_results" type="number">
   Number of maximum results to return, excluding byo_urls.
 </ParamField>
