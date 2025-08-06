@@ -33,31 +33,19 @@ import SearchSnippet from "/snippets/code-req-examples/ai-search.mdx";
   Return results from the specified URLs.
 </ParamField>
 
-<ParamField body="deep_research" type="boolean">
-  Toggle deep research mode.
+
+<ParamField body="country_code" type="string">
+  Country Code ( Example - "BEN" )
 </ParamField>
 
-<ResponseField name="deep_research_config" type="object">
-  The deep research configuration.
-  <Expandable title="Deep Research Config Object Structure" defaultOpen>
-    <ResponseField name="max_depth" type="number" default="3">
-      Specifies the depth of research by controlling the number of recursive iterations the framework performs. A higher value enables more thorough but longer searches.
-    </ResponseField>
+<ParamField body="auto_scrape" type="boolean" default="true">
+  Allow auto scraping of urls, defaults to true.
+</ParamField>
 
-    <ResponseField name="max_breadth" type="number" default="3">
-      Determines the breadth of research by limiting the number of parallel subqueries generated at each depth level. A higher value provides wider coverage of related topics.
-    </ResponseField>
 
-    <ResponseField name="max_output_tokens" type="number" default="32000">
-      The maximum number of tokens in the generated output report.
-    </ResponseField>
-
-    <ResponseField name="target_output_tokens" type="number">
-      The target number of tokens for the generated output report.
-    </ResponseField>
-
-  </Expandable>
-</ResponseField>
+<ParamField body="max_results" type="number">
+  Number of maximum results to return, excluding byo_urls.
+</ParamField>
 
 <Snippet file="header.mdx" />
 
@@ -65,6 +53,156 @@ import SearchSnippet from "/snippets/code-req-examples/ai-search.mdx";
 
 <ResponseField name="success" type="boolean">
   Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="query" type="string">
+  The search query that was processed.
+</ResponseField>
+
+<ResponseField name="ai_overview" type="string" optional>
+  AI-powered overview of the search results (when ai_overview is enabled).
+</ResponseField>
+
+<ResponseField name="spell_fixed" type="boolean">
+  Indicates whether the search query was spell-corrected.
+</ResponseField>
+
+<ResponseField name="is_safe" type="boolean">
+  Indicates whether the search results are considered safe based on safe_search settings.
+</ResponseField>
+
+<ResponseField name="results" type="array">
+  Array of search result objects.
+  
+  <Expandable title="Result Object Properties">
+    <ResponseField name="title" type="string">
+      The title of the search result.
+    </ResponseField>
+    
+    <ResponseField name="url" type="string">
+      The URL of the search result.
+    </ResponseField>
+    
+    <ResponseField name="description" type="string">
+      Brief description of the search result.
+    </ResponseField>
+    
+    <ResponseField name="content" type="string">
+      The content of the result, as plain text or structured object .
+    </ResponseField>
+    
+    <ResponseField name="is_safe" type="boolean">
+      Indicates whether this specific result is considered safe.
+    </ResponseField>
+    
+    <ResponseField name="site_name" type="string">
+      The name of the website.
+    </ResponseField>
+    
+    <ResponseField name="site_long_name" type="string">
+      The full/long name of the website.
+    </ResponseField>
+    
+    <ResponseField name="age" type="string">
+      The age/freshness of the content.
+    </ResponseField>
+    
+    <ResponseField name="language" type="string">
+      The language of the content.
+    </ResponseField>
+    
+    <ResponseField name="favicon" type="string">
+      URL to the website's favicon.
+    </ResponseField>
+    
+    <ResponseField name="snippets" type="string[]">
+      Array of relevant text snippets from the result.
+    </ResponseField>
+    
+    <ResponseField name="related_index" type="RelatedIndex[]">
+      Array of related search indices.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="image_urls" type="string[]">
+  Array of image URLs found in the search results.
+</ResponseField>
+
+<ResponseField name="links" type="string[]">
+  Array of links found in the search results.
+</ResponseField>
+
+<ResponseField name="geo_results" type="array">
+  Array of geographic/location-based search results.
+  
+  <Expandable title="Geo Result Object Properties">
+    <ResponseField name="type" type="string">
+      The type of geographic result.
+    </ResponseField>
+    
+    <ResponseField name="full_address" type="string">
+      Complete address of the location.
+    </ResponseField>
+    
+    <ResponseField name="name" type="string">
+      Name of the location.
+    </ResponseField>
+    
+    <ResponseField name="name_preferred" type="string">
+      Preferred name for the location.
+    </ResponseField>
+    
+    <ResponseField name="place_formatted" type="string">
+      Formatted place name.
+    </ResponseField>
+    
+    <ResponseField name="postcode" type="string" optional>
+      Postal/ZIP code of the location.
+    </ResponseField>
+    
+    <ResponseField name="district" type="string" optional>
+      District of the location.
+    </ResponseField>
+    
+    <ResponseField name="place" type="string" optional>
+      Place/city name.
+    </ResponseField>
+    
+    <ResponseField name="region" type="object" optional>
+      Region information (excluding mapbox_id).
+    </ResponseField>
+    
+    <ResponseField name="country" type="object" optional>
+      Country information (excluding mapbox_id).
+    </ResponseField>
+    
+    <ResponseField name="language" type="string">
+      Language of the location data.
+    </ResponseField>
+    
+    <ResponseField name="geoloc" type="object">
+      GeoJSON Point object with "type": "Point" and "coordinates" array containing [longitude, latitude].
+      
+      <Expandable title="Geoloc Object Properties">
+        <ResponseField name="type" type="string">
+          The type of GeoJSON object. Always "Point" for location coordinates.
+        </ResponseField>
+        
+        <ResponseField name="coordinates" type="number[]">
+          Array containing [longitude, latitude] coordinates for the location.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    
+    <ResponseField name="poi_category" type="string" optional>
+      Point of interest category.
+    </ResponseField>
+    
+    <ResponseField name="additional_properties" type="any" optional>
+      Additional properties for the location.
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <SearchSnippet />
