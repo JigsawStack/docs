@@ -11,11 +11,8 @@ description: "Unlock the Power of the JigsawStack on LangChain!"
   width="300"
 />
 
-LangChain.js now supports calling [JigsawStack Prompt Engine](/docs/examples/ai/prompt-engine) and more through the JigsawStack Tool.
-
 The JigsawStack Tool provides your agent with several capabilities:
 
-- **JigsawStack Prompt Engine**: Use JigsawStack's advanced prompt engine to interact with large language models.
 - **JigsawStackAIScrape**: Scrape web content with AI-powered precision.
 - **JigsawStackAISearch**: Perform AI-powered web searches for high-quality results.
 - **JigsawStackSpeechToText**: Transcribe audio or video using the powerful large V3 Whisper model.
@@ -48,21 +45,7 @@ pnpm add @langchain/jigsawstack
 
 ## Usage: Standalone
 
-### Example 1: Using the JigsawStack Prompt Engine
-
-```javascript
-import { JigsawStackPromptEngine } from "@langchain/jigsawstack";
-
-export const run = async () => {
-  const model = new JigsawStackPromptEngine();
-  const res = await model.invoke(
-    "Tell me about the leaning tower of pisa?\nAnswer:",
-  );
-  console.log({ res });
-};
-```
-
-### Example 2: Using Other JigsawStack Tools
+### Example: Using JigsawStack Tools
 
 ```javascript
 import {

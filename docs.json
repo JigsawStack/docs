@@ -83,7 +83,6 @@
           {
             "group": "Core AI",
             "pages": [
-              "docs/examples/core-ai/prompt-engine",
               "docs/examples/core-ai/image-generation",
               "docs/examples/core-ai/summary",
               "docs/examples/core-ai/sentiment"
@@ -167,17 +166,6 @@
           {
             "group": "Web Search",
             "pages": ["docs/api-reference/web/ai-search", "docs/api-reference/web/search-suggestion",  "docs/api-reference/web/deep-research"]
-          },
-          {
-            "group": "Prompt Engine",
-            "pages": [
-              "docs/api-reference/prompt-engine/create",
-              "docs/api-reference/prompt-engine/run",
-              "docs/api-reference/prompt-engine/retrieve",
-              "docs/api-reference/prompt-engine/list",
-              "docs/api-reference/prompt-engine/delete",
-              "docs/api-reference/prompt-engine/run-direct"
-            ]
           },
           {
             "group": "Vision",
