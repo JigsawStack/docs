@@ -221,18 +221,24 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "score": 0.9
                   },
                   {
-                        "text": "It's amazing but the delivery was a bit late.",
-                        "emotion": "neutral",
+                        "text": "It's amazing",
+                        "emotion": "happiness",
                         "sentiment": "positive",
                         "score": 0.8
+                  },
+                  {
+                        "text": "but the delivery was a bit late.",
+                        "emotion": "annoyance",
+                        "sentiment": "negative",
+                        "score": 0.7
                   }
             ]
       },
       "_usage": {
             "input_tokens": 20,
-            "output_tokens": 74,
-            "inference_time_tokens": 2429,
-            "total_tokens": 2523
+            "output_tokens": 91,
+            "inference_time_tokens": 2750,
+            "total_tokens": 2861
       }
 }
     ```

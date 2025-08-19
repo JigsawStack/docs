@@ -281,36 +281,6 @@ export const APISchemas: {
     },
     sdk_key_string: "translate.image",
   },
-  "text-to-speech": {
-    path: "/ai/tts",
-    method: "POST",
-    body: {
-      text: "Hello, world!",
-      accent: "en-US-female-27",
-      return_type: "url"
-    },
-    sdk_key_string: "audio.text_to_speech",
-  },
-  "text-to-speech-create-clone": {
-    path: "/ai/tts/clone",
-    method: "POST",
-    body: {
-      url: "https://jigsawstack.com/preview/tts-clone-example.mp3",
-      name: "Elon Musk",
-    },
-    sdk_key_string: "audio.create_clone",
-  },
-  "text-to-speech-list-clones": {
-    path: "/ai/tts/clone",
-    method: "GET",
-    sdk_key_string: "audio.list_clones",
-  },
-  "text-to-speech-delete-clone": {
-    path: "/ai/tts/clone/${voice_id}",
-    method: "DELETE",
-    sdk_key_string: "audio.delete_clone",
-    skip_request: true,
-  },
   "html-to-any": {
     path: "/web/html_to_any",
     method: "POST",
