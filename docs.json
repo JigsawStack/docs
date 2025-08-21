@@ -73,7 +73,6 @@
               "docs/integration/vercel",
               "docs/integration/huggingface",
               "docs/integration/replicate",
-              "docs/integration/groq",
               "docs/integration/langchain",
               "docs/integration/zapier",
               "docs/integration/aries",
@@ -83,7 +82,6 @@
           {
             "group": "Core AI",
             "pages": [
-              "docs/examples/core-ai/prompt-engine",
               "docs/examples/core-ai/image-generation",
               "docs/examples/core-ai/summary",
               "docs/examples/core-ai/sentiment"
@@ -169,17 +167,6 @@
             "pages": ["docs/api-reference/web/ai-search", "docs/api-reference/web/search-suggestion",  "docs/api-reference/web/deep-research"]
           },
           {
-            "group": "Prompt Engine",
-            "pages": [
-              "docs/api-reference/prompt-engine/create",
-              "docs/api-reference/prompt-engine/run",
-              "docs/api-reference/prompt-engine/retrieve",
-              "docs/api-reference/prompt-engine/list",
-              "docs/api-reference/prompt-engine/delete",
-              "docs/api-reference/prompt-engine/run-direct"
-            ]
-          },
-          {
             "group": "Vision",
             "pages": ["docs/api-reference/ai/vocr", "docs/api-reference/ai/object-detection"]
           },
@@ -203,5 +190,39 @@
         ]
       }
     ]
+  },
+  "redirects": [
+  {
+    "source": "/docs/api-reference/prompt-engine/create",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "/docs/api-reference/prompt-engine/run",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "/docs/api-reference/prompt-engine/retrieve",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "/docs/api-reference/prompt-engine/list",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "/docs/api-reference/prompt-engine/delete",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "/docs/api-reference/prompt-engine/run-direct",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "docs/examples/core-ai/prompt-engine",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "docs/integration/groq",
+    "destination": "https://interfaze.ai"
   }
+]
 }
