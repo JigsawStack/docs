@@ -228,4 +228,12 @@ export const APISchemas: {
     },
     sdk_key_string: "web.html_to_any",
   },
+  "deep-research": {
+    path: "/web/deep_research",
+    method: "POST",
+    body: {
+      query: "What is the meaning of life?",
+    },
+    sdk_key_string: "web.deep_research",
+  },
 };
