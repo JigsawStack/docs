@@ -73,7 +73,6 @@
               "docs/integration/vercel",
               "docs/integration/huggingface",
               "docs/integration/replicate",
-              "docs/integration/groq",
               "docs/integration/langchain",
               "docs/integration/zapier",
               "docs/integration/aries",
@@ -83,7 +82,6 @@
           {
             "group": "Core AI",
             "pages": [
-              "docs/examples/core-ai/prompt-engine",
               "docs/examples/core-ai/image-generation",
               "docs/examples/core-ai/summary",
               "docs/examples/core-ai/sentiment"
@@ -107,7 +105,7 @@
           },
           {
             "group": "Audio",
-            "pages": ["docs/examples/audio/speech-to-text", "docs/examples/audio/text-to-speech"]
+            "pages": ["docs/examples/audio/speech-to-text"]
           },
           {
             "group": "Content Validation",
@@ -173,32 +171,12 @@
             "pages": ["docs/api-reference/classification/classification"]
           },
           {
-            "group": "Prompt Engine",
-            "pages": [
-              "docs/api-reference/prompt-engine/create",
-              "docs/api-reference/prompt-engine/run",
-              "docs/api-reference/prompt-engine/retrieve",
-              "docs/api-reference/prompt-engine/list",
-              "docs/api-reference/prompt-engine/delete",
-              "docs/api-reference/prompt-engine/run-direct"
-            ]
-          },
-          {
             "group": "Vision",
             "pages": ["docs/api-reference/ai/vocr", "docs/api-reference/ai/object-detection"]
           },
           {
             "group": "Speech to Text",
             "pages": ["docs/api-reference/ai/speech-to-text"]
-          },
-          {
-            "group": "Text to Speech",
-            "pages": [
-              "docs/api-reference/audio/tts/text-to-speech", 
-              "docs/api-reference/audio/tts/create-clone", 
-              "docs/api-reference/audio/tts/list-clones", 
-              "docs/api-reference/audio/tts/delete-clone"
-            ]
           },
           {
             "group": "Validate",
@@ -216,5 +194,39 @@
         ]
       }
     ]
+  },
+  "redirects": [
+  {
+    "source": "/docs/api-reference/prompt-engine/create",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "/docs/api-reference/prompt-engine/run",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "/docs/api-reference/prompt-engine/retrieve",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "/docs/api-reference/prompt-engine/list",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "/docs/api-reference/prompt-engine/delete",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "/docs/api-reference/prompt-engine/run-direct",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "docs/examples/core-ai/prompt-engine",
+    "destination": "https://interfaze.ai"
+  },
+  {
+    "source": "docs/integration/groq",
+    "destination": "https://interfaze.ai"
   }
+]
 }
