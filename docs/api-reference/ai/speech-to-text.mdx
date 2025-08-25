@@ -27,8 +27,7 @@ import SpeechToTextSnippet from "/snippets/code-req-examples/speech-to-text.mdx"
 <Info>Either `url` or `file_store_key` should be provided, not both.</Info>
 
 <ParamField body="language" type="string">
-  The language to transcribe or translate the file into. If not specified, the model will automatically detect the language and transcribe
-  accordingly. All supported language codes can be found [here](https://jigsawstack.com/docs/additional-resources/languages).
+  The language to transcribe or translate the file into. Use "auto" for automatic language detection, or specify a language code. If not specified, defaults to automatic detection. All supported language codes can be found [here](https://jigsawstack.com/docs/additional-resources/languages).
 </ParamField>
 
 <ParamField body="translate" type="boolean" default="false">
