@@ -152,19 +152,6 @@ translation = jigsawstack.ai.translate({
 print(f"Translated text: {translation.get('translated_text')}")
 ```
 
-### Text to Speech
-
-```python
-speech = jigsawstack.audio.text_to_speech({
-    "text": "Welcome to JigsawStack Python SDK!",
-    "voice": "en-US-female"
-})
-
-# Save the audio to a file
-with open("welcome_message.mp3", "wb") as audio_file:
-    audio_file.write(speech.content)
-```
-
 ## Next Steps
 
 Now that you've set up the JigsawStack Python SDK, you can:
