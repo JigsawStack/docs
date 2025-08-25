@@ -41,9 +41,7 @@ export const APISchemas: {
     path: "/ai/summary",
     method: "POST",
     body: {
-      text: 
-        "The Leaning Tower of Pisa, or simply, the Tower of Pisa, is the campanile, or freestanding bell tower, of Pisa Cathedral. It is situated behind the Cathedral and is the third-oldest structure in the city's Cathedral Square, after the Cathedral and the Baptistry. The tower's tilt began during construction in the 12th century, caused by an inadequate foundation on ground too soft on one side to properly support the structure's weight. The tilt increased in the decades before the structure was completed in the 14th century. It gradually increased until the structure was stabilized by efforts in the late 20th and early 21st centuries. The height of the tower is 55.86 metres (183.27 feet) from the ground on the low side and 56.67 metres (185.93 feet) on the high side. The width of the walls at the base is 2.44 m (8 ft 0.06 in). Its weight is estimated at 14,500 tonnes. The tower has 296 or 294 steps; the seventh floor has two fewer steps on the north-facing staircase."
-      ,
+      text: "The Leaning Tower of Pisa, or simply, the Tower of Pisa, is the campanile, or freestanding bell tower, of Pisa Cathedral. It is situated behind the Cathedral and is the third-oldest structure in the city's Cathedral Square, after the Cathedral and the Baptistry. The tower's tilt began during construction in the 12th century, caused by an inadequate foundation on ground too soft on one side to properly support the structure's weight. The tilt increased in the decades before the structure was completed in the 14th century. It gradually increased until the structure was stabilized by efforts in the late 20th and early 21st centuries. The height of the tower is 55.86 metres (183.27 feet) from the ground on the low side and 56.67 metres (185.93 feet) on the high side. The width of the walls at the base is 2.44 m (8 ft 0.06 in). Its weight is estimated at 14,500 tonnes. The tower has 296 or 294 steps; the seventh floor has two fewer steps on the north-facing staircase.",
       type: "points",
       max_points: 3,
     },
@@ -112,8 +110,8 @@ export const APISchemas: {
     path: "/object_detection",
     method: "POST",
     body: {
-      url: "https://rogilvkqloanxtvjfrkm.supabase.co/storage/v1/object/public/demo/Collabo%201080x842.jpg?t=2024-03-22T09%3A22%3A48.442Z",
-      prompts: ["things that i use to drink beverage with"],
+      url: "https://jigsawstack.com/preview/object-detection-example-input.jpg",
+      // prompts: ["objects on the screen"],
       features: ["object_detection"],
       annotated_image: true,
       return_type: "url",
@@ -125,7 +123,7 @@ export const APISchemas: {
     method: "POST",
     body: {
       prompt: ["total_price", "tax"],
-      url: "https://media.snopes.com/2021/08/239918331_10228097135359041_3825446756894757753_n.jpg",
+      url: "https://jigsawstack.com/preview/vocr-example.jpg",
     },
     sdk_key_string: "vision.vocr",
   },
@@ -187,81 +185,6 @@ export const APISchemas: {
     sdk_key_string: "store.delete",
     skip_request: true,
   },
-  "prompt-engine-create": {
-    path: "/prompt_engine",
-    method: "POST",
-    body: {
-      prompt: "Tell me a story about {about}",
-      inputs: [
-        {
-          key: "about",
-          optional: false,
-          initial_value: "Leaning Tower of Pisa",
-        },
-      ],
-      return_prompt: "Return the result in a markdown format",
-      prompt_guard: ["sexual_content", "defamation"],
-    },
-    sdk_key_string: "prompt_engine.create",
-  },
-  "prompt-engine-run": {
-    path: "/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5",
-    method: "POST",
-    query: {
-      id: "0073d008-da9b-4c27-90a8-0240f3ecd4f5",
-    },
-    body: {
-      input_values: {
-        text: "How to get started with JigsawStack?",
-      },
-    },
-    sdk_key_string: "prompt_engine.run",
-  },
-  "prompt-engine-retrieve": {
-    path: "/prompt_engine/14d675d5-b309-463d-8906-1be65af74c43",
-    method: "GET",
-    query: {
-      id: "14d675d5-b309-463d-8906-1be65af74c43",
-    },
-    sdk_key_string: "prompt_engine.get",
-  },
-  "prompt-engine-list": {
-    path: "/prompt_engine",
-    method: "GET",
-    query: {
-      limit: "10",
-    },
-    sdk_key_string: "prompt_engine.list",
-  },
-  "prompt-engine-delete": {
-    path: "/prompt_engine/${id}",
-    method: "DELETE",
-    query: {
-      promptId: "dc578c69-6eb5-4c5b-82ab-9f74077cfdd5",
-    },
-    sdk_key_string: "prompt_engine.delete",
-    skip_request: true,
-  },
-  "prompt-engine-run-direct": {
-    path: "/prompt_engine/run",
-    method: "POST",
-    body: {
-      prompt: "Tell me a story about {about}",
-      inputs: [
-        {
-          key: "about",
-          optional: true,
-          initial_value: "Leaning Tower of Pisa",
-        },
-      ],
-      return_prompt: "Return the result in a markdown format",
-      prompt_guard: ["sexual_content", "defamation"],
-      input_values: {
-        about: "Santorini",
-      },
-    },
-    sdk_key_string: "prompt_engine.run_direct",
-  },
   "image-generation": {
     path: "/ai/image_generation",
     method: "POST",
@@ -280,36 +203,6 @@ export const APISchemas: {
       return_type: "url",
     },
     sdk_key_string: "translate.image",
-  },
-  "text-to-speech": {
-    path: "/ai/tts",
-    method: "POST",
-    body: {
-      text: "Hello, world!",
-      accent: "en-US-female-27",
-      return_type: "url"
-    },
-    sdk_key_string: "audio.text_to_speech",
-  },
-  "text-to-speech-create-clone": {
-    path: "/ai/tts/clone",
-    method: "POST",
-    body: {
-      url: "https://jigsawstack.com/preview/tts-clone-example.mp3",
-      name: "Elon Musk",
-    },
-    sdk_key_string: "audio.create_clone",
-  },
-  "text-to-speech-list-clones": {
-    path: "/ai/tts/clone",
-    method: "GET",
-    sdk_key_string: "audio.list_clones",
-  },
-  "text-to-speech-delete-clone": {
-    path: "/ai/tts/clone/${voice_id}",
-    method: "DELETE",
-    sdk_key_string: "audio.delete_clone",
-    skip_request: true,
   },
   "html-to-any": {
     path: "/web/html_to_any",

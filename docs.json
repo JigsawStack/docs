@@ -107,7 +107,7 @@
           },
           {
             "group": "Audio",
-            "pages": ["docs/examples/audio/speech-to-text", "docs/examples/audio/text-to-speech"]
+            "pages": ["docs/examples/audio/speech-to-text"]
           },
           {
             "group": "Content Validation",
@@ -186,15 +186,6 @@
           {
             "group": "Speech to Text",
             "pages": ["docs/api-reference/ai/speech-to-text"]
-          },
-          {
-            "group": "Text to Speech",
-            "pages": [
-              "docs/api-reference/audio/tts/text-to-speech", 
-              "docs/api-reference/audio/tts/create-clone", 
-              "docs/api-reference/audio/tts/list-clones", 
-              "docs/api-reference/audio/tts/delete-clone"
-            ]
           },
           {
             "group": "Validate",
