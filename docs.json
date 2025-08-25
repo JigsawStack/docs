@@ -169,6 +169,10 @@
             "pages": ["docs/api-reference/web/ai-search", "docs/api-reference/web/search-suggestion",  "docs/api-reference/web/deep-research"]
           },
           {
+            "group": "Classification",
+            "pages": ["docs/api-reference/classification/classification"]
+          },
+          {
             "group": "Prompt Engine",
             "pages": [
               "docs/api-reference/prompt-engine/create",

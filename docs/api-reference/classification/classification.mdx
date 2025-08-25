@@ -1,0 +1,46 @@
+---
+title: "Classification"
+api: "POST https://api.jigsawstack.com/v1/classification"
+description: "Classify text and image datasets using custom labels."
+---
+
+import ClassificationSnippet from "/snippets/code-req-examples/classification.mdx";
+
+### Body
+
+<ParamField body="dataset" type="array" required>
+  Array of data samples to classify. Each sample contains:
+  - `type`: Either "text" or "image"
+  - `value`: The content to classify (text string or image URL)
+  
+  Maximum of 32 samples allowed per request. At least 1 sample required.
+</ParamField>
+
+<ParamField body="labels" type="array" required>
+  Array of classification labels. Each label contains:
+  - `key`: Optional identifier for the label
+  - `type`: Either "text" or "image" 
+  - `value`: The label content (text string or image URL)
+  
+  At least 2 labels required.
+</ParamField>
+
+<ParamField body="multiple_labels" type="boolean" default="false">
+  Whether to allow multiple labels per classification result. When false, each prediction returns a single label. When true, each prediction can return multiple labels.
+</ParamField>
+
+<Snippet file="header.mdx" />
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="predictions" type="array">
+  Array of classification results. Each element corresponds to a dataset sample:
+  - If `multiple_labels` is false: Each element is a string (single label)
+  - If `multiple_labels` is true: Each element is an array of strings (multiple labels)
+</ResponseField>
+
+<ClassificationSnippet />
