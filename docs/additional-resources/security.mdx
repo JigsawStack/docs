@@ -30,7 +30,9 @@ import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({
   apiKey: "your-api-key",
-  disableRequestLogging: true, // disable request logging
+  headers: {
+    "x-jigsaw-no-request-log": "true",
+  },
 });
 ```
 
@@ -39,10 +41,14 @@ const jigsaw = JigsawStack({
 In the Python SDK, you can similarly disable request logging by passing the `disable_request_logging` argument when creating a JigsawStack instance:
 
 ```python setup.py
-
 from jigsawstack import JigsawStack
 
-jigsaw = JigsawStack(api_key="your-api-key", disable_request_logging=True)
+jigsaw = JigsawStack(
+    api_key="your-api-key",
+    headers={
+        "x-jigsaw-no-request-log": "true",
+    },
+)
 ```
 
 ### API
