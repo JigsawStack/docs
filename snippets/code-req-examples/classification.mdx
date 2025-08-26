@@ -1,0 +1,310 @@
+
+    <RequestExample>
+    ```javascript Javascript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.classification({
+      "dataset": [
+            {
+                  "type": "image",
+                  "value": "https://jigsawstack.com/preview/classification-example-1.jpg"
+            },
+            {
+                  "type": "image",
+                  "value": "https://jigsawstack.com/preview/classification-example-2.jpg"
+            }
+      ],
+      "labels": [
+            {
+                  "type": "text",
+                  "value": "hotdog"
+            },
+            {
+                  "type": "text",
+                  "value": "not a hotdog"
+            }
+      ]
+})
+    ```
+    ```python Python
+from jigsawstack import JigsawStack
+
+jigsaw = JigsawStack(api_key="your-api-key")
+
+response = jigsaw.classification({
+      "dataset": [
+            {
+                  "type": "image",
+                  "value": "https://jigsawstack.com/preview/classification-example-1.jpg"
+            },
+            {
+                  "type": "image",
+                  "value": "https://jigsawstack.com/preview/classification-example-2.jpg"
+            }
+      ],
+      "labels": [
+            {
+                  "type": "text",
+                  "value": "hotdog"
+            },
+            {
+                  "type": "text",
+                  "value": "not a hotdog"
+            }
+      ]
+})
+    ```
+    ```bash Curl
+curl https://api.jigsawstack.com/v1/classification \
+ -X POST \
+ -H 'Content-Type: application/json' \
+ -H 'x-api-key: your-api-key' \
+ -d '{"dataset":[{"type":"image","value":"https://jigsawstack.com/preview/classification-example-1.jpg"},{"type":"image","value":"https://jigsawstack.com/preview/classification-example-2.jpg"}],"labels":[{"type":"text","value":"hotdog"},{"type":"text","value":"not a hotdog"}]}'
+    ```
+    ```php PHP
+<?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/classification');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Content-Type: application/json',
+    'x-api-key: your-api-key',
+]);
+curl_setopt($ch, CURLOPT_POSTFIELDS, '{"dataset":[{"type":"image","value":"https://jigsawstack.com/preview/classification-example-1.jpg"},{"type":"image","value":"https://jigsawstack.com/preview/classification-example-2.jpg"}],"labels":[{"type":"text","value":"hotdog"},{"type":"text","value":"not a hotdog"}]}');
+
+$response = curl_exec($ch);
+
+curl_close($ch);
+
+    ```
+    ```ruby Ruby
+require 'net/http'
+require 'json'
+
+uri = URI('https://api.jigsawstack.com/v1/classification')
+req = Net::HTTP::Post.new(uri)
+req.content_type = 'application/json'
+req['x-api-key'] = 'your-api-key'
+
+req.body = {
+  'dataset' => [
+    {
+      'type' => 'image',
+      'value' => 'https://jigsawstack.com/preview/classification-example-1.jpg'
+    },
+    {
+      'type' => 'image',
+      'value' => 'https://jigsawstack.com/preview/classification-example-2.jpg'
+    }
+  ],
+  'labels' => [
+    {
+      'type' => 'text',
+      'value' => 'hotdog'
+    },
+    {
+      'type' => 'text',
+      'value' => 'not a hotdog'
+    }
+  ]
+}.to_json
+
+req_options = {
+  use_ssl: uri.scheme == 'https'
+}
+res = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+  http.request(req)
+end
+
+    ```
+    ```go Go
+package main
+
+import (
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+	"strings"
+)
+
+func main() {
+	client := &http.Client{}
+	var data = strings.NewReader(`{"dataset":[{"type":"image","value":"https://jigsawstack.com/preview/classification-example-1.jpg"},{"type":"image","value":"https://jigsawstack.com/preview/classification-example-2.jpg"}],"labels":[{"type":"text","value":"hotdog"},{"type":"text","value":"not a hotdog"}]}`)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/classification", data)
+	if err != nil {
+		log.Fatal(err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("x-api-key", "your-api-key")
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+	bodyText, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", bodyText)
+}
+
+    ```
+    ```java Java
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpRequest.BodyPublishers;
+import java.net.http.HttpResponse;
+
+HttpClient client = HttpClient.newHttpClient();
+
+HttpRequest request = HttpRequest.newBuilder()
+    .uri(URI.create("https://api.jigsawstack.com/v1/classification"))
+    .POST(BodyPublishers.ofString("{\"dataset\":[{\"type\":\"image\",\"value\":\"https://jigsawstack.com/preview/classification-example-1.jpg\"},{\"type\":\"image\",\"value\":\"https://jigsawstack.com/preview/classification-example-2.jpg\"}],\"labels\":[{\"type\":\"text\",\"value\":\"hotdog\"},{\"type\":\"text\",\"value\":\"not a hotdog\"}]}"))
+    .setHeader("Content-Type", "application/json")
+    .setHeader("x-api-key", "your-api-key")
+    .build();
+
+HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+    ```
+    ```swift Swift
+import Foundation
+
+let jsonData = [
+    "dataset": [
+        [
+            "type": "image",
+            "value": "https://jigsawstack.com/preview/classification-example-1.jpg"
+        ],
+        [
+            "type": "image",
+            "value": "https://jigsawstack.com/preview/classification-example-2.jpg"
+        ]
+    ],
+    "labels": [
+        [
+            "type": "text",
+            "value": "hotdog"
+        ],
+        [
+            "type": "text",
+            "value": "not a hotdog"
+        ]
+    ]
+] as [String : Any]
+let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
+
+let url = URL(string: "https://api.jigsawstack.com/v1/classification")!
+let headers = [
+    "Content-Type": "application/json",
+    "x-api-key": "your-api-key"
+]
+
+var request = URLRequest(url: url)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = data as Data
+
+let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+    if let error = error {
+        print(error)
+    } else if let data = data {
+        let str = String(data: data, encoding: .utf8)
+        print(str ?? "")
+    }
+}
+
+task.resume()
+
+    ```
+    ```dart Dart
+import 'package:http/http.dart' as http;
+
+void main() async {
+  final headers = {
+    'Content-Type': 'application/json',
+    'x-api-key': 'your-api-key',
+  };
+
+  final data = '{"dataset":[{"type":"image","value":"https://jigsawstack.com/preview/classification-example-1.jpg"},{"type":"image","value":"https://jigsawstack.com/preview/classification-example-2.jpg"}],"labels":[{"type":"text","value":"hotdog"},{"type":"text","value":"not a hotdog"}]}';
+
+  final url = Uri.parse('https://api.jigsawstack.com/v1/classification');
+
+  final res = await http.post(url, headers: headers, body: data);
+  final status = res.statusCode;
+  if (status != 200) throw Exception('http.post error: statusCode= $status');
+
+  print(res.body);
+}
+
+    ```
+    ```kotlin Kotlin
+import java.io.IOException
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+
+val client = OkHttpClient()
+
+val MEDIA_TYPE = "application/json".toMediaType()
+
+val requestBody = "{\"dataset\":[{\"type\":\"image\",\"value\":\"https://jigsawstack.com/preview/classification-example-1.jpg\"},{\"type\":\"image\",\"value\":\"https://jigsawstack.com/preview/classification-example-2.jpg\"}],\"labels\":[{\"type\":\"text\",\"value\":\"hotdog\"},{\"type\":\"text\",\"value\":\"not a hotdog\"}]}"
+
+val request = Request.Builder()
+  .url("https://api.jigsawstack.com/v1/classification")
+  .post(requestBody.toRequestBody(MEDIA_TYPE))
+  .header("Content-Type", "application/json")
+  .header("x-api-key", "your-api-key")
+  .build()
+
+client.newCall(request).execute().use { response ->
+  if (!response.isSuccessful) throw IOException("Unexpected code $response")
+  response.body!!.string()
+}
+
+    ```
+    ```csharp C#
+using System.Net.Http;
+using System.Net.Http.Headers;
+
+HttpClient client = new HttpClient();
+
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/classification");
+
+request.Headers.Add("x-api-key", "your-api-key");
+
+request.Content = new StringContent("{\"dataset\":[{\"type\":\"image\",\"value\":\"https://jigsawstack.com/preview/classification-example-1.jpg\"},{\"type\":\"image\",\"value\":\"https://jigsawstack.com/preview/classification-example-2.jpg\"}],\"labels\":[{\"type\":\"text\",\"value\":\"hotdog\"},{\"type\":\"text\",\"value\":\"not a hotdog\"}]}");
+request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+HttpResponseMessage response = await client.SendAsync(request);
+response.EnsureSuccessStatusCode();
+string responseBody = await response.Content.ReadAsStringAsync();
+
+    ```
+    </RequestExample>
+    <ResponseExample>
+    ```json Response
+{
+      "success": true,
+      "predictions": [
+            "not a hotdog",
+            "hotdog"
+      ],
+      "_usage": {
+            "input_tokens": 69,
+            "output_tokens": 14,
+            "inference_time_tokens": 3370,
+            "total_tokens": 3453
+      }
+}
+    ```
+    </ResponseExample>
+    
+    
