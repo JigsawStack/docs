@@ -3,6 +3,8 @@ title: "Upload"
 api: "POST https://api.jigsawstack.com/v1/store/file"
 description: "Upload images, videos and documents effortlessly."
 ---
+import FileUploadSnippet from "/snippets/code-req-examples/file-upload.mdx";
+
 
 <Info>Maximum file size is 100MB.</Info>
 
@@ -51,47 +53,4 @@ description: "Upload images, videos and documents effortlessly."
   Url used in accessing the file.
 </ResponseField>
 
-<RequestExample>
-
-```javascript Javascript
-import { JigsawStack } from "jigsawstack";
-
-const jigsaw = JigsawStack({ apiKey: "your-api-key" });
-
-const file = await fetch("https://jigsawstack.com/preview/vocr-example.jpg");
-const blob = await file.blob();
-
-const response = await jigsaw.store.upload(blob, {
-  key: "new-image.jpg",
-  overwrite: true,
-});
- ```
-
-```python Python
-from jigsawstack import JigsawStack
-import requests
-
-jigsaw = JigsawStack(api_key="your-api-key")
-
-response = requests.get("https://jigsawstack.com/preview/vocr-example.jpg")
-blob = response.content
-
-upload_response = jigsaw.store.upload(blob, {"key": "new-image.jpg", "overwrite": True})
-```
-
-```bash Curl 
-curl --location 'https://api.jigsawstack.com/v1/store/file?key=filename.txt&overwrite=true' \
---header 'x-api-key: your-api-key' \
---data-binary '@path/to/your/file'
-```
-</RequestExample>
-
-<ResponseExample>
-```json Response
-{
-  "key": "new-image.jpg",
-  "url": "https://api.jigsawstack.com/v1/store/file/read/new-image.jpg",
-  "size": 75078
-}
-```
-</ResponseExample>
+<FileUploadSnippet />

@@ -167,6 +167,16 @@ export const APISchemas: {
     },
     sdk_key_string: "validate.spellcheck",
   },
+  "file-upload": {
+    path: "/store/file",
+    method: "POST",
+    body: {
+      blob: "image-123.png",
+      key: "image-123.png",
+    },
+    sdk_key_string: "store.upload",
+    skip_request: true,
+  },
   "file-get": {
     path: "/store/file/read/image-123.png",
     method: "GET",
