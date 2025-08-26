@@ -28,6 +28,21 @@ export const APISchemas: {
     },
     sdk_key_string: "sentiment",
   },
+  classification: {
+    path: "/classification",
+    method: "POST",
+    body: {
+      dataset: [
+        { type: "image", value: "https://jigsawstack.com/preview/classification-example-1.jpg" },
+        { type: "image", value: "https://jigsawstack.com/preview/classification-example-2.jpg" },
+      ],
+      labels: [
+        { type: "text", value: "hotdog" },
+        { type: "text", value: "not a hotdog" },
+      ],
+    },
+    sdk_key_string: "classification",
+  },
   translate: {
     path: "/ai/translate",
     method: "POST",
@@ -222,5 +237,13 @@ export const APISchemas: {
       return_type: "url",
     },
     sdk_key_string: "web.html_to_any",
+  },
+  "deep-research": {
+    path: "/web/deep_research",
+    method: "POST",
+    body: {
+      query: "What is the meaning of life?",
+    },
+    sdk_key_string: "web.deep_research",
   },
 };
