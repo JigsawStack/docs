@@ -5,6 +5,7 @@ description: "Recognise, describe and retrieve data within an image with great a
 ---
 
 import VocrSnippet from "/snippets/code-req-examples/vocr.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ### Body
 
@@ -52,9 +53,84 @@ import VocrSnippet from "/snippets/code-req-examples/vocr.mdx";
 
 ### Response
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
+<BasicResponse/>
+<ResponseField name="context" type="string | object">
+  When using a string prompt: Returns the descriptive text about the image.
+  When using an array prompt: Returns an object with keys matching the prompt items and values as arrays of extracted data.
 </ResponseField>
+
+<ResponseField name="width" type="number">
+  The width of the processed image in pixels.
+</ResponseField>
+
+<ResponseField name="height" type="number">
+  The height of the processed image in pixels.
+</ResponseField>
+
+<ResponseField name="tags" type="string[]">
+  Array of automatically generated tags describing the content of the image.
+</ResponseField>
+
+<ResponseField name="has_text" type="boolean">
+  Indicates whether text was detected in the image.
+</ResponseField>
+
+<ResponseField name="sections" type="array">
+  Array of text sections detected in the image with detailed positioning information.
+  <Expandable title="Section Object">
+    <ResponseField name="text" type="string">
+      The complete text content of this section.
+    </ResponseField>
+    
+    <ResponseField name="lines" type="array">
+      Array of individual text lines within this section.
+      <Expandable title="Line Object">
+        <ResponseField name="text" type="string">
+          The text content of this line.
+        </ResponseField>
+        
+        <ResponseField name="bounds" type="object">
+          Bounding box coordinates for the line.
+          <Expandable title="Bounds Object">
+            <ResponseField name="x" type="number">
+              X-coordinate of the top-left corner.
+            </ResponseField>
+            <ResponseField name="y" type="number">
+              Y-coordinate of the top-left corner.
+            </ResponseField>
+            <ResponseField name="width" type="number">
+              Width of the bounding box.
+            </ResponseField>
+            <ResponseField name="height" type="number">
+              Height of the bounding box.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        
+        <ResponseField name="words" type="array">
+          Array of individual words within this line.
+          <Expandable title="Word Object">
+            <ResponseField name="text" type="string">
+              The text content of this word.
+            </ResponseField>
+            <ResponseField name="bounds" type="object">
+              Bounding box coordinates for the word (same structure as line bounds).
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="total_pages" type="number" optional>
+  The total number of pages in the document. Only available for PDF files.
+</ResponseField>
+
+<ResponseField name="page_range" type="number[]" optional>
+  The range of pages that were processed. Only available when `page_range` parameter is specified in the request.
+</ResponseField>
+
 
 <Info>Supported file types: - **Images**: JPEG, JPG, PNG - **Documents**: Multi-page PDFs (up to 10 pages per API request)</Info>
 
