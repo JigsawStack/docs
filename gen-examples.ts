@@ -23,19 +23,27 @@ const response = await jigsaw.${api.sdk_key_string}(${JSON.stringify(
   return JSSDKCode;
 };
 
+
 const getSDKPythonCode = (api: APIType) => {
-  const pythonCode = `from jigsawstack import JigsawStack
-
-jigsaw = JigsawStack(api_key="your-api-key")
-
-response = jigsaw.${api.sdk_key_string}(${JSON.stringify(
+  const jsonString = JSON.stringify(
     {
       ...api?.body,
       ...api?.query,
     },
     null,
     6
-  )})`;
+  );
+  
+  // Convert JavaScript/JSON boolean syntax to Python boolean syntax
+  const pythonCompatibleJson = jsonString
+    .replace(/: true/g, ': True')
+    .replace(/: false/g, ': False');
+
+  const pythonCode = `from jigsawstack import JigsawStack
+
+jigsaw = JigsawStack(api_key="your-api-key")
+
+response = jigsaw.${api.sdk_key_string}(${pythonCompatibleJson})`;
 
   return pythonCode;
 };
