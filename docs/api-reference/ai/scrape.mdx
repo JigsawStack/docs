@@ -34,7 +34,7 @@ import AIScrapeSnippet from "/snippets/code-req-examples/ai-scrape.mdx";
   For pagination, the current page number (minimum: 1)
 </ParamField>
 
-<ParamField body="features" type="array<string>" default='["meta", "link"]'>
+<ParamField body="features" type="array<string>" default={["meta", "link"]}>
   Features to extract from the page. Available options:
   <ul>
     <li>`meta` - Extract page metadata (title, description, keywords, og_image)</li>
