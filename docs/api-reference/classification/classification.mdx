@@ -16,6 +16,10 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
   
   Maximum of 32 samples allowed per request. At least 1 sample required.
 </ParamField>
+  <Note>
+    All items in the dataset must be of the same type. You cannot mix text and image samples in a single request.
+  </Note>
+
 
 <ParamField body="labels" type="array" required>
   Array of classification labels. Each label contains:
