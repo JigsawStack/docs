@@ -5,7 +5,7 @@ description: "Generate vector embeddings from various content types including te
 playground: 'hidden'
 ---
 import EmbeddingSnippet from "/snippets/code-req-examples/embedding.mdx";
-
+import BaseResponse from "/snippets/helpers/basic-response.mdx";
 
 ## Request Parameters
 
@@ -46,12 +46,22 @@ import EmbeddingSnippet from "/snippets/code-req-examples/embedding.mdx";
 
 ## Response Structure
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
-</ResponseField>
+<BaseResponse />
 
 <ResponseField name="embedding" type="number[]">
   The vector embedding representation of the input content. This is an array of floating-point numbers.
+</ResponseField>
+
+<ResponseField name="chunks" type="array">
+  Array of text chunks with timestamps. Only available for text and audio content types.
+  <Expandable title="Chunk Object">
+    <ResponseField name="text" type="string">
+      The text content of this chunk.
+    </ResponseField>
+    <ResponseField name="timestamp" type="array[number]">
+      Array containing start and end time positions for this chunk.
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <EmbeddingSnippet />
