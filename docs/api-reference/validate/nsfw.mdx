@@ -5,23 +5,49 @@ description: "Quickly detect nudity, violence, hentai, porn and more NSFW conten
 ---
 
 import NsfwSnippet from "/snippets/code-req-examples/nsfw.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ### Params
 
-<ParamField query="url" type="string" required>
-  The image URL to validate.
+<ParamField body="url" type="string">
+  The image url. Not required if `file_store_key` is specified.
+</ParamField>
+
+<ParamField body="file_store_key" type="string">
+  The key used to store the image on Jigsawstack file
+  [Storage](/docs/api-reference/store/file/add). Not required if `url` is
+  specified.
 </ParamField>
 
 <Snippet file="header.mdx" />
 
 ### Response
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
+<BasicResponse />
+
+<ResponseField name="nsfw" type="boolean">
+  Indicates whether NSFW content was detected in the image.
 </ResponseField>
 
-<ResponseField name="message" type="string">
-  The message returned by the API.
+<ResponseField name="nudity" type="boolean">
+  Indicates whether nudity was detected in the image.
 </ResponseField>
+
+<ResponseField name="gore" type="boolean">
+  Indicates whether gore/violence was detected in the image.
+</ResponseField>
+
+<ResponseField name="nsfw_score" type="number">
+  Confidence score for NSFW content detection (0-1 scale).
+</ResponseField>
+
+<ResponseField name="nudity_score" type="number">
+  Confidence score for nudity detection (0-1 scale).
+</ResponseField>
+
+<ResponseField name="gore_score" type="number">
+  Confidence score for gore/violence detection (0-1 scale).
+</ResponseField>
+
 
 <NsfwSnippet />
