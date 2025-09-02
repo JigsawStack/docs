@@ -5,6 +5,7 @@ description: "Scrape any website instantly and get consistent structured data in
 ---
 
 import AIScrapeSnippet from "/snippets/code-req-examples/ai-scrape.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ## Request Parameters
 
@@ -68,7 +69,7 @@ import AIScrapeSnippet from "/snippets/code-req-examples/ai-scrape.mdx";
 <ParamField body="goto_options" type="object">
   Custom page-load behavior settings
   <Expandable title="Properties">
-    <ParamField body="timeout" type="number" default="60000">
+    <ParamField body="timeout" type="number" default="30000">
       Custom timeout in milliseconds (maximum: 120000, or 2 minutes)
     </ParamField>
     <ParamField body="wait_until" type="string" default="networkidle2">
@@ -114,11 +115,11 @@ import AIScrapeSnippet from "/snippets/code-req-examples/ai-scrape.mdx";
     <ParamField body="value" type="string" required>
       Cookie value
     </ParamField>
-    <ParamField body="url" type="string">
-      The URL to associate with the cookie (either `url` or `domain` is required)
-    </ParamField>
     <ParamField body="domain" type="string">
       Cookie domain (either `url` or `domain` is required)
+    </ParamField>
+    <ParamField body="url" type="string">
+      The URL to associate with the cookie (either `url` or `domain` is required)
     </ParamField>
     <ParamField body="secure" type="boolean">
       Whether the cookie is secure (HTTPS only)
@@ -133,7 +134,7 @@ import AIScrapeSnippet from "/snippets/code-req-examples/ai-scrape.mdx";
       Cookie expiration timestamp
     </ParamField>
     <ParamField body="priority" type="string">
-      Cookie priority: "Low", "Medium", or "High"
+      Cookie priority: "Low", "High", or "Medium"
     </ParamField>
   </Expandable>
 </ParamField>
@@ -186,25 +187,7 @@ import AIScrapeSnippet from "/snippets/code-req-examples/ai-scrape.mdx";
 
 ## Response Structure
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful
-</ResponseField>
-
-<ResponseField name="page_position" type="number">
-  The current page position when paginating through results
-</ResponseField>
-
-<ResponseField name="page_position_length" type="number">
-  The total number of pages available
-</ResponseField>
-
-<ResponseField name="context" type="record<string, array<string>>">
-  A map of element prompt keys to arrays of extracted text content from matched elements
-</ResponseField>
-
-<ResponseField name="selectors" type="record<string, array<string>>">
-  A map of element prompt keys to arrays of CSS selectors that were used to find matching elements
-</ResponseField>
+<BasicResponse />
 
 <ResponseField name="data" type="array<object>">
   Detailed scrape data from the page
@@ -240,6 +223,22 @@ import AIScrapeSnippet from "/snippets/code-req-examples/ai-scrape.mdx";
   </Expandable>
 </ResponseField>
 
+<ResponseField name="page_position" type="number">
+  The current page position when paginating through results
+</ResponseField>
+
+<ResponseField name="page_position_length" type="number">
+  The total number of pages available
+</ResponseField>
+
+<ResponseField name="context" type="record<string, array<string>>">
+  A map of element prompt keys to arrays of extracted text content from matched elements
+</ResponseField>
+
+<ResponseField name="selectors" type="record<string, array<string>>">
+  A map of element prompt keys to arrays of CSS selectors that were used to find matching elements
+</ResponseField>
+
 <ResponseField name="link" type="array<object>">
   Links detected on the page
   <Expandable title="Link Object">
@@ -249,22 +248,46 @@ import AIScrapeSnippet from "/snippets/code-req-examples/ai-scrape.mdx";
     <ResponseField name="text" type="string">
       The text description of the link
     </ResponseField>
-    <ResponseField name="type" type="string">
-      The type of link, e.g., "a" for anchor links or "img" for image links
+    <ResponseField name="type" type="enum">
+      The type of link
+      - "a" for anchor links
+      - "img" for image links
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-<ResponseField name="advance_config" type="object">
+<ResponseField name="advance_config" type="object | undefined">
   Captured browser data if enabled in advance_config
   <Expandable title="Properties">
-    <ResponseField name="console" type="array">
+    <ResponseField name="console" type="any">
       Console logs captured during scraping
     </ResponseField>
-    <ResponseField name="network" type="array">
+    <ResponseField name="network" type="object">
       Network requests captured during scraping
+      <Expandable title="Network Object">
+        <ResponseField name="url" type="string">
+          The URL of the network request
+        </ResponseField>
+        <ResponseField name="method" type="string">
+          The HTTP method used
+        </ResponseField>
+        <ResponseField name="status" type="number">
+          The HTTP status code
+        </ResponseField>
+        <ResponseField name="headers" type="Record<string, string>">
+          The request/response headers
+        </ResponseField>
+        <ResponseField name="body" type="string | null">
+          The request/response body
+        </ResponseField>
+        <ResponseField name="type" type="enum">
+          The type of network event
+          - "request" for outgoing requests
+          - "response" for incoming responses
+        </ResponseField>
+      </Expandable>
     </ResponseField>
-    <ResponseField name="cookies" type="array">
+    <ResponseField name="cookies" type="any">
       Cookies captured during scraping
     </ResponseField>
   </Expandable>
