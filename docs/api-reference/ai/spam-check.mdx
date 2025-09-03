@@ -5,41 +5,47 @@ description: "Perform spam check analysis on a given text in seconds."
 ---
 
 import SpamCheckSnippet from "/snippets/code-req-examples/spam-check.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ### Body
 
-<ParamField body="text" type="string" required>
+<ParamField body="text" type="string | array<string>" required>
   The text to check for spam.
-
-The `text` parameter supports two types:
-
-  <ul>
-    <li>`string` - `{"text":"Your text here"}`</li>
-    <li>`Array<string>` - `{"text":["Text 1", "Text 2"]}`</li>
-  </ul>
-
 </ParamField>
 
 <Snippet file="header.mdx" />
 
 ### Response
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
-</ResponseField>
+<BasicResponse />
 
-<ResponseField name="check" type="object">
+<ResponseField name="check" type="object | array">
+  When text is a string, returns an object. When text is an array, returns an array of objects.
 
-<Expandable title="Toggle object" defaultOpen="true">
+<Expandable title="Single Text Response (object)" defaultOpen="true">
 
-<ResponseField name="is_spam" type="boolean" default="true">
+<ResponseField name="is_spam" type="boolean">
   Indicates whether the text is spam. If the text is not spam, this will be
-  false. Default is true.
+  false.
 </ResponseField>
 
 <ResponseField name="score" type="number">
-  The spam score of the text. Default is 0. The lower the score, the less likely
-  it will be spam
+  The spam score of the text. The lower the score, the less likely
+  it will be spam.
+</ResponseField>
+
+</Expandable>
+
+<Expandable title="Multiple Text Response (array)" defaultOpen="false">
+
+<ResponseField name="is_spam" type="boolean">
+  Indicates whether the text is spam. If the text is not spam, this will be
+  false.
+</ResponseField>
+
+<ResponseField name="score" type="number">
+  The spam score of the text. The lower the score, the less likely
+  it will be spam.
 </ResponseField>
 
 </Expandable>
