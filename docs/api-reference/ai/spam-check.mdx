@@ -19,10 +19,10 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 <BasicResponse />
 
-<ResponseField name="check" type="object | array">
+<ResponseField name="check" type="object | array<object>">
   When text is a string, returns an object. When text is an array, returns an array of objects.
 
-<Expandable title="Single Text Response (object)" defaultOpen="true">
+<Expandable title="check" defaultOpen="true">
 
 <ResponseField name="is_spam" type="boolean">
   Indicates whether the text is spam. If the text is not spam, this will be
@@ -36,19 +36,6 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 </Expandable>
 
-<Expandable title="Multiple Text Response (array)" defaultOpen="false">
-
-<ResponseField name="is_spam" type="boolean">
-  Indicates whether the text is spam. If the text is not spam, this will be
-  false.
-</ResponseField>
-
-<ResponseField name="score" type="number">
-  The spam score of the text. The lower the score, the less likely
-  it will be spam.
-</ResponseField>
-
-</Expandable>
 
 </ResponseField>
 
