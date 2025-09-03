@@ -1,25 +1,16 @@
-<ParamField body="url" type="string" optional>
-  Array of files to upload.
+<ParamField body="url" type="string">
+  The image url.
 </ParamField>
 
-<ResponseField name="_usage" type="object" optional>
-  Usage information for the API call.
-  
-  <Expandable title="_usage">
-    <ResponseField name="input_tokens" type="number">
-      Number of input tokens processed.
-    </ResponseField>
-    
-    <ResponseField name="output_tokens" type="number">
-      Number of output tokens generated.
-    </ResponseField>
-    
-    <ResponseField name="inference_time_tokens" type="number">
-      Number of tokens processed during inference time.
-    </ResponseField>
-    
-    <ResponseField name="total_tokens" type="number">
-      Total number of tokens used (input + output).
-    </ResponseField>
-  </Expandable>
-</ResponseField>
+<ParamField body="file_store_key" type="string">
+  The key used to store the image on Jigsawstack file
+  [Storage](/docs/api-reference/store/file/add).
+</ParamField>
+
+<ParamField body="file_content" type="any">
+  The direct content of a file to generate embeddings for.
+</ParamField>
+
+<Info>
+  Each fields are optional if providing content through another method. More information can be found in [Passing Files](/docs/api-reference/passing-files)
+</Info>

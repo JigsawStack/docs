@@ -1,0 +1,92 @@
+---
+title: "Passing Files"
+description: "Learn how to pass files to JigsawStack APIs."
+---
+<Tabs>
+  <Tab title="Input">
+      <img 
+      className="mx-auto" 
+      src="/images/object-detection-example-input.jpg" 
+      alt="Object Detection Input" 
+      />
+  </Tab>
+  <Tab title="Output">
+      <img 
+      className="mx-auto" 
+      src="/images/object-detection-example-output.jpg" 
+      alt="Object Detection Output" 
+      />
+  </Tab>
+</Tabs>
+
+JigsawStack provides a flexible way to pass files to APIs. You can pass files through the following methods:
+
+## API Examples
+
+### JSON
+
+<ParamField body="url" type="string">
+  The image url or base64 encoded content.
+</ParamField>
+<ParamField body="file_store_key" type="string">
+  The key used to store the image on Jigsawstack file
+  [Storage](/docs/api-reference/store/file/add).
+</ParamField>
+
+## Multipart/form-data
+<ParamField body="file" type="any">
+  The direct content of a file.
+</ParamField>
+
+## SDK Examples
+### Javascript SDK
+
+To disable request logging in the JavaScript SDK, you can pass the `disableRequestLogging` option during initialization:
+
+```javascript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({
+  apiKey: "your-api-key",
+});
+
+const result = await jigsaw.objectDetection.detect({
+  url: "https://example.com/image.jpg",
+});
+```
+
+### Python SDK
+
+In the Python SDK, you can similarly disable request logging by passing the `disable_request_logging` argument when creating a JigsawStack instance:
+
+```python setup.py
+from jigsawstack import JigsawStack
+
+jigsaw = JigsawStack(
+    api_key="your-api-key",
+    headers={
+        "x-jigsaw-no-request-log": "true",
+    },
+)
+```
+
+### API
+
+When using the raw API, include the `x-jigsaw-no-request-log` header in your request to control logging behavior
+
+```javascript
+const headers = {
+  "x-api-key": "<your-api-key-here>",
+  "x-jigsaw-no-request-log": "true",
+};
+
+const baseUrl = "https://api.jigsawstack.com";
+
+const result = await fetch(`${baseUrl}/v1/ai/summary`, {
+  method: "POST",
+  body: {
+    text: "The Leaning Tower of Pisa, or simply, the Tower of Pisa, is the campanile, or freestanding bell tower, of Pisa Cathedral",
+  },
+  headers,
+});
+```

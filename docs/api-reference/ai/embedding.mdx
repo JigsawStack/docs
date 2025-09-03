@@ -5,7 +5,7 @@ description: "Generate vector embeddings from various content types including te
 playground: 'hidden'
 ---
 import EmbeddingSnippet from "/snippets/code-req-examples/embedding.mdx";
-
+import FilesParam from "/snippets/helpers/files-param.mdx";
 
 ## Request Parameters
 
@@ -14,6 +14,7 @@ import EmbeddingSnippet from "/snippets/code-req-examples/embedding.mdx";
 <ParamField body="text" type="string">
   The text content to generate embeddings for. Optional if providing content through another method.
 </ParamField>
+
 
 <ParamField body="url" type="string">
   A URL pointing to the resource to generate embeddings for. Optional if providing content through another method.
