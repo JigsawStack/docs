@@ -19,9 +19,9 @@ description: "Learn how to pass files to JigsawStack APIs."
   </Tab>
 </Tabs>
 
-JigsawStack provides a flexible way to pass files to APIs. You can pass files through the following methods:
 
 ## API Examples
+JigsawStack provides a flexible way to pass files to APIs. You can pass files through the following methods:
 
 ### JSON
 
@@ -34,59 +34,128 @@ JigsawStack provides a flexible way to pass files to APIs. You can pass files th
 </ParamField>
 
 ## Multipart/form-data
-<ParamField body="file" type="any">
+<ParamField body="file" type="file">
   The direct content of a file.
 </ParamField>
 
 ## SDK Examples
-### Javascript SDK
 
-To disable request logging in the JavaScript SDK, you can pass the `disableRequestLogging` option during initialization:
+### Javascript
 
-```javascript
-import { JigsawStack } from "jigsawstack";
+<CodeGroup>
+  ```javascript url_object
+  import { JigsawStack } from "jigsawstack";
 
-const jigsaw = JigsawStack({
-  apiKey: "your-api-key",
-});
+  const jigsaw = JigsawStack({
+    apiKey: "your-api-key",
+  });
 
-const result = await jigsaw.objectDetection.detect({
-  url: "https://example.com/image.jpg",
-});
-```
+  const result = await jigsaw.validate.nsfw({
+    url: "https://example.com/image.jpg",
+  });
+  ```
 
-### Python SDK
+  ```javascript base64_object 
+  import { JigsawStack } from "jigsawstack";
 
-In the Python SDK, you can similarly disable request logging by passing the `disable_request_logging` argument when creating a JigsawStack instance:
+  const jigsaw = JigsawStack({
+    apiKey: "your-api-key",
+  });
 
-```python setup.py
-from jigsawstack import JigsawStack
+  const result = await jigsaw.validate.nsfw({
+    url: "data:image/jpeg;base64,...",
+  });
+  ```
 
-jigsaw = JigsawStack(
-    api_key="your-api-key",
-    headers={
-        "x-jigsaw-no-request-log": "true",
-    },
-)
-```
+  ```javascript file_store_key
+  import { JigsawStack } from "jigsawstack";
 
-### API
+  const jigsaw = JigsawStack({
+    apiKey: "your-api-key",
+  });
 
-When using the raw API, include the `x-jigsaw-no-request-log` header in your request to control logging behavior
+  const result = await jigsaw.validate.nsfw({
+    file_store_key: "your-file-store-key",
+  });
+  ```
 
-```javascript
-const headers = {
-  "x-api-key": "<your-api-key-here>",
-  "x-jigsaw-no-request-log": "true",
-};
+  ```javascript file_blob
+  import { JigsawStack } from "jigsawstack";
 
-const baseUrl = "https://api.jigsawstack.com";
+  const jigsaw = JigsawStack({
+    apiKey: "your-api-key",
+  });
 
-const result = await fetch(`${baseUrl}/v1/ai/summary`, {
-  method: "POST",
-  body: {
-    text: "The Leaning Tower of Pisa, or simply, the Tower of Pisa, is the campanile, or freestanding bell tower, of Pisa Cathedral",
-  },
-  headers,
-});
-```
+  const file = await fetch("https://example.com/image.jpg");
+  const fileBlob = await file.blob();
+
+  const result = await jigsaw.validate.nsfw(fileBlob, {
+    other_params: "other_params",
+  });
+  ```
+
+</CodeGroup>
+
+### Python
+<CodeGroup>
+  ```python url_object
+  from jigsawstack import JigsawStack
+
+  jigsaw = JigsawStack(
+      api_key="your-api-key",
+  )
+
+  result = jigsaw.validate.nsfw(
+    {
+      "url": "https://example.com/image.jpg"
+    }
+  )
+  ```
+
+  ```python base64_object 
+  from jigsawstack import JigsawStack
+
+  jigsaw = JigsawStack(
+      api_key="your-api-key"
+  )
+
+  result = jigsaw.validate.nsfw(
+      {
+        "url": "data:image/jpeg;base64,..."
+      }
+  )
+  ```
+
+  ```python file_store_key
+  from jigsawstack import JigsawStack
+
+  jigsaw = JigsawStack(
+      api_key="your-api-key"
+  )
+
+  result = jigsaw.validate.nsfw(
+      {
+        "file_store_key": "your-file-store-key"
+      }
+  )
+  ```
+
+  ```python file_blob
+  import requests
+  from jigsawstack import JigsawStack
+
+  jigsaw = JigsawStack(
+      api_key="your-api-key"
+  )
+
+  response = requests.get("https://example.com/image.jpg")
+  file_blob = response.content
+
+  result = jigsaw.validate.nsfw(
+      file_blob,
+      {
+        "other_params": "other_params"
+      }
+  )
+  ```
+</CodeGroup>
