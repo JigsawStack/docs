@@ -5,6 +5,7 @@ description: "Classify text and image datasets using custom labels."
 ---
 
 import ClassificationSnippet from "/snippets/code-req-examples/classification.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ### Body
 
@@ -15,6 +16,10 @@ import ClassificationSnippet from "/snippets/code-req-examples/classification.md
   
   Maximum of 32 samples allowed per request. At least 1 sample required.
 </ParamField>
+  <Note>
+    All items in the dataset must be of the same type. You cannot mix text and image samples in a single request.
+  </Note>
+
 
 <ParamField body="labels" type="array" required>
   Array of classification labels. Each label contains:
@@ -33,11 +38,9 @@ import ClassificationSnippet from "/snippets/code-req-examples/classification.md
 
 ### Response
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
-</ResponseField>
+<BasicResponse />
 
-<ResponseField name="predictions" type="array">
+<ResponseField name="predictions" type="array[string | string[]]">
   Array of classification results. Each element corresponds to a dataset sample:
   - If `multiple_labels` is false: Each element is a string (single label)
   - If `multiple_labels` is true: Each element is an array of strings (multiple labels)

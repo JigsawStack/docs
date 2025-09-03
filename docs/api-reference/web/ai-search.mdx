@@ -5,6 +5,7 @@ description: "Effortlessly search the Web and get access to high-quality results
 ---
 
 import SearchSnippet from "/snippets/code-req-examples/ai-search.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ### Body
 
@@ -51,9 +52,7 @@ import SearchSnippet from "/snippets/code-req-examples/ai-search.mdx";
 
 ### Response
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
-</ResponseField>
+<BasicResponse />
 
 <ResponseField name="query" type="string">
   The search query that was processed.
@@ -87,8 +86,22 @@ import SearchSnippet from "/snippets/code-req-examples/ai-search.mdx";
       Brief description of the search result.
     </ResponseField>
     
-    <ResponseField name="content" type="string">
-      The content of the result, as plain text or structured object .
+    <ResponseField name="content" type="string | object">
+      The content of the result, as plain text or structured object.
+      
+      <Expandable title="Structured Content Object">
+        <ResponseField name="text" type="string">
+          The text content of the result.
+        </ResponseField>
+        
+        <ResponseField name="image_urls" type="string[]">
+          Array of image URLs found in the content.
+        </ResponseField>
+        
+        <ResponseField name="links" type="string[]">
+          Array of links found in the content.
+        </ResponseField>
+      </Expandable>
     </ResponseField>
     
     <ResponseField name="is_safe" type="boolean">
@@ -119,8 +132,26 @@ import SearchSnippet from "/snippets/code-req-examples/ai-search.mdx";
       Array of relevant text snippets from the result.
     </ResponseField>
     
-    <ResponseField name="related_index" type="RelatedIndex[]">
+    <ResponseField name="related_index" type="object">
       Array of related search indices.
+      
+      <Expandable title="RelatedIndex Object Properties">
+        <ResponseField name="title" type="string">
+          The title of the related search result.
+        </ResponseField>
+        
+        <ResponseField name="url" type="string">
+          The URL of the related search result.
+        </ResponseField>
+        
+        <ResponseField name="description" type="string">
+          Brief description of the related search result.
+        </ResponseField>
+        
+        <ResponseField name="is_safe" type="boolean" optional>
+          Indicates whether this related result is considered safe.
+        </ResponseField>
+      </Expandable>
     </ResponseField>
   </Expandable>
 </ResponseField>
