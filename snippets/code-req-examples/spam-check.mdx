@@ -5,7 +5,7 @@ import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
-const response = await jigsaw.validate.spam_check({
+const response = await jigsaw.validate.spamcheck({
       "text": "Congratulations! You've won a free iPhone! Click here to claim now!"
 })
     ```
@@ -14,7 +14,7 @@ from jigsawstack import JigsawStack
 
 jigsaw = JigsawStack(api_key="your-api-key")
 
-response = jigsaw.validate.spam_check({
+response = jigsaw.validate.spamcheck({
       "text": "Congratulations! You've won a free iPhone! Click here to claim now!"
 })
     ```
@@ -216,8 +216,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 20,
             "output_tokens": 14,
-            "inference_time_tokens": 1207,
-            "total_tokens": 1241
+            "inference_time_tokens": 497,
+            "total_tokens": 531
       }
 }
     ```
