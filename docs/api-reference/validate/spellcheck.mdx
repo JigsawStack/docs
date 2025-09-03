@@ -5,6 +5,7 @@ description: "Check and correct spelling errors in a text."
 ---
 
 import SpellcheckSnippet from "/snippets/code-req-examples/spellcheck.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ### Params
 
@@ -12,7 +13,7 @@ import SpellcheckSnippet from "/snippets/code-req-examples/spellcheck.mdx";
   The text to check.
 </ParamField>
 
-<ParamField query="language_code" type="string" default="en" required>
+<ParamField query="language_code" type="string" default="en">
   The language code of the text. Default is "en".
 </ParamField>
 
@@ -20,16 +21,36 @@ import SpellcheckSnippet from "/snippets/code-req-examples/spellcheck.mdx";
 
 ### Response
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
+<BasicResponse />
+
+<ResponseField name="misspellings_found" type="boolean">
+  Whether any misspellings were found in the text.
 </ResponseField>
 
-<ResponseField name="message" type="string">
-  The message returned by the API.
-</ResponseField>
-
-<ResponseField name="misspellings_found" type="number">
-  The number of misspellings found in the text.
+<ResponseField name="misspellings" type="array">
+  Array of misspelling objects found in the text.
+  
+  <Expandable title="Misspelling Object Properties">
+    <ResponseField name="word" type="string | null">
+      The misspelled word found in the text.
+    </ResponseField>
+    
+    <ResponseField name="startIndex" type="number">
+      The starting index position of the misspelled word in the text.
+    </ResponseField>
+    
+    <ResponseField name="endIndex" type="number">
+      The ending index position of the misspelled word in the text.
+    </ResponseField>
+    
+    <ResponseField name="expected" type="string[]">
+      Array of suggested correct spellings for the misspelled word.
+    </ResponseField>
+    
+    <ResponseField name="auto_corrected" type="boolean">
+      Whether the word was automatically corrected.
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseField name="auto_correct_text" type="string">
