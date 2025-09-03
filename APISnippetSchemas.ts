@@ -156,7 +156,7 @@ export const APISchemas: {
     body: {
       text: "Congratulations! You've won a free iPhone! Click here to claim now!",
     },
-    sdk_key_string: "validate.spam_check",
+    sdk_key_string: "validate.spamcheck",
   },
   nsfw: {
     path: "/validate/nsfw",
