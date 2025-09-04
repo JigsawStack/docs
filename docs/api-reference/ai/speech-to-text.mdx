@@ -5,6 +5,7 @@ description: "Transcribe video and audio files with ease leveraging Whisper larg
 ---
 
 import SpeechToTextSnippet from "/snippets/code-req-examples/speech-to-text.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ## Supported Formats and Limitations
 
@@ -52,11 +53,8 @@ import SpeechToTextSnippet from "/snippets/code-req-examples/speech-to-text.mdx"
 
 ## Response Structure
 
-### Direct Response
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
-</ResponseField>
+<BasicResponse />
 
 <ResponseField name="text" type="string">
   The complete transcribed text from the audio/video file.
@@ -91,14 +89,16 @@ import SpeechToTextSnippet from "/snippets/code-req-examples/speech-to-text.mdx"
 
 ### Webhook Response
 
-When using `webhook_url`, the initial response will be different:
+When using `webhook_url`, the initial response will be different.
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the request was successfully queued.
-</ResponseField>
+<BaseResponse />
 
-<ResponseField name="status" type="string">
-  Will be "processing" when the transcription job is queued successfully.
+<ResponseField name="status" type="enum">
+  Status of the transcription job. 
+  <ul>
+    <li>`processing` - The transcription job is queued successfully</li>
+    <li>`error` - There was an issue with the transcription job</li>
+  </ul>
 </ResponseField>
 
 <ResponseField name="id" type="string">

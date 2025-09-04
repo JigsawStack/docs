@@ -5,6 +5,7 @@ description: "Generate vector embeddings from various content types including te
 playground: 'hidden'
 ---
 import EmbeddingSnippet from "/snippets/code-req-examples/embedding.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 import FilesParam from "/snippets/helpers/files-param.mdx";
 
 ## Request Parameters
@@ -15,18 +16,7 @@ import FilesParam from "/snippets/helpers/files-param.mdx";
   The text content to generate embeddings for. Optional if providing content through another method.
 </ParamField>
 
-
-<ParamField body="url" type="string">
-  A URL pointing to the resource to generate embeddings for. Optional if providing content through another method.
-</ParamField>
-
-<ParamField body="file_store_key" type="string">
-  A key referencing a previously uploaded file in storage. Optional if providing content through another method.
-</ParamField>
-
-<ParamField body="file_content" type="any">
-  The direct content of a file to generate embeddings for. Optional if providing content through another method.
-</ParamField>
+<FilesParam />
 
 <ParamField body="type" type="string" required>
   The type of content being processed. Must be one of the following values:
@@ -47,12 +37,22 @@ import FilesParam from "/snippets/helpers/files-param.mdx";
 
 ## Response Structure
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
-</ResponseField>
+<BasicResponse />
 
 <ResponseField name="embedding" type="number[]">
   The vector embedding representation of the input content. This is an array of floating-point numbers.
+</ResponseField>
+
+<ResponseField name="chunks" type="array">
+  Array of text chunks with timestamps. Only available for text and audio content types.
+  <Expandable title="Chunk Object">
+    <ResponseField name="text" type="string">
+      The text content of this chunk.
+    </ResponseField>
+    <ResponseField name="timestamp" type="array[number]">
+      Array containing start and end time positions for this chunk.
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <EmbeddingSnippet />
