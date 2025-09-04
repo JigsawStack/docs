@@ -3,7 +3,7 @@ title: "Upload"
 api: "POST https://api.jigsawstack.com/v1/store/file"
 description: "Upload images, videos and documents effortlessly."
 ---
-import FileUploadSnippet from "/snippets/code-req-examples/file-upload.mdx";
+import FileUploadSnippet from "/snippets/file-storage/upload.mdx";
 
 
 <Info>Maximum file size is 100MB.</Info>
@@ -41,16 +41,20 @@ import FileUploadSnippet from "/snippets/code-req-examples/file-upload.mdx";
 
 ### Response
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
-</ResponseField>
-
 <ResponseField name="key" type="string">
   Key used in storing the file.
 </ResponseField>
 
 <ResponseField name="url" type="string">
   Url used in accessing the file.
+</ResponseField>
+
+<ResponseField name="size" type="number">
+  Size of the uploaded file in bytes.
+</ResponseField>
+
+<ResponseField name="temp_public_url" type="string">
+  Temporary public URL valid for 7 days. Only present if temp_public_url is set to true.
 </ResponseField>
 
 <FileUploadSnippet />

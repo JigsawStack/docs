@@ -1,0 +1,376 @@
+
+    <RequestExample>
+    ```javascript Javascript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({
+  apiKey: "your-api-key",
+});
+
+const imageFetch = await fetch("https://jigsawstack.com/preview/object-detection-example-input.jpg");
+const blob = await imageFetch.blob();
+
+const response = await jigsaw.store.upload(blob, {
+  key: "test-key",
+  overwrite: true,
+});
+    ```
+    ```python Python
+import requests
+from jigsawstack import JigsawStack
+
+jigsaw = JigsawStack(api_key="your-api-key")
+
+image_response = requests.get("https://jigsawstack.com/preview/object-detection-example-input.jpg")
+blob = image_response.content
+
+response = jigsaw.store.upload(blob, {
+    "key": "test-key",
+    "overwrite": True
+})
+    ```
+    ```bash Curl
+# First download the image
+curl -o temp_image.jpg https://jigsawstack.com/preview/object-detection-example-input.jpg
+
+# Upload the image file
+curl https://api.jigsawstack.com/v1/store/file \
+ -X POST \
+ -H 'x-api-key: your-api-key' \
+ -F 'file=@temp_image.jpg' \
+ -F 'key=test-key' \
+ -F 'overwrite=true'
+    ```
+    ```php PHP
+<?php
+// Fetch the image
+$imageUrl = "https://jigsawstack.com/preview/object-detection-example-input.jpg";
+$imageData = file_get_contents($imageUrl);
+
+// Prepare the multipart form data
+$boundary = uniqid();
+$data = "--$boundary\r\n";
+$data .= "Content-Disposition: form-data; name=\"file\"; filename=\"test-image.jpg\"\r\n";
+$data .= "Content-Type: image/jpeg\r\n\r\n";
+$data .= $imageData . "\r\n";
+$data .= "--$boundary\r\n";
+$data .= "Content-Disposition: form-data; name=\"key\"\r\n\r\n";
+$data .= "test-key\r\n";
+$data .= "--$boundary\r\n";
+$data .= "Content-Disposition: form-data; name=\"overwrite\"\r\n\r\n";
+$data .= "true\r\n";
+$data .= "--$boundary--\r\n";
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/store/file');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Content-Type: multipart/form-data; boundary=' . $boundary,
+    'x-api-key: your-api-key',
+]);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+    ```
+    ```ruby Ruby
+require 'net/http'
+require 'uri'
+
+# Fetch the image
+image_uri = URI('https://jigsawstack.com/preview/object-detection-example-input.jpg')
+image_response = Net::HTTP.get_response(image_uri)
+image_data = image_response.body
+
+# Upload the image
+uri = URI('https://api.jigsawstack.com/v1/store/file')
+req = Net::HTTP::Post.new(uri)
+req['x-api-key'] = 'your-api-key'
+
+form_data = [
+  ['file', image_data, { filename: 'test-image.jpg', content_type: 'image/jpeg' }],
+  ['key', 'test-key'],
+  ['overwrite', 'true']
+]
+req.set_form(form_data, 'multipart/form-data')
+
+req_options = {
+  use_ssl: uri.scheme == 'https'
+}
+res = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+  http.request(req)
+end
+
+    ```
+    ```go Go
+package main
+
+import (
+	"bytes"
+	"fmt"
+	"io"
+	"log"
+	"mime/multipart"
+	"net/http"
+)
+
+func main() {
+	// Fetch the image
+	imageResp, err := http.Get("https://jigsawstack.com/preview/object-detection-example-input.jpg")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer imageResp.Body.Close()
+	
+	imageData, err := io.ReadAll(imageResp.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Create multipart form
+	var buf bytes.Buffer
+	writer := multipart.NewWriter(&buf)
+	
+	// Add file
+	fileWriter, err := writer.CreateFormFile("file", "test-image.jpg")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fileWriter.Write(imageData)
+	
+	// Add key
+	writer.WriteField("key", "test-key")
+	
+	// Add overwrite
+	writer.WriteField("overwrite", "true")
+	writer.Close()
+
+	// Upload
+	client := &http.Client{}
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/store/file", &buf)
+	if err != nil {
+		log.Fatal(err)
+	}
+	req.Header.Set("Content-Type", writer.FormDataContentType())
+	req.Header.Set("x-api-key", "your-api-key")
+	
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+	
+	bodyText, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", bodyText)
+}
+
+    ```
+    ```java Java
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+
+// Fetch the image
+HttpClient client = HttpClient.newHttpClient();
+HttpRequest imageRequest = HttpRequest.newBuilder()
+    .uri(URI.create("https://jigsawstack.com/preview/object-detection-example-input.jpg"))
+    .build();
+
+HttpResponse<byte[]> imageResponse = client.send(imageRequest, HttpResponse.BodyHandlers.ofByteArray());
+byte[] imageData = imageResponse.body();
+
+// Create temporary file
+Path tempFile = Files.createTempFile("upload", ".jpg");
+Files.write(tempFile, imageData, StandardOpenOption.WRITE);
+
+// Create multipart form data
+String boundary = "----formdata-boundary-" + System.currentTimeMillis();
+String multipartData = "--" + boundary + "\r\n" +
+    "Content-Disposition: form-data; name=\"file\"; filename=\"test-image.jpg\"\r\n" +
+    "Content-Type: image/jpeg\r\n\r\n" +
+    new String(imageData) + "\r\n" +
+    "--" + boundary + "\r\n" +
+    "Content-Disposition: form-data; name=\"key\"\r\n\r\n" +
+    "test-key\r\n" +
+    "--" + boundary + "\r\n" +
+    "Content-Disposition: form-data; name=\"overwrite\"\r\n\r\n" +
+    "true\r\n" +
+    "--" + boundary + "--\r\n";
+
+HttpRequest request = HttpRequest.newBuilder()
+    .uri(URI.create("https://api.jigsawstack.com/v1/store/file"))
+    .POST(HttpRequest.BodyPublishers.ofString(multipartData))
+    .setHeader("Content-Type", "multipart/form-data; boundary=" + boundary)
+    .setHeader("x-api-key", "your-api-key")
+    .build();
+
+HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+    ```
+    ```swift Swift
+import Foundation
+
+// Fetch the image
+let imageURL = URL(string: "https://jigsawstack.com/preview/object-detection-example-input.jpg")!
+let imageData = try! Data(contentsOf: imageURL)
+
+// Create multipart form data
+let boundary = "----formdata-boundary-\(Int(Date().timeIntervalSince1970))"
+var body = Data()
+
+body.append("--\(boundary)\r\n".data(using: .utf8)!)
+body.append("Content-Disposition: form-data; name=\"file\"; filename=\"test-image.jpg\"\r\n".data(using: .utf8)!)
+body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+body.append(imageData)
+body.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+body.append("Content-Disposition: form-data; name=\"key\"\r\n\r\n".data(using: .utf8)!)
+body.append("test-key\r\n".data(using: .utf8)!)
+body.append("--\(boundary)\r\n".data(using: .utf8)!)
+body.append("Content-Disposition: form-data; name=\"overwrite\"\r\n\r\n".data(using: .utf8)!)
+body.append("true\r\n".data(using: .utf8)!)
+body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+
+let url = URL(string: "https://api.jigsawstack.com/v1/store/file")!
+var request = URLRequest(url: url)
+request.httpMethod = "POST"
+request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+request.setValue("your-api-key", forHTTPHeaderField: "x-api-key")
+request.httpBody = body
+
+let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+    if let error = error {
+        print(error)
+    } else if let data = data {
+        let str = String(data: data, encoding: .utf8)
+        print(str ?? "")
+    }
+}
+
+task.resume()
+
+    ```
+    ```dart Dart
+import 'dart:io';
+import 'package:http/http.dart' as http;
+
+void main() async {
+  // Fetch the image
+  final imageResponse = await http.get(Uri.parse('https://jigsawstack.com/preview/object-detection-example-input.jpg'));
+  final imageBytes = imageResponse.bodyBytes;
+
+  // Create multipart request
+  final request = http.MultipartRequest(
+    'POST',
+    Uri.parse('https://api.jigsawstack.com/v1/store/file'),
+  );
+
+  request.headers['x-api-key'] = 'your-api-key';
+  
+  request.files.add(http.MultipartFile.fromBytes(
+    'file',
+    imageBytes,
+    filename: 'test-image.jpg',
+  ));
+  
+  request.fields['key'] = 'test-key';
+  request.fields['overwrite'] = 'true';
+
+  final response = await request.send();
+  final responseBody = await response.stream.bytesToString();
+  
+  print(responseBody);
+}
+
+    ```
+    ```kotlin Kotlin
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import java.io.IOException
+
+// Fetch the image
+val client = OkHttpClient()
+val imageRequest = Request.Builder()
+    .url("https://jigsawstack.com/preview/object-detection-example-input.jpg")
+    .build()
+
+val imageResponse = client.newCall(imageRequest).execute()
+val imageBytes = imageResponse.body!!.bytes()
+
+// Create multipart form data
+val requestBody = MultipartBody.Builder()
+    .setType(MultipartBody.FORM)
+    .addFormDataPart(
+        "file", 
+        "test-image.jpg",
+        RequestBody.create("image/jpeg".toMediaType(), imageBytes)
+    )
+    .addFormDataPart("key", "test-key")
+    .addFormDataPart("overwrite", "true")
+    .build()
+
+val request = Request.Builder()
+    .url("https://api.jigsawstack.com/v1/store/file")
+    .post(requestBody)
+    .header("x-api-key", "your-api-key")
+    .build()
+
+client.newCall(request).execute().use { response ->
+    if (!response.isSuccessful) throw IOException("Unexpected code $response")
+    response.body!!.string()
+}
+
+    ```
+    ```csharp C#
+using System.Net.Http;
+using System.Net.Http.Headers;
+
+// Fetch the image
+HttpClient client = new HttpClient();
+byte[] imageBytes = await client.GetByteArrayAsync("https://jigsawstack.com/preview/object-detection-example-input.jpg");
+
+// Create multipart form data
+MultipartFormDataContent content = new MultipartFormDataContent();
+
+ByteArrayContent imageContent = new ByteArrayContent(imageBytes);
+imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+content.Add(imageContent, "file", "test-image.jpg");
+
+StringContent keyContent = new StringContent("test-key");
+content.Add(keyContent, "key");
+
+StringContent overwriteContent = new StringContent("true");
+content.Add(overwriteContent, "overwrite");
+
+// Create request
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/store/file");
+request.Headers.Add("x-api-key", "your-api-key");
+request.Content = content;
+
+HttpResponseMessage response = await client.SendAsync(request);
+response.EnsureSuccessStatusCode();
+string responseBody = await response.Content.ReadAsStringAsync();
+
+    ```
+    </RequestExample>
+    
+
+<ResponseExample>
+```json
+{
+  "key": "test-key",
+  "url": "https://api.jigsawstack.com/v1/store/file/read/1234",
+  "size": 1024,
+}
+```
+</ResponseExample>
+    
