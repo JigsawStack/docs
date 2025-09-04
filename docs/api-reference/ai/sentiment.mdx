@@ -5,6 +5,7 @@ description: "Perform line by line sentiment analysis on any text with detailed 
 ---
 
 import SentimentSnippet from "/snippets/code-req-examples/sentiment.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ## Request Parameters
 
@@ -18,9 +19,7 @@ import SentimentSnippet from "/snippets/code-req-examples/sentiment.mdx";
 
 ## Response Structure
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
-</ResponseField>
+<BasicResponse />
 
 <ResponseField name="sentiment" type="object">
   Contains the sentiment analysis results.
