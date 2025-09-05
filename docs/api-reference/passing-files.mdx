@@ -1,0 +1,143 @@
+---
+title: "Passing Files"
+description: "Learn how to pass files to JigsawStack APIs."
+---
+## API Examples
+JigsawStack provides a flexible way to pass files to APIs. You can pass files through the following methods:
+
+### JSON
+
+<ParamField body="url" type="string">
+  The image url or base64 encoded content.
+</ParamField>
+<ParamField body="file_store_key" type="string">
+  The key used to store the image on Jigsawstack file
+  [Storage](/docs/api-reference/store/file/add).
+</ParamField>
+
+### Multipart/form-data
+<ParamField body="file" type="file">
+  The direct content of a file.
+</ParamField>
+
+## SDK Examples
+
+### Javascript
+
+<CodeGroup>
+  ```javascript url_object
+  import { JigsawStack } from "jigsawstack";
+
+  const jigsaw = JigsawStack({
+    apiKey: "your-api-key",
+  });
+
+  const result = await jigsaw.validate.nsfw({
+    url: "https://example.com/image.jpg",
+  });
+  ```
+
+  ```javascript base64_object 
+  import { JigsawStack } from "jigsawstack";
+
+  const jigsaw = JigsawStack({
+    apiKey: "your-api-key",
+  });
+
+  const result = await jigsaw.validate.nsfw({
+    url: "data:image/jpeg;base64,...",
+  });
+  ```
+
+  ```javascript file_store_key
+  import { JigsawStack } from "jigsawstack";
+
+  const jigsaw = JigsawStack({
+    apiKey: "your-api-key",
+  });
+
+  const result = await jigsaw.validate.nsfw({
+    file_store_key: "your-file-store-key",
+  });
+  ```
+
+  ```javascript file_blob
+  import { JigsawStack } from "jigsawstack";
+
+  const jigsaw = JigsawStack({
+    apiKey: "your-api-key",
+  });
+
+  const file = await fetch("https://example.com/image.jpg");
+  const fileBlob = await file.blob();
+
+  const result = await jigsaw.validate.nsfw(fileBlob, {
+    other_params: "other_params",
+  });
+  ```
+
+</CodeGroup>
+
+### Python
+<CodeGroup>
+  ```python url_object
+  from jigsawstack import JigsawStack
+
+  jigsaw = JigsawStack(
+      api_key="your-api-key",
+  )
+
+  result = jigsaw.validate.nsfw(
+    {
+      "url": "https://example.com/image.jpg"
+    }
+  )
+  ```
+
+  ```python base64_object 
+  from jigsawstack import JigsawStack
+
+  jigsaw = JigsawStack(
+      api_key="your-api-key"
+  )
+
+  result = jigsaw.validate.nsfw(
+      {
+        "url": "data:image/jpeg;base64,..."
+      }
+  )
+  ```
+
+  ```python file_store_key
+  from jigsawstack import JigsawStack
+
+  jigsaw = JigsawStack(
+      api_key="your-api-key"
+  )
+
+  result = jigsaw.validate.nsfw(
+      {
+        "file_store_key": "your-file-store-key"
+      }
+  )
+  ```
+
+  ```python file_blob
+  import requests
+  from jigsawstack import JigsawStack
+
+  jigsaw = JigsawStack(
+      api_key="your-api-key"
+  )
+
+  response = requests.get("https://example.com/image.jpg")
+  file_blob = response.content
+
+  result = jigsaw.validate.nsfw(
+      file_blob,
+      {
+        "other_params": "other_params"
+      }
+  )
+  ```
+</CodeGroup>

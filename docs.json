@@ -144,7 +144,7 @@
         "groups": [
           {
             "group": "API Documentation",
-            "pages": ["docs/api-reference/authentication", "docs/api-reference/error"]
+            "pages": ["docs/api-reference/authentication", "docs/api-reference/error", "docs/api-reference/passing-files"]
           },
           {
             "group": "Core AI",

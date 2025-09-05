@@ -5,19 +5,12 @@ description: "Quickly detect nudity, violence, hentai, porn and more NSFW conten
 ---
 
 import NsfwSnippet from "/snippets/code-req-examples/nsfw.mdx";
+import FilesParam from "/snippets/helpers/files-param.mdx";
 import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ### Params
 
-<ParamField body="url" type="string">
-  The image url. Not required if `file_store_key` is specified.
-</ParamField>
-
-<ParamField body="file_store_key" type="string">
-  The key used to store the image on Jigsawstack file
-  [Storage](/docs/api-reference/store/file/add). Not required if `url` is
-  specified.
-</ParamField>
+<FilesParam />
 
 <Snippet file="header.mdx" />
 
