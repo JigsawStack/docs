@@ -4,7 +4,7 @@ api: "POST https://api.jigsawstack.com/v2/embedding"
 description: "V2 Generate vector embeddings from various content types including text, images, audio, and PDF files with speaker fingerprint support."
 playground: 'hidden'
 ---
-import EmbeddingSnippet from "/snippets/code-req-examples/embedding.mdx";
+import EmbeddingSnippet from "/snippets/code-req-examples/embeddingV2.mdx";
 import BasicResponse from "/snippets/helpers/basic-response.mdx";
 import FilesParam from "/snippets/helpers/files-param.mdx";
 
@@ -60,7 +60,7 @@ import FilesParam from "/snippets/helpers/files-param.mdx";
 </ResponseField>
 
 <ResponseField name="speaker_embeddings" type="number[][]">
-  The speaker's audio embedding. Only available for audio content type.
+  The speaker's audio embedding. Only available for audio content type and when `speaker_fingerprint` is true. This is an array of arrays of floating-point numbers.
 </ResponseField>
 
 <EmbeddingSnippet />
