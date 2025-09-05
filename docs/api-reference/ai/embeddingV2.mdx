@@ -1,0 +1,66 @@
+---
+title: "EmbeddingV2"
+api: "POST https://api.jigsawstack.com/v2/embedding"
+description: "V2 Generate vector embeddings from various content types including text, images, audio, and PDF files with speaker fingerprint support."
+playground: 'hidden'
+---
+import EmbeddingSnippet from "/snippets/code-req-examples/embedding.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
+import FilesParam from "/snippets/helpers/files-param.mdx";
+
+## Request Parameters
+
+### Body
+
+<ParamField body="text" type="string">
+  The text content to generate embeddings for. Optional if providing content through another method.
+</ParamField>
+
+<FilesParam />
+
+<ParamField body="type" type="string" required>
+  The type of content being processed. Must be one of the following values:
+  - `text`: Plain text input
+  - `text-other`: Other text format
+  - `image`: Image content
+  - `audio`: Audio content
+  - `pdf`: PDF document
+</ParamField>
+
+<ParamField body="token_overflow_mode" type="string" default="error">
+  Determines behavior when input exceeds token limits:
+  - `error`: Return an error (default)
+  - `truncate`: Truncate the input to fit within token limits
+</ParamField>
+
+<ParamField body="speaker_fingerprint" type="boolean" default="false">
+  Whether to include speaker's audio embedding. Speaker fingerprint is only available for audio content type.
+</ParamField>
+
+<Snippet file="header.mdx" />
+
+## Response Structure
+
+<BasicResponse />
+
+<ResponseField name="embedding" type="number[][]">
+  The vector embedding representation of the input content. This is an array of arrays of floating-point numbers.
+</ResponseField>
+
+<ResponseField name="chunks" type="array">
+  Array of text chunks with timestamps. Only available for text and audio content types.
+  <Expandable title="Chunk Object">
+    <ResponseField name="text" type="string">
+      The text content of this chunk.
+    </ResponseField>
+    <ResponseField name="timestamp" type="array[number]">
+      Array containing start and end time positions for this chunk.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="speaker_embedding" type="number[][]">
+  The speaker's audio embedding. Only available for audio content type.
+</ResponseField>
+
+<EmbeddingSnippet />
