@@ -3,7 +3,7 @@ title: "vOCR"
 description: "Extract data from any document type in a consistent structure with fine-tuned vLLMs for the highest accuracy."
 ---
 
-## Introduction
+## Overview
 
 The vOCR is a robust Object Character Recognition (OCR) API, enhanced with fine-tuned vLLMs, designed to efficiently extract data from various document types in a consistent structure.
 
@@ -14,63 +14,58 @@ The vOCR is a robust Object Character Recognition (OCR) API, enhanced with fine-
 - Healthcare Records Management: Extracts patient information, medical history, and treatment details from healthcare records for efficient data management and analysis.
 - Classification Engines: Facilitates accurate categorization and organization of extracted data.
 
-Let's see the vOCR in action by building a data extractor.
 
-## Initial requirements
+## API Endpoint
 
-- Setup a JigsawStack account (if you don't have an account already)
-- Get your JigsawStack API key from [here](https://jigsawstack.com/dashboard).
+```
+POST /v1/vocr
+```
 
-### Request 
+## Quick Start
 
 ```javascript JavaScript
 import { JigsawStack } from "jigsawstack";
 
-const jigsawstack = JigsawStack({
-apiKey: "your-api-key",
-});
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
-const result = await jigsawstack.vision.vocr({
-  prompt: ["Title", "Description"],
-  url: "https://res.cloudinary.com/dev-ninja/image/upload/v1712567895/webhooks_qaaslj.png"
-});
+const response = await jigsaw.vision.vocr({
+  "prompt": [
+        "total_price",
+        "tax"
+  ],
+  "url": "https://jigsawstack.com/preview/vocr-example.jpg"
+})
 ```
 
-### Response
+## Response Example
 
 ```json
 {
-"success": true,
-"context": {
-  "Title": [
-    "Webhook Trigger"
+  "success": true,
+  "context": {
+        "total_price": [
+              "144.02"
+        ],
+        "tax": [
+              "4.58"
+        ]
+  },
+  "width": 720,
+  "height": 960,
+  "tags": [
+        "text",
+        "paper",
+        "receipt"
   ],
-  "Description": [
-    "Select events that will trigger the webhook will listen to. At least one event must be selected.",
-    "Success logs",
-    "Error logs",
-    "Endpoint",
-    "Create"
-  ]
-},
-"width": 2880,
-"height": 1800,
-"tags": [
-  "text",
-  "screenshot",
-  "software",
-  "multimedia software",
-  "graphics software"
-],
-"has_text": true,
-"sections": [
-  {
-    "text": "",
-    "lines": []
+  "has_text": true,
+  "sections": [...],
+  "_usage": {
+        "input_tokens": 23,
+        "output_tokens": 11203,
+        "inference_time_tokens": 3082,
+        "total_tokens": 14308
   }
-]
 }
 ```
 
-
-<Info>Find more information on vOCR API [here](/docs/api-reference/ai/vocr)</Info>
+<Note>Find more information on vOCR API [here](/docs/api-reference/ai/vocr)</Note>
