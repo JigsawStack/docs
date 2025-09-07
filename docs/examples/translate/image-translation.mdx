@@ -1,0 +1,73 @@
+---
+title: "Image Translation"
+description: "Learn how to use JigsawStack's Image Translation API to translate languages in images"
+---
+
+<img
+  className="block"
+  src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746834358180/7ef682a6-e4a8-4aed-949b-05188acb35d4.png?auto=compress,format&format=webp"
+  alt="Image Translation"
+/>
+
+
+## Overview
+
+The Image Translation API allows you to extract and translate text from images into any of 100+ supported languages. This powerful tool combines OCR (Optical Character Recognition) with translation capabilities, making it perfect for translating documents, signs, menus, or any image containing text.
+
+- Extract and translate text from images in one API call
+- Support for 100+ target languages
+- High-quality OCR with accurate text extraction
+- Preserves original image layout with translated text
+- Multiple output formats (URL, base64, binary)
+- Works with various image formats (PNG, JPEG, WebP, etc.)
+
+## API Endpoint
+
+```
+POST /v1/ai/translate/image
+```
+
+## Quick Start
+
+```javascript JavaScript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.translate.image({
+  "url": "https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "target_language": "hi",
+  "return_type": "url"
+})
+```
+
+## Response Example
+
+```json
+{
+  "success": true,
+  "url": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/93653e58-b1fa-4672-a81d-00be1b7ec18e.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250903%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250903T192434Z&X-Amz-Expires=604800&X-Amz-Signature=aed9e0a569eaa75c082410cda3bb643cc80e337cad0cb6dbb358f2526f3cc348&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "_usage": {
+        "input_tokens": 56,
+        "output_tokens": 186,
+        "inference_time_tokens": 24458,
+        "total_tokens": 24700
+  }
+}
+```
+
+## Supported Languages
+
+The Translation API supports over 100 languages. Here are some of the most commonly used:
+
+| Code | Language   | Code | Language   | Code | Language  |
+|------|------------|------|------------|------|-----------|
+| ar   | Arabic     | fr   | French     | pt   | Portuguese|
+| bn   | Bengali    | de   | German     | ru   | Russian   |
+| zh   | Chinese    | hi   | Hindi      | es   | Spanish   |
+| en   | English    | ja   | Japanese   | sw   | Swahili   |
+| fi   | Finnish    | ko   | Korean     | tr   | Turkish   |
+
+For a complete list of supported languages, please visit our [Language Codes Reference](https://jigsawstack.com/docs/additional-resources/languages).
+
+<Note>Find more information on Image Translation API [here](/docs/api-reference/ai/translate/image-translate)</Note>

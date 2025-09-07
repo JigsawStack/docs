@@ -1,21 +1,20 @@
 ---
-title: "Web Search"
-description: "Learn how to use JigsawStack's Web Search API to access high-quality search results with built-in geo search capabilities"
+title: "Search Suggestions"
+description: "Learn how to use JigsawStack's Search Suggestions API to get search suggestions for a given query"
 ---
 
 ## Overview
 
-The Web Search API provides access to high-quality search results with built-in AI overviews, comprehensive metadata, and geo-spatial search capabilities. This API makes it easy to integrate powerful search functionality into your applications while also providing location-based context for search queries.
+The Search Suggestions API provides intelligent search suggestions for any query, helping you build better search experiences. This API is perfect for implementing autocomplete functionality, query refinement, and enhancing user search interactions across your applications.
 
-- Get comprehensive search results with rich metadata
-- AI-generated overviews for quick content digestion
-- Built-in geo search capabilities for location-aware applications
-- Safe search filtering options
-- Customizable search parameters
+- Intelligent query completion and refinement
+- Enhanced user experience with predictive search
+- Seamless integration with other JigsawStack APIs
+- Fast response times for smooth autocomplete experiences
 
 ## API Endpoint
 ```
-POST /v1/web/search
+GET /v1/web/search_suggestions
 ```
 
 ## Quick Start
@@ -25,120 +24,56 @@ import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
-const response = await jigsaw.web.search({
-  query: "capital of France",
-  ai_overview: true,
-  safe_search: "moderate"
-});
-
-console.log(response);
-console.log(response.geo_results[0].geoloc);
+const response = await jigsaw.web.search_suggestions({
+  "query": "What is the capital"
+})
 ```
 
 ## Response 
-
 ```json
 {
   "success": true,
-  "query": "capital of France",
-  "ai_overview": "The capital of France is Paris. It has been the capital since its liberation in 1944.",
-  "is_safe": true,
-  "results": [
-    {
-      "title": "List of capitals of France - Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/List_of_capitals_of_France",
-      "description": "This is a chronological list of capitals of France. The capital of France has been Paris since its liberation in 1944...",
-      "content": "List of capitals of France\nContents\nChronology\nReferences\nThis is a chronological list of capitals of France. The capital of France has been Paris since its liberation in 1944...",
-      "site_name": "Wikipedia",
-      "site_long_name": "en.wikipedia.org",
-      "age": "2023-12-02T17:44:00.000Z",
-      "language": "en",
-      "image_urls": [],
-      "is_safe": true,
-      "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://en.wikipedia.org&size=96",
-      "snippets": [...]
-    },
-    // Additional results...
+  "suggestions": [
+        "what is the capital of california",
+        "what is the capital of canada",
+        "what is the capital of australia",
+        "what is the capital of texas",
+        "what is the capital of the united states",
+        "what is the capital of florida",
+        "what is the capital of france",
+        "what is the capital of brazil",
+        "what is the capital of new york",
+        "what is the capital of alaska",
+        "what is the capital of italy",
+        "what is the capital of japan",
+        "what is the capital gains tax rate",
+        "what is the capital of maine",
+        "what is the capital of illinois"
   ],
-  "geo_results": [
-    {
-      "type": "place",
-      "name": "Paris",
-      "place_formatted": "France",
-      "country": {...},
-      "language": "need_request_lang",
-      "geoloc": {
-        "type": "Point", 
-        "coordinates": [42.947813, 1.957948]
-      },
-      "additional_properties": {}
-    },
-    // Additional geo results...
-  ],
-  "image_urls": [...]
+  "_usage": {
+        "input_tokens": 8,
+        "output_tokens": 134,
+        "inference_time_tokens": 162,
+        "total_tokens": 304
+  }
 }
 ```
 
+## Common Use Cases
 
+### Autocomplete Search Bars
+Perfect for implementing real-time autocomplete in search interfaces.
 
-## Working with Geo Results
+### Query Refinement
+Help users refine their search queries by showing related suggestions.
 
-The API automatically includes geolocation data when relevant to your search query. The `geo_results` array contains location information with the following structure:
+### Search Discovery
+Enable users to discover new search topics related to their interests.
 
-- `type`: Type of location (place, street, etc.)
-- `name`: Name of the location
-- `place_formatted`: Formatted place name
-- `country`: Country information
-- `geoloc`: GeoJSON object with coordinates
-- Additional fields depending on the location type
+## Tips for Effective Search Suggestions
 
-## Examples
+1. **Start with partial queries**: Use incomplete search terms to get the most relevant suggestions (e.g., "what is the capital" instead of full questions)
+2. **Keep queries short**: Shorter queries typically generate more diverse and useful suggestions
+3. **Use common search patterns**: Leverage popular search formats like "how to", "what is", "best", etc. to get high-quality suggestions
 
-### Basic Search
-
-```javascript
-const basicSearch = await jigsaw.web.search({
-  query: "best restaurants in New York",
-});
-
-console.log(basicSearch.ai_overview);
-console.log(basicSearch.results.length);
-```
-
-### Location-Based Search
-
-```javascript
-const locationSearch = await jigsaw.web.search({
-  query: "nearest national parks",
-  country_code: "USA", 
-});
-
-// Access geo results
-locationSearch.geo_results.forEach(location => {
-  console.log(`${location.name}: ${location.geoloc.coordinates}`);
-});
-```
-
-### Custom URL Inclusion
-
-```javascript
-const customSearch = await jigsaw.web.search({
-  query: "climate change solutions",
-  byo_urls: [
-    "https://www.un.org/en/climatechange/",
-    "https://climate.nasa.gov/solutions/resources/"
-  ],
-  ai_overview: true
-});
-```
-
-
-## Tips for Effective Searches
-
-1. **Be specific**: More detailed queries yield more precise results
-2. **Use location context**: For geo-aware searches, include location names in your query
-3. **Leverage AI overviews**: Enable `ai_overview` to get concise summaries of search results
-4. **Filter appropriately**: Use `safe_search` levels based on your application needs
-5. **Consider rate limits**: Be mindful of your API usage limits, especially for high-volume applications
-
-<Note>Find more information on Web Search API [here](/docs/api-reference/web/ai-search)</Note>
+<Note>Find more information on Search Suggestions API [here](/docs/api-reference/web/search-suggestions)</Note>
