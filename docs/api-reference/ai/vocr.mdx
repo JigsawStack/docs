@@ -6,6 +6,7 @@ description: "Recognise, describe and retrieve data within an image with great a
 
 import VocrSnippet from "/snippets/code-req-examples/vocr.mdx";
 import BasicResponse from "/snippets/helpers/basic-response.mdx";
+import Bounds from "/snippets/helpers/response/bounds.mdx";
 
 ### Body
 
@@ -89,25 +90,9 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
         <ResponseField name="text" type="string">
           The text content of this line.
         </ResponseField>
-        
-        <ResponseField name="bounds" type="object">
-          Bounding box coordinates for the line.
-          <Expandable title="Bounds Object">
-            <ResponseField name="x" type="number">
-              X-coordinate of the top-left corner.
-            </ResponseField>
-            <ResponseField name="y" type="number">
-              Y-coordinate of the top-left corner.
-            </ResponseField>
-            <ResponseField name="width" type="number">
-              Width of the bounding box.
-            </ResponseField>
-            <ResponseField name="height" type="number">
-              Height of the bounding box.
-            </ResponseField>
-          </Expandable>
-        </ResponseField>
-        
+
+        <Bounds />
+
         <ResponseField name="words" type="array">
           Array of individual words within this line.
           <Expandable title="Word Object">

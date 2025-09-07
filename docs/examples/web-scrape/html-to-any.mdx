@@ -21,28 +21,16 @@ POST /v1/web/html_to_any
 
 ## Quick Start
 
+
 ```javascript JavaScript
-import { JigsawStack } from 'jigsawstack';
-import fs from 'fs';
-import path from 'path';
+import { JigsawStack } from "jigsawstack";
 
-const jigsaw = new JigsawStack('your-api-key');
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
-const params = {
-  url: "https://jigsawstack.com",
-  quality: 80,
-  full_page: true,
-  type: "jpeg",
-  dark_mode: true
-};
-
-const result = await jigsaw.web.html_to_any(params);
-const buffer = await result.arrayBuffer();
-
-fs.writeFileSync(
-  path.join(__dirname, 'screenshot.jpeg'),
-  Buffer.from(buffer)
-);
+const response = await jigsaw.web.html_to_any({
+  "url": "https://news.ycombinator.com/",
+  "return_type": "url"
+})
 ```
 
 ## Optimizing Performance
@@ -88,3 +76,5 @@ When you provide a URL, the API loads the complete webpage including all externa
 
 By default, the API waits for the window.load event with a timeout of 15 seconds. You can customize this behavior using the goto_options parameter to wait for different events like domcontentloaded or networkidle0.
 
+
+<Note>Find more information on HTML To Any API [here](/docs/api-reference/web/html-to-any)</Note>
