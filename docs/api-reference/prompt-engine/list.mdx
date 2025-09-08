@@ -1,0 +1,31 @@
+---
+title: "List Prompts"
+api: "GET https://api.jigsawstack.com/v1/prompt_engine"
+description: "List all prompts in your project."
+---
+
+import PromptEngineListSnippet from "/snippets/code-req-examples/prompt-engine-list.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
+import Interfaze from "/snippets/helpers/interfaze.mdx";
+
+<Snippet file="header.mdx" />
+
+<Interfaze />
+
+### Query
+
+<ParamField query="limit" default="30" type="string">
+  The maximum number of prompts to be returned.
+</ParamField>
+
+<ParamField query="page" default="1" type="string">
+  The page to return.
+</ParamField>
+
+<Snippet file="header.mdx" />
+
+### Response
+
+<BasicResponse />
+
+<PromptEngineListSnippet />

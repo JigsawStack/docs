@@ -6,6 +6,7 @@ export interface APIType {
   query?: Record<string, string>;
   sdk_key_string: string;
   skip_request?: boolean;
+  direct_id?: string;
 }
 
 export const APISchemas: {
@@ -255,4 +256,76 @@ export const APISchemas: {
     },
     sdk_key_string: "web.deep_research",
   },
+  "prompt-engine-create": {
+    path: "/v1/prompt_engine",
+    method: "POST",
+    body: {
+      prompt: "Tell me a story about {about}",
+      inputs: [
+        {
+          key: "about",
+          optional: false,
+          initial_value: "Leaning Tower of Pisa",
+        },
+      ],
+      return_prompt: "Return the result in a markdown format",
+      prompt_guard: ["sexual_content", "defamation"],
+    },
+    sdk_key_string: "prompt_engine.create",
+  },
+  "prompt-engine-run": {
+    path: "/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5",
+    method: "POST",
+    query: {
+      id: "0073d008-da9b-4c27-90a8-0240f3ecd4f5",
+    },
+    body: {
+      input_values: {
+        text: "How to get started with JigsawStack?",
+      },
+    },
+    sdk_key_string: "prompt_engine.run",
+  },
+  "prompt-engine-retrieve": {
+    path: "/v1/prompt_engine/${id}",
+    method: "GET",
+    direct_id: "dc578c69-6eb5-4c5b-82ab-9f74077cfdd5",
+    sdk_key_string: "prompt_engine.get",
+    skip_request: true,
+  },
+  "prompt-engine-list": {
+    path: "/v1/prompt_engine",
+    method: "GET",
+    query: {
+      limit: "10",
+    },
+    sdk_key_string: "prompt_engine.list",
+  },
+  "prompt-engine-delete": {
+    path: "/v1/prompt_engine/${id}",
+    method: "DELETE",
+    direct_id: "dc578c69-6eb5-4c5b-82ab-9f74077cfdd5",
+    sdk_key_string: "prompt_engine.delete",
+    skip_request: true,
+  },
+  "prompt-engine-run-prompt-direct": {
+    path: "/v1/prompt_engine/run",
+    method: "POST",
+    body: {
+      prompt: "Tell me a story about {about}",
+      inputs: [
+        {
+          key: "about",
+          optional: true,
+          initial_value: "Leaning Tower of Pisa",
+        },
+      ],
+      return_prompt: "Return the result in a markdown format",
+      prompt_guard: ["sexual_content", "defamation"],
+      input_values: {
+        about: "Santorini",
+      },
+    },
+    sdk_key_string: "prompt_engine.run_prompt_direct",
+  }
 };

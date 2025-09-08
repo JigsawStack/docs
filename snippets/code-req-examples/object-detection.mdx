@@ -237,7 +237,7 @@ string responseBody = await response.Content.ReadAsStringAsync();
     ```json Response
 {
       "success": true,
-      "annotated_image": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/86a42633-633d-4fca-96d4-f78f4d58bb84.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250908T213315Z&X-Amz-Expires=604800&X-Amz-Signature=23df987a90bd80c2b4b403b1c019bacc4b5473be3eb6105a5b1736c621d3d442&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "annotated_image": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/9f50baef-f79d-4605-9de8-064cd3e2719c.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250908T234137Z&X-Amz-Expires=604800&X-Amz-Signature=4e84aa03460d60f1d826465206a671e253ea2e749e1a06a82f2f277bcd589f8e&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
       "objects": [
             {
                   "bounds": {
@@ -357,6 +357,29 @@ string responseBody = await response.Content.ReadAsStringAsync();
             {
                   "bounds": {
                         "top_left": {
+                              "x": 111,
+                              "y": 664
+                        },
+                        "top_right": {
+                              "x": 588,
+                              "y": 664
+                        },
+                        "bottom_left": {
+                              "x": 111,
+                              "y": 917
+                        },
+                        "bottom_right": {
+                              "x": 588,
+                              "y": 917
+                        },
+                        "width": 477,
+                        "height": 253
+                  },
+                  "label": "Playstation"
+            },
+            {
+                  "bounds": {
+                        "top_left": {
                               "x": 0,
                               "y": 781
                         },
@@ -449,29 +472,6 @@ string responseBody = await response.Content.ReadAsStringAsync();
             {
                   "bounds": {
                         "top_left": {
-                              "x": 1155,
-                              "y": 391
-                        },
-                        "top_right": {
-                              "x": 1302,
-                              "y": 391
-                        },
-                        "bottom_left": {
-                              "x": 1155,
-                              "y": 488
-                        },
-                        "bottom_right": {
-                              "x": 1302,
-                              "y": 488
-                        },
-                        "width": 147,
-                        "height": 97
-                  },
-                  "label": "Trees"
-            },
-            {
-                  "bounds": {
-                        "top_left": {
                               "x": 407,
                               "y": 407
                         },
@@ -491,6 +491,29 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "height": 48
                   },
                   "label": "Water"
+            },
+            {
+                  "bounds": {
+                        "top_left": {
+                              "x": 1155,
+                              "y": 391
+                        },
+                        "top_right": {
+                              "x": 1302,
+                              "y": 391
+                        },
+                        "bottom_left": {
+                              "x": 1155,
+                              "y": 488
+                        },
+                        "bottom_right": {
+                              "x": 1302,
+                              "y": 488
+                        },
+                        "width": 147,
+                        "height": 97
+                  },
+                  "label": "Trees"
             },
             {
                   "bounds": {
@@ -544,23 +567,23 @@ string responseBody = await response.Content.ReadAsStringAsync();
             "Hands",
             "Controller",
             "Table",
-            "Console",
             "Wii",
+            "Playstation",
             "Wires",
-            "Wall",
             "Minecraft",
-            "Sky",
             "Castle",
-            "Trees",
+            "Sky",
             "Water",
+            "Trees",
             "Grass",
+            "UI",
             "Character"
       ],
       "_usage": {
             "input_tokens": 39,
-            "output_tokens": 750,
-            "inference_time_tokens": 8864,
-            "total_tokens": 9653
+            "output_tokens": 796,
+            "inference_time_tokens": 8333,
+            "total_tokens": 9168
       }
 }
     ```
