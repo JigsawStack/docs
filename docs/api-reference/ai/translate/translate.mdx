@@ -5,15 +5,18 @@ description: "Translate text from one language to another with support for multi
 ---
 
 import TranslateSnippet from "/snippets/code-req-examples/translate.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ## Request Parameters
 
 ### Body
 
-<ParamField body="current_language" type="string">
-  The language code of the source text. If not provided, the API will attempt to
-  auto-detect the language. All supported language codes can be found
-  [here](https://jigsawstack.com/docs/additional-resources/languages).
+<ParamField body="text" type="string | string[]" required>
+  The text to translate. Supports two formats:
+  - Single string: `{"text": "Hello, how are you doing"}`
+  - Array of strings: `{"text": ["Hello", "How are you doing"]}`
+  
+  Maximum text length is 5000 characters per string.
 </ParamField>
 
 <ParamField body="target_language" type="string" required>
@@ -22,21 +25,19 @@ import TranslateSnippet from "/snippets/code-req-examples/translate.mdx";
   [here](https://jigsawstack.com/docs/additional-resources/languages).
 </ParamField>
 
-<ParamField body="text" type="string[]" required>
-  The text to translate. Supports two formats:
-  - Single string: `{"text": "Hello, how are you doing"}`
-  - Array of strings: `{"text": ["Hello", "How are you doing"]}`
-  
-  Maximum text length is 5000 characters per string.
+<ParamField body="current_language" type="string">
+  The language code of the source text. If not provided, the API will attempt to
+  auto-detect the language. All supported language codes can be found
+  [here](https://jigsawstack.com/docs/additional-resources/languages).
 </ParamField>
+
+
 
 <Snippet file="header.mdx" />
 
 ## Response Structure
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
-</ResponseField>
+<BasicResponse />
 
 <ResponseField name="translated_text" type="string | string[]">
   The translated text. The format matches your input: - If you sent a single

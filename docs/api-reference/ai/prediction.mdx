@@ -5,6 +5,7 @@ description: "Forecast a wide range of time series data in seconds with one simp
 ---
 
 import PredictionSnippet from "/snippets/code-req-examples/prediction.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ## Request Parameters
 
@@ -19,6 +20,15 @@ import PredictionSnippet from "/snippets/code-req-examples/prediction.mdx";
 Note: The larger the dataset provided, the more accurate the predictions become.
 For best results, provide at least 20-30 data points with consistent intervals.
 
+  <Expandable title="Dataset Object Properties">
+    <ParamField body="value" type="number | string" required>
+      The numeric value for the data point.
+    </ParamField>
+    
+    <ParamField body="date" type="string" required>
+      The date/timestamp for the data point in string format.
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 <ParamField body="steps" type="number" default="5">
@@ -48,17 +58,24 @@ const dataset: Array<Dataset> = [
 
 ## Response Structure
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
-</ResponseField>
+<BasicResponse />
 
 <ResponseField name="prediction" type="Array<object>">
-  Array of predicted data points. Each object contains: - `date`: Timestamp for
-  the predicted point - `value`: Predicted value
+  Array of predicted data points with the same structure as the input dataset.
+  
+  <Expandable title="Prediction Object Properties">
+    <ResponseField name="date" type="string">
+      The date/timestamp for the predicted data point in string format.
+    </ResponseField>
+    
+    <ResponseField name="value" type="number">
+      The predicted numeric value for this data point.
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseField name="steps" type="number">
-  The number of predictions that were made.
+  The number of prediction steps.
 </ResponseField>
 
 <PredictionSnippet />

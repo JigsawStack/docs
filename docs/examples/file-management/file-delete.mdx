@@ -1,0 +1,32 @@
+---
+title: "File Delete"
+description: "Learn how to delete files from JigsawStack File Storage using their unique key"
+---
+
+## Overview
+
+The JigsawStack File Delete API allows you to permanently remove files that have been previously uploaded to JigsawStack File Storage. Using a file's unique key, you can delete files to free up storage space and manage your file inventory effectively.
+
+- Delete files using their unique storage key
+- Permanently remove files from storage
+- Simple integration with your existing applications
+- Secure access with API key authentication
+- Support for all file types stored in JigsawStack
+
+## API Endpoint
+
+```
+DELETE /v1/store/file/delete/{key}
+```
+
+## Quick Start
+We currently only support deleting files by their unique key through the API.
+
+```curl CURL
+curl https://api.jigsawstack.com/v1/store/file/read/image-123.png?key=image-123.png \
+-X DELETE \
+-H 'Content-Type: application/json' \
+-H 'x-api-key: your-api-key'
+```
+
+<Note>Find more information on File Delete API [here](/docs/api-reference/store/file/delete)</Note>

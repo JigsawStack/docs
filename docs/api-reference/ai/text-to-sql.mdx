@@ -5,6 +5,7 @@ description: "Convert natural language to SQL queries for various database types
 ---
 
 import SqlSnippet from "/snippets/code-req-examples/sql.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ## Request Parameters
 
@@ -20,10 +21,14 @@ import SqlSnippet from "/snippets/code-req-examples/sql.mdx";
   `file_store_key` is specified.
 </ParamField>
 
-<ParamField body="database" type="string">
-  The database type to generate SQL for. Supported values are `postgresql`,
-  `mysql`, or `sqlite`. Specifying this parameter improves SQL generation
+<ParamField body="database" type="enum">
+  The database type to generate SQL for. Specifying this parameter improves SQL generation
   accuracy by applying database-specific syntax and optimizations.
+  <ul>
+    <li>`postgresql` - PostgreSQL database</li>
+    <li>`mysql` - MySQL database</li>
+    <li>`sqlite` - SQLite database</li>
+  </ul>
 </ParamField>
 
 <ParamField body="file_store_key" type="string">
@@ -38,9 +43,7 @@ import SqlSnippet from "/snippets/code-req-examples/sql.mdx";
 
 ## Response Structure
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
-</ResponseField>
+<BasicResponse />
 
 <ResponseField name="sql" type="string">
   The generated SQL query based on the natural language prompt and provided

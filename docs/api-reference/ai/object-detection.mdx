@@ -6,6 +6,7 @@ description: "Recognise objects within an image with great accuracy."
 
 import ObjectDetectionSnippet from "/snippets/code-req-examples/object-detection.mdx";
 import BasicResponse from "/snippets/helpers/basic-response.mdx";
+import Bounds from "/snippets/helpers/response/bounds.mdx";
 
 ### Body
 
@@ -50,43 +51,7 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
 <ResponseField name="gui_elements" type="array">
   Array of detected GUI elements. Only included if `features` includes "gui".
   <Expandable title="GuiElement Object">
-    <ResponseField name="bounds" type="object">
-      Bounding box coordinates for the GUI element.
-      <Expandable title="BoundingBox Object">
-        <ResponseField name="top_left" type="object">
-          Top-left corner coordinates.
-          <Expandable title="Point Object">
-            <ResponseField name="x" type="number">
-              X-coordinate.
-            </ResponseField>
-            <ResponseField name="y" type="number">
-              Y-coordinate.
-            </ResponseField>
-          </Expandable>
-        </ResponseField>
-        
-        <ResponseField name="top_right" type="object">
-          Top-right corner coordinates (same structure as top_left).
-        </ResponseField>
-        
-        <ResponseField name="bottom_left" type="object">
-          Bottom-left corner coordinates (same structure as top_left).
-        </ResponseField>
-        
-        <ResponseField name="bottom_right" type="object">
-          Bottom-right corner coordinates (same structure as top_left).
-        </ResponseField>
-        
-        <ResponseField name="width" type="number">
-          Width of the bounding box.
-        </ResponseField>
-        
-        <ResponseField name="height" type="number">
-          Height of the bounding box.
-        </ResponseField>
-      </Expandable>
-    </ResponseField>
-    
+    <Bounds />
     <ResponseField name="content" type="string | null">
       Content of the GUI element. Can be null if no content is detected.
     </ResponseField>

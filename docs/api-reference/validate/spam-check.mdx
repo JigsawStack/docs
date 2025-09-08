@@ -1,0 +1,42 @@
+---
+title: "Spam Check"
+api: "POST https://api.jigsawstack.com/v1/validate/spam_check"
+description: "Perform spam check analysis on a given text in seconds."
+---
+
+import SpamCheckSnippet from "/snippets/code-req-examples/spam-check.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
+
+### Body
+
+<ParamField body="text" type="string | array<string>" required>
+  The text to check for spam.
+</ParamField>
+
+<Snippet file="header.mdx" />
+
+### Response
+
+<BasicResponse />
+
+<ResponseField name="check" type="object | array<object>">
+  When text is a string, returns an object. When text is an array, returns an array of objects.
+
+<Expandable title="check" defaultOpen="true">
+
+<ResponseField name="is_spam" type="boolean">
+  Indicates whether the text is spam. If the text is not spam, this will be
+  false.
+</ResponseField>
+
+<ResponseField name="score" type="number">
+  The spam score of the text. The lower the score, the less likely
+  it will be spam.
+</ResponseField>
+
+</Expandable>
+
+
+</ResponseField>
+
+<SpamCheckSnippet />

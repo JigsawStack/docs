@@ -1,0 +1,105 @@
+---
+title: "Object Detection"
+description: "Detect objects and GUI elements in images with our advanced Object Detection API"
+---
+
+<img
+  className="block"
+  src="https://cdn.hashnode.com/res/hashnode/image/upload/v1751566727994/ba9edb20-8fb7-423a-af82-21f207085502.png?auto=compress,format&format=webp"
+  alt="Object Detection"
+/>
+
+
+## Overview
+
+The Object Detection API is a powerful computer vision tool that can identify and locate objects, GUI elements, and interactive components in images. This advanced API is perfect for automation, testing, and building intelligent applications that need to understand visual content.
+
+**Object Detection** excels at the following:
+
+- GUI Automation: Identify buttons, forms, menus, and other interface elements for automated testing and interaction.
+- Computer Vision Applications: Detect and classify objects in images for inventory management, security systems, and content analysis.
+- Accessibility Tools: Locate and describe visual elements to assist users with visual impairments in navigating interfaces.
+- Quality Assurance: Automatically verify that UI elements are properly positioned and displayed across different devices and browsers.
+
+Let's see the Object Detection API in action by building an object detector.
+
+## API Endpoint
+
+```
+POST /v1/object-detection
+```
+
+
+## Quick Start
+
+```javascript JavaScript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.vision.object_detection({
+  "url": "https://jigsawstack.com/preview/object-detection-example-input.jpg",
+  "features": [
+        "object_detection"
+  ],
+  "annotated_image": true,
+  "return_type": "url"
+})
+```
+
+## Response Example
+
+```json
+{
+  "success": true,
+  "annotated_image": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/c8a7c3ea-1a47-420f-8503-e3f391fd5e9f.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250903%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250903T192453Z&X-Amz-Expires=604800&X-Amz-Signature=04d2cc2f75cd561acc7333f2db3f999677c95da9c8507e223dec842233b72b50&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+  "objects": [...],
+  "tags": [
+        "TV",
+        "Hands",
+        "Controller",
+        "Table",
+        "Wii",
+        "Playstation",
+        "Wires",
+        "Minecraft",
+        "Castle",
+        "Sky",
+        "Water",
+        "Trees",
+        "Grass",
+        "UI",
+        "Character"
+  ],
+  "_usage": {
+        "input_tokens": 39,
+        "output_tokens": 3036,
+        "inference_time_tokens": 34278,
+        "total_tokens": 37353
+  }
+}
+```
+
+## Use Cases & Applications
+
+### GUI Automation
+
+Automate UI testing and interaction with the detected objects.
+- **Example**: Click on a button, fill out a form, or navigate through a menu.
+- **Implementation**: Use the detected object coordinates to interact with the UI elements.
+
+### Computer Vision Applications
+
+Detect and classify objects in images for inventory management, security systems, and content analysis.
+- **Example**: Identify objects in a warehouse, track inventory levels, or detect unauthorized items.
+- **Implementation**: Use the detected object coordinates to track and manage inventory.
+
+### Quality Assurance
+
+Automatically verify that UI elements are properly positioned and displayed across different devices and browsers.
+- **Example**: Verify that UI elements are properly positioned and displayed across different devices and browsers.
+- **Implementation**: Use the detected object coordinates to verify that UI elements are properly positioned and displayed across different devices and browsers.
+
+
+
+<Note>Find more information on Object Detection API [here](/docs/api-reference/ai/object-detection)</Note>

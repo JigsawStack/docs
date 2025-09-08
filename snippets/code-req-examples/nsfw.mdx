@@ -6,7 +6,7 @@ import { JigsawStack } from "jigsawstack";
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
 const response = await jigsaw.validate.nsfw({
-      "url": "https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "url": "https://jigsawstack.com/preview/nsfw-example.jpg"
 })
     ```
     ```python Python
@@ -15,7 +15,7 @@ from jigsawstack import JigsawStack
 jigsaw = JigsawStack(api_key="your-api-key")
 
 response = jigsaw.validate.nsfw({
-      "url": "https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "url": "https://jigsawstack.com/preview/nsfw-example.jpg"
 })
     ```
     ```bash Curl
@@ -23,7 +23,7 @@ curl https://api.jigsawstack.com/v1/validate/nsfw \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
- -d '{"url":"https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}'
+ -d '{"url":"https://jigsawstack.com/preview/nsfw-example.jpg"}'
     ```
     ```php PHP
 <?php
@@ -35,7 +35,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
     'x-api-key: your-api-key',
 ]);
-curl_setopt($ch, CURLOPT_POSTFIELDS, '{"url":"https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}');
+curl_setopt($ch, CURLOPT_POSTFIELDS, '{"url":"https://jigsawstack.com/preview/nsfw-example.jpg"}');
 
 $response = curl_exec($ch);
 
@@ -52,7 +52,7 @@ req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
 
 req.body = {
-  'url' => 'https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  'url' => 'https://jigsawstack.com/preview/nsfw-example.jpg'
 }.to_json
 
 req_options = {
@@ -76,7 +76,7 @@ import (
 
 func main() {
 	client := &http.Client{}
-	var data = strings.NewReader(`{"url":"https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}`)
+	var data = strings.NewReader(`{"url":"https://jigsawstack.com/preview/nsfw-example.jpg"}`)
 	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/validate/nsfw", data)
 	if err != nil {
 		log.Fatal(err)
@@ -108,7 +108,7 @@ HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
     .uri(URI.create("https://api.jigsawstack.com/v1/validate/nsfw"))
-    .POST(BodyPublishers.ofString("{\"url\":\"https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"}"))
+    .POST(BodyPublishers.ofString("{\"url\":\"https://jigsawstack.com/preview/nsfw-example.jpg\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
     .build();
@@ -120,7 +120,7 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
 import Foundation
 
 let jsonData = [
-    "url": "https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    "url": "https://jigsawstack.com/preview/nsfw-example.jpg"
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
@@ -156,7 +156,7 @@ void main() async {
     'x-api-key': 'your-api-key',
   };
 
-  final data = '{"url":"https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}';
+  final data = '{"url":"https://jigsawstack.com/preview/nsfw-example.jpg"}';
 
   final url = Uri.parse('https://api.jigsawstack.com/v1/validate/nsfw');
 
@@ -179,7 +179,7 @@ val client = OkHttpClient()
 
 val MEDIA_TYPE = "application/json".toMediaType()
 
-val requestBody = "{\"url\":\"https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"}"
+val requestBody = "{\"url\":\"https://jigsawstack.com/preview/nsfw-example.jpg\"}"
 
 val request = Request.Builder()
   .url("https://api.jigsawstack.com/v1/validate/nsfw")
@@ -204,7 +204,7 @@ HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://ap
 
 request.Headers.Add("x-api-key", "your-api-key");
 
-request.Content = new StringContent("{\"url\":\"https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"}");
+request.Content = new StringContent("{\"url\":\"https://jigsawstack.com/preview/nsfw-example.jpg\"}");
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
@@ -220,14 +220,14 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "nsfw": false,
       "nudity": false,
       "gore": false,
-      "nsfw_score": 0.8023452367447058,
-      "nudity_score": 0.08966292440891266,
-      "gore_score": 0.0016616199864074588,
+      "nsfw_score": 0.8223792436143141,
+      "nudity_score": 0.08542560786008835,
+      "gore_score": 0.0015945120248943567,
       "_usage": {
-            "input_tokens": 45,
+            "input_tokens": 15,
             "output_tokens": 60,
-            "inference_time_tokens": 609,
-            "total_tokens": 714
+            "inference_time_tokens": 2273,
+            "total_tokens": 2348
       }
 }
     ```

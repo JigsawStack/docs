@@ -5,6 +5,7 @@ description: "Effortlessly run deep research and get high-quality results powere
 ---
 
 import SearchSnippet from "/snippets/code-req-examples/deep-research.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ### Body
 
@@ -48,8 +49,206 @@ import SearchSnippet from "/snippets/code-req-examples/deep-research.mdx";
 
 ### Response
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
+<BasicResponse />
+<ResponseField name="query" type="string">
+  The search query that was processed.
 </ResponseField>
+
+<ResponseField name="results" type="string">
+  The comprehensive research report generated based on the query.
+</ResponseField>
+
+<ResponseField name="sources" type="array">
+  Array of source objects used to generate the research report.
+  
+  <Expandable title="Source Object Properties">
+    <ResponseField name="title" type="string" optional>
+      The title of the source.
+    </ResponseField>
+    
+    <ResponseField name="url" type="string" optional>
+      The URL of the source.
+    </ResponseField>
+    
+    <ResponseField name="description" type="string" optional>
+      Brief description of the source.
+    </ResponseField>
+    
+    <ResponseField name="content" type="string | null">
+      The content of the source as plain text, or null if content could not be retrieved.
+    </ResponseField>
+    
+    <ResponseField name="site_name" type="string" optional>
+      The name of the website.
+    </ResponseField>
+    
+    <ResponseField name="site_long_name" type="string" optional>
+      The full/long name of the website.
+    </ResponseField>
+    
+    <ResponseField name="age" type="string" optional>
+      The age/freshness of the content as an ISO date string.
+    </ResponseField>
+    
+    <ResponseField name="language" type="string" optional>
+      The language of the content.
+    </ResponseField>
+    
+    <ResponseField name="image_urls" type="array<string>">
+      Array of image URLs found in the content.
+    </ResponseField>
+    
+    <ResponseField name="links" type="array<string>">
+      Array of links found in the content.
+    </ResponseField>
+    
+    <ResponseField name="is_safe" type="boolean" optional>
+      Indicates whether this specific source is considered safe.
+    </ResponseField>
+    
+    <ResponseField name="favicon" type="string">
+      URL to the website's favicon.
+    </ResponseField>
+    
+    <ResponseField name="thumbnail" type="string" optional>
+      URL to a thumbnail image for the source.
+    </ResponseField>
+    
+    <ResponseField name="snippets" type="array<any>" optional>
+      Array of relevant text snippets from the source.
+    </ResponseField>
+    
+    <ResponseField name="related_index" type="array<object>" optional>
+      Array of related result objects.
+      
+      <Expandable title="Related Result Object Properties">
+        <ResponseField name="title" type="string" optional>
+          Title of the related result.
+        </ResponseField>
+        
+        <ResponseField name="url" type="string" optional>
+          URL of the related result.
+        </ResponseField>
+        
+        <ResponseField name="description" type="string" optional>
+          Description of the related result.
+        </ResponseField>
+        
+        <ResponseField name="is_safe" type="boolean" optional>
+          Indicates whether this related result is considered safe.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="geo_results" type="array<object>">
+  Array of geographic/location-based search results.
+  
+  <Expandable title="Geo Result Object Properties">
+    <ResponseField name="type" type="string">
+      The type of geographic result.
+    </ResponseField>
+    
+    <ResponseField name="full_address" type="string">
+      Complete address of the location.
+    </ResponseField>
+    
+    <ResponseField name="name" type="string">
+      Name of the location.
+    </ResponseField>
+    
+    <ResponseField name="name_preferred" type="string" optional>
+      Preferred name for the location.
+    </ResponseField>
+    
+    <ResponseField name="place_formatted" type="string" optional>
+      Formatted place name.
+    </ResponseField>
+    
+    <ResponseField name="postcode" type="string" optional>
+      Postal/ZIP code of the location.
+    </ResponseField>
+    
+    <ResponseField name="district" type="string" optional>
+      District of the location.
+    </ResponseField>
+    
+    <ResponseField name="place" type="string" optional>
+      Place/city name.
+    </ResponseField>
+    
+    <ResponseField name="region" type="object" optional>
+      Region information.
+      
+      <Expandable title="Region Object Properties">
+        <ResponseField name="name" type="string">
+          Name of the region.
+        </ResponseField>
+        
+        <ResponseField name="region_code" type="string" optional>
+          Short region code.
+        </ResponseField>
+        
+        <ResponseField name="region_code_full" type="string" optional>
+          Full region code.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    
+    <ResponseField name="country" type="object" optional>
+      Country information.
+      
+      <Expandable title="Country Object Properties">
+        <ResponseField name="name" type="string">
+          Name of the country.
+        </ResponseField>
+        
+        <ResponseField name="country_code" type="string" optional>
+          Two-letter country code.
+        </ResponseField>
+        
+        <ResponseField name="country_code_alpha_3" type="string" optional>
+          Three-letter country code.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    
+    <ResponseField name="language" type="string">
+      Language of the location data.
+    </ResponseField>
+    
+    <ResponseField name="geoloc" type="object">
+      GeoJSON Point object with coordinates.
+      
+      <Expandable title="Geoloc Object Properties">
+        <ResponseField name="type" type="string">
+          The type of GeoJSON object. Always "Point" for location coordinates.
+        </ResponseField>
+        
+        <ResponseField name="coordinates" type="array<number>">
+          Array containing [longitude, latitude] coordinates for the location.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    
+    <ResponseField name="poi_category" type="array<string>" optional>
+      Array of point of interest categories.
+    </ResponseField>
+    
+    <ResponseField name="additional_properties" type="any" optional>
+      Additional properties for the location.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="image_urls" type="array<string>">
+  Array of image URLs found in the research sources.
+</ResponseField>
+
+<ResponseField name="links" type="array<string>">
+  Array of links found in the research sources.
+</ResponseField>
+
 
 <SearchSnippet />

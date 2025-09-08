@@ -5,6 +5,7 @@ description: "Extract and translate text from images into multiple languages."
 ---
 
 import ImageTranslateSnippet from "/snippets/code-req-examples/image-translate.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ## Request Parameters
 
@@ -35,12 +36,19 @@ import ImageTranslateSnippet from "/snippets/code-req-examples/image-translate.m
 
 ## Response Structure
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
+The response format depends on the `return_type` parameter:
+
+#### URL Response 
+return_type: "url" or "base64"
+
+<BasicResponse />
+<ResponseField name="url" type="string">
+  The URL of the generated file (image or PDF) that can be accessed directly.
 </ResponseField>
 
-<ResponseField name="translated_text" type="string">
-  The translated text content extracted from the image.
-</ResponseField>
+#### Binary Response 
+return_type: "binary"
+
+The API returns the generated file (image or PDF) directly in the response body as binary data.
 
 <ImageTranslateSnippet />

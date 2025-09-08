@@ -14,7 +14,6 @@ The Web Search API provides access to high-quality search results with built-in 
 - Customizable search parameters
 
 ## API Endpoint
-
 ```
 POST /v1/web/search
 ```
@@ -80,28 +79,6 @@ console.log(response.geo_results[0].geoloc);
 }
 ```
 
-## Search Parameters
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `query` | string | The search query (1-400 characters) |
-| `spell_check` | boolean | Enable or disable spell check (default: true) |
-| `safe_search` | string | Safe search level: "strict", "moderate", or "off" (default: "moderate") |
-| `ai_overview` | boolean | Include AI-generated overview of results (default: true) |
-| `byo_urls` | array | Optional array of up to 3 URLs to include in search results |
-| `country_code` | string | ISO-3 country code to localize search results |
-| `auto_scrape` | boolean | Automatically scrape and extract content from results (default: true) |
-| `deep_research` | boolean | Enable deep research mode for comprehensive results |
-| `deep_research_config` | object | Configuration options for deep research mode |
-
-The `deep_research_config` object has the following properties:
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `max_depth` | number | Number of recursive search iterations (default: 3) |
-| `max_breadth` | number | Number of parallel subqueries per depth level (default: 3) |
-| `max_output_tokens` | number | Maximum tokens in generated output (default: 32000) |
-| `target_output_tokens` | number | Target number of tokens for output report |
 
 
 ## Working with Geo Results
@@ -155,20 +132,6 @@ const customSearch = await jigsaw.web.search({
 });
 ```
 
-### Deep Research
-
-```javascript
-const deepResearch = await jigsaw.web.search({
-  query: "What is diffusion?",
-  ai_overview: true,
-  deep_research: true,
-  deep_research_config: {
-    max_depth: 5,
-    max_breadth: 2,
-    max_output_tokens: 12000
-  }
-});
-```
 
 ## Tips for Effective Searches
 
@@ -177,3 +140,5 @@ const deepResearch = await jigsaw.web.search({
 3. **Leverage AI overviews**: Enable `ai_overview` to get concise summaries of search results
 4. **Filter appropriately**: Use `safe_search` levels based on your application needs
 5. **Consider rate limits**: Be mindful of your API usage limits, especially for high-volume applications
+
+<Note>Find more information on Web Search API [here](/docs/api-reference/web/ai-search)</Note>

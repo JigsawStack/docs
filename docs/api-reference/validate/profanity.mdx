@@ -5,6 +5,7 @@ description: "Check any text for profanity."
 ---
 
 import ProfanitySnippet from "/snippets/code-req-examples/profanity.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ### Params
 
@@ -12,7 +13,7 @@ import ProfanitySnippet from "/snippets/code-req-examples/profanity.mdx";
   The text to validate.
 </ParamField>
 
-<ParamField query="censor_replacement" type="string" default="*" required>
+<ParamField query="censor_replacement" type="string" default="*">
   The character to replace profanity with.
 </ParamField>
 
@@ -20,9 +21,7 @@ import ProfanitySnippet from "/snippets/code-req-examples/profanity.mdx";
 
 ### Response
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
-</ResponseField>
+<BasicResponse />
 
 <ResponseField name="message" type="string">
   The message returned by the API.
@@ -34,6 +33,17 @@ import ProfanitySnippet from "/snippets/code-req-examples/profanity.mdx";
 
 <ResponseField name="profanities" type="array">
   An array of profanities found in the text.
+  <Expandable title="Profanity Object">
+    <ResponseField name="profanity" type="string | null">
+      The profane word that was detected.
+    </ResponseField>
+    <ResponseField name="startIndex" type="number">
+      The starting position of the profanity in the original text.
+    </ResponseField>
+    <ResponseField name="endIndex" type="number">
+      The ending position of the profanity in the original text.
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <ResponseField name="profanities_found" type="boolean">

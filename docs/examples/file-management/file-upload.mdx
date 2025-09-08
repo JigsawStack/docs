@@ -17,32 +17,36 @@ The JigsawStack File Storage API allows you to easily upload, manage, and serve 
 
 ## API Endpoint
 
-The File Storage API is accessed through the SDK's `store.upload` method.
+```
+POST /v1/store/upload
+```
 
 ## Quick Start
 
 ```javascript  JavaScript
-import { JigsawStack } from 'jigsawstack';
-import fs from 'fs';
+import { JigsawStack } from "jigsawstack";
 
-const jigsaw = new JigsawStack('your-api-key');
-
-// Your public key for making files accessible
-const publicKey = "your-public-key";
-
-// Read file data
-const imageFile = fs.readFileSync("./beach_house.png");
-
-// Upload the file
-const result = await jigsaw.store.upload(imageFile, {
-  filename: "beach_house.png",
+const jigsaw = JigsawStack({
+apiKey: "your-api-key",
 });
 
-// Create a publicly accessible URL
-const publicFileUrl = `${result.url}?x-api-key=${publicKey}`;
+const imageFetch = await fetch("https://jigsawstack.com/preview/object-detection-example-input.jpg");
+const blob = await imageFetch.blob();
 
-console.log("Upload result:", result);
-console.log("Public URL:", publicFileUrl);
+const response = await jigsaw.store.upload(blob, {
+key: "test-key",
+overwrite: true,
+});
+```
+
+## Response Example
+
+```json
+{
+  "key": "test-key",
+  "url": "https://api.jigsawstack.com/v1/store/file/read/1234",
+  "size": 1024,
+}
 ```
 
 ## Advanced Usage
@@ -85,3 +89,5 @@ const ocrResult = await jigsaw.vision.vocr({
   file_store_key: uploadResult.key
 });
 ```
+
+<Note>Find more information on File Upload API [here](/docs/api-reference/file-management/file-upload)</Note>
