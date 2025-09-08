@@ -162,7 +162,7 @@ export const APISchemas: {
     path: "/validate/nsfw",
     method: "POST",
     body: {
-      url: "https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      url: "https://jigsawstack.com/preview/nsfw-example.jpg",
     },
     sdk_key_string: "validate.nsfw",
   },
