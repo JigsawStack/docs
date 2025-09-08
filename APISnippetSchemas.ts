@@ -286,10 +286,10 @@ export const APISchemas: {
     sdk_key_string: "prompt_engine.run",
   },
   "prompt-engine-retrieve": {
-    path: "/v1/prompt_engine/14d675d5-b309-463d-8906-1be65af74c43",
+    path: "/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5",
     method: "GET",
     query: {
-      id: "14d675d5-b309-463d-8906-1be65af74c43",
+      id: "0073d008-da9b-4c27-90a8-0240f3ecd4f5",
     },
     sdk_key_string: "prompt_engine.get",
   },
@@ -310,7 +310,7 @@ export const APISchemas: {
     sdk_key_string: "prompt_engine.delete",
     skip_request: true,
   },
-  "prompt-engine-run-direct": {
+  "prompt-engine-run-prompt-direct": {
     path: "/v1/prompt_engine/run",
     method: "POST",
     body: {
