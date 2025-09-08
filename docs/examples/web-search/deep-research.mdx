@@ -1,0 +1,147 @@
+---
+title: "Deep Research"
+description: "Learn how to use JigsawStack's Deep Research API for deep and thorough report generation"
+---
+
+## Overview
+
+The Deep Research API enables comprehensive, multi-layered research by automatically conducting iterative searches and analysis to generate detailed, well-sourced reports. This powerful tool goes beyond simple search results to provide thorough investigations of complex topics with AI-powered synthesis and analysis.
+
+- Conduct deep, recursive research with configurable depth and breadth
+- Automatic follow-up queries based on initial findings
+- Customizable research parameters for different use cases
+- High-quality output with proper citations and source attribution
+
+## API Endpoint
+
+```
+POST /v1/web/deep_research
+```
+
+## Quick Start
+
+```javascript Javascript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.web.deep_research({
+  "query": "What is the meaning of life?",
+  "max_depth": 3,
+  "max_breadth": 3,
+  "max_output_tokens": 32000,
+})
+```
+
+## Response 
+
+```json
+{
+  "success": true,
+  "query": "What is the meaning of life?",
+  "results": "The question \"What is the meaning of life?\" has been a central concern across philosophy, science, and religion, each offering distinct yet sometimes overlapping perspectives. Below, we synthesize these major viewpoints to provide a comprehensive overview.\n\nPhilosophical Perspectives\n\nPhilosophers have long debated whether life has an inherent meaning or whether meaning is something we must create for ourselves. Existentialists like Jean-Paul Sartre and Albert Camus argue that life has no predetermined purpose; instead, individuals must forge their own meaning through choices and actions, embracing personal freedom and responsibility in an indifferent or even absurd universe [[1](https://plato.stanford.edu/entries/life-meaning/)][[10](https://bigthink.com/thinking/four-philosophical-answers-meaning-of-life/)][[11](https://www.linkedin.com/pulse/meaning-life-exploring-different-philosophical-perspectives-lee)][[12](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)]. Camus, for example, suggests that while the universe is inherently meaningless, we can find value by confronting and accepting this absurdity [[6](https://philosophy.stackexchange.com/questions/40299/various-philosophers-perspective-on-the-meaning-or-purpose-of-life)][[10](https://bigthink.com/thinking/four-philosophical-answers-meaning-of-life/)].\n\nIn contrast, some philosophical traditions posit that meaning can be found in the pursuit of virtue or happiness. Aristotle’s concept of eudaimonia emphasizes flourishing through virtuous living and fulfilling one’s potential [[4](https://www.linkedin.com/pulse/meaning-life-philosophical-perspective-kevin-halliday)][[13](https://medium.com/@edwardoreid/finding-meaning-and-purpose-in-life-a-philosophical-perspective-557f24709484)]. Utilitarianism, meanwhile, holds that the purpose of life is to maximize happiness and minimize suffering for the greatest number of people [[11](https://www.linkedin.com/pulse/meaning-life-exploring-different-philosophical-perspectives-lee)].\n\nNihilism represents a more pessimistic view, asserting that life lacks any objective meaning or value [[1](https://plato.stanford.edu/entries/life-meaning/)][[7](https://www.reddit.com/r/askphilosophy/comments/ys7vtg/what_is_truly_the_meaning_of_life/)][[16](https://www.cliffsnotes.com/study-notes/7377736)]. However, many modern philosophers suggest that meaning can be constructed through narrative, relationships, creativity, and engagement with the world, even if no ultimate purpose exists [[5](https://iep.utm.edu/mean-ana/)][[12](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)][[16](https://www.cliffsnotes.com/study-notes/7377736)].\n\nScientific Explanations\n\nScience approaches the question of life’s meaning from a naturalistic and empirical standpoint. Evolutionary biology explains life as a product of natural selection, with the primary biological purpose being survival and reproduction [[19](https://en.wikipedia.org/wiki/Life)][[21](https://www.theguardian.com/science/blog/2010/mar/05/meaning-life-evolution-universe)][[25](https://www.britannica.com/science/life)][[45](https://listverse.com/2014/08/16/10-different-views-on-the-meaning-of-life/)]. From this perspective, life does not possess an inherent cosmic purpose; rather, meaning is a human construct, emerging from our psychological and social needs [[20](https://csferrie.medium.com/the-meaning-of-life-according-to-science-8f28bc349cf6)][[29](https://philosophy.stackexchange.com/questions/74115/what-is-the-scientific-purpose-of-existence)].\n\nPsychological research identifies three core components of meaning in life: coherence (making sense of one’s experiences), purpose (having goals and direction), and significance (feeling that one’s life matters) [[22](https://www.annualreviews.org/doi/10.1146/annurev-psych-072420-122921)][[28](https://pubmed.ncbi.nlm.nih.gov/32898466/)][[33](https://hfh.fas.harvard.edu/determinants-purpose)]. Studies show that people derive meaning from relationships, achievement, personal growth, and contributing to something larger than themselves [[22](https://www.annualreviews.org/doi/10.1146/annurev-psych-072420-122921)][[31](https://www.theatlantic.com/family/archive/2021/10/meaning-life-macronutrients-purpose-search/620440/)][[32](https://pmc.ncbi.nlm.nih.gov/articles/PMC6923189/)]. While science can explain the mechanisms of life and the origins of meaning-making, it does not provide an ultimate answer to the existential “why” [[23](https://pmc.ncbi.nlm.nih.gov/articles/PMC3492717/)][[27](https://news.uchicago.edu/explainer/origin-life-earth-explained)][[29](https://philosophy.stackexchange.com/questions/74115/what-is-the-scientific-purpose-of-existence)].\n\nReligious and Spiritual Interpretations\n\nReligious traditions offer a wide array of answers, often grounded in the belief in a higher power or transcendent reality. In Christianity and Islam, the meaning of life is typically framed as serving God, seeking spiritual growth, and preparing for an afterlife [[37](https://thegallerist.art/meaning-of-life-answers-from-world-religions-and-philosophy/)][[40](https://www.cslewis.org/journal/the-image-of-god-religion-and-the-meaning-of-life-toward-a-christian-philosophical-anthropology/)][[42](https://www.desiringgod.org/interviews/what-is-the-meaning-of-life)]. Hinduism and Buddhism emphasize spiritual development, liberation from suffering, and the realization of one’s true nature, often across multiple lifetimes [[37](https://thegallerist.art/meaning-of-life-answers-from-world-religions-and-philosophy/)][[38](https://www.alluringworld.com/the-symbolism-of-the-tree-of-life-in-various-religions-and-philosophies/)]. Judaism highlights ethical living and the repair of the world (tikkun olam) [[35](https://www.reddit.com/r/religion/comments/rpzogc/whats_the_meaning_of_life_according_to_your/)][[37](https://thegallerist.art/meaning-of-life-answers-from-world-religions-and-philosophy/)].\n\nReligious participation is strongly correlated with a sense of meaning and well-being, as faith provides a framework for understanding existence, establishing values, and coping with adversity [[34](https://pmc.ncbi.nlm.nih.gov/articles/PMC4580713/)][[41](https://psyche.co/ideas/religion-gives-life-meaning-can-anything-else-take-its-place)][[43](https://academic.oup.com/psychsocgerontology/article/58/3/S160/583377)]. However, many people find meaning outside of traditional religion, through secular spirituality, community, and personal fulfillment [[44](https://www.theguardian.com/world/2021/apr/02/you-dont-need-a-faith-to-find-the-meaning-of-life)].\n\nSynthesis and Integration\n\nThe search for life’s meaning is deeply personal and multifaceted. Philosophical, scientific, and religious perspectives each contribute valuable insights, but none offers a definitive, one-size-fits-all answer. For some, meaning is created through personal agency and relationships; for others, it is discovered through spiritual or religious commitment; and for many, it is a dynamic interplay of both subjective and objective elements [[12](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)][[16](https://www.cliffsnotes.com/study-notes/7377736)][[33](https://hfh.fas.harvard.edu/determinants-purpose)].\n\nUltimately, the meaning of life may not be a single, universal truth, but rather a tapestry woven from individual beliefs, experiences, and cultural influences. The ongoing quest for meaning reflects humanity’s enduring desire to understand our place in the cosmos and to live with purpose and significance.The question \"What is the meaning of life?\" has been a central concern across philosophy, science, and religion, each offering distinct yet sometimes overlapping perspectives. Below, we synthesize these major viewpoints to provide a comprehensive overview.\n\nPhilosophical Perspectives\n\nPhilosophers have long debated whether life has an inherent meaning or whether meaning is something we must create for ourselves. Existentialists like Jean-Paul Sartre and Albert Camus argue that life has no predetermined purpose; instead, individuals must forge their own meaning through choices and actions, embracing personal freedom and responsibility in an indifferent or even absurd universe [[1](https://plato.stanford.edu/entries/life-meaning/)][[10](https://bigthink.com/thinking/four-philosophical-answers-meaning-of-life/)][[11](https://www.linkedin.com/pulse/meaning-life-exploring-different-philosophical-perspectives-lee)][[12](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)]. Camus, for example, suggests that while the universe is inherently meaningless, we can find value by confronting and accepting this absurdity [[6](https://philosophy.stackexchange.com/questions/40299/various-philosophers-perspective-on-the-meaning-or-purpose-of-life)][[10](https://bigthink.com/thinking/four-philosophical-answers-meaning-of-life/)].\n\nIn contrast, some philosophical traditions posit that meaning can be found in the pursuit of virtue or happiness. Aristotle’s concept of eudaimonia emphasizes flourishing through virtuous living and fulfilling one’s potential [[4](https://www.linkedin.com/pulse/meaning-life-philosophical-perspective-kevin-halliday)][[13](https://medium.com/@edwardoreid/finding-meaning-and-purpose-in-life-a-philosophical-perspective-557f24709484)]. Utilitarianism, meanwhile, holds that the purpose of life is to maximize happiness and minimize suffering for the greatest number of people [[11](https://www.linkedin.com/pulse/meaning-life-exploring-different-philosophical-perspectives-lee)].\n\nNihilism represents a more pessimistic view, asserting that life lacks any objective meaning or value [[1](https://plato.stanford.edu/entries/life-meaning/)][[7](https://www.reddit.com/r/askphilosophy/comments/ys7vtg/what_is_truly_the_meaning_of_life/)][[16](https://www.cliffsnotes.com/study-notes/7377736)]. However, many modern philosophers suggest that meaning can be constructed through narrative, relationships, creativity, and engagement with the world, even if no ultimate purpose exists [[5](https://iep.utm.edu/mean-ana/)][[12](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)][[16](https://www.cliffsnotes.com/study-notes/7377736)].\n\nScientific Explanations\n\nScience approaches the question of life’s meaning from a naturalistic and empirical standpoint. Evolutionary biology explains life as a product of natural selection, with the primary biological purpose being survival and reproduction [[19](https://en.wikipedia.org/wiki/Life)][[21](https://www.theguardian.com/science/blog/2010/mar/05/meaning-life-evolution-universe)][[25](https://www.britannica.com/science/life)][[45](https://listverse.com/2014/08/16/10-different-views-on-the-meaning-of-life/)]. From this perspective, life does not possess an inherent cosmic purpose; rather, meaning is a human construct, emerging from our psychological and social needs [[20](https://csferrie.medium.com/the-meaning-of-life-according-to-science-8f28bc349cf6)][[29](https://philosophy.stackexchange.com/questions/74115/what-is-the-scientific-purpose-of-existence)].\n\nPsychological research identifies three core components of meaning in life: coherence (making sense of one’s experiences), purpose (having goals and direction), and significance (feeling that one’s life matters) [[22](https://www.annualreviews.org/doi/10.1146/annurev-psych-072420-122921)][[28](https://pubmed.ncbi.nlm.nih.gov/32898466/)][[33](https://hfh.fas.harvard.edu/determinants-purpose)]. Studies show that people derive meaning from relationships, achievement, personal growth, and contributing to something larger than themselves [[22](https://www.annualreviews.org/doi/10.1146/annurev-psych-072420-122921)][[31](https://www.theatlantic.com/family/archive/2021/10/meaning-life-macronutrients-purpose-search/620440/)][[32](https://pmc.ncbi.nlm.nih.gov/articles/PMC6923189/)]. While science can explain the mechanisms of life and the origins of meaning-making, it does not provide an ultimate answer to the existential “why” [[23](https://pmc.ncbi.nlm.nih.gov/articles/PMC3492717/)][[27](https://news.uchicago.edu/explainer/origin-life-earth-explained)][[29](https://philosophy.stackexchange.com/questions/74115/what-is-the-scientific-purpose-of-existence)].\n\nReligious and Spiritual Interpretations\n\nReligious traditions offer a wide array of answers, often grounded in the belief in a higher power or transcendent reality. In Christianity and Islam, the meaning of life is typically framed as serving God, seeking spiritual growth, and preparing for an afterlife [[37](https://thegallerist.art/meaning-of-life-answers-from-world-religions-and-philosophy/)][[40](https://www.cslewis.org/journal/the-image-of-god-religion-and-the-meaning-of-life-toward-a-christian-philosophical-anthropology/)][[42](https://www.desiringgod.org/interviews/what-is-the-meaning-of-life)]. Hinduism and Buddhism emphasize spiritual development, liberation from suffering, and the realization of one’s true nature, often across multiple lifetimes [[37](https://thegallerist.art/meaning-of-life-answers-from-world-religions-and-philosophy/)][[38](https://www.alluringworld.com/the-symbolism-of-the-tree-of-life-in-various-religions-and-philosophies/)]. Judaism highlights ethical living and the repair of the world (tikkun olam) [[35](https://www.reddit.com/r/religion/comments/rpzogc/whats_the_meaning_of_life_according_to_your/)][[37](https://thegallerist.art/meaning-of-life-answers-from-world-religions-and-philosophy/)].\n\nReligious participation is strongly correlated with a sense of meaning and well-being, as faith provides a framework for understanding existence, establishing values, and coping with adversity [[34](https://pmc.ncbi.nlm.nih.gov/articles/PMC4580713/)][[41](https://psyche.co/ideas/religion-gives-life-meaning-can-anything-else-take-its-place)][[43](https://academic.oup.com/psychsocgerontology/article/58/3/S160/583377)]. However, many people find meaning outside of traditional religion, through secular spirituality, community, and personal fulfillment [[44](https://www.theguardian.com/world/2021/apr/02/you-dont-need-a-faith-to-find-the-meaning-of-life)].\n\nSynthesis and Integration\n\nThe search for life’s meaning is deeply personal and multifaceted. Philosophical, scientific, and religious perspectives each contribute valuable insights, but none offers a definitive, one-size-fits-all answer. For some, meaning is created through personal agency and relationships; for others, it is discovered through spiritual or religious commitment; and for many, it is a dynamic interplay of both subjective and objective elements [[12](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)][[16](https://www.cliffsnotes.com/study-notes/7377736)][[33](https://hfh.fas.harvard.edu/determinants-purpose)].\n\nUltimately, the meaning of life may not be a single, universal truth, but rather a tapestry woven from individual beliefs, experiences, and cultural influences. The ongoing quest for meaning reflects humanity’s enduring desire to understand our place in the cosmos and to live with purpose and significance.\n\n\n\n## References\n\n1. [The Meaning of Life (Stanford Encyclopedia of Philosophy)](https://plato.stanford.edu/entries/life-meaning/)\n2. [Meaning of Life, The: Early Continental and Analytic Perspectives | Internet Encyclopedia of Philosophy](https://iep.utm.edu/mean-ear/)\n3. [Meaning of life - Wikipedia](https://en.wikipedia.org/wiki/Meaning_of_life)\n4. [The Meaning of Life: A Philosophical Perspective](https://www.linkedin.com/pulse/meaning-life-philosophical-perspective-kevin-halliday)\n5. [Meaning of LIfe: Contemporary Analytic Perspectives | Internet Encyclopedia of Philosophy](https://iep.utm.edu/mean-ana/)\n6. [nietzsche - Various Philosopher's Perspective on the Meaning or Purpose of Life - Philosophy Stack Exchange](https://philosophy.stackexchange.com/questions/40299/various-philosophers-perspective-on-the-meaning-or-purpose-of-life)\n7. [r/askphilosophy on Reddit: What is truly the meaning of life?](https://www.reddit.com/r/askphilosophy/comments/ys7vtg/what_is_truly_the_meaning_of_life/)\n8. [7 Philosophies of the Meaning of Life that I Find Interesting | by Rolend | Medium](https://medium.com/@rolendpetalcorin/7-philosophies-of-the-meaning-of-life-that-interest-me-4a2c5ca72daf)\n9. [What Is Life? | Issue 101 | Philosophy Now](https://philosophynow.org/issues/101/What_Is_Life)\n10. [4 philosophical answers to the meaning of life - Big Think](https://bigthink.com/thinking/four-philosophical-answers-meaning-of-life/)\n11. [The meaning of life: exploring different philosophical perspectives](https://www.linkedin.com/pulse/meaning-life-exploring-different-philosophical-perspectives-lee)\n12. [What is the Meaning of Life: A Comprehensive Exploration and Analysis](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)\n13. [Finding Meaning and Purpose in Life: A Philosophical Perspective | by Edward Reid | Medium](https://medium.com/@edwardoreid/finding-meaning-and-purpose-in-life-a-philosophical-perspective-557f24709484)\n14. [Philosophies That Can Change The Way You Look At Life | by Valerie | Dare To Be Better | Medium](https://medium.com/dare-to-be-better/philosophies-that-can-change-the-way-you-look-at-life-92162c8427b5)\n15. [r/Existentialism on Reddit: What is the meaning of life? Why are we here?](https://www.reddit.com/r/Existentialism/comments/qhrf9q/what_is_the_meaning_of_life_why_are_we_here/)\n16. [The Meaning of Life Examine different philosophical perspectives on the meaning or purpose of human - CliffsNotes](https://www.cliffsnotes.com/study-notes/7377736)\n17. [What is Life? The Philosophical Perspective. | by Amlesh Ranjan | Medium](https://amleshranjan.medium.com/what-is-life-the-philosophical-perspective-aa4055f1f3ea)\n18. [What is the philosophical meaning of life? - Quora](https://www.quora.com/What-is-the-meaning-of-life-according-to-different-philosophical-perspectives)\n19. [Life - Wikipedia](https://en.wikipedia.org/wiki/Life)\n20. [The Meaning of Life, According to Science | by Chris Ferrie | Medium](https://csferrie.medium.com/the-meaning-of-life-according-to-science-8f28bc349cf6)\n21. [Is this the meaning of life? | Evolution | The Guardian](https://www.theguardian.com/science/blog/2010/mar/05/meaning-life-evolution-universe)\n22. [The Science of Meaning in Life | Annual Reviews](https://www.annualreviews.org/doi/10.1146/annurev-psych-072420-122921)\n23. [Explaining life: Synthetic biology and non-scientific understandings of life - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC3492717/)\n24. [What is life’s purpose? A Yale psychiatrist looks to science for answers | Yale News](https://news.yale.edu/2024/03/05/what-lifes-purpose-yale-psychiatrist-looks-science-answers)\n25. [Life | Definition, Origin, Evolution, Diversity, & Facts | Britannica](https://www.britannica.com/science/life)\n26. [Meaning of Life - an overview | ScienceDirect Topics](https://www.sciencedirect.com/topics/social-sciences/meaning-of-life)\n27. [The origin of life on Earth, explained | University of Chicago News](https://news.uchicago.edu/explainer/origin-life-earth-explained)\n28. [The Science of Meaning in Life - PubMed](https://pubmed.ncbi.nlm.nih.gov/32898466/)\n29. [atheism - What is the \"scientific\" purpose of existence? - Philosophy Stack Exchange](https://philosophy.stackexchange.com/questions/74115/what-is-the-scientific-purpose-of-existence)\n30. [What is life? - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8376694/)\n31. [Three Simple Ways to Find the Meaning of Life - The Atlantic](https://www.theatlantic.com/family/archive/2021/10/meaning-life-macronutrients-purpose-search/620440/)\n32. [Life Crafting as a Way to Find Purpose and Meaning in Life - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC6923189/)\n33. [Meaning and Purpose | The Human Flourishing Program](https://hfh.fas.harvard.edu/determinants-purpose)\n34. [The Role of Meaning in Life Within the Relations of Religious Coping and Psychological Well-Being - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC4580713/)\n35. [r/religion on Reddit: Whats the meaning of life according to your religion?](https://www.reddit.com/r/religion/comments/rpzogc/whats_the_meaning_of_life_according_to_your/)\n36. [Religion and life meaning: Differentiating between religious beliefs and religious community in constructing life meaning - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0890406504000064)\n37. [The Meaning of Life | Answers from World Religions and Philosophy | The Gallerist](https://thegallerist.art/meaning-of-life-answers-from-world-religions-and-philosophy/)\n38. [The Symbolism of the Tree of Life in Various Religions and Philosophies | | Alluring World](https://www.alluringworld.com/the-symbolism-of-the-tree-of-life-in-various-religions-and-philosophies/)\n39. [Religion and the Meaning of Life](https://www.cambridge.org/core/books/religion-and-the-meaning-of-life/2C118CBF40B68F288B9010457F78571E)\n40. [The Image of God, Religion, and the Meaning of Life: Toward a Christian Philosophical Anthropology – In Pursuit of Truth | A Journal of Christian Scholarship](https://www.cslewis.org/journal/the-image-of-god-religion-and-the-meaning-of-life-toward-a-christian-philosophical-anthropology/)\n41. [Religion gives life meaning. Can anything else take its place? | Psyche Ideas](https://psyche.co/ideas/religion-gives-life-meaning-can-anything-else-take-its-place)\n42. [What Is the Meaning of Life? | Desiring God](https://www.desiringgod.org/interviews/what-is-the-meaning-of-life)\n43. [Religious Meaning and Subjective Well-Being in Late Life | The ...](https://academic.oup.com/psychsocgerontology/article/58/3/S160/583377)\n44. [You don’t need a faith to find the meaning of life | Letters | The Guardian](https://www.theguardian.com/world/2021/apr/02/you-dont-need-a-faith-to-find-the-meaning-of-life)\n45. [10 Different Views On The Meaning Of Life - Listverse](https://listverse.com/2014/08/16/10-different-views-on-the-meaning-of-life/)\n",
+  "sources": [
+        {
+              "title": "The Meaning of Life (Stanford Encyclopedia of Philosophy)",
+              "url": "https://plato.stanford.edu/entries/life-meaning/",
+              "description": "Seachris, J., 2021, “Meaning of Life: The <strong>Analytic Perspective</strong>”, in Internet Encyclopedia of Philosophy, J. Fieser and B.",
+              "content": null,
+              "site_name": "Stanford Encyclopedia of Philosophy",
+              "site_long_name": "plato.stanford.edu",
+              "age": "2007-05-15T00:00:00.000Z",
+              "language": "en",
+              "image_urls": [],
+              "links": [],
+              "is_safe": true,
+              "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://plato.stanford.edu&size=96",
+              "snippets": [
+                    "Goetz, S., 2012, The Purpose of Life: A Theistic Perspective, New York: Continuum. Goldman, A., 2018, Life’s Values: Pleasure, Happiness, Well-Being, and Meaning, Oxford: Oxford University Press. Greene, P., 2021, “It Doesn’t Matter Because One Day It Will End”, Ethical Theory and Moral Practice, 24: 165–82. Hanfling, O., 1987, The Quest for Meaning, New York: Basil Blackwell Inc. Hare, R. M., 1957, “Nothing Matters”, repr. in Applications of Moral Philosophy, London: Macmillan, 1972: 32–47.",
+                    "Metz, T., 2021, “Life, Meaning of”, in Routledge Encyclopedia of Philosophy, E. Mason (ed.). O’Brien, W., 2021, “The Meaning of Life: Early Continental and Analytic Perspectives”, in Internet Encyclopedia of Philosophy, J. Fieser and B.",
+                    "Seachris, J., 2021, “Meaning of Life: The Analytic Perspective”, in Internet Encyclopedia of Philosophy, J. Fieser and B.",
+                    "Some think of the afterlife in terms of one’s soul entering a transcendent, spiritual realm (Heaven), while others conceive of one’s soul getting reincarnated into another body on Earth. According to the extreme version, if one has a soul but fails to put it in the right state (or if one lacks a soul altogether), then one’s life is meaningless. There are three prominent arguments for an extreme soul-based perspective."
+              ],
+              "reference_number": 1
+        },
+        // Additional sources
+  ]
+  "geo_results": [
+    {
+      "type": "place",
+      "name": "Paris",
+      "place_formatted": "France",
+      "country": {...},
+      "language": "need_request_lang",
+      "geoloc": {
+        "type": "Point", 
+        "coordinates": [42.947813, 1.957948]
+      },
+      "additional_properties": {}
+    },
+    // Additional geo results...
+  ],
+  "image_urls": [...],
+  "links": [...],
+  "_usage": {
+    "input_tokens": 11,
+    "output_tokens": 30730,
+    "inference_time_tokens": 84539,
+    "total_tokens": 115280
+  }
+}
+```
+
+## Examples
+
+### Simple Research
+
+```javascript
+const simpleResearch = await jigsaw.web.deep_research({
+  query: "What is the largest order of a non-cyclic torsion subgroup of an elliptic curve over $\\mathbb{Q}(\\sqrt{-3})$",
+});
+
+console.log(simpleResearch)
+
+```
+
+### Advanced  Research 
+
+```javascript
+const advancedResearch = await jigsaw.web.deep_research({
+    query: "What is the meaning of life?"
+    max_output_tokens: 30000, // Hard upper limit of tokens
+    target_output_tokens: 10000,
+    max_depth: 4, // specify how many iterations of research to perform (how deep the research should be)
+    max_breadth: 3, // specify how many subqueries to generate (how broad the research should be)
+});
+
+console.log(advancedResearch)
+```
+
+## Best Practices
+
+Deep research is an agentic process that conducts multi-step research, which can take several minutes to complete comprehensive investigations. To optimize your experience and results:
+
+### Performance & Reliability
+
+1. **Set appropriate timeouts**: Deep research requires time for thorough analysis. Configure higher timeout values in your HTTP client to accommodate longer processing times.
+
+2. **Control research scope**: Use `max_depth` and `max_breadth` parameters to balance thoroughness with performance. Higher values provide more comprehensive results but take longer to complete.
+
+3. **Manage token limits**: Set `max_output_tokens` to control response size and `target_output_tokens` to guide the desired length of your research report.
+
+### Query Optimization
+
+4. **Be specific and detailed**: Well-formed, detailed queries produce more focused and relevant research. Instead of "climate change," try "impact of climate change on Arctic ice melting rates 2020-2024."
+
+5. **Provide context**: Include relevant background information, constraints, or specific aspects you want the research to focus on.
+
+6. **Consider research depth**: For complex topics requiring extensive investigation, allow for higher `max_depth` values to enable recursive research iterations.
+
+### Cost Management
+
+7. **Monitor usage**: Deep research can generate substantial token usage due to its comprehensive nature. Track your API consumption and adjust parameters accordingly.
+
+8. **Balance breadth vs depth**: Use `max_breadth` to control how many parallel research paths are explored at each level, helping manage both cost and processing time.
+
+<Note>Find more information on Deep Research API [here](/docs/api-reference/web/deep-research)</Note>
+<Info>Check out the Open Deep Research Framework [here](https://github.com/JigsawStack/deep-research)</Info>

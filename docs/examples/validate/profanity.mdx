@@ -1,0 +1,183 @@
+---
+title: "Profanity Detection"
+description: "Learn how to use JigsawStack's Profanity Detection API to identify and filter inappropriate content"
+---
+
+## Overview
+
+The Profanity Detection API helps you identify and filter inappropriate language, slurs, and offensive content in text. Designed for content moderation across various platforms, our API goes beyond simple keyword matching to understand context and detect obfuscated profanity.
+
+**Key Benefits:**
+- High-accuracy detection of explicit and implicit profanity
+- Context-aware analysis that understands intent
+- Detection of obfuscated profanity and character substitutions
+- Multiple language support
+- Customizable sensitivity levels
+- Optional content masking
+
+
+## API Endpoint
+
+```
+POST /v1/validate/profanity
+```
+
+## Quick Start
+
+```javascript Javascript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.validate.profanity({
+  "text": "This is a sample text that might contain inappropriate language."
+})
+```
+
+## Response Example
+
+```json
+{
+  "success": true,
+  "profanities_found": false,
+  "profanities": [],
+  "clean_text": "This is a sample text that might contain inappropriate language.",
+  "_usage": {
+        "input_tokens": 20,
+        "output_tokens": 35,
+        "inference_time_tokens": 235,
+        "total_tokens": 290
+  }
+}
+```
+## Use Cases
+
+### Content Moderation
+Filter user-generated content on social platforms, forums, and comments sections.
+
+### Child Safety
+Create safe environments for child-friendly applications and educational platforms.
+
+### Brand Protection
+Ensure marketing content and customer interactions maintain brand-appropriate language.
+
+## Example Applications
+
+### Content Moderation Pipeline
+
+Implement a complete content moderation workflow:
+
+```javascript
+// Example: Complete content moderation pipeline
+async function moderateContent(userContent) {
+  // Step 1: Check for profanity
+  const profanityResult = await jigsaw.validate.profanity({
+    text: userContent,
+    censor_replacement: "*"
+  });
+  
+  // Step 2: If content has profanity, use the censored version
+  let processedContent = profanityResult.profanities_found > 0 
+    ? profanityResult.clean_text 
+    : userContent;
+  
+  // Step 3: Add flags for content that may need manual review
+  const needsReview = profanityResult.profanities_found > 3;
+  
+  // Step 4: Analyze sentiment on clean content
+  const sentimentResult = await jigsaw.ai.sentiment({
+    text: processedContent
+  });
+  
+  return {
+    original: userContent,
+    processed: processedContent,
+    contains_profanity: profanityResult.profanities_found > 0,
+    profanity_count: profanityResult.profanities_found,
+    sentiment: sentimentResult.sentiment,
+    needs_review: needsReview
+  };
+}
+```
+
+### Chat Application Filter
+
+```javascript
+// Example: Real-time chat message filter
+function ChatApp() {
+  const [message, setMessage] = useState("");
+  const [isSending, setIsSending] = useState(false);
+  
+  const handleSendMessage = async () => {
+    if (!message.trim()) return;
+    
+    setIsSending(true);
+    
+    try {
+      // Check message for profanity before sending
+      const profanityCheck = await jigsaw.validate.profanity({
+        text: message,
+        censor_replacement: "*"
+      });
+      
+      if (profanityCheck.profanities_found > 3) {
+        // High profanity count - don't send and alert user
+        alert("Your message contains inappropriate language and cannot be sent.");
+        return;
+      } else if (profanityCheck.profanities_found > 0) {
+        // Contains some profanity - confirm with user to send censored version
+        const willSendCensored = confirm(
+          "Your message contains some inappropriate language. " +
+          "Would you like to send a filtered version instead?"
+        );
+        
+        if (willSendCensored) {
+          await sendMessageToChat(profanityCheck.clean_text);
+        } else {
+          return;
+        }
+      } else {
+        // No profanity - send as is
+        await sendMessageToChat(message);
+      }
+      
+      // Clear input after sending
+      setMessage("");
+    } catch (error) {
+      console.error("Error sending message:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setIsSending(false);
+    }
+  };
+  
+  return (
+    // Chat UI components...
+  );
+}
+```
+
+## FAQ
+
+### How effective is the profanity detection for non-English content?
+
+The profanity detection API is most effective for English content, but also provides good coverage for major languages including Spanish, French, German, Italian, and Portuguese. For other languages, basic profanity detection is available but may not catch language-specific slang or culturally specific offensive terms.
+
+### Can the API detect deliberately obfuscated profanity?
+
+Yes, the API is designed to detect common obfuscation techniques such as:
+- Character substitution (e.g., "sh!t", "f**k")
+- Letter omission (e.g., "sh-t", "fck")
+- Deliberate misspellings (e.g., "phuck")
+- Zero-width space insertion
+
+However, very creative or unusual obfuscation methods might occasionally bypass detection.
+
+### How can I reduce false positives?
+
+If you're experiencing false positives (benign words incorrectly flagged as profanity), consider these approaches:
+1. Post-process the results to whitelist certain terms specific to your domain
+2. Implement a user feedback system to identify false positives
+3. Add a human review step for edge cases
+
+<Note>Find more information on Profanity Detection API [here](/docs/api-reference/validate/profanity)</Note>

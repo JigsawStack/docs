@@ -1,0 +1,79 @@
+---
+title: "Search Suggestions"
+description: "Learn how to use JigsawStack's Search Suggestions API to get search suggestions for a given query"
+---
+
+## Overview
+
+The Search Suggestions API provides intelligent search suggestions for any query, helping you build better search experiences. This API is perfect for implementing autocomplete functionality, query refinement, and enhancing user search interactions across your applications.
+
+- Intelligent query completion and refinement
+- Enhanced user experience with predictive search
+- Seamless integration with other JigsawStack APIs
+- Fast response times for smooth autocomplete experiences
+
+## API Endpoint
+```
+GET /v1/web/search_suggestions
+```
+
+## Quick Start
+
+```javascript Javascript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.web.search_suggestions({
+  "query": "What is the capital"
+})
+```
+
+## Response 
+```json
+{
+  "success": true,
+  "suggestions": [
+        "what is the capital of california",
+        "what is the capital of canada",
+        "what is the capital of australia",
+        "what is the capital of texas",
+        "what is the capital of the united states",
+        "what is the capital of florida",
+        "what is the capital of france",
+        "what is the capital of brazil",
+        "what is the capital of new york",
+        "what is the capital of alaska",
+        "what is the capital of italy",
+        "what is the capital of japan",
+        "what is the capital gains tax rate",
+        "what is the capital of maine",
+        "what is the capital of illinois"
+  ],
+  "_usage": {
+        "input_tokens": 8,
+        "output_tokens": 134,
+        "inference_time_tokens": 162,
+        "total_tokens": 304
+  }
+}
+```
+
+## Common Use Cases
+
+### Autocomplete Search Bars
+Perfect for implementing real-time autocomplete in search interfaces.
+
+### Query Refinement
+Help users refine their search queries by showing related suggestions.
+
+### Search Discovery
+Enable users to discover new search topics related to their interests.
+
+## Tips for Effective Search Suggestions
+
+1. **Start with partial queries**: Use incomplete search terms to get the most relevant suggestions (e.g., "what is the capital" instead of full questions)
+2. **Keep queries short**: Shorter queries typically generate more diverse and useful suggestions
+3. **Use common search patterns**: Leverage popular search formats like "how to", "what is", "best", etc. to get high-quality suggestions
+
+<Note>Find more information on Search Suggestions API [here](/docs/api-reference/web/search-suggestions)</Note>

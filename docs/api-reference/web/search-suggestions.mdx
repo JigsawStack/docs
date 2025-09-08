@@ -5,6 +5,7 @@ description: "Get suggestions for a given query in real time."
 ---
 
 import SearchSuggestionSnippet from "/snippets/code-req-examples/search-suggestions.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ### Query
 
@@ -16,8 +17,10 @@ import SearchSuggestionSnippet from "/snippets/code-req-examples/search-suggesti
 
 ### Response
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
+<BasicResponse />
+
+<ResponseField name="suggestions" type="array<string>">
+  Array of search suggestions.
 </ResponseField>
 
 <SearchSuggestionSnippet />

@@ -140,7 +140,21 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
 </ParamField>
 
 <ParamField body="size_preset" type="string">
-  Predefined screen size preset (e.g., "HD", "FHD", "4K UHD")
+  Predefined screen size preset to use instead of specifying width and height manually. Supported values include:
+  <ul>
+    <li>`QVGA` - 320×240</li>
+    <li>`VGA` - 640×480</li>
+    <li>`SVGA` - 800×600</li>
+    <li>`HD` - 1280×720</li>
+    <li>`HD+` - 1600×900</li>
+    <li>`SXGA` - 1280×1024</li>
+    <li>`FHD` - 1920×1080</li>
+    <li>`2K` - 2048×1080</li>
+    <li>`2K QHD` - 2560×1440</li>
+    <li>`5K` - 5120×2880</li>
+    <li>`4K UHD` - 3840×2160</li>
+  </ul>
+  See the full list of screen size presets [here](/docs/additional-resources/size-preset)
 </ParamField>
 
 <ParamField body="is_mobile" type="boolean" default="false">
