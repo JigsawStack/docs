@@ -19,7 +19,7 @@ response = jigsaw.prompt_engine.list({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com/v1/prompt_engine?limit=10 \
+curl https://api.jigsawstack.com//v1/prompt_engine?limit=10 \
  -X GET \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key'
@@ -27,7 +27,7 @@ curl https://api.jigsawstack.com/v1/prompt_engine?limit=10 \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/prompt_engine?limit=10');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/prompt_engine?limit=10');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -43,7 +43,7 @@ curl_close($ch);
     ```ruby Ruby
 require 'net/http'
 
-uri = URI('https://api.jigsawstack.com/v1/prompt_engine')
+uri = URI('https://api.jigsawstack.com//v1/prompt_engine')
 params = {
   :limit => '10',
 }
@@ -73,7 +73,7 @@ import (
 
 func main() {
 	client := &http.Client{}
-	req, err := http.NewRequest("GET", "https://api.jigsawstack.com/v1/prompt_engine?limit=10", nil)
+	req, err := http.NewRequest("GET", "https://api.jigsawstack.com//v1/prompt_engine?limit=10", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -102,7 +102,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com/v1/prompt_engine?limit=10"))
+    .uri(URI.create("https://api.jigsawstack.com//v1/prompt_engine?limit=10"))
     .GET()
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -114,7 +114,7 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
     ```swift Swift
 import Foundation
 
-let url = URL(string: "https://api.jigsawstack.com/v1/prompt_engine?limit=10")!
+let url = URL(string: "https://api.jigsawstack.com//v1/prompt_engine?limit=10")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -148,7 +148,7 @@ void main() async {
     'limit': '10',
   };
 
-  final url = Uri.parse('https://api.jigsawstack.com/v1/prompt_engine')
+  final url = Uri.parse('https://api.jigsawstack.com//v1/prompt_engine')
       .replace(queryParameters: params);
 
   final res = await http.get(url, headers: headers);
@@ -167,7 +167,7 @@ import okhttp3.Request
 val client = OkHttpClient()
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com/v1/prompt_engine?limit=10")
+  .url("https://api.jigsawstack.com//v1/prompt_engine?limit=10")
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
   .build()
@@ -184,7 +184,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://api.jigsawstack.com/v1/prompt_engine?limit=10");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://api.jigsawstack.com//v1/prompt_engine?limit=10");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -202,6 +202,58 @@ string responseBody = await response.Content.ReadAsStringAsync();
 {
       "success": true,
       "prompt_engines": [
+            {
+                  "id": "cd8cd7b3-0f7f-4efd-8f16-e0f744f9fa07",
+                  "prompt": "Tell me a story about {about}",
+                  "inputs": [
+                        {
+                              "key": "about",
+                              "optional": false
+                        }
+                  ],
+                  "return_prompt": "Return the result in a markdown format",
+                  "return_prompt_type": "string",
+                  "created_at": "2025-09-08T21:59:57.548436+00:00"
+            },
+            {
+                  "id": "832f7a33-bcb0-4167-b683-cd5dbd65eb08",
+                  "prompt": "Generate a creative story about {topic}",
+                  "inputs": [
+                        {
+                              "key": "topic",
+                              "optional": false
+                        }
+                  ],
+                  "return_prompt": "Return a JSON object with title and content",
+                  "return_prompt_type": "string",
+                  "created_at": "2025-09-08T20:51:17.098767+00:00"
+            },
+            {
+                  "id": "10fe2374-1a1f-4cd3-a53b-22d9d7c046f8",
+                  "prompt": "Generate a creative story about {topic}",
+                  "inputs": [
+                        {
+                              "key": "topic",
+                              "optional": false
+                        }
+                  ],
+                  "return_prompt": "Return a JSON object with title and content",
+                  "return_prompt_type": "string",
+                  "created_at": "2025-09-08T20:41:12.154181+00:00"
+            },
+            {
+                  "id": "5a2f79c2-685e-4dbb-85dd-685c2e18e8e1",
+                  "prompt": "Tell me a story about {about}",
+                  "inputs": [
+                        {
+                              "key": "about",
+                              "optional": false
+                        }
+                  ],
+                  "return_prompt": "Return the result in a markdown format",
+                  "return_prompt_type": "string",
+                  "created_at": "2025-09-08T20:09:20.171327+00:00"
+            },
             {
                   "id": "6bd04d93-6480-4df1-be1a-5e33026baa74",
                   "prompt": "Tell me a story about {about}",
@@ -279,58 +331,6 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "return_prompt": "Return the result in a markdown format",
                   "return_prompt_type": "string",
                   "created_at": "2025-08-20T19:51:25.812027+00:00"
-            },
-            {
-                  "id": "27b7d237-92f5-4160-a1a1-9710f883e022",
-                  "prompt": "Tell me a story about {about}",
-                  "inputs": [
-                        {
-                              "key": "about",
-                              "optional": false
-                        }
-                  ],
-                  "return_prompt": "Return the result in a markdown format",
-                  "return_prompt_type": "string",
-                  "created_at": "2025-08-20T18:59:50.127121+00:00"
-            },
-            {
-                  "id": "89e75baa-caa4-4f53-bad7-878df65548b3",
-                  "prompt": "Tell me a story about {about}",
-                  "inputs": [
-                        {
-                              "key": "about",
-                              "optional": false
-                        }
-                  ],
-                  "return_prompt": "Return the result in a markdown format",
-                  "return_prompt_type": "string",
-                  "created_at": "2025-08-19T20:26:02.27525+00:00"
-            },
-            {
-                  "id": "cfc96a80-c820-4f61-a027-4f974ea269dc",
-                  "prompt": "Tell me a story about {about}",
-                  "inputs": [
-                        {
-                              "key": "about",
-                              "optional": false
-                        }
-                  ],
-                  "return_prompt": "Return the result in a markdown format",
-                  "return_prompt_type": "string",
-                  "created_at": "2025-08-19T18:42:25.164568+00:00"
-            },
-            {
-                  "id": "809a1e5b-6682-4bb0-8cf7-d03e1f3fa0d5",
-                  "prompt": "Tell me a story about {about}",
-                  "inputs": [
-                        {
-                              "key": "about",
-                              "optional": false
-                        }
-                  ],
-                  "return_prompt": "Return the result in a markdown format",
-                  "return_prompt_type": "string",
-                  "created_at": "2025-07-22T01:49:41.112533+00:00"
             }
       ],
       "page": 0,
@@ -338,9 +338,9 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "has_more": true,
       "_usage": {
             "input_tokens": 4,
-            "output_tokens": 683,
-            "inference_time_tokens": 118,
-            "total_tokens": 805
+            "output_tokens": 691,
+            "inference_time_tokens": 188,
+            "total_tokens": 883
       }
 }
     ```

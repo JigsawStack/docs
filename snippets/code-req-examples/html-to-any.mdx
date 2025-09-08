@@ -21,7 +21,7 @@ response = jigsaw.web.html_to_any({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com/v1/web/html_to_any \
+curl https://api.jigsawstack.com//v1/web/html_to_any \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -30,7 +30,7 @@ curl https://api.jigsawstack.com/v1/web/html_to_any \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/web/html_to_any');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/web/html_to_any');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -48,7 +48,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com/v1/web/html_to_any')
+uri = URI('https://api.jigsawstack.com//v1/web/html_to_any')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -80,7 +80,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"url":"https://news.ycombinator.com/","return_type":"url"}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/web/html_to_any", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/web/html_to_any", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -110,7 +110,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com/v1/web/html_to_any"))
+    .uri(URI.create("https://api.jigsawstack.com//v1/web/html_to_any"))
     .POST(BodyPublishers.ofString("{\"url\":\"https://news.ycombinator.com/\",\"return_type\":\"url\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -128,7 +128,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com/v1/web/html_to_any")!
+let url = URL(string: "https://api.jigsawstack.com//v1/web/html_to_any")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -162,7 +162,7 @@ void main() async {
 
   final data = '{"url":"https://news.ycombinator.com/","return_type":"url"}';
 
-  final url = Uri.parse('https://api.jigsawstack.com/v1/web/html_to_any');
+  final url = Uri.parse('https://api.jigsawstack.com//v1/web/html_to_any');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -186,7 +186,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"url\":\"https://news.ycombinator.com/\",\"return_type\":\"url\"}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com/v1/web/html_to_any")
+  .url("https://api.jigsawstack.com//v1/web/html_to_any")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -204,7 +204,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/web/html_to_any");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/web/html_to_any");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -221,12 +221,12 @@ string responseBody = await response.Content.ReadAsStringAsync();
     ```json Response
 {
       "success": true,
-      "url": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/dca6ae84-2773-4090-97eb-efb6e4a3018a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250908T200931Z&X-Amz-Expires=604800&X-Amz-Signature=91abc8288d935480f18d23a31a25d944ae7d2f99122cd84394d3cdb01f243a68&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "url": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/236fc358-d204-4686-87e7-521e3b5fe730.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250908T220737Z&X-Amz-Expires=604800&X-Amz-Signature=ead9e2aae6abf492a62a1407d750ed33765b4f09fab783091ba63fee46b8c9dc&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
       "_usage": {
             "input_tokens": 16,
             "output_tokens": 128,
-            "inference_time_tokens": 11664,
-            "total_tokens": 11808
+            "inference_time_tokens": 11614,
+            "total_tokens": 11758
       }
 }
     ```

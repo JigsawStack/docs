@@ -19,7 +19,7 @@ response = jigsaw.web.search({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com/v1/web/search \
+curl https://api.jigsawstack.com//v1/web/search \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -28,7 +28,7 @@ curl https://api.jigsawstack.com/v1/web/search \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/web/search');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/web/search');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -46,7 +46,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com/v1/web/search')
+uri = URI('https://api.jigsawstack.com//v1/web/search')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -77,7 +77,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"query":"What is the capital of France?"}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/web/search", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/web/search", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -107,7 +107,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com/v1/web/search"))
+    .uri(URI.create("https://api.jigsawstack.com//v1/web/search"))
     .POST(BodyPublishers.ofString("{\"query\":\"What is the capital of France?\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -124,7 +124,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com/v1/web/search")!
+let url = URL(string: "https://api.jigsawstack.com//v1/web/search")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -158,7 +158,7 @@ void main() async {
 
   final data = '{"query":"What is the capital of France?"}';
 
-  final url = Uri.parse('https://api.jigsawstack.com/v1/web/search');
+  final url = Uri.parse('https://api.jigsawstack.com//v1/web/search');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -182,7 +182,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"query\":\"What is the capital of France?\"}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com/v1/web/search")
+  .url("https://api.jigsawstack.com//v1/web/search")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -200,7 +200,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/web/search");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/web/search");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -218,7 +218,7 @@ string responseBody = await response.Content.ReadAsStringAsync();
 {
       "success": true,
       "query": "capital of France",
-      "ai_overview": "Paris has been the capital of France since its liberation in 1944. A chronological list of previous capitals includes:\n\n*   Tournai (before 486)\n*   Soissons (486–936)\n*   Laon (936–987)\n*   Paris (987–1419)\n*   Troyes (1419–1422)\n*   Bourges (1422–1444)\n*   Tours (1444–1527)\n*   Paris (1528–1589)\n*   Tours (1589–1594)\n*   Paris (1594–1682)\n*   Versailles (1682–1789)\n*   Paris (1789–1871)\n*   Versailles (1871)\n*   Bordeaux (September 1914)\n*   Tours (June 10–13, 1940)\n*   Bordeaux (June 1940)\n*   Clermont-Ferrand (June 29, 1940)\n*   Vichy (1940–1944)\n*   Brazzaville (1940–1943)\n*   Algiers (1943–1944)\n*   Paris (1945–present)",
+      "ai_overview": "Since its liberation in 1944, Paris has been the capital of France. However, the capital has been in other cities throughout history:\n\n*   Tournai (before 486)\n*   Soissons (486–936)\n*   Laon (936–987)\n*   Orléans (1108)\n*   Troyes (1419–1422)\n*   Bourges (1422–1444)\n*   Tours (1444–1527)\n*   Versailles (1682–1789)\n*   Bordeaux (September 1914)\n*   Tours (June 1940)\n*   Clermont-Ferrand (June 1940)\n*   Vichy (1940–1944)\n*    Brazzaville (1940-1943)\n*   Algiers (1943–1944)",
       "spell_fixed": false,
       "is_safe": true,
       "results": [
@@ -4254,7 +4254,7 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "content": null,
                   "site_name": "Encyclopedia Britannica",
                   "site_long_name": "britannica.com",
-                  "age": "2025-09-03T18:50:04.000Z",
+                  "age": "2025-09-03T20:10:02.000Z",
                   "language": "en",
                   "image_urls": [],
                   "links": [],
@@ -4296,7 +4296,7 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "content": null,
                   "site_name": "Encyclopedia Britannica",
                   "site_long_name": "britannica.com",
-                  "age": "2025-09-08T00:00:05.000Z",
+                  "age": "2025-09-08T00:20:04.000Z",
                   "language": "en",
                   "image_urls": [],
                   "links": [],
@@ -4306,8 +4306,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "snippets": [
                         "France, a country of northwestern Europe, is historically and culturally among the most important countries in the Western world. It has also played a highly significant role in international affairs for centuries. Its capital is Paris, one of the most important cultural and commercial centers in the world.",
                         "As one of the five permanent members of the United Nations Security Council—together with the United States, Russia, the United Kingdom, and China—France has the right to veto decisions put to the council. ... The capital and by far the most important city of France is Paris, one of the world’s preeminent cultural and commercial centres.",
-                        "France, 1180 to c. 1490 ... While every effort has been made to follow citation style rules, there may be some discrepancies. Please refer to the appropriate style manual or other sources if you have any questions. ... Our editors will review what you’ve submitted and determine whether to revise the article. ... Articles from Britannica Encyclopedias for elementary and high school students. ... Bernard S. Bachrach · Professor of History, University of Minnesota, Minneapolis.",
-                        "Encyclopaedia Britannica's editors oversee subject areas in which they have extensive knowledge, whether from years of experience gained by working on that content or via study for an advanced degree.... ... French government collapses in a confidence vote, forcing Macron to seek yet another prime minister • Sep. 8, 2025, 2:01 PM ET (AP) ...(Show more) Georgia stuns France to reach EuroBasket quarterfinals, Slovenia and Poland also advance • Sep."
+                        "France, 1180 to c. 1490 ... While every effort has been made to follow citation style rules, there may be some discrepancies. Please refer to the appropriate style manual or other sources if you have any questions. ... Our editors will review what you’ve submitted and determine whether to revise the article. ... Articles from Britannica Encyclopedias for elementary and high school students. ... William H. Bonsall Professor Emeritus of History, Stanford University, California.",
+                        "Encyclopaedia Britannica's editors oversee subject areas in which they have extensive knowledge, whether from years of experience gained by working on that content or via study for an advanced degree.... ... French government collapses in a confidence vote, forcing Macron to seek yet another prime minister • Sep. 8, 2025, 3:43 PM ET (AP) ...(Show more) Georgia stuns France to reach EuroBasket quarterfinals, Slovenia and Poland also advance • Sep."
                   ]
             },
             {
@@ -8464,9 +8464,9 @@ string responseBody = await response.Content.ReadAsStringAsync();
       ],
       "_usage": {
             "input_tokens": 11,
-            "output_tokens": 30069,
-            "inference_time_tokens": 36,
-            "total_tokens": 30116
+            "output_tokens": 30062,
+            "inference_time_tokens": 33,
+            "total_tokens": 30106
       }
 }
     ```

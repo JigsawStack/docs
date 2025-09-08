@@ -1,0 +1,146 @@
+---
+title: "EmbeddingV2"
+description: "Learn how to use JigsawStack's latest version of Embedding API to generate embeddings any form of data"
+---
+## Overview
+
+The Embedding API allows you to generate high-quality vector embeddings from any form of data including text, images, audio, and documents. This powerful tool converts your data into numerical representations that capture semantic meaning, making it perfect for similarity search, recommendation systems, clustering, and AI applications.
+
+- Generate embeddings from text, images, audio, and documents
+- Support for multiple data formats and input types
+- High-dimensional vector representations with semantic understanding
+- Optimized for similarity search and machine learning tasks
+- Batch processing support for multiple inputs
+- Compatible with popular vector databases and AI frameworks
+
+## API Endpoint
+
+```
+POST /v2/embedding
+```
+
+## Quick Start
+
+```javascript JavaScript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.embeddingV2({
+  "text": "Caption: Secluded Tiki Bar on a serene lake, perfect for a refreshing drink and a relaxing getaway",
+  "type": "text"
+})
+
+```
+
+## Response Example
+
+```json
+{
+  "success": true,
+  "embeddings": [
+        [
+              -0.06269700080156326,
+              0.0896194726228714,
+              -0.04227621480822563,
+              ...
+        ]
+  ],
+   "chunks": [
+    "Caption: Secluded Tiki Bar on a serene lake, perfect for a refreshing drink and a relaxing getaway"
+  ],
+  "_usage": {
+        "input_tokens": 32,
+        "output_tokens": 1226,
+        "inference_time_tokens": 8507,
+        "total_tokens": 9765
+  }
+}
+```
+## Speaker Fingerprint
+EmbeddingV2 supports speaker fingerprint for audio type. It is a unique identifier for each speaker. It is used to identify the speaker of the audio.
+By setting the `speaker_fingerprint` to true, you can get the `speaker_embeddings` to identify the speaker of the audio.
+
+```javascript
+const audio_response = await jigsaw.embeddingV2({
+  "audio": "https://jigsawstack.com/preview/stt-example.wav",
+  "type": "audio",
+  "speaker_fingerprint": true
+})
+```
+
+```json
+{
+  "success": true,
+  "embeddings": [
+        [...],
+  ],
+  "chunks": [...],
+  "speaker_embeddings": [...], // only available for audio type and speaker_fingerprint is true
+  "_usage": {
+        "input_tokens": 32,
+        "output_tokens": 1226,
+        "inference_time_tokens": 8507,
+        "total_tokens": 9765
+  }
+}
+```
+
+## Supported Input Types
+
+### Text Embeddings
+```javascript
+const textEmbedding = await jigsaw.embedding({
+  "text": "Advanced machine learning algorithms for data analysis",
+  "type": "text"
+});
+```
+
+### Image Embeddings  
+```javascript
+const imageEmbedding = await jigsaw.embedding({
+  "image": "https://jigsawstack.com/preview/vocr-example.jpg",
+  "type": "image"
+});
+```
+
+### PDF Embeddings
+```javascript
+const docEmbedding = await jigsaw.embedding({
+  "document": "https://jigsawstack.com/preview/pdf-example.pdf",
+  "type": "pdf"
+});
+```
+
+### Audio Embeddings
+```javascript
+const audioEmbedding = await jigsaw.embedding({
+  "audio": "https://jigsawstack.com/preview/stt-example.wav",
+  "type": "audio"
+});
+```
+
+
+## Use Cases & Applications
+
+### Semantic Search
+Build powerful search that understands context and meaning, not just keywords.
+- **Example**: Search for "budget headphones" and find "affordable earbuds"
+- **Implementation**: Compare query embeddings with document embeddings using cosine similarity
+
+### Retrieval-Augmented Generation (RAG)
+Connect AI models to your knowledge base for accurate, context-aware responses.
+- **Example**: Customer support chatbot that finds relevant documentation
+- **Benefits**: Reduces hallucinations, provides up-to-date information
+
+### Content Recommendation Systems  
+Suggest similar content based on semantic similarity.
+- **Example**: "Related articles" or "You might also like" features
+- **Implementation**: Find content with similar embeddings to current item
+
+### Document Classification & Clustering
+Automatically categorize and group similar content.
+- **Example**: Organize support tickets by topic
+- **Implementation**: Group documents with similar embedding patterns
+
+<Note>Find more information on EmbeddingV2 API [here](/docs/api-reference/ai/embeddingV2)</Note>

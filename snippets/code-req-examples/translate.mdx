@@ -29,7 +29,7 @@ response = jigsaw.translate.text({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com/v1/ai/translate \
+curl https://api.jigsawstack.com//v1/ai/translate \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -38,7 +38,7 @@ curl https://api.jigsawstack.com/v1/ai/translate \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/ai/translate');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/ai/translate');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -56,7 +56,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com/v1/ai/translate')
+uri = URI('https://api.jigsawstack.com//v1/ai/translate')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -92,7 +92,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"text":["Hello","How are you?","Thank you"],"target_language":"zh"}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/ai/translate", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/ai/translate", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -122,7 +122,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com/v1/ai/translate"))
+    .uri(URI.create("https://api.jigsawstack.com//v1/ai/translate"))
     .POST(BodyPublishers.ofString("{\"text\":[\"Hello\",\"How are you?\",\"Thank you\"],\"target_language\":\"zh\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -144,7 +144,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com/v1/ai/translate")!
+let url = URL(string: "https://api.jigsawstack.com//v1/ai/translate")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -178,7 +178,7 @@ void main() async {
 
   final data = '{"text":["Hello","How are you?","Thank you"],"target_language":"zh"}';
 
-  final url = Uri.parse('https://api.jigsawstack.com/v1/ai/translate');
+  final url = Uri.parse('https://api.jigsawstack.com//v1/ai/translate');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -202,7 +202,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"text\":[\"Hello\",\"How are you?\",\"Thank you\"],\"target_language\":\"zh\"}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com/v1/ai/translate")
+  .url("https://api.jigsawstack.com//v1/ai/translate")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -220,7 +220,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/ai/translate");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/ai/translate");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -245,8 +245,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 18,
             "output_tokens": 18,
-            "inference_time_tokens": 166,
-            "total_tokens": 202
+            "inference_time_tokens": 159,
+            "total_tokens": 195
       }
 }
     ```

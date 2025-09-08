@@ -23,7 +23,7 @@ response = jigsaw.translate.image({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com/v1/ai/translate/image \
+curl https://api.jigsawstack.com//v1/ai/translate/image \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -32,7 +32,7 @@ curl https://api.jigsawstack.com/v1/ai/translate/image \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/ai/translate/image');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/ai/translate/image');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -50,7 +50,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com/v1/ai/translate/image')
+uri = URI('https://api.jigsawstack.com//v1/ai/translate/image')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -83,7 +83,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"url":"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","target_language":"hi","return_type":"url"}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/ai/translate/image", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/ai/translate/image", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -113,7 +113,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com/v1/ai/translate/image"))
+    .uri(URI.create("https://api.jigsawstack.com//v1/ai/translate/image"))
     .POST(BodyPublishers.ofString("{\"url\":\"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\"target_language\":\"hi\",\"return_type\":\"url\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -132,7 +132,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com/v1/ai/translate/image")!
+let url = URL(string: "https://api.jigsawstack.com//v1/ai/translate/image")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -166,7 +166,7 @@ void main() async {
 
   final data = '{"url":"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","target_language":"hi","return_type":"url"}';
 
-  final url = Uri.parse('https://api.jigsawstack.com/v1/ai/translate/image');
+  final url = Uri.parse('https://api.jigsawstack.com//v1/ai/translate/image');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -190,7 +190,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"url\":\"https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\"target_language\":\"hi\",\"return_type\":\"url\"}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com/v1/ai/translate/image")
+  .url("https://api.jigsawstack.com//v1/ai/translate/image")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -208,7 +208,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/ai/translate/image");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/ai/translate/image");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -225,12 +225,12 @@ string responseBody = await response.Content.ReadAsStringAsync();
     ```json Response
 {
       "success": true,
-      "url": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/3b307592-67fa-4dea-8c69-4fcec8f2cad0.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250908T200931Z&X-Amz-Expires=604800&X-Amz-Signature=06776e1908eb4ab62672e32008ad9576c395313d73946084db6989486b959ade&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "url": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/ce7ed130-ce80-452c-8a5e-a32ee96f741e.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250908T220737Z&X-Amz-Expires=604800&X-Amz-Signature=2643fecf1fc997ac307dfa6f80e69eff057d4e2394f3cb82a1b8174c634561eb&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
       "_usage": {
             "input_tokens": 56,
             "output_tokens": 192,
-            "inference_time_tokens": 18591,
-            "total_tokens": 18839
+            "inference_time_tokens": 20624,
+            "total_tokens": 20872
       }
 }
     ```

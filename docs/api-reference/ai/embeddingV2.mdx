@@ -1,9 +1,9 @@
 ---
-title: "Embedding"
-api: "POST https://api.jigsawstack.com/v1/embedding"
-description: "Generate vector embeddings from various content types including text, images, audio, and PDF files."
+title: "EmbeddingV2"
+api: "POST https://api.jigsawstack.com/v2/embedding"
+description: "V2 Generate vector embeddings from various content types including text, images, audio, and PDF files with speaker fingerprint support."
 ---
-import EmbeddingSnippet from "/snippets/code-req-examples/embedding.mdx";
+import EmbeddingSnippet from "/snippets/code-req-examples/embeddingV2.mdx";
 import BasicResponse from "/snippets/helpers/basic-response.mdx";
 import FilesParam from "/snippets/helpers/params/files-param.mdx";
 
@@ -32,13 +32,17 @@ import FilesParam from "/snippets/helpers/params/files-param.mdx";
   - `truncate`: Truncate the input to fit within token limits
 </ParamField>
 
+<ParamField body="speaker_fingerprint" type="boolean" default="false">
+  Whether to include speaker's audio embedding. Speaker fingerprint is only available for audio content type.
+</ParamField>
+
 <Snippet file="header.mdx" />
 
 ## Response Structure
 
 <BasicResponse />
 
-<ResponseField name="embeddings" type="array<array<number>>">
+<ResponseField name="embeddings" type="number[][]">
   The vector embedding representation of the input content. This is an array of arrays of floating-point numbers.
 </ResponseField>
 
@@ -48,11 +52,14 @@ import FilesParam from "/snippets/helpers/params/files-param.mdx";
     <ResponseField name="text" type="string">
       The text content of this chunk.
     </ResponseField>
-    <ResponseField name="timestamp" type="array<number>">
+    <ResponseField name="timestamp" type="array[number]">
       Array containing start and end time positions for this chunk.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
+<ResponseField name="speaker_embeddings" type="number[][]">
+  The speaker's audio embedding. Only available for audio content type and when `speaker_fingerprint` is true. This is an array of arrays of floating-point numbers.
+</ResponseField>
 
 <EmbeddingSnippet />

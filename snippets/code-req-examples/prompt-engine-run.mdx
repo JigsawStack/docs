@@ -25,7 +25,7 @@ response = jigsaw.prompt_engine.run({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5 \
+curl https://api.jigsawstack.com//v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5 \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -34,7 +34,7 @@ curl https://api.jigsawstack.com/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -52,7 +52,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5')
+uri = URI('https://api.jigsawstack.com//v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5')
 params = {
   :id => '0073d008-da9b-4c27-90a8-0240f3ecd4f5',
 }
@@ -90,7 +90,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"input_values":{"text":"How to get started with JigsawStack?"}}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -120,7 +120,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5"))
+    .uri(URI.create("https://api.jigsawstack.com//v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5"))
     .POST(BodyPublishers.ofString("{\"input_values\":{\"text\":\"How to get started with JigsawStack?\"}}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -139,7 +139,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5")!
+let url = URL(string: "https://api.jigsawstack.com//v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -177,7 +177,7 @@ void main() async {
 
   final data = '{"input_values":{"text":"How to get started with JigsawStack?"}}';
 
-  final url = Uri.parse('https://api.jigsawstack.com/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5')
+  final url = Uri.parse('https://api.jigsawstack.com//v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5')
       .replace(queryParameters: params);
 
   final res = await http.post(url, headers: headers, body: data);
@@ -202,7 +202,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"input_values\":{\"text\":\"How to get started with JigsawStack?\"}}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5")
+  .url("https://api.jigsawstack.com//v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -220,7 +220,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -252,10 +252,16 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "section": "Creating Your First Project"
                   },
                   {
-                        "section": "Understanding the Core Concepts"
+                        "section": "Understanding the JigsawStack Architecture"
                   },
                   {
-                        "section": "Exploring the JigsawStack Ecosystem"
+                        "section": "Basic JigsawStack Commands"
+                  },
+                  {
+                        "section": "Exploring JigsawStack Features"
+                  },
+                  {
+                        "section": "Troubleshooting Common Issues"
                   },
                   {
                         "section": "Next Steps and Resources"
@@ -264,9 +270,9 @@ string responseBody = await response.Content.ReadAsStringAsync();
       },
       "_usage": {
             "input_tokens": 17,
-            "output_tokens": 81,
-            "inference_time_tokens": 1295,
-            "total_tokens": 1393
+            "output_tokens": 104,
+            "inference_time_tokens": 1828,
+            "total_tokens": 1949
       }
 }
     ```

@@ -21,7 +21,7 @@ response = jigsaw.embedding({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com/v1/embedding \
+curl https://api.jigsawstack.com//v1/embedding \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -30,7 +30,7 @@ curl https://api.jigsawstack.com/v1/embedding \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/embedding');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/embedding');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -48,7 +48,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com/v1/embedding')
+uri = URI('https://api.jigsawstack.com//v1/embedding')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -80,7 +80,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"text":"Caption: Secluded Tiki Bar on a serene lake, perfect for a refreshing drink and a relaxing getaway","type":"text"}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/embedding", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/embedding", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -110,7 +110,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com/v1/embedding"))
+    .uri(URI.create("https://api.jigsawstack.com//v1/embedding"))
     .POST(BodyPublishers.ofString("{\"text\":\"Caption: Secluded Tiki Bar on a serene lake, perfect for a refreshing drink and a relaxing getaway\",\"type\":\"text\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -128,7 +128,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com/v1/embedding")!
+let url = URL(string: "https://api.jigsawstack.com//v1/embedding")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -162,7 +162,7 @@ void main() async {
 
   final data = '{"text":"Caption: Secluded Tiki Bar on a serene lake, perfect for a refreshing drink and a relaxing getaway","type":"text"}';
 
-  final url = Uri.parse('https://api.jigsawstack.com/v1/embedding');
+  final url = Uri.parse('https://api.jigsawstack.com//v1/embedding');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -186,7 +186,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"text\":\"Caption: Secluded Tiki Bar on a serene lake, perfect for a refreshing drink and a relaxing getaway\",\"type\":\"text\"}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com/v1/embedding")
+  .url("https://api.jigsawstack.com//v1/embedding")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -204,7 +204,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/embedding");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/embedding");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -999,8 +999,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 32,
             "output_tokens": 1226,
-            "inference_time_tokens": 215,
-            "total_tokens": 1473
+            "inference_time_tokens": 790,
+            "total_tokens": 2048
       }
 }
     ```
