@@ -5,6 +5,7 @@ description: "Capture screenshots of a website, convert HTML to both image and P
 ---
 
 import HtmlToAnySnippet from "/snippets/code-req-examples/html-to-any.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 ## Request Parameters
 
@@ -88,7 +89,7 @@ import HtmlToAnySnippet from "/snippets/code-req-examples/html-to-any.mdx";
     <ParamField body="timeout" type="number" default="15000">
       Maximum time to wait for the page to load, in milliseconds (max: 15000ms).
     </ParamField>
-    <ParamField body="wait_until" type="string" default="load">
+    <ParamField body="wait_until" type="string">
       Event to wait for before considering navigation complete:
       <ul>
         <li>`load` - Wait for the window.load event</li>
@@ -112,7 +113,7 @@ import HtmlToAnySnippet from "/snippets/code-req-examples/html-to-any.mdx";
   Page ranges to print in PDF format (e.g., '1-5, 8, 11-13'). Only applies when `type` is set to `pdf`.
 </ParamField>
 
-<ParamField body="return_type" type="string">
+<ParamField body="return_type" type="string" default="binary">
   The specified return type for the response
   <ul>
     <li>`url`</li>
@@ -124,6 +125,19 @@ import HtmlToAnySnippet from "/snippets/code-req-examples/html-to-any.mdx";
 <Snippet file="header.mdx" />
 
 ## Response
+
+The response format depends on the `return_type` parameter:
+
+#### URL Response 
+return_type: "url" or "base64"
+
+<BasicResponse />
+<ResponseField name="url" type="string">
+  The URL of the generated file (image or PDF) that can be accessed directly.
+</ResponseField>
+
+#### Binary Response 
+return_type: "binary"
 
 The API returns the generated file (image or PDF) directly in the response body as binary data.
 

@@ -1,0 +1,44 @@
+---
+title: "File Retrieve"
+description: "Learn how to retrieve files from JigsawStack File Storage using their unique key"
+---
+
+## Overview
+
+The JigsawStack File Retrieval API allows you to access and download files that have been previously uploaded to JigsawStack File Storage. Using a file's unique key, you can retrieve the file's accessible URL and metadata, making it easy to integrate stored files into your applications.
+
+- Retrieve files using their unique storage key
+- Get accessible URLs for file access
+- Simple integration with your existing applications
+- Secure access with API key authentication
+- Support for all file types stored in JigsawStack
+
+## API Endpoint
+
+```
+GET /v1/store/file/read/{key}
+```
+
+
+## Quick Start
+
+```javascript JavaScript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const result = await jigsaw.store.upload(imageFile, {
+  key: "image-123"
+});
+
+const response = await jigsaw.store.get({
+  "key": "image-123"
+})
+```
+
+## Response Example
+binary data of the file
+
+
+
+<Note>Find more information on File Retrieval API [here](/docs/api-reference/store/file/get)</Note>

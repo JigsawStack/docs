@@ -156,13 +156,13 @@ export const APISchemas: {
     body: {
       text: "Congratulations! You've won a free iPhone! Click here to claim now!",
     },
-    sdk_key_string: "validate.spam_check",
+    sdk_key_string: "validate.spamcheck",
   },
   nsfw: {
     path: "/validate/nsfw",
     method: "POST",
     body: {
-      url: "https://images.unsplash.com/photo-1633998979521-11ca9d0e6e38?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      url: "https://jigsawstack.com/preview/nsfw-example.jpg",
     },
     sdk_key_string: "validate.nsfw",
   },
@@ -182,16 +182,16 @@ export const APISchemas: {
     },
     sdk_key_string: "validate.spellcheck",
   },
-  "file-upload": {
-    path: "/store/file",
-    method: "POST",
-    body: {
-      blob: "image-123.png",
-      key: "image-123.png",
-    },
-    sdk_key_string: "store.upload",
-    skip_request: true,
-  },
+  // "file-upload": {
+  //   path: "/store/file",
+  //   method: "POST",
+  //   body: {
+  //     blob: "image-123.png",
+  //     key: "image-123.png",
+  //   },
+  //   sdk_key_string: "store.upload",
+  //   skip_request: true,
+  // },
   "file-get": {
     path: "/store/file/read/image-123.png",
     method: "GET",

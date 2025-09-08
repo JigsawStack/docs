@@ -88,20 +88,24 @@
             ]
           },
           {
-            "group": "Web",
-            "pages": ["docs/examples/web/web-scraper", "docs/examples/web/web-search"]
+            "group": "Web Scrape",
+            "pages": ["docs/examples/web-scrape/ai-scrape", "docs/examples/web-scrape/html-to-any"]
           },
           {
-            "group": "Data",
-            "pages": ["docs/examples/data/prediction", "docs/examples/data/text-to-sql"]
+            "group": "Web Search",
+            "pages": ["docs/examples/web-search/ai-search", "docs/examples/web-search/search-suggestions", "docs/examples/web-search/deep-research"]
           },
           {
             "group": "Translate",
-            "pages": ["docs/examples/translate/text-translation"]
+            "pages": ["docs/examples/translate/text-translation", "docs/examples/translate/image-translation"]
+          },
+          {
+            "group": "Data",
+            "pages": ["docs/examples/data/embedding" ,"docs/examples/data/prediction", "docs/examples/data/text-to-sql"]
           },
           {
             "group": "Vision",
-            "pages": ["docs/examples/computer-vision/vocr", "docs/examples/computer-vision/screenshot"]
+            "pages": ["docs/examples/vision/vocr", "docs/examples/vision/object-detection"]
           },
           {
             "group": "Audio",
@@ -109,17 +113,21 @@
           },
           {
             "group": "Content Validation",
-            "pages": ["docs/examples/content-validation/nsfw"]
+            "pages": ["docs/examples/validate/nsfw", "docs/examples/validate/profanity", "docs/examples/validate/spell-check", "docs/examples/validate/spam-check"]
+          },
+          {
+            "group": "Classification",
+            "pages": ["docs/examples/classification/classification"]
           },
           {
             "group": "File Management",
-            "pages": ["docs/examples/file-management/file-upload"]
+            "pages": ["docs/examples/file-management/file-upload", "docs/examples/file-management/file-retrieve", "docs/examples/file-management/file-delete"]
           },
           {
             "group": "Webhooks",
             "pages": [ 
-              "docs/examples/web/introduction",
-              "docs/examples/web/secure"
+              "docs/examples/webhook/introduction",
+              "docs/examples/webhook/secure"
             ]
           },
           {
@@ -151,6 +159,14 @@
             "pages": ["docs/api-reference/ai/sentiment", "docs/api-reference/ai/summary", "docs/api-reference/ai/image-generation"]
           },
           {
+            "group": "Web Scrape",
+            "pages": ["docs/api-reference/ai/scrape", "docs/api-reference/web/html-to-any"]
+          },
+          {
+            "group": "Web Search",
+            "pages": ["docs/api-reference/web/ai-search", "docs/api-reference/web/search-suggestions",  "docs/api-reference/web/deep-research"]
+          },
+          {
             "group": "Translate",
             "pages": ["docs/api-reference/ai/translate/translate", "docs/api-reference/ai/translate/image-translate"]
           },
@@ -159,23 +175,11 @@
             "pages": ["docs/api-reference/ai/embedding", "docs/api-reference/ai/prediction", "docs/api-reference/ai/text-to-sql"]
           },
           {
-            "group": "Web Scrape",
-            "pages": ["docs/api-reference/ai/scrape", "docs/api-reference/web/html-to-any"]
-          },
-          {
-            "group": "Web Search",
-            "pages": ["docs/api-reference/web/ai-search", "docs/api-reference/web/search-suggestion",  "docs/api-reference/web/deep-research"]
-          },
-          {
-            "group": "Classification",
-            "pages": ["docs/api-reference/classification/classification"]
-          },
-          {
             "group": "Vision",
             "pages": ["docs/api-reference/ai/vocr", "docs/api-reference/ai/object-detection"]
           },
           {
-            "group": "Speech to Text",
+            "group": "Audio",
             "pages": ["docs/api-reference/ai/speech-to-text"]
           },
           {
@@ -183,9 +187,13 @@
             "pages": [
               "docs/api-reference/validate/nsfw",
               "docs/api-reference/validate/profanity",
-              "docs/api-reference/validate/spellcheck",
-              "docs/api-reference/ai/spam-check"
+              "docs/api-reference/validate/spell-check",
+              "docs/api-reference/validate/spam-check"
             ]
+          },
+          {
+            "group": "Classification",
+            "pages": ["docs/api-reference/classification/classification"]
           },
           {
             "group": "File Store",

@@ -1,0 +1,66 @@
+---
+title: "Spell Check"
+api: "POST https://api.jigsawstack.com/v1/validate/spell_check"
+description: "Check and correct spelling errors in a text."
+---
+
+import SpellcheckSnippet from "/snippets/code-req-examples/spellcheck.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
+
+### Params
+
+<ParamField query="text" type="string" required>
+  The text to check.
+</ParamField>
+
+<ParamField query="language_code" type="string" default="en">
+  The language code of the target language to translate to. All supported
+  language codes can be found
+  [here](https://jigsawstack.com/docs/additional-resources/languages).
+</ParamField>
+
+<Snippet file="header.mdx" />
+
+### Response
+
+<BasicResponse />
+
+<ResponseField name="misspellings_found" type="boolean">
+  Whether any misspellings were found in the text.
+</ResponseField>
+
+<ResponseField name="misspellings" type="array">
+  Array of misspelling objects found in the text.
+  
+  <Expandable title="Misspelling Object Properties">
+    <ResponseField name="word" type="string | null">
+      The misspelled word found in the text.
+    </ResponseField>
+    
+    <ResponseField name="startIndex" type="number">
+      The starting index position of the misspelled word in the text.
+    </ResponseField>
+    
+    <ResponseField name="endIndex" type="number">
+      The ending index position of the misspelled word in the text.
+    </ResponseField>
+    
+    <ResponseField name="expected" type="string[]">
+      Array of suggested correct spellings for the misspelled word.
+    </ResponseField>
+    
+    <ResponseField name="auto_corrected" type="boolean">
+      Whether the word was automatically corrected.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="auto_correct_text" type="string">
+  The auto corrected text.
+
+If no misspellings were found, the original text is returned.
+
+</ResponseField>
+
+
+<SpellcheckSnippet />

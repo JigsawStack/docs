@@ -29,14 +29,14 @@ const jigsaw = new JigsawStack('your-api-key');
 
 // Basic transcription from URL
 const response = await jigsaw.audio.speech_to_text({
-  url: "https://example.com/path/to/audio.mp3"
+  url: "https://jigsawstack.com/preview/stt-example.wav"
 });
 
 console.log(response.text);
 
 // With speaker diarization
 const responseWithSpeakers = await jigsaw.audio.speech_to_text({
-  url: "https://example.com/path/to/audio.mp3",
+  url: "https://jigsawstack.com/preview/stt-example.wav",
   by_speaker: true
 });
 
@@ -77,6 +77,21 @@ responseWithSpeakers.speakers.forEach(segment => {
 }
 ```
 
+## Auto Language Detection
+
+By default, JigsawStack's Speech to Text API automatically detects the language of your audio content. This means you don't need to specify the language parameter - the API will intelligently identify what language is being spoken and transcribe accordingly.
+
+However, if you know the language of your audio in advance, specifying it can significantly optimize performance and reduce processing time.
+
+```javascript
+const result = await jigsaw.audio.speech_to_text({
+  url: "https://jigsawstack.com/preview/stt-example.wav",
+  language: "auto" // default behavior
+});
+
+console.log(result.text);
+```
+
 ## Examples
 
 If you've already uploaded files to JigsawStack's storage:
@@ -100,3 +115,5 @@ const result = await jigsaw.audio.speech_to_text({
 
 console.log("Translated text:", result.text);
 ```
+
+<Note>Find more information on Speech to Text API [here](/docs/api-reference/ai/speech-to-text)</Note>

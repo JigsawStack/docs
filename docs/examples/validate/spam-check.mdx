@@ -1,0 +1,135 @@
+---
+title: "Spam Detection"
+description: "Learn how to use JigsawStack's Spam Detection API to identify and filter unwanted messages and content"
+---
+## Overview
+
+The Spam Detection API helps you identify unwanted or unsolicited content across various channels, including emails, comments, reviews, and form submissions. Using advanced machine learning algorithms, it analyzes content to distinguish between legitimate messages and spam with high accuracy.
+
+**Key Benefits:**
+- High-accuracy spam detection across multiple content types
+- Detailed confidence scores with granular classification
+- Specialized detection for different spam categories
+- Low false positive rates for minimal legitimate content filtering
+- Adaptable to domain-specific contexts
+
+
+## API Endpoint
+
+```
+POST /v1/validate/spam_check
+```
+
+## Quick Start
+
+```javascript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.validate.spamcheck({
+  "text": "Congratulations! You've won a free iPhone! Click here to claim now!"
+})
+```
+
+
+## Response Example
+
+```json
+{
+  "success": true,
+  "check": {
+        "score": 0.95,
+        "is_spam": true
+  },
+  "_usage": {
+        "input_tokens": 20,
+        "output_tokens": 14,
+        "inference_time_tokens": 608,
+        "total_tokens": 642
+  }
+}
+```
+## Use Cases
+
+### Comment Protection
+Filter spam from blog comments, forum posts, and user-generated content.
+
+### Contact Form Validation
+Identify spam submissions in website contact forms and lead generation pages.
+
+### Email Filtering
+Add an additional layer of spam protection to email communications.
+
+
+## Best Practices
+
+### Handling Edge Cases
+
+When implementing spam detection, consider these edge cases and best practices:
+
+1. **Short Messages**: Very brief messages may not provide enough context for accurate detection. Consider implementing length thresholds before sending content for analysis.
+
+2. **False Positives**: Some legitimate messages may occasionally be flagged as spam. Consider implementing a scoring threshold appropriate to your use case rather than relying solely on the binary `is_spam` value.
+
+3. **Bulk Processing**: When processing large volumes of content, use the array input format to improve efficiency.
+
+```javascript
+// Example: Processing multiple messages efficiently
+async function bulkSpamCheck(messages) {
+  // Group messages in batches of 100
+  const results = [];
+  for (let i = 0; i < messages.length; i += 100) {
+    const batch = messages.slice(i, Math.min(i + 100, messages.length));
+    const response = await jigsaw.validate.spamcheck({
+      text: batch
+    });
+    
+    if (response.success) {
+      // Handle batch results
+      const batchResults = Array.isArray(response.check) 
+        ? response.check 
+        : [response.check];
+      
+      results.push(...batchResults.map((check, index) => ({
+        message: batch[index],
+        isSpam: check.is_spam,
+        score: check.score
+      })));
+    }
+  }
+  return results;
+}
+```
+
+### Customizing Thresholds
+
+Different applications may require different spam sensitivity levels. Customize your implementation based on your specific needs:
+
+```javascript
+// Example: Customizing spam detection thresholds
+function classifyMessage(spamCheckResult) {
+  const { is_spam, score } = spamCheckResult.check;
+  
+  // Custom classification logic
+  if (score > 0.8) {
+    return "definitely_spam"; // Block or hide this content
+  } else if (score > 0.5) {
+    return "likely_spam"; // Flag for moderation
+  } else if (score > 0.2) {
+    return "possible_spam"; // Show but with warning
+  } else {
+    return "not_spam"; // Show normally
+  }
+}
+
+// Usage
+const response = await jigsaw.validate.spamcheck({
+  text: "Check out this amazing offer! Limited time only!"
+});
+
+const classification = classifyMessage(response);
+// Handle message based on classification
+```
+
+<Note>Find more information on Spam Detection API [here](/docs/api-reference/validate/spam-check)</Note>
