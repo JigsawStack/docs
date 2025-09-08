@@ -121,7 +121,7 @@
           },
           {
             "group": "File Management",
-            "pages": ["docs/examples/file-management/file-upload"]
+            "pages": ["docs/examples/file-management/file-upload", "docs/examples/file-management/file-retrieve", "docs/examples/file-management/file-delete"]
           },
           {
             "group": "Webhooks",

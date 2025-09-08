@@ -1,0 +1,97 @@
+---
+title: "Classification"
+description: "Learn how to use JigsawStack's Classification API to classify literally anything"
+---
+## Overview
+
+The Classification API is a powerful tool that can classify literally anything. This advanced API is perfect for automation, testing, and building intelligent applications that need to understand the content of the data.
+**Classification** excels at the following:
+
+- Crosslingual Text Classification: Classify text content across multiple languages without requiring language-specific training or models.
+- Moderation and Intent Classification: Automatically identify inappropriate content, spam, or determine user intent from messages and support tickets.
+- Multi-label Tagging Classification: Apply multiple relevant tags and categories to content simultaneously for better organization and searchability.
+- Context-Aware Image Classification: Classify real-world images with understanding of context, objects, scenes, and situations using descriptive labels.
+
+
+## API Endpoint
+
+```
+POST /v1/classification
+```
+
+
+## Quick Start
+
+```javascript JavaScript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.classification({
+  "dataset": [
+        {
+              "type": "image",
+              "value": "https://jigsawstack.com/preview/classification-example-1.jpg"
+        },
+        {
+              "type": "image",
+              "value": "https://jigsawstack.com/preview/classification-example-2.jpg"
+        }
+  ],
+  "labels": [
+        {
+              "type": "text",
+              "value": "hotdog"
+        },
+        {
+              "type": "text",
+              "value": "not a hotdog"
+        }
+  ]
+})
+```
+
+## Response Example
+
+```json
+{
+  "success": true,
+  "predictions": [
+        "not a hotdog",
+        "hotdog"
+  ],
+  "_usage": {
+        "input_tokens": 69,
+        "output_tokens": 14,
+        "inference_time_tokens": 3457,
+        "total_tokens": 3540
+  }
+}
+```
+## Use Cases & Applications
+
+### Content Moderation
+
+Automatically classify user-generated content to maintain platform standards and safety.
+- **Example**: Classify images as "safe", "inappropriate", or "needs review" for social media platforms.
+- **Implementation**: Use custom labels to categorize content based on your platform's guidelines, with an "unknown" label to handle edge cases.
+
+### E-commerce Product Categorization
+
+Classify product images into relevant categories for better organization and searchability.
+- **Example**: Automatically sort uploaded product images into categories like "electronics", "clothing", "home goods", or "other".
+- **Implementation**: Define your product categories as labels and let the API classify new inventory images, reducing manual categorization work.
+
+### Document Classification
+
+Organize and route documents based on their content and visual characteristics.
+- **Example**: Classify scanned documents as "invoice", "receipt", "contract", "form", or "unknown document type".
+- **Implementation**: Use the classification API to automatically sort incoming documents for processing workflows.
+
+### Medical Image Analysis
+
+Assist healthcare professionals by providing preliminary classifications of medical imagery.
+- **Example**: Classify X-rays, MRIs, or other medical images into diagnostic categories or flag for specialist review.
+- **Implementation**: Create labels for different conditions or anatomical features, with careful handling of uncertain cases.
+
+<Note>Find more information on Classification API [here](/docs/api-reference/ai/classification)</Note>
