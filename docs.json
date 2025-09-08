@@ -164,7 +164,7 @@
           },
           {
             "group": "Web Search",
-            "pages": ["docs/api-reference/web/ai-search", "docs/api-reference/web/search-suggestion",  "docs/api-reference/web/deep-research"]
+            "pages": ["docs/api-reference/web/ai-search", "docs/api-reference/web/search-suggestions",  "docs/api-reference/web/deep-research"]
           },
           {
             "group": "Translate",
@@ -187,8 +187,8 @@
             "pages": [
               "docs/api-reference/validate/nsfw",
               "docs/api-reference/validate/profanity",
-              "docs/api-reference/validate/spellcheck",
-              "docs/api-reference/ai/spam-check"
+              "docs/api-reference/validate/spell-check",
+              "docs/api-reference/validate/spam-check"
             ]
           },
           {
