@@ -1,0 +1,23 @@
+---
+title: "Delete a Prompt"
+api: "DELETE https://api.jigsawstack.com/v1/prompt_engine/{id}"
+description: "Deletes a prompt engine."
+---
+
+import PromptEngineDeleteSnippet from "/snippets/code-req-examples/prompt-engine-delete.mdx";
+
+### Path Params
+
+<ParamField path="id" type="string" required>
+  The prompt ID.
+</ParamField>
+
+<Snippet file="header.mdx" />
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<PromptEngineDeleteSnippet />

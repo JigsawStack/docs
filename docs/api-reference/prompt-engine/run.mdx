@@ -1,0 +1,28 @@
+---
+title: "Run Prompt Engine"
+api: "POST https://api.jigsawstack.com/v1/prompt_engine/{id}"
+description: "Execute a prompt engine using the prompt engine id."
+---
+
+import PromptEngineRunSnippet from "/snippets/code-req-examples/prompt-engine-run.mdx";
+
+<Snippet file="header.mdx" />
+
+### Body
+
+<ParamField body="input_values" type="object">
+  The input values. This is required if the `inputs` parameter was specified
+  when creating a prompt. Each input value has a `500000` character limit
+</ParamField>
+
+<ParamField body="stream" type="boolean" defaultValue="false">
+  If set, partial message chunk will be sent.
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<PromptEngineRunSnippet />
