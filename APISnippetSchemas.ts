@@ -6,6 +6,7 @@ export interface APIType {
   query?: Record<string, string>;
   sdk_key_string: string;
   skip_request?: boolean;
+  direct_id?: string;
 }
 
 export const APISchemas: {
@@ -286,12 +287,11 @@ export const APISchemas: {
     sdk_key_string: "prompt_engine.run",
   },
   "prompt-engine-retrieve": {
-    path: "/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5",
+    path: "/v1/prompt_engine/${id}",
     method: "GET",
-    query: {
-      id: "0073d008-da9b-4c27-90a8-0240f3ecd4f5",
-    },
+    direct_id: "dc578c69-6eb5-4c5b-82ab-9f74077cfdd5",
     sdk_key_string: "prompt_engine.get",
+    skip_request: true,
   },
   "prompt-engine-list": {
     path: "/v1/prompt_engine",
@@ -304,9 +304,7 @@ export const APISchemas: {
   "prompt-engine-delete": {
     path: "/v1/prompt_engine/${id}",
     method: "DELETE",
-    query: {
-      promptId: "dc578c69-6eb5-4c5b-82ab-9f74077cfdd5",
-    },
+    direct_id: "dc578c69-6eb5-4c5b-82ab-9f74077cfdd5",
     sdk_key_string: "prompt_engine.delete",
     skip_request: true,
   },
@@ -328,6 +326,6 @@ export const APISchemas: {
         about: "Santorini",
       },
     },
-    sdk_key_string: "prompt_engine.run_direct",
+    sdk_key_string: "prompt_engine.run_prompt_direct",
   }
 };

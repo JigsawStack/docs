@@ -7,43 +7,52 @@ import { APISchemas, APIType } from "./APISnippetSchemas";
 const url = "https://api.jigsawstack.com/";
 
 const getSDKJSCode = (api: APIType) => {
+  const params = api.direct_id 
+    ? `"${api.direct_id}"` 
+    : JSON.stringify(
+        {
+          ...api?.body,
+          ...api?.query,
+        },
+        null,
+        6
+      );
+
   const JSSDKCode = `import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
-const response = await jigsaw.${api.sdk_key_string}(${JSON.stringify(
-    {
-      ...api?.body,
-      ...api?.query,
-    },
-    null,
-    6
-  )})`;
+const response = await jigsaw.${api.sdk_key_string}(${params})`;
 
   return JSSDKCode;
 };
 
 
 const getSDKPythonCode = (api: APIType) => {
-  const jsonString = JSON.stringify(
-    {
-      ...api?.body,
-      ...api?.query,
-    },
-    null,
-    6
-  );
+  let params;
   
-  // Convert JavaScript/JSON boolean syntax to Python boolean syntax
-  const pythonCompatibleJson = jsonString
-    .replace(/: true/g, ': True')
-    .replace(/: false/g, ': False');
+  if (api.direct_id) {
+    params = `"${api.direct_id}"`;
+  } else {
+    const jsonString = JSON.stringify(
+      {
+        ...api?.body,
+        ...api?.query,
+      },
+      null,
+      6
+    );
+    
+    params = jsonString
+      .replace(/: true/g, ': True')
+      .replace(/: false/g, ': False');
+  }
 
   const pythonCode = `from jigsawstack import JigsawStack
 
 jigsaw = JigsawStack(api_key="your-api-key")
 
-response = jigsaw.${api.sdk_key_string}(${pythonCompatibleJson})`;
+response = jigsaw.${api.sdk_key_string}(${params})`;
 
   return pythonCode;
 };
