@@ -5,7 +5,7 @@ description: "Generate vector embeddings from various content types including te
 ---
 import EmbeddingSnippet from "/snippets/code-req-examples/embedding.mdx";
 import BasicResponse from "/snippets/helpers/basic-response.mdx";
-import FilesParam from "/snippets/helpers/files-param.mdx";
+import FilesParam from "/snippets/helpers/params/files-param.mdx";
 
 ## Request Parameters
 
@@ -42,7 +42,7 @@ import FilesParam from "/snippets/helpers/files-param.mdx";
   The vector embedding representation of the input content. This is an array of arrays of floating-point numbers.
 </ResponseField>
 
-<ResponseField name="chunks" type="array<number>">
+<ResponseField name="chunks" type="array<string> | array<object>">
   Array of text chunks with timestamps. Only available for text and audio content types.
   <Expandable title="Chunk Object">
     <ResponseField name="text" type="string">
