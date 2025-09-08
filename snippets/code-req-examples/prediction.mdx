@@ -63,7 +63,7 @@ response = jigsaw.prediction({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com/v1/ai/prediction \
+curl https://api.jigsawstack.com//v1/ai/prediction \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -72,7 +72,7 @@ curl https://api.jigsawstack.com/v1/ai/prediction \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/ai/prediction');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/ai/prediction');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -90,7 +90,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com/v1/ai/prediction')
+uri = URI('https://api.jigsawstack.com//v1/ai/prediction')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -143,7 +143,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"dataset":[{"date":"2023-01-01","value":353459},{"date":"2023-01-02","value":313734},{"date":"2023-01-03","value":333774},{"date":"2023-01-04","value":348636},{"date":"2023-01-05","value":278903}],"steps":3}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/ai/prediction", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/ai/prediction", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -173,7 +173,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com/v1/ai/prediction"))
+    .uri(URI.create("https://api.jigsawstack.com//v1/ai/prediction"))
     .POST(BodyPublishers.ofString("{\"dataset\":[{\"date\":\"2023-01-01\",\"value\":353459},{\"date\":\"2023-01-02\",\"value\":313734},{\"date\":\"2023-01-03\",\"value\":333774},{\"date\":\"2023-01-04\",\"value\":348636},{\"date\":\"2023-01-05\",\"value\":278903}],\"steps\":3}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -212,7 +212,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com/v1/ai/prediction")!
+let url = URL(string: "https://api.jigsawstack.com//v1/ai/prediction")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -246,7 +246,7 @@ void main() async {
 
   final data = '{"dataset":[{"date":"2023-01-01","value":353459},{"date":"2023-01-02","value":313734},{"date":"2023-01-03","value":333774},{"date":"2023-01-04","value":348636},{"date":"2023-01-05","value":278903}],"steps":3}';
 
-  final url = Uri.parse('https://api.jigsawstack.com/v1/ai/prediction');
+  final url = Uri.parse('https://api.jigsawstack.com//v1/ai/prediction');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -270,7 +270,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"dataset\":[{\"date\":\"2023-01-01\",\"value\":353459},{\"date\":\"2023-01-02\",\"value\":313734},{\"date\":\"2023-01-03\",\"value\":333774},{\"date\":\"2023-01-04\",\"value\":348636},{\"date\":\"2023-01-05\",\"value\":278903}],\"steps\":3}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com/v1/ai/prediction")
+  .url("https://api.jigsawstack.com//v1/ai/prediction")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -288,7 +288,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/ai/prediction");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/ai/prediction");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -323,8 +323,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 53,
             "output_tokens": 49,
-            "inference_time_tokens": 809,
-            "total_tokens": 911
+            "inference_time_tokens": 2094,
+            "total_tokens": 2196
       }
 }
     ```

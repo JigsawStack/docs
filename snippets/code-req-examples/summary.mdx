@@ -23,7 +23,7 @@ response = jigsaw.summary({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com/v1/ai/summary \
+curl https://api.jigsawstack.com//v1/ai/summary \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -32,7 +32,7 @@ curl https://api.jigsawstack.com/v1/ai/summary \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/ai/summary');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/ai/summary');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -49,7 +49,7 @@ curl_close($ch);
     ```ruby Ruby
 require 'net/http'
 
-uri = URI('https://api.jigsawstack.com/v1/ai/summary')
+uri = URI('https://api.jigsawstack.com//v1/ai/summary')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -78,7 +78,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"text":"The Leaning Tower of Pisa, or simply, the Tower of Pisa, is the campanile, or freestanding bell tower, of Pisa Cathedral. It is situated behind the Cathedral and is the third-oldest structure in the city\s`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/ai/summary", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/ai/summary", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -108,7 +108,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com/v1/ai/summary"))
+    .uri(URI.create("https://api.jigsawstack.com//v1/ai/summary"))
     .POST(BodyPublishers.ofString("{\"text\":\"The Leaning Tower of Pisa, or simply, the Tower of Pisa, is the campanile, or freestanding bell tower, of Pisa Cathedral. It is situated behind the Cathedral and is the third-oldest structure in the city\\s"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -120,7 +120,7 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
     ```swift Swift
 import Foundation
 
-let url = URL(string: "https://api.jigsawstack.com/v1/ai/summary")!
+let url = URL(string: "https://api.jigsawstack.com//v1/ai/summary")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -154,7 +154,7 @@ void main() async {
 
   final data = '{"text":"The Leaning Tower of Pisa, or simply, the Tower of Pisa, is the campanile, or freestanding bell tower, of Pisa Cathedral. It is situated behind the Cathedral and is the third-oldest structure in the city\\s';
 
-  final url = Uri.parse('https://api.jigsawstack.com/v1/ai/summary');
+  final url = Uri.parse('https://api.jigsawstack.com//v1/ai/summary');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -178,7 +178,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"text\":\"The Leaning Tower of Pisa, or simply, the Tower of Pisa, is the campanile, or freestanding bell tower, of Pisa Cathedral. It is situated behind the Cathedral and is the third-oldest structure in the city\\s"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com/v1/ai/summary")
+  .url("https://api.jigsawstack.com//v1/ai/summary")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -196,7 +196,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/ai/summary");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/ai/summary");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -214,15 +214,15 @@ string responseBody = await response.Content.ReadAsStringAsync();
 {
       "success": true,
       "summary": [
-            "The Leaning Tower of Pisa is the freestanding bell tower of Pisa Cathedral, located behind the Cathedral and is the third-oldest structure in the city's Cathedral Square.",
-            "The tower's tilt began in the 12th century due to an inadequate foundation on soft ground, increasing until stabilization efforts in the late 20th and early 21st centuries.",
-            "The tower's height is approximately 55.86-56.67 meters, with a base wall width of 2.44 meters, an estimated weight of 14,500 tonnes, and either 296 or 294 steps."
+            "The Leaning Tower of Pisa is the freestanding bell tower of Pisa Cathedral, located behind the Cathedral and the third-oldest structure in Cathedral Square.",
+            "The tower's tilt started in the 12th century during construction due to a soft foundation and increased until stabilization efforts in the late 20th and early 21st centuries.",
+            "The tower is approximately 55.86 to 56.67 meters tall, with a base wall width of 2.44 meters, an estimated weight of 14,500 tonnes, and either 296 or 294 steps."
       ],
       "_usage": {
             "input_tokens": 256,
-            "output_tokens": 135,
-            "inference_time_tokens": 1552,
-            "total_tokens": 1943
+            "output_tokens": 132,
+            "inference_time_tokens": 1600,
+            "total_tokens": 1988
       }
 }
     ```
