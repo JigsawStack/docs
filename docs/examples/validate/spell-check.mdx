@@ -3,8 +3,6 @@ title: "Spell Check"
 description: "Learn how to use JigsawStack's Spell Check API to detect and correct spelling errors in text content"
 ---
 
-# Spell Check
-
 ## Overview
 
 The Spell Check API provides intelligent detection and correction of spelling errors in text content. Designed to be both accurate and context-aware, this API can improve content quality for various text-based applications without requiring complex NLP knowledge or infrastructure.
@@ -15,6 +13,64 @@ The Spell Check API provides intelligent detection and correction of spelling er
 - Support for multiple languages
 - Flexible output options with correction suggestions
 - Real-time error detection for interactive applications
+
+
+## API Endpoint
+
+```
+POST /v1/validate/spell_check
+```
+
+## Quick Start
+
+```javascript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.validate.spellcheck({
+  "text": "This sentense has a speling mistake."
+})
+```
+
+
+## Response Example
+
+```json
+{
+  "success": true,
+  "misspellings_found": true,
+  "misspellings": [
+        {
+              "word": "sentense",
+              "startIndex": 5,
+              "endIndex": 13,
+              "expected": [
+                    "sentence"
+              ],
+              "auto_corrected": true
+        },
+        {
+              "word": "speling",
+              "startIndex": 20,
+              "endIndex": 27,
+              "expected": [
+                    "spelling",
+                    "spewing",
+                    "spieling"
+              ],
+              "auto_corrected": true
+        }
+  ],
+  "auto_correct_text": "This sentence has a spelling mistake.",
+  "_usage": {
+        "input_tokens": 13,
+        "output_tokens": 83,
+        "inference_time_tokens": 1317,
+        "total_tokens": 1413
+  }
+}
+```
 
 ## Use Cases
 
@@ -27,364 +83,6 @@ Create learning applications that help students improve their spelling.
 ### Form Validation
 Enhance user experience by detecting spelling errors before form submission.
 
-## API Endpoint
-
-```
-POST /v1/validate/spell_check
-```
-
-## Quick Start
-
-### Python
-
-```python
-from jigsawstack import JigsawStack
-
-jigsaw = JigsawStack(api_key="your-api-key")
-
-response = jigsaw.validate.spellcheck({
-  "text": "This sentense has some speling errors that need to be corected.",
-  "language_code": "en"
-})
-
-print(response)
-```
-
-### JavaScript
-
-```javascript
-import { JigsawStack } from 'jigsawstack';
-
-const jigsaw = new JigsawStack('your-api-key');
-
-const response = await jigsaw.validate.spellcheck({
-  text: "This sentense has some speling errors that need to be corected.",
-  language_code: "en"
-});
-
-console.log(response);
-```
-
-### cURL
-
-```bash
-curl -X POST https://api.jigsawstack.com/v1/validate/spell_check \
-  -H "Content-Type: application/json" \
-  -H "x-api-key: your-api-key" \
-  -d '{
-    "text": "This sentense has some speling errors that need to be corected.",
-    "language_code": "en"
-  }'
-```
-
-## Response Example
-
-```json
-{
-  "success": true,
-  "message": "Validated successfully",
-  "misspellings_found": 3,
-  "auto_correct_text": "This sentence has some spelling errors that need to be corrected."
-}
-```
-
-## Request Parameters
-
-### Body Parameters
-
-**text** (string, required)
-- The text content to check for spelling errors.
-- **Constraints:** Maximum 10,000 characters per request
-
-**language_code** (string, optional)
-- The language code of the text being checked
-- Default: "en" (English)
-- Supported languages: "en" (English), "es" (Spanish), "fr" (French), "de" (German), "it" (Italian), "pt" (Portuguese)
-
-### Headers
-
-**x-api-key** (string, required)
-- Your JigsawStack API key
-
-## Response Structure
-
-**success** (boolean)
-- Indicates whether the API call was successful.
-
-**message** (string)
-- A message describing the result of the operation.
-
-**misspellings_found** (number)
-- The number of spelling errors found in the text.
-
-**auto_correct_text** (string)
-- The text with spelling errors automatically corrected.
-- If no misspellings were found, returns the original text.
-
-## Best Practices
-
-### Handling Long Documents
-
-When checking lengthy documents, split them into smaller chunks to stay within API limits:
-
-```javascript
-function checkSpellingInLongDocument(document) {
-  // Split document into chunks of 10,000 characters or less
-  const chunks = [];
-  for (let i = 0; i < document.length; i += 9000) {
-    chunks.push(document.substring(i, i + 9000));
-  }
-  
-  // Process each chunk
-  const checkAllChunks = async () => {
-    const promises = chunks.map(chunk => 
-      jigsaw.validate.spellcheck({
-        text: chunk,
-        language_code: "en"
-      })
-    );
-    
-    const responses = await Promise.all(promises);
-    
-    // Count total misspellings
-    const totalMisspellings = responses.reduce(
-      (sum, response) => sum + response.misspellings_found, 
-      0
-    );
-    
-    // Combine corrected text
-    const correctedDocument = responses.map(r => r.auto_correct_text).join("");
-    
-    return {
-      correctedDocument,
-      totalMisspellings,
-      accuracy: 1 - (totalMisspellings / document.split(/\s+/).length)
-    };
-  };
-  
-  return checkAllChunks();
-}
-```
-
-### Real-time Spell Checking
-
-For text editors or input fields with real-time spell checking:
-
-```javascript
-import { JigsawStack } from 'jigsawstack';
-import { useState, useEffect } from 'react';
-import debounce from 'lodash.debounce';
-
-const jigsaw = new JigsawStack('your-api-key');
-
-function SpellCheckEditor() {
-  const [text, setText] = useState('');
-  const [correctedText, setCorrectedText] = useState('');
-  const [isChecking, setIsChecking] = useState(false);
-  const [errors, setErrors] = useState(0);
-  
-  // Example of real-time spell checking with debounce
-  useEffect(() => {
-    if (!text) return;
-    
-    // Debounced spell check function (runs 500ms after user stops typing)
-    const checkSpelling = debounce(async (content) => {
-      if (!content || content.length < 5) return;
-      
-      setIsChecking(true);
-      try {
-        const response = await jigsaw.validate.spellcheck({
-          text: content,
-          language_code: "en"
-        });
-        
-        if (response.misspellings_found > 0) {
-          setCorrectedText(response.auto_correct_text);
-          setErrors(response.misspellings_found);
-        } else {
-          setCorrectedText('');
-          setErrors(0);
-        }
-      } catch (error) {
-        console.error("Spell check error:", error);
-      } finally {
-        setIsChecking(false);
-      }
-    }, 500);
-    
-    // Call spell check whenever text changes
-    setText(text);
-    checkSpelling(text);
-    
-    return () => {
-      checkSpelling.cancel();
-    };
-  }, [text]);
-  
-  return (
-    <div>
-      <textarea 
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Type here to check spelling in real-time"
-        rows={10}
-      />
-      {isChecking && <div>Checking spelling...</div>}
-      {errors > 0 && (
-        <div>
-          <p>{errors} spelling errors found</p>
-          <div>
-            <strong>Suggested correction:</strong>
-            <p>{correctedText}</p>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-```
-
-## Example Applications
-
-### CMS Integration
-
-```javascript
-// Example: Add spell check to a CMS before publishing
-async function validateArticleBeforePublish(article) {
-  const warnings = [];
-  
-  // Check title and body separately
-  const titleCheck = await jigsaw.validate.spellcheck({
-    text: article.title,
-    language_code: "en"
-  });
-  
-  const bodyCheck = await jigsaw.validate.spellcheck({
-    text: article.body,
-    language_code: "en"
-  });
-  
-  // Prepare warnings if spelling errors were found
-  
-  if (titleCheck.misspellings_found > 0) {
-    warnings.push({
-      type: "title_spelling",
-      message: `${titleCheck.misspellings_found} spelling errors found in title`,
-      suggestion: titleCheck.auto_correct_text
-    });
-  }
-  
-  if (bodyCheck.misspellings_found > 0) {
-    warnings.push({
-      type: "body_spelling",
-      message: `${bodyCheck.misspellings_found} spelling errors found in content`,
-      suggestion: "Review the content editor for spelling suggestions"
-    });
-  }
-  
-  return {
-    canPublish: true, // Still allow publishing with warnings
-    warnings,
-    suggestedTitle: titleCheck.auto_correct_text,
-    suggestedBody: bodyCheck.auto_correct_text
-  };
-}
-```
-
-### Social Media Post Enhancer
-
-```javascript
-// Example: Pre-process social media posts to fix spelling
-async function enhanceSocialMediaPost(post) {
-  try {
-    // Check for spelling errors
-    const spellCheck = await jigsaw.validate.spellcheck({
-      text: post.content,
-      language_code: post.language || "en"
-    });
-    
-    // Apply corrections if needed
-    return {
-      ...post,
-      text: spellCheck.misspellings_found > 0
-        ? spellCheck.auto_correct_text
-        : post.content,
-      tags: post.tags,
-      media: post.media,
-      schedule: post.schedule,
-      platforms: post.platforms,
-      enhancements: {
-        ...post.enhancements,
-        spelling_corrected: spellCheck.misspellings_found > 0,
-        original_text: spellCheck.misspellings_found > 0
-          ? post.content
-          : null,
-        auto_correct: spellCheck.misspellings_found > 0
-          ? spellCheck.auto_correct_text
-          : null
-      },
-      metadata: {
-        ...post.metadata,
-        spellErrors: spellCheck.misspellings_found,
-        quality_score: calculateQualityScore(post, spellCheck)
-      }
-    };
-  } catch (error) {
-    console.error("Error enhancing post:", error);
-    return post; // Return original post if enhancement fails
-  }
-}
-```
-
-### SEO Meta Content Checker
-
-```javascript
-// Example: SEO tool that checks spelling in meta content
-async function checkMetaContentSpelling(website) {
-  const metaContent = {
-    title: website.seoTitle,
-    description: website.metaDescription,
-    keywords: website.metaKeywords,
-    og_title: website.ogTitle,
-    og_description: website.ogDescription
-  };
-  
-  const results = {};
-  
-  // Check each meta element
-  for (const [key, content] of Object.entries(metaContent)) {
-    if (!content) continue;
-    
-    const spellCheck = await jigsaw.validate.spellcheck({
-      text: content,
-      language_code: "en"
-    });
-    
-    results[key] = {
-      hasErrors: spellCheck.misspellings_found > 0,
-      errorCount: spellCheck.misspellings_found,
-      correction: spellCheck.auto_correct_text
-    };
-  }
-  
-  // Calculate overall score (0-100)
-  const totalErrors = Object.values(results).reduce(
-    (sum, result) => sum + result.errorCount, 
-    0
-  );
-  
-  const totalItems = Object.keys(results).length;
-  const seoSpellingScore = Math.max(0, 100 - (totalErrors * 10));
-  
-  return {
-    metaSpellingResults: results,
-    seoSpellingScore,
-    recommendation: seoSpellingScore < 80 
-      ? "Correct spelling errors in meta content for better SEO performance"
-      : "Meta content spelling looks good"
-  };
-}
-```
 
 ## FAQ
 
@@ -399,3 +97,5 @@ The spell checker includes common terminology from various fields including tech
 ### Can I use the spell checker for languages other than English?
 
 Yes, the spell checker supports multiple languages including Spanish, French, German, Italian, and Portuguese. Make sure to specify the correct language_code parameter for the language of your text to get accurate results.
+
+<Note>Find more information on Spell Check API [here](/docs/api-reference/ai/spell-check)</Note>

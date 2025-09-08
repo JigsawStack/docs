@@ -19,13 +19,8 @@ The NSFW (Not Safe For Work) Detection API helps you identify potentially inappr
 POST /v1/validate/nsfw
 ```
 
-## Initial requirements
 
-- Setup a JigsawStack account (if you don't have an account already)
-- Get your API key from here.
-- Install the Node.js SDK
-
-## Check a file
+## Quick Start
 
 
 ```javascript Javascript
@@ -35,14 +30,14 @@ const jigsawstack = JigsawStack({
   apiKey: "your-api-key",
 });
 
-const url = "<the-image-url>";
+const url = "https://jigsawstack.com/preview/nsfw-example.jpg";
 const result = await jigsawstack.validate.nsfw(url);
 
 console.log(result);
 ```
 
 
-## Sample result
+## Response Example
 
 ```json
 {
@@ -55,3 +50,5 @@ console.log(result);
   "gore_score": 0.003681591246277094
 }
 ```
+
+<Note>Find more information on NSFW Detection API [here](/docs/api-reference/ai/nsfw)</Note>

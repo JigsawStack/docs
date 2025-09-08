@@ -2,9 +2,6 @@
 title: "Spam Detection"
 description: "Learn how to use JigsawStack's Spam Detection API to identify and filter unwanted messages and content"
 ---
-
-# Spam Detection
-
 ## Overview
 
 The Spam Detection API helps you identify unwanted or unsolicited content across various channels, including emails, comments, reviews, and form submissions. Using advanced machine learning algorithms, it analyzes content to distinguish between legitimate messages and spam with high accuracy.
@@ -16,6 +13,43 @@ The Spam Detection API helps you identify unwanted or unsolicited content across
 - Low false positive rates for minimal legitimate content filtering
 - Adaptable to domain-specific contexts
 
+
+## API Endpoint
+
+```
+POST /v1/validate/spam_check
+```
+
+## Quick Start
+
+```javascript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.validate.spamcheck({
+  "text": "Congratulations! You've won a free iPhone! Click here to claim now!"
+})
+```
+
+
+## Response Example
+
+```json
+{
+  "success": true,
+  "check": {
+        "score": 0.95,
+        "is_spam": true
+  },
+  "_usage": {
+        "input_tokens": 20,
+        "output_tokens": 14,
+        "inference_time_tokens": 608,
+        "total_tokens": 642
+  }
+}
+```
 ## Use Cases
 
 ### Comment Protection
@@ -27,94 +61,6 @@ Identify spam submissions in website contact forms and lead generation pages.
 ### Email Filtering
 Add an additional layer of spam protection to email communications.
 
-## API Endpoint
-
-```
-POST /v1/validate/spam_check
-```
-
-## Quick Start
-
-### Python
-
-```python
-from jigsawstack import JigsawStack
-
-jigsaw = JigsawStack(api_key="your-api-key")
-
-response = jigsaw.validate.spamcheck({
-  "text": "CONGRATULATIONS! You've been selected to receive a FREE iPhone 13 Pro Max! Click here to claim now: http://bit.ly/claim-free-iphone"
-})
-
-print(response)
-```
-
-### JavaScript
-
-```javascript
-import { JigsawStack } from 'jigsawstack';
-
-const jigsaw = new JigsawStack('your-api-key');
-
-const response = await jigsaw.validate.spamcheck({
-  text: "CONGRATULATIONS! You've been selected to receive a FREE iPhone 13 Pro Max! Click here to claim now: http://bit.ly/claim-free-iphone"
-});
-
-console.log(response);
-```
-
-### cURL
-
-```bash
-curl -X POST https://api.jigsawstack.com/v1/validate/spam_check \
-  -H "Content-Type: application/json" \
-  -H "x-api-key: your-api-key" \
-  -d '{
-    "text": "CONGRATULATIONS! You've been selected to receive a FREE iPhone 13 Pro Max! Click here to claim now: http://bit.ly/claim-free-iphone"
-  }'
-```
-
-## Response Example
-
-```json
-{
-  "success": true,
-  "check": {
-    "is_spam": true,
-    "score": 0.92
-  }
-}
-```
-
-## Request Parameters
-
-### Body Parameters
-
-**text** (string | string[], required)
-- The text to check for spam.
-- The `text` parameter supports two types:
-  - `string` - `{"text":"Your text here"}`
-  - `Array<string>` - `{"text":["Text 1", "Text 2"]}`
-- **Constraints:** Maximum 50,000 characters
-
-### Headers
-
-**x-api-key** (string, required)
-- Your JigsawStack API key
-
-## Response Structure
-
-**success** (boolean)
-- Indicates whether the API call was successful.
-
-**check** (object)
-- Contains the spam check results.
-
-**check.is_spam** (boolean)
-- Indicates whether the text is spam. If the text is not spam, this will be false.
-
-**check.score** (number)
-- The spam score of the text. The lower the score, the less likely it will be spam.
 
 ## Best Practices
 
@@ -186,166 +132,4 @@ const classification = classifyMessage(response);
 // Handle message based on classification
 ```
 
-## Example Applications
-
-### Comment Moderation System
-
-```javascript
-// Example: Comment moderation system with spam detection
-class CommentModerator {
-  constructor(apiKey) {
-    this.jigsaw = new JigsawStack(apiKey);
-    this.pendingComments = [];
-    this.approvedComments = [];
-    this.rejectedComments = [];
-  }
-  
-  async processNewComment(comment) {
-    try {
-      // Check for spam
-      const spamCheckResult = await this.jigsaw.validate.spamcheck({
-        text: comment.content
-      });
-      
-      if (!spamCheckResult.success) {
-        // API call failed, add to pending for manual review
-        comment.status = 'pending';
-        comment.moderationNote = 'Spam check failed, needs manual review';
-        this.pendingComments.push(comment);
-        return { status: 'pending', reason: 'api_error' };
-      }
-      
-      const { is_spam, score } = spamCheckResult.check;
-      
-      // Determine action based on spam score
-      if (score > 0.8) {
-        // High confidence spam
-        comment.status = 'rejected';
-        comment.moderationNote = `Rejected automatically: spam score ${score}`;
-        this.rejectedComments.push(comment);
-        return { status: 'rejected', reason: 'high_spam_score', score };
-      } else if (score > 0.5) {
-        // Likely spam, queue for review
-        comment.status = 'pending';
-        comment.moderationNote = `Flagged for review: spam score ${score}`;
-        this.pendingComments.push(comment);
-        return { status: 'pending', reason: 'moderate_spam_score', score };
-      } else {
-        // Approved
-        comment.status = 'approved';
-        this.approvedComments.push(comment);
-        return { status: 'approved', score };
-      }
-    } catch (error) {
-      console.error('Error in comment moderation:', error);
-      comment.status = 'pending';
-      comment.moderationNote = 'System error, needs manual review';
-      this.pendingComments.push(comment);
-      return { status: 'pending', reason: 'system_error' };
-    }
-  }
-  
-  getCommentsAwaitingModeration() {
-    return this.pendingComments;
-  }
-  
-  getApprovedComments() {
-    return this.approvedComments;
-  }
-  
-  // Manual moderation methods
-  approveComment(commentId) {
-    // Implementation for manual approval
-  }
-  
-  rejectComment(commentId) {
-    // Implementation for manual rejection
-  }
-}
-
-// Usage
-const moderator = new CommentModerator('your-api-key');
-
-// When a new comment is submitted
-app.post('/comments', async (req, res) => {
-  const newComment = {
-    id: generateUniqueId(),
-    author: req.body.author,
-    content: req.body.content,
-    timestamp: new Date().toISOString()
-  };
-  
-  const moderationResult = await moderator.processNewComment(newComment);
-  
-  if (moderationResult.status === 'approved') {
-    res.status(201).json({ 
-      message: 'Comment posted successfully',
-      comment: newComment
-    });
-  } else if (moderationResult.status === 'pending') {
-    res.status(202).json({ 
-      message: 'Comment submitted and awaiting moderation'
-    });
-  } else {
-    res.status(403).json({ 
-      message: 'Comment rejected due to policy violation'
-    });
-  }
-});
-```
-
-### Contact Form Spam Filter
-
-```javascript
-// Example: Contact form submission with spam filtering
-async function handleContactFormSubmission(formData) {
-  // Combine form fields for spam analysis
-  const textToCheck = [
-    `Name: ${formData.name}`,
-    `Email: ${formData.email}`,
-    `Subject: ${formData.subject}`,
-    `Message: ${formData.message}`
-  ].join('\n');
-  
-  try {
-    // Check for spam
-    const result = await jigsaw.validate.spamcheck({
-      text: textToCheck
-    });
-    
-    if (!result.success) {
-      return { success: false, error: 'Unable to process submission' };
-    }
-    
-    const { is_spam, score } = result.check;
-    
-    // Handle based on spam status
-    if (is_spam) {
-      // Log spam attempt but don't tell the user
-      logSpamAttempt(formData, score);
-      
-      if (score > 0.9) {
-        // High confidence spam, silently drop
-        return { success: true, message: 'Thank you for your submission!' };
-      } else {
-        // Lower confidence, flag for review
-        saveToReviewQueue(formData, score);
-        return { success: true, message: 'Thank you for your submission! Our team will review it shortly.' };
-      }
-    } else {
-      // Not spam, process normally
-      const notificationSent = await sendContactNotification(formData);
-      saveToDatabase(formData);
-      
-      if (notificationSent) {
-        return { success: true, message: 'Thank you for your message! We will respond shortly.' };
-      } else {
-        return { success: true, message: 'Thank you for your message! It has been saved to our system.' };
-      }
-    }
-  } catch (error) {
-    console.error('Contact form processing error:', error);
-    return { success: false, error: 'An error occurred processing your submission' };
-  }
-}
-```
+<Note>Find more information on Spam Detection API [here](/docs/api-reference/ai/spam-check)</Note>
