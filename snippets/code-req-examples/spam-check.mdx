@@ -19,7 +19,7 @@ response = jigsaw.validate.spamcheck({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com/v1/validate/spam_check \
+curl https://api.jigsawstack.com//v1/validate/spam_check \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -28,7 +28,7 @@ curl https://api.jigsawstack.com/v1/validate/spam_check \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/validate/spam_check');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/validate/spam_check');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -45,7 +45,7 @@ curl_close($ch);
     ```ruby Ruby
 require 'net/http'
 
-uri = URI('https://api.jigsawstack.com/v1/validate/spam_check')
+uri = URI('https://api.jigsawstack.com//v1/validate/spam_check')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -74,7 +74,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"text":"Congratulations! You\ve`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/validate/spam_check", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/validate/spam_check", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -104,7 +104,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com/v1/validate/spam_check"))
+    .uri(URI.create("https://api.jigsawstack.com//v1/validate/spam_check"))
     .POST(BodyPublishers.ofString("{\"text\":\"Congratulations! You\\ve"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -116,7 +116,7 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
     ```swift Swift
 import Foundation
 
-let url = URL(string: "https://api.jigsawstack.com/v1/validate/spam_check")!
+let url = URL(string: "https://api.jigsawstack.com//v1/validate/spam_check")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -150,7 +150,7 @@ void main() async {
 
   final data = '{"text":"Congratulations! You\\ve';
 
-  final url = Uri.parse('https://api.jigsawstack.com/v1/validate/spam_check');
+  final url = Uri.parse('https://api.jigsawstack.com//v1/validate/spam_check');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -174,7 +174,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"text\":\"Congratulations! You\\ve"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com/v1/validate/spam_check")
+  .url("https://api.jigsawstack.com//v1/validate/spam_check")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -192,7 +192,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/validate/spam_check");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/validate/spam_check");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -216,8 +216,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 20,
             "output_tokens": 14,
-            "inference_time_tokens": 608,
-            "total_tokens": 642
+            "inference_time_tokens": 677,
+            "total_tokens": 711
       }
 }
     ```

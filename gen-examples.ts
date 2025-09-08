@@ -4,7 +4,7 @@ import { CurlGenerator } from "curl-generator";
 import * as curlconverter from "curlconverter";
 import { APISchemas, APIType } from "./APISnippetSchemas";
 
-const url = "https://api.jigsawstack.com/v1";
+const url = "https://api.jigsawstack.com/";
 
 const getSDKJSCode = (api: APIType) => {
   const JSSDKCode = `import { JigsawStack } from "jigsawstack";

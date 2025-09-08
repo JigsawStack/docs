@@ -101,7 +101,7 @@
           },
           {
             "group": "Data",
-            "pages": ["docs/examples/data/embedding" ,"docs/examples/data/prediction", "docs/examples/data/text-to-sql"]
+            "pages": ["docs/examples/data/embedding", "docs/examples/data/embeddingV2", "docs/examples/data/prediction", "docs/examples/data/text-to-sql"]
           },
           {
             "group": "Vision",
@@ -172,7 +172,7 @@
           },
           {
             "group": "Data",
-            "pages": ["docs/api-reference/ai/embedding", "docs/api-reference/ai/prediction", "docs/api-reference/ai/text-to-sql"]
+            "pages": ["docs/api-reference/ai/embedding", "docs/api-reference/ai/embeddingV2", "docs/api-reference/ai/prediction", "docs/api-reference/ai/text-to-sql"]
           },
           {
             "group": "Vision",
