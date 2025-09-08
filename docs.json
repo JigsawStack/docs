@@ -198,6 +198,17 @@
           {
             "group": "File Store",
             "pages": ["docs/api-reference/store/file/add", "docs/api-reference/store/file/get", "docs/api-reference/store/file/delete"]
+          },
+          {
+            "group": "Prompt Engine",
+            "pages": [
+              "docs/api-reference/prompt-engine/create",
+              "docs/api-reference/prompt-engine/run",
+              "docs/api-reference/prompt-engine/retrieve",
+              "docs/api-reference/prompt-engine/list",
+              "docs/api-reference/prompt-engine/delete",
+              "docs/api-reference/prompt-engine/run-direct"
+            ]
           }
         ]
       }
