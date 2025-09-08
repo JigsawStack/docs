@@ -16,7 +16,7 @@ The Embedding API allows you to generate high-quality vector embeddings from any
 ## API Endpoint
 
 ```
-POST /v1/embedding
+POST /v2/embedding
 ```
 
 ## Quick Start
@@ -26,10 +26,11 @@ import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
-const response = await jigsaw.embedding({
+const response = await jigsaw.embeddingV2({
   "text": "Caption: Secluded Tiki Bar on a serene lake, perfect for a refreshing drink and a relaxing getaway",
   "type": "text"
 })
+
 ```
 
 ## Response Example
@@ -55,8 +56,36 @@ const response = await jigsaw.embedding({
         "total_tokens": 9765
   }
 }
-
 ```
+## Speaker Fingerprint
+EmbeddingV2 supports speaker fingerprint for audio type. It is a unique identifier for each speaker. It is used to identify the speaker of the audio.
+By setting the `speaker_fingerprint` to true, you can get the `speaker_embeddings` to identify the speaker of the audio.
+
+```javascript
+const audio_response = await jigsaw.embeddingV2({
+  "audio": "https://jigsawstack.com/preview/stt-example.wav",
+  "type": "audio",
+  "speaker_fingerprint": true
+})
+```
+
+```json
+{
+  "success": true,
+  "embeddings": [
+        [...],
+  ],
+  "chunks": [...],
+  "speaker_embeddings": [...], // only available for audio type and speaker_fingerprint is true
+  "_usage": {
+        "input_tokens": 32,
+        "output_tokens": 1226,
+        "inference_time_tokens": 8507,
+        "total_tokens": 9765
+  }
+}
+```
+
 ## Supported Input Types
 
 ### Text Embeddings
@@ -114,4 +143,4 @@ Automatically categorize and group similar content.
 - **Example**: Organize support tickets by topic
 - **Implementation**: Group documents with similar embedding patterns
 
-<Note>Find more information on Embedding API [here](/docs/api-reference/ai/embedding)</Note>
+<Note>Find more information on EmbeddingV2 API [here](/docs/api-reference/ai/embeddingV2)</Note>
