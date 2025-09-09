@@ -1,0 +1,292 @@
+
+    <RequestExample>
+    ```javascript Javascript
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({ apiKey: "your-api-key" });
+
+const response = await jigsaw.prompt_engine.run_prompt_direct({
+      "prompt": "Tell me a story about {about}",
+      "inputs": [
+            {
+                  "key": "about",
+                  "optional": true,
+                  "initial_value": "Leaning Tower of Pisa"
+            }
+      ],
+      "return_prompt": "Return the result in a markdown format",
+      "prompt_guard": [
+            "sexual_content",
+            "defamation"
+      ],
+      "input_values": {
+            "about": "Santorini"
+      }
+})
+    ```
+    ```python Python
+from jigsawstack import JigsawStack
+
+jigsaw = JigsawStack(api_key="your-api-key")
+
+response = jigsaw.prompt_engine.run_prompt_direct({
+      "prompt": "Tell me a story about {about}",
+      "inputs": [
+            {
+                  "key": "about",
+                  "optional": True,
+                  "initial_value": "Leaning Tower of Pisa"
+            }
+      ],
+      "return_prompt": "Return the result in a markdown format",
+      "prompt_guard": [
+            "sexual_content",
+            "defamation"
+      ],
+      "input_values": {
+            "about": "Santorini"
+      }
+})
+    ```
+    ```bash Curl
+curl https://api.jigsawstack.com//v1/prompt_engine/run \
+ -X POST \
+ -H 'Content-Type: application/json' \
+ -H 'x-api-key: your-api-key' \
+ -d '{"prompt":"Tell me a story about {about}","inputs":[{"key":"about","optional":true,"initial_value":"Leaning Tower of Pisa"}],"return_prompt":"Return the result in a markdown format","prompt_guard":["sexual_content","defamation"],"input_values":{"about":"Santorini"}}'
+    ```
+    ```php PHP
+<?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/prompt_engine/run');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Content-Type: application/json',
+    'x-api-key: your-api-key',
+]);
+curl_setopt($ch, CURLOPT_POSTFIELDS, '{"prompt":"Tell me a story about {about}","inputs":[{"key":"about","optional":true,"initial_value":"Leaning Tower of Pisa"}],"return_prompt":"Return the result in a markdown format","prompt_guard":["sexual_content","defamation"],"input_values":{"about":"Santorini"}}');
+
+$response = curl_exec($ch);
+
+curl_close($ch);
+
+    ```
+    ```ruby Ruby
+require 'net/http'
+require 'json'
+
+uri = URI('https://api.jigsawstack.com//v1/prompt_engine/run')
+req = Net::HTTP::Post.new(uri)
+req.content_type = 'application/json'
+req['x-api-key'] = 'your-api-key'
+
+req.body = {
+  'prompt' => 'Tell me a story about {about}',
+  'inputs' => [
+    {
+      'key' => 'about',
+      'optional' => true,
+      'initial_value' => 'Leaning Tower of Pisa'
+    }
+  ],
+  'return_prompt' => 'Return the result in a markdown format',
+  'prompt_guard' => [
+    'sexual_content',
+    'defamation'
+  ],
+  'input_values' => {
+    'about' => 'Santorini'
+  }
+}.to_json
+
+req_options = {
+  use_ssl: uri.scheme == 'https'
+}
+res = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+  http.request(req)
+end
+
+    ```
+    ```go Go
+package main
+
+import (
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+	"strings"
+)
+
+func main() {
+	client := &http.Client{}
+	var data = strings.NewReader(`{"prompt":"Tell me a story about {about}","inputs":[{"key":"about","optional":true,"initial_value":"Leaning Tower of Pisa"}],"return_prompt":"Return the result in a markdown format","prompt_guard":["sexual_content","defamation"],"input_values":{"about":"Santorini"}}`)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/prompt_engine/run", data)
+	if err != nil {
+		log.Fatal(err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("x-api-key", "your-api-key")
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+	bodyText, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", bodyText)
+}
+
+    ```
+    ```java Java
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpRequest.BodyPublishers;
+import java.net.http.HttpResponse;
+
+HttpClient client = HttpClient.newHttpClient();
+
+HttpRequest request = HttpRequest.newBuilder()
+    .uri(URI.create("https://api.jigsawstack.com//v1/prompt_engine/run"))
+    .POST(BodyPublishers.ofString("{\"prompt\":\"Tell me a story about {about}\",\"inputs\":[{\"key\":\"about\",\"optional\":true,\"initial_value\":\"Leaning Tower of Pisa\"}],\"return_prompt\":\"Return the result in a markdown format\",\"prompt_guard\":[\"sexual_content\",\"defamation\"],\"input_values\":{\"about\":\"Santorini\"}}"))
+    .setHeader("Content-Type", "application/json")
+    .setHeader("x-api-key", "your-api-key")
+    .build();
+
+HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+    ```
+    ```swift Swift
+import Foundation
+
+let jsonData = [
+    "prompt": "Tell me a story about {about}",
+    "inputs": [
+        [
+            "key": "about",
+            "optional": true,
+            "initial_value": "Leaning Tower of Pisa"
+        ]
+    ],
+    "return_prompt": "Return the result in a markdown format",
+    "prompt_guard": [
+        "sexual_content",
+        "defamation"
+    ],
+    "input_values": [
+        "about": "Santorini"
+    ]
+] as [String : Any]
+let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
+
+let url = URL(string: "https://api.jigsawstack.com//v1/prompt_engine/run")!
+let headers = [
+    "Content-Type": "application/json",
+    "x-api-key": "your-api-key"
+]
+
+var request = URLRequest(url: url)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = data as Data
+
+let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+    if let error = error {
+        print(error)
+    } else if let data = data {
+        let str = String(data: data, encoding: .utf8)
+        print(str ?? "")
+    }
+}
+
+task.resume()
+
+    ```
+    ```dart Dart
+import 'package:http/http.dart' as http;
+
+void main() async {
+  final headers = {
+    'Content-Type': 'application/json',
+    'x-api-key': 'your-api-key',
+  };
+
+  final data = '{"prompt":"Tell me a story about {about}","inputs":[{"key":"about","optional":true,"initial_value":"Leaning Tower of Pisa"}],"return_prompt":"Return the result in a markdown format","prompt_guard":["sexual_content","defamation"],"input_values":{"about":"Santorini"}}';
+
+  final url = Uri.parse('https://api.jigsawstack.com//v1/prompt_engine/run');
+
+  final res = await http.post(url, headers: headers, body: data);
+  final status = res.statusCode;
+  if (status != 200) throw Exception('http.post error: statusCode= $status');
+
+  print(res.body);
+}
+
+    ```
+    ```kotlin Kotlin
+import java.io.IOException
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+
+val client = OkHttpClient()
+
+val MEDIA_TYPE = "application/json".toMediaType()
+
+val requestBody = "{\"prompt\":\"Tell me a story about {about}\",\"inputs\":[{\"key\":\"about\",\"optional\":true,\"initial_value\":\"Leaning Tower of Pisa\"}],\"return_prompt\":\"Return the result in a markdown format\",\"prompt_guard\":[\"sexual_content\",\"defamation\"],\"input_values\":{\"about\":\"Santorini\"}}"
+
+val request = Request.Builder()
+  .url("https://api.jigsawstack.com//v1/prompt_engine/run")
+  .post(requestBody.toRequestBody(MEDIA_TYPE))
+  .header("Content-Type", "application/json")
+  .header("x-api-key", "your-api-key")
+  .build()
+
+client.newCall(request).execute().use { response ->
+  if (!response.isSuccessful) throw IOException("Unexpected code $response")
+  response.body!!.string()
+}
+
+    ```
+    ```csharp C#
+using System.Net.Http;
+using System.Net.Http.Headers;
+
+HttpClient client = new HttpClient();
+
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/prompt_engine/run");
+
+request.Headers.Add("x-api-key", "your-api-key");
+
+request.Content = new StringContent("{\"prompt\":\"Tell me a story about {about}\",\"inputs\":[{\"key\":\"about\",\"optional\":true,\"initial_value\":\"Leaning Tower of Pisa\"}],\"return_prompt\":\"Return the result in a markdown format\",\"prompt_guard\":[\"sexual_content\",\"defamation\"],\"input_values\":{\"about\":\"Santorini\"}}");
+request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+HttpResponseMessage response = await client.SendAsync(request);
+response.EnsureSuccessStatusCode();
+string responseBody = await response.Content.ReadAsStringAsync();
+
+    ```
+    </RequestExample>
+    <ResponseExample>
+    ```json Response
+{
+      "success": true,
+      "result": "Okay, here's a story about Santorini, based on the current ISO time you provided:\n\n***\n\nThe Aegean Sea shimmered, a restless sapphire under the pre-dawn sky. It was 2:02 AM on September 9th, 2025, and the only light on Santorini came from the sliver of a moon and the scattered, golden pinpricks of streetlights clinging to the caldera's edge.\n\nOld Man Yiannis, his face a roadmap of wrinkles etched by sun and sea, sat on a weathered bench in Oia. He was a keeper of stories, a silent guardian of the island's ancient heart. He watched the darkness slowly bleed into a bruised purple, the promise of another spectacular sunrise painting the horizon.\n\nHe remembered a time before the tourists, before the infinity pools and the Instagram influencers. A time when Santorini was a quiet island of fishermen and farmers, their lives dictated by the rhythm of the sea and the volcanic soil. He remembered his grandfather telling tales of the Minoan eruption, the cataclysm that shaped the island into the crescent moon it was today. A story of a powerful civilization swallowed by the sea, leaving behind only whispers in the wind and the black sand beaches.\n\nTonight, though, Yiannis wasn't thinking of the past. He was thinking of Eleni, his granddaughter. She was a bright spark, a modern Santorinian. She ran a small art gallery in Fira, showcasing the work of local artists, trying to keep the island's soul alive amidst the commercial frenzy.\n\nHe worried about her. The island was changing so fast. The influx of visitors, while bringing prosperity, also threatened to drown out the authentic spirit of Santorini. He feared that the stories, the traditions, the very essence of what made Santorini unique, would be lost in the sea of selfies and souvenir shops.\n\nSuddenly, a figure emerged from the shadows. It was Eleni, her face illuminated by the glow of her phone.\n\n\"Papou,\" she said, her voice soft. \"I couldn't sleep. I was thinking about the new resort they're building near Akrotiri. They want to buy my gallery's land.\"\n\nYiannis sighed. He knew this was coming. The developers were relentless.\n\n\"What will you do, Eleni?\" he asked, his voice heavy with concern.\n\nEleni looked out at the darkening sea, the first faint streaks of orange beginning to paint the sky. \"I don't know, Papou. But I know I can't let them erase our history. I can't let them turn Santorini into just another pretty picture.\"\n\nShe turned to him, her eyes filled with a fierce determination. \"I'm going to fight for it, Papou. I'm going to fight for the soul of Santorini.\"\n\nYiannis smiled, a genuine, heartfelt smile that reached his eyes. He saw the fire in her, the same fire that had burned in his ancestors, the same fire that had survived the volcano and the centuries.\n\nAs the sun finally crested the horizon, bathing the white-washed villages in a golden light, Yiannis knew that Santorini's story was far from over. It was a story of resilience, of beauty, and of the enduring spirit of its people. And he knew, with a certainty that warmed him from the inside out, that Eleni, his granddaughter, would be a part of that story, a guardian of the island's heart, for generations to come. The new day had begun, and with it, a new chapter in the timeless tale of Santorini.\n***\n",
+      "message": "It is recommended to store the prompt engine and execute it using the ID rather than running it directly for the best performance and reliability. Learn more: https://jigsawstack.com/docs/api-reference/prompt-engine/create",
+      "_usage": {
+            "input_tokens": 67,
+            "output_tokens": 893,
+            "inference_time_tokens": 5811,
+            "total_tokens": 6771
+      }
+}
+    ```
+    </ResponseExample>
+    
+    

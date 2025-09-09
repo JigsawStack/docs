@@ -5,8 +5,8 @@ import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
-const response = await jigsaw.validate.nsfw({
-      "url": "https://jigsawstack.com/preview/nsfw-example.jpg"
+const response = await jigsaw.prompt_engine.delete({
+      "promptId": "dc578c69-6eb5-4c5b-82ab-9f74077cfdd5"
 })
     ```
     ```python Python
@@ -14,28 +14,26 @@ from jigsawstack import JigsawStack
 
 jigsaw = JigsawStack(api_key="your-api-key")
 
-response = jigsaw.validate.nsfw({
-      "url": "https://jigsawstack.com/preview/nsfw-example.jpg"
+response = jigsaw.prompt_engine.delete({
+      "promptId": "dc578c69-6eb5-4c5b-82ab-9f74077cfdd5"
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com//v1/validate/nsfw \
- -X POST \
+curl https://api.jigsawstack.com//v1/prompt_engine/${id}?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5 \
+ -X DELETE \
  -H 'Content-Type: application/json' \
- -H 'x-api-key: your-api-key' \
- -d '{"url":"https://jigsawstack.com/preview/nsfw-example.jpg"}'
+ -H 'x-api-key: your-api-key'
     ```
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/validate/nsfw');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/prompt_engine/' . getenv('id') ?? '' . '?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
     'x-api-key: your-api-key',
 ]);
-curl_setopt($ch, CURLOPT_POSTFIELDS, '{"url":"https://jigsawstack.com/preview/nsfw-example.jpg"}');
 
 $response = curl_exec($ch);
 
@@ -44,16 +42,16 @@ curl_close($ch);
     ```
     ```ruby Ruby
 require 'net/http'
-require 'json'
 
-uri = URI('https://api.jigsawstack.com//v1/validate/nsfw')
-req = Net::HTTP::Post.new(uri)
+uri = URI('https://api.jigsawstack.com//v1/prompt_engine/' + ENV['id'])
+params = {
+  :promptId => 'dc578c69-6eb5-4c5b-82ab-9f74077cfdd5',
+}
+uri.query = URI.encode_www_form(params)
+
+req = Net::HTTP::Delete.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
-
-req.body = {
-  'url' => 'https://jigsawstack.com/preview/nsfw-example.jpg'
-}.to_json
 
 req_options = {
   use_ssl: uri.scheme == 'https'
@@ -71,13 +69,12 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"strings"
+	"os"
 )
 
 func main() {
 	client := &http.Client{}
-	var data = strings.NewReader(`{"url":"https://jigsawstack.com/preview/nsfw-example.jpg"}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/validate/nsfw", data)
+	req, err := http.NewRequest("DELETE", "https://api.jigsawstack.com//v1/prompt_engine/" + os.Getenv("id") + "?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -98,17 +95,17 @@ func main() {
     ```
     ```java Java
 import java.io.IOException;
+import java.lang.System;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com//v1/validate/nsfw"))
-    .POST(BodyPublishers.ofString("{\"url\":\"https://jigsawstack.com/preview/nsfw-example.jpg\"}"))
+    .uri(URI.create("https://api.jigsawstack.com//v1/prompt_engine/" + System.getenv("id") + "?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5"))
+    .DELETE()
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
     .build();
@@ -119,21 +116,15 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
     ```swift Swift
 import Foundation
 
-let jsonData = [
-    "url": "https://jigsawstack.com/preview/nsfw-example.jpg"
-] as [String : Any]
-let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
-
-let url = URL(string: "https://api.jigsawstack.com//v1/validate/nsfw")!
+let url = URL(string: "https://api.jigsawstack.com//v1/prompt_engine/" + (ProcessInfo.processInfo.environment["id"] ?? "") + "?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
 ]
 
 var request = URLRequest(url: url)
-request.httpMethod = "POST"
+request.httpMethod = "DELETE"
 request.allHTTPHeaderFields = headers
-request.httpBody = data as Data
 
 let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
     if let error = error {
@@ -148,6 +139,7 @@ task.resume()
 
     ```
     ```dart Dart
+import 'dart:io';
 import 'package:http/http.dart' as http;
 
 void main() async {
@@ -156,13 +148,16 @@ void main() async {
     'x-api-key': 'your-api-key',
   };
 
-  final data = '{"url":"https://jigsawstack.com/preview/nsfw-example.jpg"}';
+  final params = {
+    'promptId': 'dc578c69-6eb5-4c5b-82ab-9f74077cfdd5',
+  };
 
-  final url = Uri.parse('https://api.jigsawstack.com//v1/validate/nsfw');
+  final url = Uri.parse('https://api.jigsawstack.com//v1/prompt_engine/' + (Platform.environment['id'] ?? ''))
+      .replace(queryParameters: params);
 
-  final res = await http.post(url, headers: headers, body: data);
+  final res = await http.delete(url, headers: headers);
   final status = res.statusCode;
-  if (status != 200) throw Exception('http.post error: statusCode= $status');
+  if (status != 200) throw Exception('http.delete error: statusCode= $status');
 
   print(res.body);
 }
@@ -170,20 +165,16 @@ void main() async {
     ```
     ```kotlin Kotlin
 import java.io.IOException
-import okhttp3.MediaType.Companion.toMediaType
+import java.lang.System
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 
 val client = OkHttpClient()
 
-val MEDIA_TYPE = "application/json".toMediaType()
-
-val requestBody = "{\"url\":\"https://jigsawstack.com/preview/nsfw-example.jpg\"}"
-
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com//v1/validate/nsfw")
-  .post(requestBody.toRequestBody(MEDIA_TYPE))
+  .url("https://api.jigsawstack.com//v1/prompt_engine/" + System.getenv("id") ?: "" + "?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5")
+  .delete("".toRequestBody())
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
   .build()
@@ -195,16 +186,17 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/validate/nsfw");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, "https://api.jigsawstack.com//v1/prompt_engine/" + Environment.GetEnvironmentVariable("id") + "?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
-request.Content = new StringContent("{\"url\":\"https://jigsawstack.com/preview/nsfw-example.jpg\"}");
+request.Content = new StringContent("");
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
@@ -213,24 +205,7 @@ string responseBody = await response.Content.ReadAsStringAsync();
 
     ```
     </RequestExample>
-    <ResponseExample>
-    ```json Response
-{
-      "success": true,
-      "nsfw": false,
-      "nudity": false,
-      "gore": false,
-      "nsfw_score": 0.8223792436143141,
-      "nudity_score": 0.08542560786008835,
-      "gore_score": 0.0015945120248943567,
-      "_usage": {
-            "input_tokens": 15,
-            "output_tokens": 60,
-            "inference_time_tokens": 303,
-            "total_tokens": 378
-      }
-}
-    ```
-    </ResponseExample>
     
+
+<ResponseExample></ResponseExample>
     

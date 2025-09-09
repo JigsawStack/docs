@@ -1,0 +1,113 @@
+---
+title: "Create Prompt"
+api: "POST https://api.jigsawstack.com/v1/prompt_engine"
+description: "Create a prompt for easy reuse."
+---
+
+import PromptEngineCreateSnippet from "/snippets/code-req-examples/prompt-engine-create.mdx";
+import BasicResponse from "/snippets/helpers/basic-response.mdx";
+import Interfaze from "/snippets/helpers/interfaze.mdx";
+
+<Snippet file="header.mdx" />
+
+<Interfaze />
+
+### Body
+
+<ParamField body="prompt" type="string" required>
+  The prompt. Maximum character limit is `500000`. Prompt supports dynamic
+  inputs. See example below.
+</ParamField>
+
+<ParamField body="inputs" type="array<object>">
+  The prompt inputs. See example below. &#x20;
+</ParamField>
+
+<ParamField body="return_prompt" type="string | array | object">
+  How the prompt result should be returned or formatted. See examples below
+</ParamField>
+
+<ParamField body="prompt_guard" type="array<string>">
+  Include this to guard against unsafe inputs from users. Supported values:
+
+  <ul>
+    <li>`defamation`</li>
+    <li>`privacy`</li>
+    <li>`hate`</li>
+    <li>`sexual_content`</li>
+    <li>`elections`</li>
+    <li>`code_interpreter_abuse`</li>
+    <li>`indiscrimate_weapons`</li>
+    <li>`specialized_advice`</li>
+  </ul>
+</ParamField>
+
+<ParamField body="optimize_prompt" type="boolean">
+  Include this to optimize the prompt for best results. True by default.
+</ParamField>
+
+<ParamField body="use_internet" type="boolean">
+  Include this to allow prompt engine to use the internet.
+</ParamField>
+
+## Sample Prompt Payload
+
+- String `return_prompt`
+
+```javascript
+{
+    prompt: "Tell me a story about {about}",
+    inputs: [
+      {
+        key: "about",
+        optional: false,
+        initial_value: "Leaning Tower of Pisa",
+      },
+    ],
+    return_prompt: "Return the result in a markdown format",
+    "prompt_guard": ["sexual_content", "defamation"]
+  }
+```
+
+- `Array<object>` `return_prompt`
+
+```javascript
+
+{
+    prompt: "Tell me a story about {about}",
+    inputs: [
+      {
+        key: "about",
+        optional: "false",
+        initial_value: "Leaning Tower of Pisa",
+      },
+    ],
+    return_prompt: [{ excerpt: "short story text", summary: "summary of story" }],
+    "prompt_guard": ["sexual_content", "defamation"]
+  }
+```
+
+- Object `return_prompt`
+
+```javascript
+{
+    prompt: "Tell me a story about {about}",
+    inputs: [
+      {
+        key: "about",
+        optional: false,
+        initial_value: "Leaning Tower of Pisa",
+      },
+    ],
+    return_prompt: { excerpt: "short story text", summary: "summary of story" },
+    "prompt_guard": ["sexual_content", "defamation"]
+  }
+```
+
+<Snippet file="header.mdx" />
+
+### Response
+
+<BasicResponse />
+
+<PromptEngineCreateSnippet />
