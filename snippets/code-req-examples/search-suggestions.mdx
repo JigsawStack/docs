@@ -19,7 +19,7 @@ response = jigsaw.web.search_suggestions({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com//v1/web/search/suggest?query=What+is+the+capital \
+curl https://api.jigsawstack.com/v1/web/search/suggest?query=What+is+the+capital \
  -X GET \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key'
@@ -27,7 +27,7 @@ curl https://api.jigsawstack.com//v1/web/search/suggest?query=What+is+the+capita
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/web/search/suggest?query=What+is+the+capital');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/web/search/suggest?query=What+is+the+capital');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -43,7 +43,7 @@ curl_close($ch);
     ```ruby Ruby
 require 'net/http'
 
-uri = URI('https://api.jigsawstack.com//v1/web/search/suggest')
+uri = URI('https://api.jigsawstack.com/v1/web/search/suggest')
 params = {
   :query => 'What is the capital',
 }
@@ -73,7 +73,7 @@ import (
 
 func main() {
 	client := &http.Client{}
-	req, err := http.NewRequest("GET", "https://api.jigsawstack.com//v1/web/search/suggest?query=What+is+the+capital", nil)
+	req, err := http.NewRequest("GET", "https://api.jigsawstack.com/v1/web/search/suggest?query=What+is+the+capital", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -102,7 +102,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com//v1/web/search/suggest?query=What+is+the+capital"))
+    .uri(URI.create("https://api.jigsawstack.com/v1/web/search/suggest?query=What+is+the+capital"))
     .GET()
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -114,7 +114,7 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
     ```swift Swift
 import Foundation
 
-let url = URL(string: "https://api.jigsawstack.com//v1/web/search/suggest?query=What+is+the+capital")!
+let url = URL(string: "https://api.jigsawstack.com/v1/web/search/suggest?query=What+is+the+capital")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -148,7 +148,7 @@ void main() async {
     'query': 'What is the capital',
   };
 
-  final url = Uri.parse('https://api.jigsawstack.com//v1/web/search/suggest')
+  final url = Uri.parse('https://api.jigsawstack.com/v1/web/search/suggest')
       .replace(queryParameters: params);
 
   final res = await http.get(url, headers: headers);
@@ -167,7 +167,7 @@ import okhttp3.Request
 val client = OkHttpClient()
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com//v1/web/search/suggest?query=What+is+the+capital")
+  .url("https://api.jigsawstack.com/v1/web/search/suggest?query=What+is+the+capital")
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
   .build()
@@ -184,7 +184,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://api.jigsawstack.com//v1/web/search/suggest?query=What+is+the+capital");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://api.jigsawstack.com/v1/web/search/suggest?query=What+is+the+capital");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -202,27 +202,27 @@ string responseBody = await response.Content.ReadAsStringAsync();
 {
       "success": true,
       "suggestions": [
-            "what is the capital of california",
-            "what is the capital of canada",
+            "what is the capital of",
+            "what is the capital of mumbai",
+            "what is the capital of pune",
+            "what is the capital of andhra pradesh",
+            "what is the capital of india",
             "what is the capital of australia",
-            "what is the capital of texas",
-            "what is the capital of the united states",
-            "what is the capital of florida",
-            "what is the capital of brazil",
-            "what is the capital of new york",
-            "what is the capital of alaska",
-            "what is the capital of italy",
+            "what is the capital of france",
+            "what is the capital of maharashtra",
             "what is the capital of japan",
-            "what is the capital gains tax rate",
-            "what is the capital of maine",
-            "what is the capital of illinois",
-            "what is the capital of turkey"
+            "what is the capital of punjab",
+            "what is the capital of haryana",
+            "what is the capital of pakistan",
+            "what is the capital of china",
+            "what is the capital of gujarat",
+            "what is the capital of kerala"
       ],
       "_usage": {
             "input_tokens": 8,
-            "output_tokens": 134,
-            "inference_time_tokens": 200,
-            "total_tokens": 342
+            "output_tokens": 130,
+            "inference_time_tokens": 773,
+            "total_tokens": 911
       }
 }
     ```

@@ -29,7 +29,7 @@ response = jigsaw.vision.object_detection({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com//v1/object_detection \
+curl https://api.jigsawstack.com/v1/object_detection \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -38,7 +38,7 @@ curl https://api.jigsawstack.com//v1/object_detection \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/object_detection');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/object_detection');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -56,7 +56,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com//v1/object_detection')
+uri = URI('https://api.jigsawstack.com/v1/object_detection')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -92,7 +92,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"url":"https://jigsawstack.com/preview/object-detection-example-input.jpg","features":["object_detection"],"annotated_image":true,"return_type":"url"}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/object_detection", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/object_detection", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -122,7 +122,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com//v1/object_detection"))
+    .uri(URI.create("https://api.jigsawstack.com/v1/object_detection"))
     .POST(BodyPublishers.ofString("{\"url\":\"https://jigsawstack.com/preview/object-detection-example-input.jpg\",\"features\":[\"object_detection\"],\"annotated_image\":true,\"return_type\":\"url\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -144,7 +144,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com//v1/object_detection")!
+let url = URL(string: "https://api.jigsawstack.com/v1/object_detection")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -178,7 +178,7 @@ void main() async {
 
   final data = '{"url":"https://jigsawstack.com/preview/object-detection-example-input.jpg","features":["object_detection"],"annotated_image":true,"return_type":"url"}';
 
-  final url = Uri.parse('https://api.jigsawstack.com//v1/object_detection');
+  final url = Uri.parse('https://api.jigsawstack.com/v1/object_detection');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -202,7 +202,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"url\":\"https://jigsawstack.com/preview/object-detection-example-input.jpg\",\"features\":[\"object_detection\"],\"annotated_image\":true,\"return_type\":\"url\"}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com//v1/object_detection")
+  .url("https://api.jigsawstack.com/v1/object_detection")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -220,7 +220,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/object_detection");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/object_detection");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -237,7 +237,7 @@ string responseBody = await response.Content.ReadAsStringAsync();
     ```json Response
 {
       "success": true,
-      "annotated_image": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/9def17c8-3a6d-424e-ae91-02623e29f8a9.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250909%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250909T020235Z&X-Amz-Expires=604800&X-Amz-Signature=a49ada1f4fbf81e280a30183f840133d90284be924f7a9fb577d9f7d1477c32a&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "annotated_image": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/074365f8-bd6e-48f1-9480-058ecbf10f5b.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250909%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250909T182127Z&X-Amz-Expires=604800&X-Amz-Signature=e87f9d6fff9c0c3e9eab6d05355c6fc776dd293e2ed8102e008bf70f3ecd73e7&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
       "objects": [
             {
                   "bounds": {
@@ -1686,8 +1686,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 39,
             "output_tokens": 2990,
-            "inference_time_tokens": 32096,
-            "total_tokens": 35125
+            "inference_time_tokens": 44015,
+            "total_tokens": 47044
       }
 }
     ```

@@ -21,7 +21,7 @@ response = jigsaw.image_generation({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com//v1/ai/image_generation \
+curl https://api.jigsawstack.com/v1/ai/image_generation \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -30,7 +30,7 @@ curl https://api.jigsawstack.com//v1/ai/image_generation \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/ai/image_generation');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/ai/image_generation');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -48,7 +48,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com//v1/ai/image_generation')
+uri = URI('https://api.jigsawstack.com/v1/ai/image_generation')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -80,7 +80,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"prompt":"A beautiful sunset over a calm ocean","return_type":"url"}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/ai/image_generation", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/ai/image_generation", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -110,7 +110,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com//v1/ai/image_generation"))
+    .uri(URI.create("https://api.jigsawstack.com/v1/ai/image_generation"))
     .POST(BodyPublishers.ofString("{\"prompt\":\"A beautiful sunset over a calm ocean\",\"return_type\":\"url\"}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -128,7 +128,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com//v1/ai/image_generation")!
+let url = URL(string: "https://api.jigsawstack.com/v1/ai/image_generation")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -162,7 +162,7 @@ void main() async {
 
   final data = '{"prompt":"A beautiful sunset over a calm ocean","return_type":"url"}';
 
-  final url = Uri.parse('https://api.jigsawstack.com//v1/ai/image_generation');
+  final url = Uri.parse('https://api.jigsawstack.com/v1/ai/image_generation');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -186,7 +186,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"prompt\":\"A beautiful sunset over a calm ocean\",\"return_type\":\"url\"}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com//v1/ai/image_generation")
+  .url("https://api.jigsawstack.com/v1/ai/image_generation")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -204,7 +204,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/ai/image_generation");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/ai/image_generation");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -221,12 +221,12 @@ string responseBody = await response.Content.ReadAsStringAsync();
     ```json Response
 {
       "success": true,
-      "url": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/13918440-1493-4f71-8a0f-aaf2ff2c597a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250909%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250909T020207Z&X-Amz-Expires=604800&X-Amz-Signature=9275c67ec70d3323fc8e987524adcd6300e153767f096403481de9a7120f31da&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "url": "https://jigsawstack-temp.b1e91a466694ad4af04df5d05ca12d93.r2.cloudflarestorage.com/temp/97978fcf-0802-41fd-b98e-f2fc377cde20.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=7b9a19349842b7b1a9e4c2e19f05b232%2F20250909%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20250909T182047Z&X-Amz-Expires=604800&X-Amz-Signature=05cab2461e28a3d3decec5222c24b7935e37e605fda60acfbbda544709131a59&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
       "_usage": {
             "input_tokens": 18,
             "output_tokens": 77,
-            "inference_time_tokens": 2264,
-            "total_tokens": 2359
+            "inference_time_tokens": 3465,
+            "total_tokens": 3560
       }
 }
     ```

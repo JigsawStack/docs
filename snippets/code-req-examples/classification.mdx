@@ -57,7 +57,7 @@ response = jigsaw.classification({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com//v1/classification \
+curl https://api.jigsawstack.com/v1/classification \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -66,7 +66,7 @@ curl https://api.jigsawstack.com//v1/classification \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/classification');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/classification');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -84,7 +84,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com//v1/classification')
+uri = URI('https://api.jigsawstack.com/v1/classification')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -134,7 +134,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"dataset":[{"type":"image","value":"https://jigsawstack.com/preview/classification-example-1.jpg"},{"type":"image","value":"https://jigsawstack.com/preview/classification-example-2.jpg"}],"labels":[{"type":"text","value":"hotdog"},{"type":"text","value":"not a hotdog"}]}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/classification", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/classification", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -164,7 +164,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com//v1/classification"))
+    .uri(URI.create("https://api.jigsawstack.com/v1/classification"))
     .POST(BodyPublishers.ofString("{\"dataset\":[{\"type\":\"image\",\"value\":\"https://jigsawstack.com/preview/classification-example-1.jpg\"},{\"type\":\"image\",\"value\":\"https://jigsawstack.com/preview/classification-example-2.jpg\"}],\"labels\":[{\"type\":\"text\",\"value\":\"hotdog\"},{\"type\":\"text\",\"value\":\"not a hotdog\"}]}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -200,7 +200,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com//v1/classification")!
+let url = URL(string: "https://api.jigsawstack.com/v1/classification")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -234,7 +234,7 @@ void main() async {
 
   final data = '{"dataset":[{"type":"image","value":"https://jigsawstack.com/preview/classification-example-1.jpg"},{"type":"image","value":"https://jigsawstack.com/preview/classification-example-2.jpg"}],"labels":[{"type":"text","value":"hotdog"},{"type":"text","value":"not a hotdog"}]}';
 
-  final url = Uri.parse('https://api.jigsawstack.com//v1/classification');
+  final url = Uri.parse('https://api.jigsawstack.com/v1/classification');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -258,7 +258,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"dataset\":[{\"type\":\"image\",\"value\":\"https://jigsawstack.com/preview/classification-example-1.jpg\"},{\"type\":\"image\",\"value\":\"https://jigsawstack.com/preview/classification-example-2.jpg\"}],\"labels\":[{\"type\":\"text\",\"value\":\"hotdog\"},{\"type\":\"text\",\"value\":\"not a hotdog\"}]}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com//v1/classification")
+  .url("https://api.jigsawstack.com/v1/classification")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -276,7 +276,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/classification");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/classification");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -300,8 +300,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 69,
             "output_tokens": 14,
-            "inference_time_tokens": 3437,
-            "total_tokens": 3520
+            "inference_time_tokens": 9114,
+            "total_tokens": 9197
       }
 }
     ```

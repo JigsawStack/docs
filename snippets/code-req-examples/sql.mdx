@@ -23,7 +23,7 @@ response = jigsaw.text_to_sql({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com//v1/ai/sql \
+curl https://api.jigsawstack.com/v1/ai/sql \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -32,7 +32,7 @@ curl https://api.jigsawstack.com//v1/ai/sql \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/ai/sql');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/ai/sql');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -49,7 +49,7 @@ curl_close($ch);
     ```ruby Ruby
 require 'net/http'
 
-uri = URI('https://api.jigsawstack.com//v1/ai/sql')
+uri = URI('https://api.jigsawstack.com/v1/ai/sql')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -78,7 +78,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"database":"postgresql","prompt":"Find all transactions with amounts exceeding $10,000, sorted by transaction date","sql_schema":"\\n            CREATE TABLE Transactions \(\\n              transaction_id INT PRIMARY KEY, \\n              user_id INT NOT NULL,\\n              total_amount DECIMAL\(10, 2\) NOT NULL, \\n              transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\\n              status VARCHAR\(20\) DEFAULT \pending',\n`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/ai/sql", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/ai/sql", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -108,7 +108,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com//v1/ai/sql"))
+    .uri(URI.create("https://api.jigsawstack.com/v1/ai/sql"))
     .POST(BodyPublishers.ofString("{\"database\":\"postgresql\",\"prompt\":\"Find all transactions with amounts exceeding $10,000, sorted by transaction date\",\"sql_schema\":\"\\\\n            CREATE TABLE Transactions \\(\\\\n              transaction_id INT PRIMARY KEY, \\\\n              user_id INT NOT NULL,\\\\n              total_amount DECIMAL\\(10, 2\\) NOT NULL, \\\\n              transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\\\\n              status VARCHAR\\(20\\) DEFAULT \\pending',\\n"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -120,7 +120,7 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
     ```swift Swift
 import Foundation
 
-let url = URL(string: "https://api.jigsawstack.com//v1/ai/sql")!
+let url = URL(string: "https://api.jigsawstack.com/v1/ai/sql")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -154,7 +154,7 @@ void main() async {
 
   final data = '{"database":"postgresql","prompt":"Find all transactions with amounts exceeding \$10,000, sorted by transaction date","sql_schema":"\\\\n            CREATE TABLE Transactions \\(\\\\n              transaction_id INT PRIMARY KEY, \\\\n              user_id INT NOT NULL,\\\\n              total_amount DECIMAL\\(10, 2\\) NOT NULL, \\\\n              transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\\\\n              status VARCHAR\\(20\\) DEFAULT \\pending\',\\n';
 
-  final url = Uri.parse('https://api.jigsawstack.com//v1/ai/sql');
+  final url = Uri.parse('https://api.jigsawstack.com/v1/ai/sql');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -178,7 +178,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"database\":\"postgresql\",\"prompt\":\"Find all transactions with amounts exceeding \$10,000, sorted by transaction date\",\"sql_schema\":\"\\\\n            CREATE TABLE Transactions \\(\\\\n              transaction_id INT PRIMARY KEY, \\\\n              user_id INT NOT NULL,\\\\n              total_amount DECIMAL\\(10, 2\\) NOT NULL, \\\\n              transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\\\\n              status VARCHAR\\(20\\) DEFAULT \\pending',\\n"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com//v1/ai/sql")
+  .url("https://api.jigsawstack.com/v1/ai/sql")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -196,7 +196,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/ai/sql");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/ai/sql");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -217,8 +217,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 132,
             "output_tokens": 27,
-            "inference_time_tokens": 722,
-            "total_tokens": 881
+            "inference_time_tokens": 1127,
+            "total_tokens": 1286
       }
 }
     ```

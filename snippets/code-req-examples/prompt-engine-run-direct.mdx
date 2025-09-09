@@ -49,7 +49,7 @@ response = jigsaw.prompt_engine.run_prompt_direct({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com//v1/prompt_engine/run \
+curl https://api.jigsawstack.com/v1/prompt_engine/run \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -58,7 +58,7 @@ curl https://api.jigsawstack.com//v1/prompt_engine/run \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/prompt_engine/run');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/prompt_engine/run');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -76,7 +76,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com//v1/prompt_engine/run')
+uri = URI('https://api.jigsawstack.com/v1/prompt_engine/run')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -122,7 +122,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"prompt":"Tell me a story about {about}","inputs":[{"key":"about","optional":true,"initial_value":"Leaning Tower of Pisa"}],"return_prompt":"Return the result in a markdown format","prompt_guard":["sexual_content","defamation"],"input_values":{"about":"Santorini"}}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/prompt_engine/run", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/prompt_engine/run", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -152,7 +152,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com//v1/prompt_engine/run"))
+    .uri(URI.create("https://api.jigsawstack.com/v1/prompt_engine/run"))
     .POST(BodyPublishers.ofString("{\"prompt\":\"Tell me a story about {about}\",\"inputs\":[{\"key\":\"about\",\"optional\":true,\"initial_value\":\"Leaning Tower of Pisa\"}],\"return_prompt\":\"Return the result in a markdown format\",\"prompt_guard\":[\"sexual_content\",\"defamation\"],\"input_values\":{\"about\":\"Santorini\"}}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -184,7 +184,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com//v1/prompt_engine/run")!
+let url = URL(string: "https://api.jigsawstack.com/v1/prompt_engine/run")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -218,7 +218,7 @@ void main() async {
 
   final data = '{"prompt":"Tell me a story about {about}","inputs":[{"key":"about","optional":true,"initial_value":"Leaning Tower of Pisa"}],"return_prompt":"Return the result in a markdown format","prompt_guard":["sexual_content","defamation"],"input_values":{"about":"Santorini"}}';
 
-  final url = Uri.parse('https://api.jigsawstack.com//v1/prompt_engine/run');
+  final url = Uri.parse('https://api.jigsawstack.com/v1/prompt_engine/run');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -242,7 +242,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"prompt\":\"Tell me a story about {about}\",\"inputs\":[{\"key\":\"about\",\"optional\":true,\"initial_value\":\"Leaning Tower of Pisa\"}],\"return_prompt\":\"Return the result in a markdown format\",\"prompt_guard\":[\"sexual_content\",\"defamation\"],\"input_values\":{\"about\":\"Santorini\"}}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com//v1/prompt_engine/run")
+  .url("https://api.jigsawstack.com/v1/prompt_engine/run")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -260,7 +260,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/prompt_engine/run");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/prompt_engine/run");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -277,13 +277,13 @@ string responseBody = await response.Content.ReadAsStringAsync();
     ```json Response
 {
       "success": true,
-      "result": "Okay, here's a story about Santorini, based on the current ISO time you provided:\n\n***\n\nThe Aegean Sea shimmered, a restless sapphire under the pre-dawn sky. It was 2:02 AM on September 9th, 2025, and the only light on Santorini came from the sliver of a moon and the scattered, golden pinpricks of streetlights clinging to the caldera's edge.\n\nOld Man Yiannis, his face a roadmap of wrinkles etched by sun and sea, sat on a weathered bench in Oia. He was a keeper of stories, a silent guardian of the island's ancient heart. He watched the darkness slowly bleed into a bruised purple, the promise of another spectacular sunrise painting the horizon.\n\nHe remembered a time before the tourists, before the infinity pools and the Instagram influencers. A time when Santorini was a quiet island of fishermen and farmers, their lives dictated by the rhythm of the sea and the volcanic soil. He remembered his grandfather telling tales of the Minoan eruption, the cataclysm that shaped the island into the crescent moon it was today. A story of a powerful civilization swallowed by the sea, leaving behind only whispers in the wind and the black sand beaches.\n\nTonight, though, Yiannis wasn't thinking of the past. He was thinking of Eleni, his granddaughter. She was a bright spark, a modern Santorinian. She ran a small art gallery in Fira, showcasing the work of local artists, trying to keep the island's soul alive amidst the commercial frenzy.\n\nHe worried about her. The island was changing so fast. The influx of visitors, while bringing prosperity, also threatened to drown out the authentic spirit of Santorini. He feared that the stories, the traditions, the very essence of what made Santorini unique, would be lost in the sea of selfies and souvenir shops.\n\nSuddenly, a figure emerged from the shadows. It was Eleni, her face illuminated by the glow of her phone.\n\n\"Papou,\" she said, her voice soft. \"I couldn't sleep. I was thinking about the new resort they're building near Akrotiri. They want to buy my gallery's land.\"\n\nYiannis sighed. He knew this was coming. The developers were relentless.\n\n\"What will you do, Eleni?\" he asked, his voice heavy with concern.\n\nEleni looked out at the darkening sea, the first faint streaks of orange beginning to paint the sky. \"I don't know, Papou. But I know I can't let them erase our history. I can't let them turn Santorini into just another pretty picture.\"\n\nShe turned to him, her eyes filled with a fierce determination. \"I'm going to fight for it, Papou. I'm going to fight for the soul of Santorini.\"\n\nYiannis smiled, a genuine, heartfelt smile that reached his eyes. He saw the fire in her, the same fire that had burned in his ancestors, the same fire that had survived the volcano and the centuries.\n\nAs the sun finally crested the horizon, bathing the white-washed villages in a golden light, Yiannis knew that Santorini's story was far from over. It was a story of resilience, of beauty, and of the enduring spirit of its people. And he knew, with a certainty that warmed him from the inside out, that Eleni, his granddaughter, would be a part of that story, a guardian of the island's heart, for generations to come. The new day had begun, and with it, a new chapter in the timeless tale of Santorini.\n***\n",
+      "result": "Okay, here's a story about Santorini, formatted in Markdown:\n\n# The Whispers of Oia\n\nThe Aegean sun, a molten coin in the sky, dipped towards the horizon, painting the whitewashed houses of Oia in hues of apricot and rose. Eleni, a young woman with eyes the color of the deep caldera, leaned against the crumbling stone wall of her family's taverna, \"The Whispering Wind.\" The taverna, perched precariously on the cliff edge, had been in her family for generations, its walls echoing with the laughter and stories of countless travelers.\n\nTonight, however, the wind carried a different kind of whisper. A whisper of change.\n\nTourism had exploded on Santorini. The once-quiet village was now a bustling hive of activity, crammed with cruise ship passengers and Instagram influencers. Eleni loved the energy, the vibrant mix of cultures, but she also felt a pang of loss. The old ways, the slow pace of life, the quiet intimacy of the island, were fading.\n\nHer grandfather, Papou Dimitri, sat nearby, mending fishing nets with gnarled hands. He watched the sunset with a knowing gaze. \"The island remembers,\" he said, his voice raspy like the volcanic rock. \"It remembers the Minoan eruption, the earthquakes, the centuries of struggle. It will adapt, as it always has.\"\n\nEleni wasn't so sure. She saw the plastic waste washing up on the black sand beaches, the rising prices pushing locals out of their homes, the erosion of the caldera cliffs from the constant construction.\n\nOne evening, a wealthy developer arrived at the taverna. He proposed buying the land, offering Eleni's family a fortune. He envisioned a luxury resort, complete with infinity pools and helicopter pads. Eleni's parents were tempted. The money would secure their future, provide opportunities for their children.\n\nBut Eleni felt a deep unease. Selling the taverna felt like selling a piece of her soul, a betrayal of her ancestors. She looked at Papou Dimitri, his eyes filled with a quiet sadness.\n\nThat night, Eleni couldn't sleep. She walked to the edge of the caldera, the wind whipping through her hair. The moon cast a silver glow on the water, illuminating the submerged remnants of the ancient volcano. She thought of the stories Papou Dimitri had told her, of the Minoan civilization swallowed by the sea, of the resilience of the islanders who rebuilt their lives from the ashes.\n\nSuddenly, she understood. Santorini wasn't just a beautiful postcard. It was a living, breathing entity, shaped by history and hardship. It deserved respect, not exploitation.\n\nThe next morning, Eleni stood before her family and the developer. \"We will not sell,\" she declared, her voice trembling but firm. \"This taverna is more than just a business. It's a part of our history, a part of Santorini's soul. We will find a way to preserve it, to share its beauty responsibly.\"\n\nThe developer scoffed, but Eleni stood her ground. She proposed a plan: to focus on sustainable tourism, to promote local products, to educate visitors about the island's history and environment. It wouldn't be easy, but it was the right thing to do.\n\nSlowly, others joined her cause. Local artisans, fishermen, and farmers rallied together. They organized eco-tours, promoted traditional crafts, and cleaned up the beaches. They showed the world that Santorini could be both beautiful and sustainable.\n\nYears later, \"The Whispering Wind\" still stood proudly on the cliff edge, its walls echoing with laughter and stories. Eleni, now a mother herself, watched the sunset with her own children, the wind carrying a new whisper – a whisper of hope, a whisper of resilience, a whisper of a future where Santorini's beauty and its soul could thrive together. The island remembered, and so would they.\n",
       "message": "It is recommended to store the prompt engine and execute it using the ID rather than running it directly for the best performance and reliability. Learn more: https://jigsawstack.com/docs/api-reference/prompt-engine/create",
       "_usage": {
             "input_tokens": 67,
-            "output_tokens": 893,
-            "inference_time_tokens": 5811,
-            "total_tokens": 6771
+            "output_tokens": 1012,
+            "inference_time_tokens": 7289,
+            "total_tokens": 8368
       }
 }
     ```
