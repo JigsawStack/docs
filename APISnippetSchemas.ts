@@ -273,19 +273,6 @@ export const APISchemas: {
     },
     sdk_key_string: "prompt_engine.create",
   },
-  "prompt-engine-run": {
-    path: "/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5",
-    method: "POST",
-    query: {
-      id: "0073d008-da9b-4c27-90a8-0240f3ecd4f5",
-    },
-    body: {
-      input_values: {
-        text: "How to get started with JigsawStack?",
-      },
-    },
-    sdk_key_string: "prompt_engine.run",
-  },
   "prompt-engine-retrieve": {
     path: "/v1/prompt_engine/${id}",
     method: "GET",
@@ -308,10 +295,13 @@ export const APISchemas: {
     sdk_key_string: "prompt_engine.delete",
     skip_request: true,
   },
-  "prompt-engine-run-prompt-direct": {
+  "prompt-engine-run": {
     path: "/v1/prompt_engine/run",
     method: "POST",
-    body: {
+    query: {
+      id: "0073d008-da9b-4c27-90a8-0240f3ecd4f5",
+    },
+    body : {
       prompt: "Tell me a story about {about}",
       inputs: [
         {
@@ -326,6 +316,18 @@ export const APISchemas: {
         about: "Santorini",
       },
     },
+    sdk_key_string: "prompt_engine.run",
+  },
+  "prompt-engine-run-prompt-direct": {
+    path: "/v1/prompt_engine/${id}",
+    method: "POST",
+    body: {
+      input_values: {
+        text: "How to get started with JigsawStack?",
+      },
+    },
+    direct_id: "0073d008-da9b-4c27-90a8-0240f3ecd4f5",
     sdk_key_string: "prompt_engine.run_prompt_direct",
-  }
+    skip_request: true,
+  },
 };

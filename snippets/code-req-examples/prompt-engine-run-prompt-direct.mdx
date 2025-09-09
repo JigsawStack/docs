@@ -5,67 +5,33 @@ import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
-const response = await jigsaw.prompt_engine.run_prompt_direct({
-      "prompt": "Tell me a story about {about}",
-      "inputs": [
-            {
-                  "key": "about",
-                  "optional": true,
-                  "initial_value": "Leaning Tower of Pisa"
-            }
-      ],
-      "return_prompt": "Return the result in a markdown format",
-      "prompt_guard": [
-            "sexual_content",
-            "defamation"
-      ],
-      "input_values": {
-            "about": "Santorini"
-      }
-})
+const response = await jigsaw.prompt_engine.run_prompt_direct("0073d008-da9b-4c27-90a8-0240f3ecd4f5")
     ```
     ```python Python
 from jigsawstack import JigsawStack
 
 jigsaw = JigsawStack(api_key="your-api-key")
 
-response = jigsaw.prompt_engine.run_prompt_direct({
-      "prompt": "Tell me a story about {about}",
-      "inputs": [
-            {
-                  "key": "about",
-                  "optional": True,
-                  "initial_value": "Leaning Tower of Pisa"
-            }
-      ],
-      "return_prompt": "Return the result in a markdown format",
-      "prompt_guard": [
-            "sexual_content",
-            "defamation"
-      ],
-      "input_values": {
-            "about": "Santorini"
-      }
-})
+response = jigsaw.prompt_engine.run_prompt_direct("0073d008-da9b-4c27-90a8-0240f3ecd4f5")
     ```
     ```bash Curl
-curl https://api.jigsawstack.com//v1/prompt_engine/run \
+curl https://api.jigsawstack.com//v1/prompt_engine/${id} \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
- -d '{"prompt":"Tell me a story about {about}","inputs":[{"key":"about","optional":true,"initial_value":"Leaning Tower of Pisa"}],"return_prompt":"Return the result in a markdown format","prompt_guard":["sexual_content","defamation"],"input_values":{"about":"Santorini"}}'
+ -d '{"input_values":{"text":"How to get started with JigsawStack?"}}'
     ```
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/prompt_engine/run');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/prompt_engine/' . getenv('id') ?? '');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
     'x-api-key: your-api-key',
 ]);
-curl_setopt($ch, CURLOPT_POSTFIELDS, '{"prompt":"Tell me a story about {about}","inputs":[{"key":"about","optional":true,"initial_value":"Leaning Tower of Pisa"}],"return_prompt":"Return the result in a markdown format","prompt_guard":["sexual_content","defamation"],"input_values":{"about":"Santorini"}}');
+curl_setopt($ch, CURLOPT_POSTFIELDS, '{"input_values":{"text":"How to get started with JigsawStack?"}}');
 
 $response = curl_exec($ch);
 
@@ -76,27 +42,14 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com//v1/prompt_engine/run')
+uri = URI('https://api.jigsawstack.com//v1/prompt_engine/' + ENV['id'])
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
 
 req.body = {
-  'prompt' => 'Tell me a story about {about}',
-  'inputs' => [
-    {
-      'key' => 'about',
-      'optional' => true,
-      'initial_value' => 'Leaning Tower of Pisa'
-    }
-  ],
-  'return_prompt' => 'Return the result in a markdown format',
-  'prompt_guard' => [
-    'sexual_content',
-    'defamation'
-  ],
   'input_values' => {
-    'about' => 'Santorini'
+    'text' => 'How to get started with JigsawStack?'
   }
 }.to_json
 
@@ -116,13 +69,14 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 )
 
 func main() {
 	client := &http.Client{}
-	var data = strings.NewReader(`{"prompt":"Tell me a story about {about}","inputs":[{"key":"about","optional":true,"initial_value":"Leaning Tower of Pisa"}],"return_prompt":"Return the result in a markdown format","prompt_guard":["sexual_content","defamation"],"input_values":{"about":"Santorini"}}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/prompt_engine/run", data)
+	var data = strings.NewReader(`{"input_values":{"text":"How to get started with JigsawStack?"}}`)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/prompt_engine/" + os.Getenv("id"), data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -143,6 +97,7 @@ func main() {
     ```
     ```java Java
 import java.io.IOException;
+import java.lang.System;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -152,8 +107,8 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com//v1/prompt_engine/run"))
-    .POST(BodyPublishers.ofString("{\"prompt\":\"Tell me a story about {about}\",\"inputs\":[{\"key\":\"about\",\"optional\":true,\"initial_value\":\"Leaning Tower of Pisa\"}],\"return_prompt\":\"Return the result in a markdown format\",\"prompt_guard\":[\"sexual_content\",\"defamation\"],\"input_values\":{\"about\":\"Santorini\"}}"))
+    .uri(URI.create("https://api.jigsawstack.com//v1/prompt_engine/" + System.getenv("id")))
+    .POST(BodyPublishers.ofString("{\"input_values\":{\"text\":\"How to get started with JigsawStack?\"}}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
     .build();
@@ -165,26 +120,13 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
 import Foundation
 
 let jsonData = [
-    "prompt": "Tell me a story about {about}",
-    "inputs": [
-        [
-            "key": "about",
-            "optional": true,
-            "initial_value": "Leaning Tower of Pisa"
-        ]
-    ],
-    "return_prompt": "Return the result in a markdown format",
-    "prompt_guard": [
-        "sexual_content",
-        "defamation"
-    ],
     "input_values": [
-        "about": "Santorini"
+        "text": "How to get started with JigsawStack?"
     ]
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com//v1/prompt_engine/run")!
+let url = URL(string: "https://api.jigsawstack.com//v1/prompt_engine/" + (ProcessInfo.processInfo.environment["id"] ?? ""))!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -208,6 +150,7 @@ task.resume()
 
     ```
     ```dart Dart
+import 'dart:io';
 import 'package:http/http.dart' as http;
 
 void main() async {
@@ -216,9 +159,9 @@ void main() async {
     'x-api-key': 'your-api-key',
   };
 
-  final data = '{"prompt":"Tell me a story about {about}","inputs":[{"key":"about","optional":true,"initial_value":"Leaning Tower of Pisa"}],"return_prompt":"Return the result in a markdown format","prompt_guard":["sexual_content","defamation"],"input_values":{"about":"Santorini"}}';
+  final data = '{"input_values":{"text":"How to get started with JigsawStack?"}}';
 
-  final url = Uri.parse('https://api.jigsawstack.com//v1/prompt_engine/run');
+  final url = Uri.parse('https://api.jigsawstack.com//v1/prompt_engine/' + (Platform.environment['id'] ?? ''));
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -230,6 +173,7 @@ void main() async {
     ```
     ```kotlin Kotlin
 import java.io.IOException
+import java.lang.System
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -239,10 +183,10 @@ val client = OkHttpClient()
 
 val MEDIA_TYPE = "application/json".toMediaType()
 
-val requestBody = "{\"prompt\":\"Tell me a story about {about}\",\"inputs\":[{\"key\":\"about\",\"optional\":true,\"initial_value\":\"Leaning Tower of Pisa\"}],\"return_prompt\":\"Return the result in a markdown format\",\"prompt_guard\":[\"sexual_content\",\"defamation\"],\"input_values\":{\"about\":\"Santorini\"}}"
+val requestBody = "{\"input_values\":{\"text\":\"How to get started with JigsawStack?\"}}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com//v1/prompt_engine/run")
+  .url("https://api.jigsawstack.com//v1/prompt_engine/" + System.getenv("id") ?: "")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -255,16 +199,17 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/prompt_engine/run");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/prompt_engine/" + Environment.GetEnvironmentVariable("id"));
 
 request.Headers.Add("x-api-key", "your-api-key");
 
-request.Content = new StringContent("{\"prompt\":\"Tell me a story about {about}\",\"inputs\":[{\"key\":\"about\",\"optional\":true,\"initial_value\":\"Leaning Tower of Pisa\"}],\"return_prompt\":\"Return the result in a markdown format\",\"prompt_guard\":[\"sexual_content\",\"defamation\"],\"input_values\":{\"about\":\"Santorini\"}}");
+request.Content = new StringContent("{\"input_values\":{\"text\":\"How to get started with JigsawStack?\"}}");
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
@@ -273,20 +218,7 @@ string responseBody = await response.Content.ReadAsStringAsync();
 
     ```
     </RequestExample>
-    <ResponseExample>
-    ```json Response
-{
-      "success": true,
-      "result": "Okay, here's a story about Santorini, formatted in Markdown:\n\n# The Whispers of Oia\n\nThe caldera wind, a constant companion on Santorini, whipped Eleni's hair across her face as she stood on the edge of Oia. Below, the whitewashed houses clung to the cliff face like stubborn barnacles, a cascade of dazzling white against the deep blue Aegean. The sun, a molten coin sinking into the horizon, painted the sky in hues of fiery orange, rose-gold, and violet. It was, as always, breathtaking.\n\nEleni, however, wasn't just admiring the view. She was listening. Listening for the whispers.\n\nHer grandmother, Yaya Irini, had told her stories of the caldera since she was a child. Stories of the volcano's slumbering heart, of the ancient Minoan civilization swallowed by its fury, and of the spirits that lingered, their voices carried on the wind. Yaya Irini claimed these spirits held the secrets of the island, secrets whispered only to those who knew how to listen.\n\nEleni, a budding archaeologist, had always dismissed it as folklore. But after Yaya Irini's passing, she found herself drawn back to Santorini, to the house overlooking the caldera, and to the whispers.\n\nTonight, the wind carried a different tone. It wasn't the usual mournful sigh, but a frantic, almost pleading murmur. Eleni closed her eyes, focusing, trying to decipher the fragmented sounds. She heard snippets of words: \"Fire… lost… forgotten…\"\n\nIntrigued, she spent the next few days researching the island's history, poring over old maps and archaeological reports. She stumbled upon a reference to a lost Minoan settlement, predating Akrotiri, located on the less-visited northern coast. The settlement, known only as \"Thera's Cradle,\" was rumored to have been a center for fire worship, its secrets buried beneath layers of volcanic ash.\n\nDriven by the whispers and her own growing curiosity, Eleni hired a local fisherman, Dimitri, to take her to the remote northern coast. The landscape was stark and rugged, a far cry from the postcard-perfect views of Oia. After hours of searching, they found it: a small, overgrown cove, hidden from the sea.\n\nAs Eleni began to excavate, carefully brushing away the volcanic dust, she uncovered fragments of pottery, tools, and, most surprisingly, a small, intricately carved obsidian amulet depicting a stylized flame. It felt warm to the touch, almost alive.\n\nThat night, the whispers were louder, clearer. They spoke of a ritual, a sacrifice, a desperate attempt to appease the volcano before its eruption. They spoke of a hidden chamber, containing the knowledge that could have saved them.\n\nFollowing the whispers, Eleni discovered a narrow passage leading into the cliff face. Inside, she found a small, sealed chamber. Within it, etched onto clay tablets, were the records of the Minoan priests, detailing their understanding of the volcano's cycles and their attempts to predict its eruptions.\n\nEleni realized the whispers weren't just echoes of the past, but a warning. The volcano, though dormant, was still alive. The knowledge contained within the chamber could help future generations understand and prepare for its potential awakening.\n\nShe carefully documented her findings, sharing them with the archaeological community. The discovery of Thera's Cradle and its secrets brought a new understanding of Santorini's history and the Minoan civilization.\n\nAs Eleni stood once more on the edge of Oia, the caldera wind still swirling around her, she knew she was no longer just an archaeologist. She was a listener, a guardian of the island's secrets, forever bound to the whispers of Santorini. The sunset painted the sky in vibrant colors, and this time, Eleni heard not just the mournful sigh of the wind, but a faint, almost imperceptible, note of gratitude. The spirits of the past were finally at peace.\n",
-      "message": "It is recommended to store the prompt engine and execute it using the ID rather than running it directly for the best performance and reliability. Learn more: https://jigsawstack.com/docs/api-reference/prompt-engine/create",
-      "_usage": {
-            "input_tokens": 67,
-            "output_tokens": 1035,
-            "inference_time_tokens": 7493,
-            "total_tokens": 8595
-      }
-}
-    ```
-    </ResponseExample>
     
+
+<ResponseExample></ResponseExample>
     
