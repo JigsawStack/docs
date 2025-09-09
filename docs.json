@@ -211,6 +211,11 @@
             ]
           }
         ]
+      },
+      {
+        "anchor": "Changelog",
+        "icon": "bell",
+        "pages": ["docs/changelog"]
       }
     ]
   },
