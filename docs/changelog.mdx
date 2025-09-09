@@ -5,24 +5,22 @@ description: "JigsawStack updates and announcements"
 <Update label="September 8, 2025" description="v0.3.3" tags={["SDKs", "Features", "API", "Fixes", "DOCS"]}>
 
 ### Features
-#### Embedding V2
-Embedding V2 is a new way to embed JigsawStack. It is a more flexible and powerful way to embed JigsawStack. 
-**Additional Features:**
-- params: `speaker_fingerprint` A unique identifier for the speaker.
-- response: `speaker_embeddings` A list of embeddings for the speaker.
+**Embedding V2** is a new, flexible, and more powerful embedding model. 
+- params: `speaker_fingerprint` a boolean value to switch on/off speaker identification.
+- response: `speaker_embeddings` a list of embeddings for the speaker.
 
 ### Fixes
 - fixed Speech to Text (STT) webhook 
 - fixed file upload overwrites error
 
 ### API
-- added embedding v2 API (https://interfaze.ai/docs/api-reference/embedding-v2)
+- added embedding v2 API 
 
 ### SDKs
 - additional type safety for all APIs 
 - added embedding v2 
 - added deep research 
-- removed Text to Speech functionality from SDKs
+- removed Text to Speech (TTS) from SDKs
 - brought back prompt engine
 
 
@@ -30,6 +28,7 @@ Embedding V2 is a new way to embed JigsawStack. It is a more flexible and powerf
 - changelog introduction
 - examples for all SDKs supported
 - Vercel Integration and Marketplace
+- Passing Files documentation 
 
 
 </Update>

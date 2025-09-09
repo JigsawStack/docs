@@ -214,7 +214,7 @@
       },
       {
         "anchor": "Changelog",
-        "icon": "bell",
+        "icon": "megaphone",
         "pages": ["docs/changelog"]
       }
     ]
