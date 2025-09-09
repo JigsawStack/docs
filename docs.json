@@ -221,34 +221,6 @@
   },
   "redirects": [
   {
-    "source": "/docs/api-reference/prompt-engine/create",
-    "destination": "https://interfaze.ai"
-  },
-  {
-    "source": "/docs/api-reference/prompt-engine/run",
-    "destination": "https://interfaze.ai"
-  },
-  {
-    "source": "/docs/api-reference/prompt-engine/retrieve",
-    "destination": "https://interfaze.ai"
-  },
-  {
-    "source": "/docs/api-reference/prompt-engine/list",
-    "destination": "https://interfaze.ai"
-  },
-  {
-    "source": "/docs/api-reference/prompt-engine/delete",
-    "destination": "https://interfaze.ai"
-  },
-  {
-    "source": "/docs/api-reference/prompt-engine/run-direct",
-    "destination": "https://interfaze.ai"
-  },
-  {
-    "source": "docs/examples/core-ai/prompt-engine",
-    "destination": "https://interfaze.ai"
-  },
-  {
     "source": "docs/integration/groq",
     "destination": "https://interfaze.ai"
   }
