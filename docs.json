@@ -211,6 +211,11 @@
             ]
           }
         ]
+      },
+      {
+        "anchor": "Changelog",
+        "icon": "megaphone",
+        "pages": ["docs/changelog"]
       }
     ]
   },
