@@ -43,7 +43,7 @@ response = jigsaw.prompt_engine.create({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com//v1/prompt_engine \
+curl https://api.jigsawstack.com/v1/prompt_engine \
  -X POST \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key' \
@@ -52,7 +52,7 @@ curl https://api.jigsawstack.com//v1/prompt_engine \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/prompt_engine');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/prompt_engine');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -70,7 +70,7 @@ curl_close($ch);
 require 'net/http'
 require 'json'
 
-uri = URI('https://api.jigsawstack.com//v1/prompt_engine')
+uri = URI('https://api.jigsawstack.com/v1/prompt_engine')
 req = Net::HTTP::Post.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -113,7 +113,7 @@ import (
 func main() {
 	client := &http.Client{}
 	var data = strings.NewReader(`{"prompt":"Tell me a story about {about}","inputs":[{"key":"about","optional":false,"initial_value":"Leaning Tower of Pisa"}],"return_prompt":"Return the result in a markdown format","prompt_guard":["sexual_content","defamation"]}`)
-	req, err := http.NewRequest("POST", "https://api.jigsawstack.com//v1/prompt_engine", data)
+	req, err := http.NewRequest("POST", "https://api.jigsawstack.com/v1/prompt_engine", data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -143,7 +143,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com//v1/prompt_engine"))
+    .uri(URI.create("https://api.jigsawstack.com/v1/prompt_engine"))
     .POST(BodyPublishers.ofString("{\"prompt\":\"Tell me a story about {about}\",\"inputs\":[{\"key\":\"about\",\"optional\":false,\"initial_value\":\"Leaning Tower of Pisa\"}],\"return_prompt\":\"Return the result in a markdown format\",\"prompt_guard\":[\"sexual_content\",\"defamation\"]}"))
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -172,7 +172,7 @@ let jsonData = [
 ] as [String : Any]
 let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-let url = URL(string: "https://api.jigsawstack.com//v1/prompt_engine")!
+let url = URL(string: "https://api.jigsawstack.com/v1/prompt_engine")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -206,7 +206,7 @@ void main() async {
 
   final data = '{"prompt":"Tell me a story about {about}","inputs":[{"key":"about","optional":false,"initial_value":"Leaning Tower of Pisa"}],"return_prompt":"Return the result in a markdown format","prompt_guard":["sexual_content","defamation"]}';
 
-  final url = Uri.parse('https://api.jigsawstack.com//v1/prompt_engine');
+  final url = Uri.parse('https://api.jigsawstack.com/v1/prompt_engine');
 
   final res = await http.post(url, headers: headers, body: data);
   final status = res.statusCode;
@@ -230,7 +230,7 @@ val MEDIA_TYPE = "application/json".toMediaType()
 val requestBody = "{\"prompt\":\"Tell me a story about {about}\",\"inputs\":[{\"key\":\"about\",\"optional\":false,\"initial_value\":\"Leaning Tower of Pisa\"}],\"return_prompt\":\"Return the result in a markdown format\",\"prompt_guard\":[\"sexual_content\",\"defamation\"]}"
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com//v1/prompt_engine")
+  .url("https://api.jigsawstack.com/v1/prompt_engine")
   .post(requestBody.toRequestBody(MEDIA_TYPE))
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -248,7 +248,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com//v1/prompt_engine");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/prompt_engine");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -265,13 +265,13 @@ string responseBody = await response.Content.ReadAsStringAsync();
     ```json Response
 {
       "success": true,
-      "prompt_engine_id": "f2f3eb09-9754-4376-8824-c7231f3b2920",
-      "optimized_prompt": "Write a detailed and engaging story about {about}, including vivid descriptions, well-developed characters, and a clear beginning, middle, and end.",
+      "prompt_engine_id": "5c3c2736-17e1-4536-9ccf-e8d72ca483f1",
+      "optimized_prompt": "Please write a detailed and engaging story about {about}, including vivid descriptions, well-developed characters, and a clear beginning, middle, and end.",
       "_usage": {
             "input_tokens": 58,
-            "output_tokens": 61,
-            "inference_time_tokens": 1443,
-            "total_tokens": 1562
+            "output_tokens": 63,
+            "inference_time_tokens": 2824,
+            "total_tokens": 2945
       }
 }
     ```

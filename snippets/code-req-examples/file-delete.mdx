@@ -19,7 +19,7 @@ response = jigsaw.store.delete({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com//v1/store/file/read/image-123.png?key=image-123.png \
+curl https://api.jigsawstack.com/v1/store/file/read/image-123.png?key=image-123.png \
  -X DELETE \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key'
@@ -27,7 +27,7 @@ curl https://api.jigsawstack.com//v1/store/file/read/image-123.png?key=image-123
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/store/file/read/image-123.png?key=image-123.png');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/store/file/read/image-123.png?key=image-123.png');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -43,7 +43,7 @@ curl_close($ch);
     ```ruby Ruby
 require 'net/http'
 
-uri = URI('https://api.jigsawstack.com//v1/store/file/read/image-123.png')
+uri = URI('https://api.jigsawstack.com/v1/store/file/read/image-123.png')
 params = {
   :key => 'image-123.png',
 }
@@ -73,7 +73,7 @@ import (
 
 func main() {
 	client := &http.Client{}
-	req, err := http.NewRequest("DELETE", "https://api.jigsawstack.com//v1/store/file/read/image-123.png?key=image-123.png", nil)
+	req, err := http.NewRequest("DELETE", "https://api.jigsawstack.com/v1/store/file/read/image-123.png?key=image-123.png", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -102,7 +102,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com//v1/store/file/read/image-123.png?key=image-123.png"))
+    .uri(URI.create("https://api.jigsawstack.com/v1/store/file/read/image-123.png?key=image-123.png"))
     .DELETE()
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -114,7 +114,7 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
     ```swift Swift
 import Foundation
 
-let url = URL(string: "https://api.jigsawstack.com//v1/store/file/read/image-123.png?key=image-123.png")!
+let url = URL(string: "https://api.jigsawstack.com/v1/store/file/read/image-123.png?key=image-123.png")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -149,7 +149,7 @@ void main() async {
     'key': 'image-123.png',
   };
 
-  final url = Uri.parse('https://api.jigsawstack.com//v1/store/file/read/image-123.png')
+  final url = Uri.parse('https://api.jigsawstack.com/v1/store/file/read/image-123.png')
       .replace(queryParameters: params);
 
   final res = await http.delete(url, headers: headers);
@@ -169,7 +169,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 val client = OkHttpClient()
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com//v1/store/file/read/image-123.png?key=image-123.png")
+  .url("https://api.jigsawstack.com/v1/store/file/read/image-123.png?key=image-123.png")
   .delete("".toRequestBody())
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -187,7 +187,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, "https://api.jigsawstack.com//v1/store/file/read/image-123.png?key=image-123.png");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, "https://api.jigsawstack.com/v1/store/file/read/image-123.png?key=image-123.png");
 
 request.Headers.Add("x-api-key", "your-api-key");
 

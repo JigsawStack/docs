@@ -19,7 +19,7 @@ response = jigsaw.prompt_engine.list({
 })
     ```
     ```bash Curl
-curl https://api.jigsawstack.com//v1/prompt_engine?limit=10 \
+curl https://api.jigsawstack.com/v1/prompt_engine?limit=10 \
  -X GET \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key'
@@ -27,7 +27,7 @@ curl https://api.jigsawstack.com//v1/prompt_engine?limit=10 \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/prompt_engine?limit=10');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com/v1/prompt_engine?limit=10');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -43,7 +43,7 @@ curl_close($ch);
     ```ruby Ruby
 require 'net/http'
 
-uri = URI('https://api.jigsawstack.com//v1/prompt_engine')
+uri = URI('https://api.jigsawstack.com/v1/prompt_engine')
 params = {
   :limit => '10',
 }
@@ -73,7 +73,7 @@ import (
 
 func main() {
 	client := &http.Client{}
-	req, err := http.NewRequest("GET", "https://api.jigsawstack.com//v1/prompt_engine?limit=10", nil)
+	req, err := http.NewRequest("GET", "https://api.jigsawstack.com/v1/prompt_engine?limit=10", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -102,7 +102,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com//v1/prompt_engine?limit=10"))
+    .uri(URI.create("https://api.jigsawstack.com/v1/prompt_engine?limit=10"))
     .GET()
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -114,7 +114,7 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
     ```swift Swift
 import Foundation
 
-let url = URL(string: "https://api.jigsawstack.com//v1/prompt_engine?limit=10")!
+let url = URL(string: "https://api.jigsawstack.com/v1/prompt_engine?limit=10")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -148,7 +148,7 @@ void main() async {
     'limit': '10',
   };
 
-  final url = Uri.parse('https://api.jigsawstack.com//v1/prompt_engine')
+  final url = Uri.parse('https://api.jigsawstack.com/v1/prompt_engine')
       .replace(queryParameters: params);
 
   final res = await http.get(url, headers: headers);
@@ -167,7 +167,7 @@ import okhttp3.Request
 val client = OkHttpClient()
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com//v1/prompt_engine?limit=10")
+  .url("https://api.jigsawstack.com/v1/prompt_engine?limit=10")
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
   .build()
@@ -184,7 +184,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://api.jigsawstack.com//v1/prompt_engine?limit=10");
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://api.jigsawstack.com/v1/prompt_engine?limit=10");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
@@ -202,6 +202,61 @@ string responseBody = await response.Content.ReadAsStringAsync();
 {
       "success": true,
       "prompt_engines": [
+            {
+                  "id": "278515ab-23cb-4675-8041-614f0d268c68",
+                  "prompt": "Tell me a story about {about}",
+                  "inputs": null,
+                  "return_prompt": null,
+                  "return_prompt_type": "string",
+                  "created_at": "2025-09-09T02:49:00.296775+00:00"
+            },
+            {
+                  "id": "12ca390e-0eb6-4bf2-a727-67f2ef79cd39",
+                  "prompt": "Tell me a story about {about}",
+                  "inputs": null,
+                  "return_prompt": null,
+                  "return_prompt_type": "string",
+                  "created_at": "2025-09-09T02:48:13.305085+00:00"
+            },
+            {
+                  "id": "48ad4a83-82c9-4356-89f4-c48e43fa6b81",
+                  "prompt": "Tell me a story about {about}",
+                  "inputs": [
+                        {
+                              "key": "about",
+                              "optional": false
+                        }
+                  ],
+                  "return_prompt": "Return the result in a markdown format",
+                  "return_prompt_type": "string",
+                  "created_at": "2025-09-09T02:37:53.155681+00:00"
+            },
+            {
+                  "id": "c62d8a22-d75c-4d9f-b4ee-5673f154be76",
+                  "prompt": "Tell me a story about {about}",
+                  "inputs": [
+                        {
+                              "key": "about",
+                              "optional": false
+                        }
+                  ],
+                  "return_prompt": "Return the result in a markdown format",
+                  "return_prompt_type": "string",
+                  "created_at": "2025-09-09T02:37:32.744933+00:00"
+            },
+            {
+                  "id": "f2f3eb09-9754-4376-8824-c7231f3b2920",
+                  "prompt": "Tell me a story about {about}",
+                  "inputs": [
+                        {
+                              "key": "about",
+                              "optional": false
+                        }
+                  ],
+                  "return_prompt": "Return the result in a markdown format",
+                  "return_prompt_type": "string",
+                  "created_at": "2025-09-09T02:02:04.481774+00:00"
+            },
             {
                   "id": "85e919c1-717b-4b4f-9d0d-2e91968c102d",
                   "prompt": "Tell me a story about {about}",
@@ -266,71 +321,6 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "return_prompt": "Return the result in a markdown format",
                   "return_prompt_type": "string",
                   "created_at": "2025-09-09T01:20:52.738103+00:00"
-            },
-            {
-                  "id": "9ad02cc6-3acb-4401-a4e5-8de032a4f1de",
-                  "prompt": "Tell me a story about {about}",
-                  "inputs": [
-                        {
-                              "key": "about",
-                              "optional": false
-                        }
-                  ],
-                  "return_prompt": "Return the result in a markdown format",
-                  "return_prompt_type": "string",
-                  "created_at": "2025-09-09T00:55:03.088136+00:00"
-            },
-            {
-                  "id": "1aa28e86-ccb9-401e-8af9-60cefb63bc6d",
-                  "prompt": "Tell me a story about {about}",
-                  "inputs": [
-                        {
-                              "key": "about",
-                              "optional": false
-                        }
-                  ],
-                  "return_prompt": "Return the result in a markdown format",
-                  "return_prompt_type": "string",
-                  "created_at": "2025-09-09T00:54:52.037554+00:00"
-            },
-            {
-                  "id": "d80f7024-b418-4def-9b96-601d47af6cc8",
-                  "prompt": "Tell me a story about {about}",
-                  "inputs": [
-                        {
-                              "key": "about",
-                              "optional": false
-                        }
-                  ],
-                  "return_prompt": "Return the result in a markdown format",
-                  "return_prompt_type": "string",
-                  "created_at": "2025-09-09T00:47:47.405615+00:00"
-            },
-            {
-                  "id": "1af4ce3e-7e9f-4e14-bb63-0eb1639f8cca",
-                  "prompt": "Tell me a story about {about}",
-                  "inputs": [
-                        {
-                              "key": "about",
-                              "optional": false
-                        }
-                  ],
-                  "return_prompt": "Return the result in a markdown format",
-                  "return_prompt_type": "string",
-                  "created_at": "2025-09-09T00:45:48.75734+00:00"
-            },
-            {
-                  "id": "b004efc7-0c44-4fe5-b3b8-39bc3450ba7d",
-                  "prompt": "Tell me a story about {about}",
-                  "inputs": [
-                        {
-                              "key": "about",
-                              "optional": false
-                        }
-                  ],
-                  "return_prompt": "Return the result in a markdown format",
-                  "return_prompt_type": "string",
-                  "created_at": "2025-09-08T23:50:40.464929+00:00"
             }
       ],
       "page": 0,
@@ -338,9 +328,9 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "has_more": true,
       "_usage": {
             "input_tokens": 4,
-            "output_tokens": 683,
-            "inference_time_tokens": 299,
-            "total_tokens": 986
+            "output_tokens": 650,
+            "inference_time_tokens": 711,
+            "total_tokens": 1365
       }
 }
     ```
