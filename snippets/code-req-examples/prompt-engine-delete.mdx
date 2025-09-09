@@ -5,17 +5,21 @@ import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
-const response = await jigsaw.prompt_engine.delete("dc578c69-6eb5-4c5b-82ab-9f74077cfdd5")
+const response = await jigsaw.prompt_engine.delete({
+      "promptId": "dc578c69-6eb5-4c5b-82ab-9f74077cfdd5"
+})
     ```
     ```python Python
 from jigsawstack import JigsawStack
 
 jigsaw = JigsawStack(api_key="your-api-key")
 
-response = jigsaw.prompt_engine.delete("dc578c69-6eb5-4c5b-82ab-9f74077cfdd5")
+response = jigsaw.prompt_engine.delete({
+      "promptId": "dc578c69-6eb5-4c5b-82ab-9f74077cfdd5"
+})
     ```
     ```bash Curl
-curl https://api.jigsawstack.com//v1/prompt_engine/${id} \
+curl https://api.jigsawstack.com//v1/prompt_engine/${id}?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5 \
  -X DELETE \
  -H 'Content-Type: application/json' \
  -H 'x-api-key: your-api-key'
@@ -23,7 +27,7 @@ curl https://api.jigsawstack.com//v1/prompt_engine/${id} \
     ```php PHP
 <?php
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/prompt_engine/' . getenv('id') ?? '');
+curl_setopt($ch, CURLOPT_URL, 'https://api.jigsawstack.com//v1/prompt_engine/' . getenv('id') ?? '' . '?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -40,6 +44,11 @@ curl_close($ch);
 require 'net/http'
 
 uri = URI('https://api.jigsawstack.com//v1/prompt_engine/' + ENV['id'])
+params = {
+  :promptId => 'dc578c69-6eb5-4c5b-82ab-9f74077cfdd5',
+}
+uri.query = URI.encode_www_form(params)
+
 req = Net::HTTP::Delete.new(uri)
 req.content_type = 'application/json'
 req['x-api-key'] = 'your-api-key'
@@ -65,7 +74,7 @@ import (
 
 func main() {
 	client := &http.Client{}
-	req, err := http.NewRequest("DELETE", "https://api.jigsawstack.com//v1/prompt_engine/" + os.Getenv("id"), nil)
+	req, err := http.NewRequest("DELETE", "https://api.jigsawstack.com//v1/prompt_engine/" + os.Getenv("id") + "?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -95,7 +104,7 @@ import java.net.http.HttpResponse;
 HttpClient client = HttpClient.newHttpClient();
 
 HttpRequest request = HttpRequest.newBuilder()
-    .uri(URI.create("https://api.jigsawstack.com//v1/prompt_engine/" + System.getenv("id")))
+    .uri(URI.create("https://api.jigsawstack.com//v1/prompt_engine/" + System.getenv("id") + "?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5"))
     .DELETE()
     .setHeader("Content-Type", "application/json")
     .setHeader("x-api-key", "your-api-key")
@@ -107,7 +116,7 @@ HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.o
     ```swift Swift
 import Foundation
 
-let url = URL(string: "https://api.jigsawstack.com//v1/prompt_engine/" + (ProcessInfo.processInfo.environment["id"] ?? ""))!
+let url = URL(string: "https://api.jigsawstack.com//v1/prompt_engine/" + (ProcessInfo.processInfo.environment["id"] ?? "") + "?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5")!
 let headers = [
     "Content-Type": "application/json",
     "x-api-key": "your-api-key"
@@ -139,7 +148,12 @@ void main() async {
     'x-api-key': 'your-api-key',
   };
 
-  final url = Uri.parse('https://api.jigsawstack.com//v1/prompt_engine/' + (Platform.environment['id'] ?? ''));
+  final params = {
+    'promptId': 'dc578c69-6eb5-4c5b-82ab-9f74077cfdd5',
+  };
+
+  final url = Uri.parse('https://api.jigsawstack.com//v1/prompt_engine/' + (Platform.environment['id'] ?? ''))
+      .replace(queryParameters: params);
 
   final res = await http.delete(url, headers: headers);
   final status = res.statusCode;
@@ -159,7 +173,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 val client = OkHttpClient()
 
 val request = Request.Builder()
-  .url("https://api.jigsawstack.com//v1/prompt_engine/" + System.getenv("id") ?: "")
+  .url("https://api.jigsawstack.com//v1/prompt_engine/" + System.getenv("id") ?: "" + "?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5")
   .delete("".toRequestBody())
   .header("Content-Type", "application/json")
   .header("x-api-key", "your-api-key")
@@ -178,7 +192,7 @@ using System.Net.Http.Headers;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, "https://api.jigsawstack.com//v1/prompt_engine/" + Environment.GetEnvironmentVariable("id"));
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, "https://api.jigsawstack.com//v1/prompt_engine/" + Environment.GetEnvironmentVariable("id") + "?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5");
 
 request.Headers.Add("x-api-key", "your-api-key");
 
