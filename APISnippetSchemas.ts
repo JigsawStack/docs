@@ -126,8 +126,9 @@ export const APISchemas: {
     path: "/v2/embedding",
     method: "POST",
     body: {
-      text: "Caption: Secluded Tiki Bar on a serene lake, perfect for a refreshing drink and a relaxing getaway",
-      type: "text",
+      url: "https://jigsawstack.com/preview/stt-example.wav",
+      type: "audio",
+      speaker_fingerprint: true
     },
     sdk_key_string: "embeddingV2",
   },
