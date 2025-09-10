@@ -3,7 +3,7 @@ title: "Passing Files"
 description: "Learn how to pass files to JigsawStack APIs."
 ---
 
-There are many ways to pass files to JigsawStack APIs. This page will cover the 3 most common methods, going from the easiest to the most complex.
+There are many ways to pass files to JigsawStack APIs. This page will cover the most common methods, going from the easiest to the most complex.
 
 ## 1. Passing files through URLs
 The easiest way to pass files to JigsawStack APIs is to pass in your file url. APIs that support file will always support `url` parameter.
@@ -41,7 +41,7 @@ response = jigsaw.vision.object_detection({
 
 
 
-## 2. Passing the files using `file_store_key`
+## 2. Passing the files using [File Store](/docs/api-reference/store/file/add)
 
 The second way to pass files to JigsawStack APIs is to use the `file_store_key` parameter.
 This is useful when you want to pass the same file to multiple APIs. 
