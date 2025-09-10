@@ -10,22 +10,21 @@ The easiest way to pass files to JigsawStack APIs is to pass in your file url. A
 Here are a few examples straight from our [API Reference](/docs/api-reference).
 
 <CodeGroup>
-  ```javascript object_detection.js
+```javascript object_detection.js
 import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
 const response = await jigsaw.vision.object_detection({
-  "url": "https://jigsawstack.com/preview/object-detection-example-input.jpg",
-  "features": [
-        "object_detection"
-  ],
-  "annotated_image": true,
-  "return_type": "url"
-})
-  ```
-  ```python object_detection.py
-  from jigsawstack import JigsawStack
+  url: "https://jigsawstack.com/preview/object-detection-example-input.jpg",
+  features: ["object_detection"],
+  annotated_image: true,
+  return_type: "url",
+});
+```
+
+```python object_detection.py
+from jigsawstack import JigsawStack
 
 jigsaw = JigsawStack(api_key="your-api-key")
 
@@ -37,7 +36,7 @@ response = jigsaw.vision.object_detection({
   "annotated_image": True,
   "return_type": "url"
 })
-  ```
+```
 </CodeGroup>
 
 
@@ -49,76 +48,86 @@ This is useful when you want to pass the same file to multiple APIs.
 
 ### Upload the File to JigsawStack File Store
 <CodeGroup>
-  ```javascript file_upload.js
-import { JigsawStack } from "jigsawstack";
-
-const jigsaw = JigsawStack({
-apiKey: "your-api-key",
-});
-
-const imageFetch = await fetch("https://jigsawstack.com/preview/object-detection-example-input.jpg");
-const blob = await imageFetch.blob();
-
-const response = await jigsaw.store.upload(blob, {
-key: "test-key",
-overwrite: true,
-});
-  ```
-
-  ```python file_upload.py
-import requests
-from jigsawstack import JigsawStack
-
-jigsaw = JigsawStack(api_key="your-api-key")
-
-image_response = requests.get("https://jigsawstack.com/preview/object-detection-example-input.jpg")
-blob = image_response.content
-
-response = jigsaw.store.upload(blob, {
-"key": "test-key",
-"overwrite": True
-})
-  ```
-</CodeGroup>
-
-### Pass the `file_store_key` to your desired API
-<CodeGroup>
-```javascript nsfw.js
+```javascript file_upload.js
 import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({
   apiKey: "your-api-key",
 });
 
-const result = await jigsaw.validate.nsfw({
-  file_store_key: "your-file-store-key",
+const imageFetch = await fetch("https://jigsawstack.com/preview/object-detection-example-input.jpg");
+const blob = await imageFetch.blob();
+
+const response = await jigsaw.store.upload(blob, {
+  key: "test-key",
+  overwrite: true,
+  temp_public_url: true,
+});
+
+// Response:
+// {'key': 'generated-file-store-key',
+//  'size': 152856,
+//  'temp_public_url': 'temp-public-url-to-the-file',
+//  'url': 'url-to-the-file'
+// }
+```
+
+```python file_upload.py
+import requests
+from jigsawstack import JigsawStack
+
+jigsaw = JigsawStack(api_key="your-api-key")
+
+image_response = requests.get(
+    "https://jigsawstack.com/preview/object-detection-example-input.jpg"
+)
+blob = image_response.content
+
+response = jigsaw.store.upload(blob, 
+    {
+        "overwrite": True,
+        "temp_public_url": True,
+    }
+)
+# Response:
+# {'key': 'generated-file-store-key',
+#  'size': 152856,
+#  'temp_public_url': 'temp-public-url-to-the-file',
+#  'url': 'url-to-the-file'
+# }
+```
+</CodeGroup>
+
+### Then pass the `file_store_key` to your desired API
+<CodeGroup>
+```javascript file_store_key.js
+const result = await jigsaw.vision.object_detection({
+  file_store_key: "generated-file-store-key",
 });
 ```
 
-```python nsfw.py
-from jigsawstack import JigsawStack
-
-jigsaw = JigsawStack(
-  api_key="your-api-key",
-);
-
-result = jigsaw.validate.nsfw(
-  {
-    "file_store_key": "your-file-store-key",
-  }
-);
+```python file_store_key.py
+result = jigsaw.vision.object_detection({
+    "file_store_key": "generated-file-store-key",
+});
 ```
 
 </CodeGroup>
 
-## 3. Passing files as multipart/form-data
-Lastly, you can pass files as multipart/form-data. This is useful if you dont want to encode the file as base64 or url.
-By passing it as multipart/form-data, JigsawStack will handle the file encoding and pass the file to the API.
+You can access the preview link of the file by using the `temp_public_url`.
+
+<Warning>
+The `temp_public_url` is a temporary URL that will expire after 7 days.
+</Warning>
 
 
-### VOCR 
+
+## 3. Passing files directly
+You can pass files directly to the API. This is useful if you dont want to encode the file as base64 or url.
+
+
 <CodeGroup>
-```javascript vocr.js 
+```javascript object_detection_direct.js 
 import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
@@ -126,15 +135,14 @@ const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 const file = await fetch("https://jigsawstack.com/preview/vocr-example.jpg");
 const fileBlob = await file.blob();
 
-const response = await jigsaw.vision.vocr(fileBlob, {
-  "prompt": [
-        "total_price",
-        "tax",
-  ],
-})
+const response = await jigsaw.vision.object_detection(blob, {
+  features: ["object_detection"],
+  annotated_image: true,
+  return_type: "url",
+});
 ```
 
-  ```python vocr.py
+```python object_detection_direct.py
 from jigsawstack import JigsawStack
 import requests
 
@@ -147,13 +155,28 @@ image_url = "https://jigsawstack.com/preview/vocr-example.jpg"
 image_response = requests.get(image_url)
 imageblob = image_response.content
 
-response = jigsaw.vision.vocr(
+response = jigsaw.vision.object_detection(
     imageblob,
-    {
-        "prompt": ["total_price", "tax"],
-    },
+    {"features": ["object_detection"], "annotated_image": True, "return_type": "url"},
 )
-  ```
+
+print(response)
+```
+</CodeGroup>
+
+## 4. Passing files as multipart/form-data
+By passing it as multipart/form-data, JigsawStack will handle the file encoding and pass the file to the API.
+
+<CodeGroup>
+```curl curl_example.sh
+curl -X POST \
+  -H "x-api-key: your-api-key" \
+  -F "file=@/path/to/downloaded/image.jpg" \
+  -F "features=[\"object_detection\"]" \
+  -F "annotated_image=true" \
+  -F "return_type=url" \
+  https://api.jigsawstack.com/v1/object_detection
+```
 </CodeGroup>
 
 ## Working with External API Clients and API Testing Tools 
@@ -164,11 +187,11 @@ Pass the file as the `file` parameter.
 Additional parameters can be passed with the body. Below are some examples with Postman and HTTPie.
 
 <Tabs>
-<Tab title="HTTPie">
-<img src="/images/httpie-example.png" alt="HTTPie" />
-</Tab>
 <Tab title="Postman">
 <img src="/images/postman-example.jpg" alt="Postman" />
+</Tab>
+<Tab title="HTTPie">
+<img src="/images/httpie-example.png" alt="HTTPie" />
 </Tab>
 </Tabs>
 

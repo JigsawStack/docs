@@ -133,6 +133,9 @@
           {
             "group": "Resources",
             "pages": [
+              "docs/api-reference/authentication",
+              "docs/api-reference/error",
+              "docs/api-reference/passing-files",
               "docs/llms.txt",
               "docs/llms-full.txt",
               "docs/additional-resources/ai-dev-tools",
@@ -149,10 +152,6 @@
         "anchor": "API Reference",
         "icon": "code",
         "groups": [
-          {
-            "group": "API Documentation",
-            "pages": ["docs/api-reference/authentication", "docs/api-reference/error", "docs/api-reference/passing-files"]
-          },
           {
             "group": "Core AI",
             "pages": ["docs/api-reference/ai/sentiment", "docs/api-reference/ai/summary", "docs/api-reference/ai/image-generation"]
