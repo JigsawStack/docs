@@ -135,7 +135,7 @@
             "pages": [
               "docs/api-reference/authentication",
               "docs/api-reference/error",
-              "docs/api-reference/passing-files",
+              "docs/api-reference/handling-files",
               "docs/llms.txt",
               "docs/llms-full.txt",
               "docs/additional-resources/ai-dev-tools",

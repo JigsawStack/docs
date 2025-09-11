@@ -7,18 +7,11 @@ description: "Recognise objects within an image with great accuracy."
 import ObjectDetectionSnippet from "/snippets/code-req-examples/object-detection.mdx";
 import BasicResponse from "/snippets/helpers/basic-response.mdx";
 import Bounds from "/snippets/helpers/response/bounds.mdx";
+import FilesParam from "/snippets/helpers/params/files-param.mdx";
 
 ### Body
 
-<ParamField body="url" type="string">
-  The image url. Not required if `file_store_key` is specified.
-</ParamField>
-
-<ParamField body="file_store_key" type="string">
-  The key used to store the image on Jigsawstack file
-  [Storage](/docs/api-reference/store/file/add). Not required if `url` is
-  specified.
-</ParamField>
+<FilesParam />
 
 <ParamField body="prompts" type="array of strings" optional>
   Array of prompts for targeted object detection. Each prompt must be between 1-150 characters. Optional and nullable.
