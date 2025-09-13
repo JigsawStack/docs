@@ -7,20 +7,17 @@ description: "Recognise, describe and retrieve data within an image with great a
 import VocrSnippet from "/snippets/code-req-examples/vocr.mdx";
 import BasicResponse from "/snippets/helpers/basic-response.mdx";
 import Bounds from "/snippets/helpers/response/bounds.mdx";
+import FilesParam from "/snippets/helpers/params/files-param.mdx";
+
+
 
 ### Body
+
+<FilesParam />
 
 <ParamField body="prompt" type="string | Array<string> | object">
   The prompt used to describe the image. Default prompt is `Describe the image in detail.`
   
-</ParamField>
-
-<ParamField body="url" type="string">
-  The image url. Not required if `file_store_key` is specified.
-</ParamField>
-
-<ParamField body="file_store_key" type="string">
-  The key used to store the image on Jigsawstack File [Storage](/docs/api-reference/store/file/add). Not required if `url` is specified.
 </ParamField>
 
 <ParamField body="page_range" type="Array<number>">

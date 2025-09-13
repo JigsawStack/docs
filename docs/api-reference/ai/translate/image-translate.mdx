@@ -6,19 +6,13 @@ description: "Extract and translate text from images into multiple languages."
 
 import ImageTranslateSnippet from "/snippets/code-req-examples/image-translate.mdx";
 import BasicResponse from "/snippets/helpers/basic-response.mdx";
+import FilesParam from "/snippets/helpers/params/files-param.mdx";
 
 ## Request Parameters
 
 ### Body
 
-<ParamField body="url" type="string">
-  The URL of the image containing text to translate. If provided, the image will be downloaded from this URL. Must be a valid URL. Either `url` or
-  `file_store_key` must be provided.
-</ParamField>
-
-<ParamField body="file_store_key" type="string">
-  The file store key of a previously uploaded image. Either `url` or `file_store_key` must be provided.
-</ParamField>
+<FilesParam />
 
 <ParamField body="target_language" type="string" required>
   The language code of the target language to translate to. All supported language codes can be found
