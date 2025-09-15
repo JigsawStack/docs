@@ -5,7 +5,7 @@ import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
-const response = await jigsaw.embeddingV2({
+const response = await jigsaw.embedding_v2({
       "url": "https://jigsawstack.com/preview/stt-example.wav",
       "type": "audio",
       "speaker_fingerprint": true
@@ -16,7 +16,7 @@ from jigsawstack import JigsawStack
 
 jigsaw = JigsawStack(api_key="your-api-key")
 
-response = jigsaw.embeddingV2({
+response = jigsaw.embedding_v2({
       "url": "https://jigsawstack.com/preview/stt-example.wav",
       "type": "audio",
       "speaker_fingerprint": True
@@ -8437,8 +8437,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 26,
             "output_tokens": 13239,
-            "inference_time_tokens": 3428,
-            "total_tokens": 16693
+            "inference_time_tokens": 3412,
+            "total_tokens": 16677
       }
 }
     ```
