@@ -51,99 +51,99 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": ["docs/introduction", "docs/api-reference/all-models"]
+            "pages": ["/docs/introduction", "/docs/api-reference/all-models"]
           },
           {
             "group": "Quick Start",
             "pages": [
               {
                 "group": "Node.js",
-                "pages": ["docs/quick-start/node/introduction", "docs/quick-start/node/next", "docs/quick-start/node/window-ai"]
+                "pages": ["/docs/quick-start/node/introduction", "/docs/quick-start/node/next", "/docs/quick-start/node/window-ai"]
               },
               {
                 "group": "Python",
-                "pages": ["docs/quick-start/python/introduction"]
+                "pages": ["/docs/quick-start/python/introduction"]
               }
             ]
           },
           {
             "group": "Integration",
             "pages": [
-              "docs/integration/postman",
-              "docs/integration/vercel",
-              "docs/integration/huggingface",
-              "docs/integration/replicate",
-              "docs/integration/langchain",
-              "docs/integration/zapier",
-              "docs/integration/aries",
-              "docs/integration/n8n"
+              "/docs/integration/postman",
+              "/docs/integration/vercel",
+              "/docs/integration/huggingface",
+              "/docs/integration/replicate",
+              "/docs/integration/langchain",
+              "/docs/integration/zapier",
+              "/docs/integration/aries",
+              "/docs/integration/n8n"
             ]
           },
           {
             "group": "Core AI",
             "pages": [
-              "docs/examples/core-ai/image-generation",
-              "docs/examples/core-ai/summary",
-              "docs/examples/core-ai/sentiment"
+              "/docs/examples/core-ai/image-generation",
+              "/docs/examples/core-ai/summary",
+              "/docs/examples/core-ai/sentiment"
             ]
           },
           {
             "group": "Web Scrape",
-            "pages": ["docs/examples/web-scrape/ai-scrape", "docs/examples/web-scrape/html-to-any"]
+            "pages": ["/docs/examples/web-scrape/ai-scrape", "/docs/examples/web-scrape/html-to-any"]
           },
           {
             "group": "Web Search",
-            "pages": ["docs/examples/web-search/ai-search", "docs/examples/web-search/search-suggestions", "docs/examples/web-search/deep-research"]
+            "pages": ["/docs/examples/web-search/ai-search", "/docs/examples/web-search/search-suggestions", "/docs/examples/web-search/deep-research"]
           },
           {
             "group": "Translate",
-            "pages": ["docs/examples/translate/text-translation", "docs/examples/translate/image-translation"]
+            "pages": ["/docs/examples/translate/text-translation", "/docs/examples/translate/image-translation"]
           },
           {
             "group": "Data",
-            "pages": ["docs/examples/data/embedding", "docs/examples/data/embeddingV2", "docs/examples/data/prediction", "docs/examples/data/text-to-sql"]
+            "pages": ["/docs/examples/data/embedding", "/docs/examples/data/embeddingV2", "/docs/examples/data/prediction", "/docs/examples/data/text-to-sql"]
           },
           {
             "group": "Vision",
-            "pages": ["docs/examples/vision/vocr", "docs/examples/vision/object-detection"]
+            "pages": ["/docs/examples/vision/vocr", "/docs/examples/vision/object-detection"]
           },
           {
             "group": "Audio",
-            "pages": ["docs/examples/audio/speech-to-text"]
+            "pages": ["/docs/examples/audio/speech-to-text"]
           },
           {
             "group": "Content Validation",
-            "pages": ["docs/examples/validate/nsfw", "docs/examples/validate/profanity", "docs/examples/validate/spell-check", "docs/examples/validate/spam-check"]
+            "pages": ["/docs/examples/validate/nsfw", "/docs/examples/validate/profanity", "/docs/examples/validate/spell-check", "/docs/examples/validate/spam-check"]
           },
           {
             "group": "Classification",
-            "pages": ["docs/examples/classification/classification"]
+            "pages": ["/docs/examples/classification/classification"]
           },
           {
             "group": "File Management",
-            "pages": ["docs/examples/file-management/file-upload", "docs/examples/file-management/file-retrieve", "docs/examples/file-management/file-delete"]
+            "pages": ["/docs/examples/file-management/file-upload", "/docs/examples/file-management/file-retrieve", "/docs/examples/file-management/file-delete"]
           },
           {
             "group": "Webhooks",
             "pages": [ 
-              "docs/examples/webhook/introduction",
-              "docs/examples/webhook/secure"
+              "/docs/examples/webhook/introduction",
+              "/docs/examples/webhook/secure"
             ]
           },
           {
             "group": "Resources",
             "pages": [
-              "docs/api-reference/authentication",
-              "docs/api-reference/error",
-              "docs/api-reference/handling-files",
-              "docs/llms.txt",
-              "docs/llms-full.txt",
-              "docs/additional-resources/ai-dev-tools",
-              "docs/additional-resources/security",
-              "docs/additional-resources/jigsawstack-badge",
-              "docs/additional-resources/size-preset",
-              "docs/additional-resources/selector",
-              "docs/additional-resources/languages"
+              "/docs/api-reference/authentication",
+              "/docs/api-reference/error",
+              "/docs/api-reference/handling-files",
+              "/docs/llms.txt",
+              "/docs/llms-full.txt",
+              "/docs/additional-resources/ai-dev-tools",
+              "/docs/additional-resources/security",
+              "/docs/additional-resources/jigsawstack-badge",
+              "/docs/additional-resources/size-preset",
+              "/docs/additional-resources/selector",
+              "/docs/additional-resources/languages"
             ]
           }
         ]
@@ -154,58 +154,58 @@
         "groups": [
           {
             "group": "Core AI",
-            "pages": ["docs/api-reference/ai/sentiment", "docs/api-reference/ai/summary", "docs/api-reference/ai/image-generation"]
+            "pages": ["/docs/api-reference/ai/sentiment", "/docs/api-reference/ai/summary", "/docs/api-reference/ai/image-generation"]
           },
           {
             "group": "Web Scrape",
-            "pages": ["docs/api-reference/ai/scrape", "docs/api-reference/web/html-to-any"]
+            "pages": ["/docs/api-reference/ai/scrape", "/docs/api-reference/web/html-to-any"]
           },
           {
             "group": "Web Search",
-            "pages": ["docs/api-reference/web/ai-search", "docs/api-reference/web/search-suggestions",  "docs/api-reference/web/deep-research"]
+            "pages": ["/docs/api-reference/web/ai-search", "/docs/api-reference/web/search-suggestions",  "/docs/api-reference/web/deep-research"]
           },
           {
             "group": "Translate",
-            "pages": ["docs/api-reference/ai/translate/translate", "docs/api-reference/ai/translate/image-translate"]
+            "pages": ["/docs/api-reference/ai/translate/translate", "/docs/api-reference/ai/translate/image-translate"]
           },
           {
             "group": "Data",
-            "pages": ["docs/api-reference/ai/embedding", "docs/api-reference/ai/embeddingV2", "docs/api-reference/ai/prediction", "docs/api-reference/ai/text-to-sql"]
+            "pages": ["/docs/api-reference/ai/embedding", "/docs/api-reference/ai/embeddingV2", "/docs/api-reference/ai/prediction", "/docs/api-reference/ai/text-to-sql"]
           },
           {
             "group": "Vision",
-            "pages": ["docs/api-reference/ai/vocr", "docs/api-reference/ai/object-detection"]
+            "pages": ["/docs/api-reference/ai/vocr", "/docs/api-reference/ai/object-detection"]
           },
           {
             "group": "Audio",
-            "pages": ["docs/api-reference/ai/speech-to-text"]
+            "pages": ["/docs/api-reference/ai/speech-to-text"]
           },
           {
             "group": "Validate",
             "pages": [
-              "docs/api-reference/validate/nsfw",
-              "docs/api-reference/validate/profanity",
-              "docs/api-reference/validate/spell-check",
-              "docs/api-reference/validate/spam-check"
+              "/docs/api-reference/validate/nsfw",
+              "/docs/api-reference/validate/profanity",
+              "/docs/api-reference/validate/spell-check",
+              "/docs/api-reference/validate/spam-check"
             ]
           },
           {
             "group": "Classification",
-            "pages": ["docs/api-reference/classification/classification"]
+            "pages": ["/docs/api-reference/classification/classification"]
           },
           {
             "group": "File Store",
-            "pages": ["docs/api-reference/store/file/add", "docs/api-reference/store/file/get", "docs/api-reference/store/file/delete"]
+            "pages": ["/docs/api-reference/store/file/add", "/docs/api-reference/store/file/get", "/docs/api-reference/store/file/delete"]
           },
           {
             "group": "Prompt Engine",
             "pages": [
-              "docs/api-reference/prompt-engine/create",
-              "docs/api-reference/prompt-engine/run",
-              "docs/api-reference/prompt-engine/retrieve",
-              "docs/api-reference/prompt-engine/list",
-              "docs/api-reference/prompt-engine/delete",
-              "docs/api-reference/prompt-engine/run-direct"
+              "/docs/api-reference/prompt-engine/create",
+              "/docs/api-reference/prompt-engine/run",
+              "/docs/api-reference/prompt-engine/retrieve",
+              "/docs/api-reference/prompt-engine/list",
+              "/docs/api-reference/prompt-engine/delete",
+              "/docs/api-reference/prompt-engine/run-direct"
             ]
           }
         ]
@@ -213,13 +213,13 @@
       {
         "anchor": "Changelog",
         "icon": "megaphone",
-        "pages": ["docs/changelog"]
+        "pages": ["/docs/changelog"]
       }
     ]
   },
   "redirects": [
   {
-    "source": "docs/integration/groq",
+    "source": "/docs/integration/groq",
     "destination": "https://interfaze.ai"
   }
 ]
