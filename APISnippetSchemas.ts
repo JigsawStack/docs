@@ -122,7 +122,7 @@ export const APISchemas: {
     },
     sdk_key_string: "embedding",
   },
-  embeddingV2: {
+  "embedding-v2": {
     path: "/v2/embedding",
     method: "POST",
     body: {
@@ -130,7 +130,7 @@ export const APISchemas: {
       type: "audio",
       speaker_fingerprint: true
     },
-    sdk_key_string: "embeddingV2",
+    sdk_key_string: "embedding_v2",
   },
   "object-detection": {
     path: "/v1/object_detection",
