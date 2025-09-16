@@ -26,6 +26,16 @@ import FilesParam from "/snippets/helpers/params/files-param.mdx";
   - `pdf`: PDF document
 </ParamField>
 
+<ParamField body="instruction" type="string">
+  Instruction for query embedding generation for higher retrival quality, works with type `text` only.
+  - Default instruction: `Given a query, retrieve relevant passages that answer the query`
+</ParamField>
+
+<ParamField body="query" type="boolean" default="false">
+  Generate embedding for text in query mode by setting `query` to true.
+  - If `query` is `true`, you may pass your custom `instruction` along with `text` to be embedded as a query string.
+  </ParamField>
+
 <ParamField body="token_overflow_mode" type="string" default="error">
   Determines behavior when input exceeds token limits:
   - `error`: Return an error (default)
