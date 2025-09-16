@@ -26,7 +26,7 @@ import { JigsawStack } from "jigsawstack";
 
 const jigsaw = JigsawStack({ apiKey: "your-api-key" });
 
-const response = await jigsaw.embeddingV2({
+const response = await jigsaw.embedding_v2({
   "text": "Caption: Secluded Tiki Bar on a serene lake, perfect for a refreshing drink and a relaxing getaway",
   "type": "text"
 })
@@ -62,7 +62,7 @@ Embedding v2 supports speaker fingerprint for audio type. It is a unique identif
 By setting the `speaker_fingerprint` to true, you can get the `speaker_embeddings` to identify the speaker of the audio.
 
 ```javascript
-const audio_response = await jigsaw.embeddingV2({
+const audio_response = await jigsaw.embedding_v2({
   "audio": "https://jigsawstack.com/preview/stt-example.wav",
   "type": "audio",
   "speaker_fingerprint": true
@@ -143,4 +143,4 @@ Automatically categorize and group similar content.
 - **Example**: Organize support tickets by topic
 - **Implementation**: Group documents with similar embedding patterns
 
-<Note>Find more information on EmbeddingV2 API [here](/docs/api-reference/ai/embeddingV2)</Note>
+<Note>Find more information on Embedding v2 API [here](/docs/api-reference/ai/embedding-v2)</Note>

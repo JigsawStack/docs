@@ -2,7 +2,7 @@
 title: "Product Updates"
 description: "JigsawStack updates and announcements"
 ---
-<Update label="September 15, 2025" description="v0.3.4" tags={["SDKs", "Fixes", "DOCS"]}>
+<Update label="September 15, 2025" description="v0.3.4 - v0.3.5" tags={["SDKs", "Fixes", "DOCS"]}>
 ### Fixes 
 - Added support for NSFW API when images are not available
 - Added support for HTML to Any now works with all HTML tags as input
@@ -13,14 +13,17 @@ description: "JigsawStack updates and announcements"
 
 ### DOCS
 - Updated File Uploads documentation (Handling Files)[/docs/handling-files]
+- Renamed embeddingV2 method to embedding_v2 for consistency
 
 ### SDKs 
 - Updated the way multipart/form-data are handled for APIs involved with file uploads
+- Renamed embeddingV2 method to embedding_v2 for consistency
 
 #### Python 
 - Fixed blob inputs for Object Detection where previously features params was not respected
 - Fixed blob inputs for VOCR where page range was not respected
 - Established CI/CD pipeline for Python SDK
+- Updated to pass x-jigsaw-no-request-log through headers. (Security)[/docs/security]
 
 #### JavaScript
 - Fixed blob inputs for Object Detection where previously features params was not respected
