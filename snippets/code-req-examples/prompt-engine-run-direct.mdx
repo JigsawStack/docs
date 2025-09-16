@@ -255,35 +255,44 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/prompt_engine/run");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("{\"prompt\":\"Tell me a story about {about}\",\"inputs\":[{\"key\":\"about\",\"optional\":true,\"initial_value\":\"Leaning Tower of Pisa\"}],\"return_prompt\":\"Return the result in a markdown format\",\"prompt_guard\":[\"sexual_content\",\"defamation\"],\"input_values\":{\"about\":\"Santorini\"}}");
+request.Content = JsonContent.Create(new
+{
+    prompt = "Tell me a story about {about}",
+    inputs = new List<object> { {"key":"about","optional":true,"initial_value":"Leaning Tower of Pisa"} },
+    return_prompt = "Return the result in a markdown format",
+    prompt_guard = new List<string> { "sexual_content", "defamation" },
+    input_values = new
+{
+        about = "Santorini"
+    }
+});
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     <ResponseExample>
     ```json Response
 {
       "success": true,
-      "result": "Okay, here's a story about Santorini, set with the current time in mind:\n\n***\n\nThe Aegean wind, a playful but persistent force, whipped Eleni's hair across her face as she stood on the caldera's edge in Oia. The time, according to her phone, was 22:32, September 15th, 2025. The last sliver of the sun had dipped below the horizon minutes ago, painting the sky in hues of fiery orange and deep violet that were now fading into a velvety indigo.\n\nEleni wasn't a tourist, though she understood the allure. She'd grown up here, in the shadow of the volcano, amidst the whitewashed houses clinging precariously to the cliffs. Santorini was in her blood, the scent of salt and volcanic rock as familiar as her own heartbeat.\n\nTonight, though, felt different. A low hum vibrated through the air, a subtle tremor that only someone intimately connected to the island would notice. It wasn't an earthquake, not exactly. It was… a stirring.\n\nHer grandmother, Yaya Irini, used to tell stories of the volcano's slumbering spirit, a powerful being that breathed life into the island but could also unleash its fury. Yaya Irini claimed she could feel the volcano's moods, its anxieties, its dreams. Eleni had always dismissed it as folklore, charming but ultimately just stories.\n\nBut tonight, standing there, she felt a resonance, a connection to something ancient and powerful beneath her feet. The lights of the village twinkled below, a constellation mirroring the stars beginning to prick the darkening sky. The tourists, still lingering in cafes and along the walkways, seemed oblivious to the subtle shift in the island's energy.\n\nSuddenly, a small, stray dog, a scruffy terrier mix Eleni often saw scavenging near the harbor, whimpered and pressed against her leg. It looked up at her with wide, anxious eyes. Animals, Eleni knew, were often more sensitive to these things.\n\nShe knelt down and stroked its head. \"It's alright, μικρό μου (my little one),\" she murmured, trying to reassure both the dog and herself.\n\nAs she stood up, she noticed something else. The sea, usually a deep, inky black at this hour, was shimmering with an unnatural luminescence. Tiny, bioluminescent organisms were swirling in the water, creating an ethereal glow that danced and pulsed with an almost rhythmic beat.\n\nEleni felt a shiver run down her spine. This wasn't just a beautiful sight; it was a sign. The volcano was stirring, communicating in its own silent language.\n\nShe knew she had to tell someone. Not the tourists, they wouldn't understand. She needed to find her cousin, Nikos, a geologist who worked at the Santorini Volcano Observatory. He might have instruments that could detect what she was feeling.\n\nAs she turned to leave, a single, bright star shot across the sky, leaving a trail of shimmering light in its wake. It felt like a confirmation, a message from the heavens.\n\nEleni took a deep breath, the salty air filling her lungs. She didn't know what the future held, but she knew one thing: Santorini was about to remind the world of its power, its beauty, and its enduring spirit. And she, a daughter of the island, would be there to witness it. The night was young, and the volcano was awake.\n***",
+      "result": "Okay, here's a story about Santorini, formatted in Markdown:\n\n# The Whispers of Oia\n\nThe Aegean Sea, a sapphire canvas stretched taut beneath the fiery kiss of the setting sun, lapped gently against the volcanic shores of Santorini. Eleni, a young woman with eyes the color of the deep sea and hair like spun moonlight, sat perched on the edge of the caldera in Oia. The year was 2025, and while the world had changed, the timeless beauty of Santorini remained, a beacon of serenity in a turbulent world.\n\nEleni wasn't just admiring the view; she was listening. Listening to the whispers of Oia. Her grandmother, Yaya Sofia, had taught her to hear them. \"The stones remember,\" Yaya Sofia would say, her voice raspy with age and wisdom. \"They remember the Minoan eruption, the centuries of fishermen, the artists who came seeking inspiration. They whisper their stories to those who listen.\"\n\nEleni had always been skeptical, but tonight, the whispers seemed louder, clearer. She felt a pull, a connection to the past that resonated deep within her soul. She closed her eyes, letting the salty breeze caress her face.\n\n* * *\n\nThe whispers began to coalesce into a vision. She saw a young woman, her name was Ariadne, standing on the same spot, but centuries ago. Ariadne was a Minoan priestess, her face etched with worry. The earth trembled beneath her feet, and the air crackled with an unnatural energy. She knew, with a chilling certainty, that the volcano was about to unleash its fury.\n\nAriadne clutched a small, intricately carved obsidian amulet, a gift from her grandfather, a master craftsman. It was said to hold the spirit of the island, a protector against the forces of nature. She prayed to the gods, begging them to spare her people.\n\nThe vision shifted. Eleni saw the eruption, a cataclysmic event that reshaped the island forever. She felt the heat, the terror, the utter devastation. But amidst the chaos, she saw Ariadne, holding the amulet aloft, her face resolute.\n\n* * *\n\nEleni gasped, opening her eyes. The sun had dipped below the horizon, painting the sky in hues of orange, pink, and purple. The whispers faded, leaving her breathless and shaken.\n\nShe looked down at her own hand. Unconsciously, she had reached into her pocket and was clutching a small, smooth stone. It was obsidian, and as she held it, she felt a faint warmth, a connection to the vision she had just experienced.\n\nEleni knew then that Yaya Sofia was right. The stones did remember. And they were calling to her.\n\nOver the next few weeks, Eleni delved into the history of Santorini, poring over ancient texts and archaeological reports. She learned about the Minoan civilization, the eruption, and the enduring spirit of the island. She realized that the obsidian amulet Ariadne had held was more than just a trinket; it was a symbol of hope, a reminder that even in the face of unimaginable destruction, life could find a way.\n\nOne day, while exploring a hidden cove near Akrotiri, Eleni stumbled upon a small, crumbling shrine. It was overgrown with weeds and almost completely forgotten. As she cleared away the debris, she noticed a small indentation in the stone altar, perfectly sized for the obsidian amulet.\n\nEleni knew what she had to do. She took the obsidian stone from her pocket and placed it in the indentation. As she did, a wave of energy washed over her. She felt a sense of peace, a feeling of connection to the island and its history.\n\nThe whispers of Oia were no longer just whispers. They were a song, a celebration of resilience, a testament to the enduring power of the human spirit. Eleni, the young woman who had listened, had become a part of the story, a guardian of the island's secrets, forever bound to the whispers of Santorini. She knew her purpose now: to protect the island's history and share its stories with the world, ensuring that the whispers of Oia would never be silenced.\n",
       "message": "It is recommended to store the prompt engine and execute it using the ID rather than running it directly for the best performance and reliability. Learn more: https://jigsawstack.com/docs/api-reference/prompt-engine/create",
       "_usage": {
             "input_tokens": 67,
-            "output_tokens": 875,
-            "inference_time_tokens": 6005,
-            "total_tokens": 6947
+            "output_tokens": 1053,
+            "inference_time_tokens": 6718,
+            "total_tokens": 7838
       }
 }
     ```

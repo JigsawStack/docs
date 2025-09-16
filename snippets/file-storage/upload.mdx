@@ -38,8 +38,7 @@ curl https://api.jigsawstack.com/v1/store/file \
  -X POST \
  -H 'x-api-key: your-api-key' \
  -F 'file=@temp_image.jpg' \
- -F 'key=test-key' \
- -F 'overwrite=true'
+ -F 'body={"key":"test-key","overwrite":true}'
     ```
     ```php PHP
 <?php
@@ -333,32 +332,54 @@ client.newCall(request).execute().use { response ->
     ```csharp C#
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json;
+using System.Text;
 
 // Fetch the image
-HttpClient client = new HttpClient();
+using HttpClient client = new HttpClient();
 byte[] imageBytes = await client.GetByteArrayAsync("https://jigsawstack.com/preview/object-detection-example-input.jpg");
 
 // Create multipart form data
-MultipartFormDataContent content = new MultipartFormDataContent();
+using MultipartFormDataContent content = new MultipartFormDataContent();
 
-ByteArrayContent imageContent = new ByteArrayContent(imageBytes);
+// Add the file
+using ByteArrayContent imageContent = new ByteArrayContent(imageBytes);
 imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
-content.Add(imageContent, "file", "test-image.jpg");
+imageContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+{
+    Name = "\"file\"",
+    FileName = "\"test-image.jpg\""
+};
+content.Add(imageContent);
 
-StringContent keyContent = new StringContent("test-key");
-content.Add(keyContent, "key");
-
-StringContent overwriteContent = new StringContent("true");
-content.Add(overwriteContent, "overwrite");
+// Add the body JSON
+var bodyObject = new { key = "test-key", overwrite = true };
+string bodyJson = JsonSerializer.Serialize(bodyObject);
+byte[] bodyBytes = Encoding.UTF8.GetBytes(bodyJson);
+using ByteArrayContent bodyContent = new ByteArrayContent(bodyBytes);
+bodyContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+{
+    Name = "\"body\""
+};
+content.Add(bodyContent);
 
 // Create request
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/store/file");
+using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/store/file");
 request.Headers.Add("x-api-key", "your-api-key");
 request.Content = content;
 
-HttpResponseMessage response = await client.SendAsync(request);
-response.EnsureSuccessStatusCode();
+using HttpResponseMessage response = await client.SendAsync(request);
+
+// Check response and display error details if any
+if (!response.IsSuccessStatusCode)
+{
+    string errorBody = await response.Content.ReadAsStringAsync();
+    Console.WriteLine($"Error {response.StatusCode}: {errorBody}");
+    return;
+}
+
 string responseBody = await response.Content.ReadAsStringAsync();
+Console.WriteLine(responseBody);
 
     ```
     </RequestExample>

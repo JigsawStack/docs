@@ -283,22 +283,25 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/ai/prediction");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("{\"dataset\":[{\"date\":\"2023-01-01\",\"value\":353459},{\"date\":\"2023-01-02\",\"value\":313734},{\"date\":\"2023-01-03\",\"value\":333774},{\"date\":\"2023-01-04\",\"value\":348636},{\"date\":\"2023-01-05\",\"value\":278903}],\"steps\":3}");
+request.Content = JsonContent.Create(new
+{
+    dataset = new List<object> { {"date":"2023-01-01","value":353459}, {"date":"2023-01-02","value":313734}, {"date":"2023-01-03","value":333774}, {"date":"2023-01-04","value":348636}, {"date":"2023-01-05","value":278903} },
+    steps = 3
+});
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     <ResponseExample>
@@ -323,8 +326,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 53,
             "output_tokens": 49,
-            "inference_time_tokens": 2017,
-            "total_tokens": 2119
+            "inference_time_tokens": 1992,
+            "total_tokens": 2094
       }
 }
     ```

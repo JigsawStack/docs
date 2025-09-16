@@ -186,23 +186,24 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System;
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
-HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, "https://api.jigsawstack.com/v1/prompt_engine/" + Environment.GetEnvironmentVariable("id") + "?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5");
-
+HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, "https://api.jigsawstack.com/v1/prompt_engine/${id}?promptId=dc578c69-6eb5-4c5b-82ab-9f74077cfdd5");
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("");
+request.Content = JsonContent.Create(new
+{
+    promptId = "dc578c69-6eb5-4c5b-82ab-9f74077cfdd5"
+});
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     

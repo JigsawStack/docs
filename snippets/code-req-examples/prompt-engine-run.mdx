@@ -215,22 +215,28 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/prompt_engine/0073d008-da9b-4c27-90a8-0240f3ecd4f5?id=0073d008-da9b-4c27-90a8-0240f3ecd4f5");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("{\"input_values\":{\"text\":\"How to get started with JigsawStack?\"}}");
+request.Content = JsonContent.Create(new
+{
+    input_values = new
+{
+        text = "How to get started with JigsawStack?"
+    },
+    id = "0073d008-da9b-4c27-90a8-0240f3ecd4f5"
+});
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     <ResponseExample>
@@ -243,57 +249,36 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "section": "Introduction to JigsawStack"
                   },
                   {
-                        "section": "What is JigsawStack?"
-                  },
-                  {
-                        "section": "Key Features and Benefits"
-                  },
-                  {
                         "section": "Prerequisites"
                   },
                   {
-                        "section": "Setting up Your Environment"
+                        "section": "Installation and Setup"
                   },
                   {
-                        "section": "Installation Guide"
+                        "section": "Creating Your First Project"
                   },
                   {
-                        "section": "Creating Your First JigsawStack Project"
+                        "section": "Understanding the JigsawStack Architecture"
                   },
                   {
-                        "section": "Basic Project Structure"
+                        "section": "Basic JigsawStack Commands"
                   },
                   {
-                        "section": "Understanding Core Concepts"
+                        "section": "Exploring JigsawStack Features"
                   },
                   {
-                        "section": "Components"
+                        "section": "Troubleshooting Common Issues"
                   },
                   {
-                        "section": "Data Management"
-                  },
-                  {
-                        "section": "Routing"
-                  },
-                  {
-                        "section": "Deployment"
-                  },
-                  {
-                        "section": "Common Challenges and Solutions"
-                  },
-                  {
-                        "section": "Resources for Further Learning"
-                  },
-                  {
-                        "section": "Conclusion"
+                        "section": "Next Steps and Resources"
                   }
             ]
       },
       "_usage": {
             "input_tokens": 17,
-            "output_tokens": 153,
-            "inference_time_tokens": 1400,
-            "total_tokens": 1570
+            "output_tokens": 104,
+            "inference_time_tokens": 1681,
+            "total_tokens": 1802
       }
 }
     ```

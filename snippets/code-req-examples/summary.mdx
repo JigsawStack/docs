@@ -191,22 +191,26 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/ai/summary");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("{\"text\":\"The Leaning Tower of Pisa, or simply, the Tower of Pisa, is the campanile, or freestanding bell tower, of Pisa Cathedral. It is situated behind the Cathedral and is the third-oldest structure in the city\\s");
+request.Content = JsonContent.Create(new
+{
+    text = "The Leaning Tower of Pisa, or simply, the Tower of Pisa, is the campanile, or freestanding bell tower, of Pisa Cathedral. It is situated behind the Cathedral and is the third-oldest structure in the city's Cathedral Square, after the Cathedral and the Baptistry. The tower's tilt began during construction in the 12th century, caused by an inadequate foundation on ground too soft on one side to properly support the structure's weight. The tilt increased in the decades before the structure was completed in the 14th century. It gradually increased until the structure was stabilized by efforts in the late 20th and early 21st centuries. The height of the tower is 55.86 metres (183.27 feet) from the ground on the low side and 56.67 metres (185.93 feet) on the high side. The width of the walls at the base is 2.44 m (8 ft 0.06 in). Its weight is estimated at 14,500 tonnes. The tower has 296 or 294 steps; the seventh floor has two fewer steps on the north-facing staircase.",
+    type = "points",
+    max_points = 3
+});
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     <ResponseExample>
@@ -214,15 +218,15 @@ string responseBody = await response.Content.ReadAsStringAsync();
 {
       "success": true,
       "summary": [
-            "The Leaning Tower of Pisa is the freestanding bell tower of Pisa Cathedral and the third-oldest structure in the city's Cathedral Square.",
+            "The Leaning Tower of Pisa is the freestanding bell tower of Pisa Cathedral, located behind the Cathedral.",
             "The tower's tilt started in the 12th century due to a weak foundation on soft ground.",
-            "The tower is approximately 55-57 meters tall, with a weight of around 14,500 tonnes, and has about 294-296 steps."
+            "The tower is approximately 55-57 meters tall and weighs an estimated 14,500 tonnes, with about 294-296 steps."
       ],
       "_usage": {
             "input_tokens": 256,
-            "output_tokens": 93,
-            "inference_time_tokens": 1345,
-            "total_tokens": 1694
+            "output_tokens": 84,
+            "inference_time_tokens": 1497,
+            "total_tokens": 1837
       }
 }
     ```

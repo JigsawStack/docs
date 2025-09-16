@@ -199,22 +199,25 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/store/file");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("{\"blob\":\"image-123.png\",\"key\":\"image-123.png\"}");
+request.Content = JsonContent.Create(new
+{
+    blob = "image-123.png",
+    key = "image-123.png"
+});
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     

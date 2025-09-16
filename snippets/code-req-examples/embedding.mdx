@@ -199,22 +199,25 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/embedding");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("{\"text\":\"Caption: Secluded Tiki Bar on a serene lake, perfect for a refreshing drink and a relaxing getaway\",\"type\":\"text\"}");
+request.Content = JsonContent.Create(new
+{
+    text = "Caption: Secluded Tiki Bar on a serene lake, perfect for a refreshing drink and a relaxing getaway",
+    type = "text"
+});
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     <ResponseExample>
@@ -999,8 +1002,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 32,
             "output_tokens": 1226,
-            "inference_time_tokens": 642,
-            "total_tokens": 1900
+            "inference_time_tokens": 1007,
+            "total_tokens": 2265
       }
 }
     ```
