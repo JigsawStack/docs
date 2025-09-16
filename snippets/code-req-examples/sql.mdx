@@ -191,22 +191,35 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/ai/sql");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("{\"database\":\"postgresql\",\"prompt\":\"Find all transactions with amounts exceeding $10,000, sorted by transaction date\",\"sql_schema\":\"\\\\n            CREATE TABLE Transactions \\(\\\\n              transaction_id INT PRIMARY KEY, \\\\n              user_id INT NOT NULL,\\\\n              total_amount DECIMAL\\(10, 2\\) NOT NULL, \\\\n              transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\\\\n              status VARCHAR\\(20\\) DEFAULT \\pending',\\n");
+request.Content = JsonContent.Create(new
+{
+    database = "postgresql",
+    prompt = "Find all transactions with amounts exceeding $10,000, sorted by transaction date",
+    sql_schema = "
+            CREATE TABLE Transactions (
+              transaction_id INT PRIMARY KEY, 
+              user_id INT NOT NULL,
+              total_amount DECIMAL(10, 2) NOT NULL, 
+              transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+              status VARCHAR(20) DEFAULT 'pending',
+              FOREIGN KEY(user_id) REFERENCES Users(user_id)
+            )
+          "
+});
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     <ResponseExample>
@@ -217,8 +230,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 132,
             "output_tokens": 27,
-            "inference_time_tokens": 1058,
-            "total_tokens": 1217
+            "inference_time_tokens": 877,
+            "total_tokens": 1036
       }
 }
     ```

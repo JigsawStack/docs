@@ -211,22 +211,25 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/vocr");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("{\"prompt\":[\"total_price\",\"tax\"],\"url\":\"https://jigsawstack.com/preview/vocr-example.jpg\"}");
+request.Content = JsonContent.Create(new
+{
+    prompt = new List<string> { "total_price", "tax" },
+    url = "https://jigsawstack.com/preview/vocr-example.jpg"
+});
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     <ResponseExample>
@@ -5830,8 +5833,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 23,
             "output_tokens": 11203,
-            "inference_time_tokens": 2728,
-            "total_tokens": 13954
+            "inference_time_tokens": 3666,
+            "total_tokens": 14892
       }
 }
     ```

@@ -187,22 +187,24 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/ai/sentiment");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("{\"text\":\"I love this product! It\\s");
+request.Content = JsonContent.Create(new
+{
+    text = "I love this product! It's amazing but the delivery was a bit late."
+});
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     <ResponseExample>
@@ -221,24 +223,18 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "score": 0.9
                   },
                   {
-                        "text": "It's amazing",
-                        "emotion": "happiness",
+                        "text": "It's amazing but the delivery was a bit late.",
+                        "emotion": "satisfaction",
                         "sentiment": "positive",
                         "score": 0.8
-                  },
-                  {
-                        "text": "but the delivery was a bit late.",
-                        "emotion": "annoyance",
-                        "sentiment": "negative",
-                        "score": 0.6
                   }
             ]
       },
       "_usage": {
             "input_tokens": 20,
-            "output_tokens": 91,
-            "inference_time_tokens": 2541,
-            "total_tokens": 2652
+            "output_tokens": 75,
+            "inference_time_tokens": 2594,
+            "total_tokens": 2689
       }
 }
     ```

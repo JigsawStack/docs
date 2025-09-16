@@ -195,22 +195,24 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/web/deep_research");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("{\"query\":\"What is the meaning of life?\"}");
+request.Content = JsonContent.Create(new
+{
+    query = "What is the meaning of life?"
+});
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     <ResponseExample>
@@ -218,7 +220,7 @@ string responseBody = await response.Content.ReadAsStringAsync();
 {
       "success": true,
       "query": "What is the meaning of life?",
-      "results": "The question \"What is the meaning of life?\" has occupied thinkers across cultures and eras, and remains one of the most profound and debated inquiries in human history. Addressing it requires a multidisciplinary approach, as outlined in your research plan, encompassing philosophical, religious, scientific, and psychological perspectives. Below, we synthesize these diverse viewpoints to provide a comprehensive overview.\n\nPhilosophical Perspectives\n\nPhilosophers have long grappled with the meaning of life, offering a spectrum of answers that range from the search for objective purpose to the embrace of subjective meaning-making. Classical philosophers such as Plato and Aristotle posited that meaning is found in the pursuit of knowledge and the cultivation of virtue, respectively, with Aristotle’s concept of eudaimonia (flourishing) emphasizing living in accordance with one’s highest potential and virtues[[8](https://medium.com/@edwardoreid/finding-meaning-and-purpose-in-life-a-philosophical-perspective-557f24709484)][[16](https://philosophynow.org/issues/101/What_Is_Life)][[11](https://www.linkedin.com/pulse/meaning-life-exploring-different-philosophical-perspectives-lee)].\n\nIn contrast, existentialist thinkers like Jean-Paul Sartre and Albert Camus argue that life has no inherent meaning; instead, individuals must create their own purpose through authentic choices and actions. Sartre’s dictum, “existence precedes essence,” encapsulates the view that humans are not born with a predetermined purpose but must forge their own paths[[14](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)][[11](https://www.linkedin.com/pulse/meaning-life-exploring-different-philosophical-perspectives-lee)][[1](https://plato.stanford.edu/entries/life-meaning/)]. Camus, through his concept of the “absurd,” suggests that while the universe is indifferent to human concerns, individuals can find meaning by embracing life’s challenges and living authentically despite its inherent meaninglessness[[10](https://bigthink.com/thinking/four-philosophical-answers-meaning-of-life/)][[9](https://philosophy.stackexchange.com/questions/40299/various-philosophers-perspective-on-the-meaning-or-purpose-of-life)].\n\nNihilism, as articulated by Friedrich Nietzsche and others, takes a more radical stance, asserting that life is ultimately devoid of objective meaning or value. However, Nietzsche also encourages the creation of personal values and meaning as a response to this void[[9](https://philosophy.stackexchange.com/questions/40299/various-philosophers-perspective-on-the-meaning-or-purpose-of-life)][[1](https://plato.stanford.edu/entries/life-meaning/)]. Other philosophical traditions, such as Stoicism and Buddhism, focus on cultivating inner tranquility and acceptance of life’s impermanence, suggesting that meaning arises from living in harmony with nature and one’s own rational capacities[[9](https://philosophy.stackexchange.com/questions/40299/various-philosophers-perspective-on-the-meaning-or-purpose-of-life)][[16](https://philosophynow.org/issues/101/What_Is_Life)].\n\nContemporary analytic philosophy often interrogates the very question itself, analyzing what it means for life to have “meaning” and whether such a question is coherent or answerable[[2](https://iep.utm.edu/mean-ana/)][[5](https://iep.utm.edu/mean-ear/)][[15](https://1000wordphilosophy.com/2023/02/06/meaning-of-life/)]. Some philosophers distinguish between the meaning of life as a whole and meaning within individual lives, suggesting that while the universe may lack an overarching purpose, individuals can still find significance in personal relationships, achievements, and experiences[[17](https://philosophynow.org/issues/147/Why_Youre_Probably_Wrong_About_The_Meaning_of_Life)][[3](https://en.wikipedia.org/wiki/Meaning_of_life)].\n\nAcross these traditions, a recurring theme is the tension between objective and subjective sources of meaning. Some argue that meaning must be grounded in something external or transcendent, while others maintain that meaning is constructed through personal engagement, narrative, and value creation[[1](https://plato.stanford.edu/entries/life-meaning/)][[2](https://iep.utm.edu/mean-ana/)][[19](https://www.cliffsnotes.com/study-notes/7377736)].Religious and Spiritual Interpretations\n\nReligious and spiritual traditions across the world have provided some of the most enduring and influential answers to the question of life’s meaning. Most major religions propose that life’s purpose is rooted in a relationship with the divine, the pursuit of moral or spiritual growth, and service to others. For example, in Christianity, the meaning of life is often framed as knowing, loving, and serving God, and preparing for eternal life[[24](https://www.cslewis.org/journal/the-image-of-god-religion-and-the-meaning-of-life-toward-a-christian-philosophical-anthropology/)][[23](https://www.newworldencyclopedia.org/entry/Meaning_of_life)]. Judaism emphasizes tikkun olam—repairing the world through ethical action and social justice[[22](https://www.reddit.com/r/religion/comments/rpzogc/whats_the_meaning_of_life_according_to_your/)]. In Islam, life is seen as a test, with meaning found in submission to God’s will and striving for righteousness. Hinduism and Buddhism focus on spiritual liberation (moksha or nirvana), achieved through self-realization, ethical living, and transcending the cycle of rebirth[[28](https://religionsdepths.com/the-meaning-of-life-according-to-various-religions/)][[23](https://www.newworldencyclopedia.org/entry/Meaning_of_life)].\n\nDespite doctrinal differences, common themes emerge: the importance of compassion, ethical conduct, and the pursuit of a higher or transcendent reality[[23](https://www.newworldencyclopedia.org/entry/Meaning_of_life)][[26](https://thegallerist.art/meaning-of-life-answers-from-world-religions-and-philosophy/)]. Many traditions also stress the value of community and the transformative power of spiritual practice. Even outside organized religion, spiritual philosophies often emphasize living authentically, cultivating inner peace, and seeking unity with the cosmos or a greater whole[[30](https://www.snsociety.org/the-meaning-of-life/)][[32](https://www.theguardian.com/world/2021/apr/02/you-dont-need-a-faith-to-find-the-meaning-of-life)].\n\nScientific and Psychological Perspectives\n\nFrom a scientific and psychological standpoint, the meaning of life is often explored through the lens of human well-being, purpose, and meaning-making. Evolutionary biology suggests that, at a basic level, life’s purpose is to survive and reproduce, ensuring the continuation of the species[[37](https://news.yale.edu/2024/03/05/what-lifes-purpose-yale-psychiatrist-looks-science-answers)]. However, contemporary psychology has expanded this view, emphasizing that humans are meaning-seeking creatures who derive fulfillment from having a sense of purpose, coherence, and significance in their lives[[33](https://www.research.colostate.edu/healthyagingcenter/2021/07/13/the-psychology-of-purpose-in-life/)][[35](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.601899/full)].\n\nResearch in positive psychology demonstrates that having a sense of meaning or purpose is strongly associated with greater psychological and physical well-being, resilience, and life satisfaction[[35](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.601899/full)][[44](https://www.psychiatry.org/news-room/apa-blogs/purpose-in-life-less-stress-better-mental-health)][[45](https://www.psychologytoday.com/us/blog/brain-waves/201901/the-power-purpose-and-meaning-in-life)]. Viktor Frankl, a Holocaust survivor and psychiatrist, famously argued that the search for meaning is a fundamental human drive, and that individuals can find meaning even in the face of suffering by identifying values, goals, and connections that matter to them[[34](https://www.templeton.org/discoveries/the-psychology-of-purpose)]. Studies show that meaning can be found in relationships, work, creative pursuits, and acts of service, and that it is often constructed through personal reflection and engagement with the world[[33](https://www.research.colostate.edu/healthyagingcenter/2021/07/13/the-psychology-of-purpose-in-life/)][[41](https://pmc.ncbi.nlm.nih.gov/articles/PMC6923189/)][[45](https://www.psychologytoday.com/us/blog/brain-waves/201901/the-power-purpose-and-meaning-in-life)].\n\nSynthesis and Conclusion\n\nThe question of life’s meaning does not yield a single, universally accepted answer. Instead, it reflects a dynamic interplay between personal creation, cultural narratives, and biological imperatives. Philosophical traditions highlight the tension between objective and subjective meaning, religious and spiritual perspectives offer frameworks for transcendence and ethical living, and scientific research underscores the psychological importance of purpose and connection.\n\nUltimately, the meaning of life may be less about discovering a preordained purpose and more about the ongoing process of making meaning—through relationships, creativity, service, and self-understanding. The search itself, and the ways in which individuals and cultures respond to it, are central to what it means to be human[[1](https://plato.stanford.edu/entries/life-meaning/)][[14](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)][[19](https://www.cliffsnotes.com/study-notes/7377736)][[35](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.601899/full)][[45](https://www.psychologytoday.com/us/blog/brain-waves/201901/the-power-purpose-and-meaning-in-life)].\n\n\n\n## References\n\n1. [The Meaning of Life (Stanford Encyclopedia of Philosophy)](https://plato.stanford.edu/entries/life-meaning/)\n2. [Meaning of LIfe: Contemporary Analytic Perspectives | Internet Encyclopedia of Philosophy](https://iep.utm.edu/mean-ana/)\n3. [Meaning of life - Wikipedia](https://en.wikipedia.org/wiki/Meaning_of_life)\n4. [7 Philosophies of the Meaning of Life that I Find Interesting | by Rolend | Medium](https://medium.com/@rolendpetalcorin/7-philosophies-of-the-meaning-of-life-that-interest-me-4a2c5ca72daf)\n5. [Meaning of Life, The: Early Continental and Analytic Perspectives | Internet Encyclopedia of Philosophy](https://iep.utm.edu/mean-ear/)\n6. [r/askphilosophy on Reddit: What is truly the meaning of life?](https://www.reddit.com/r/askphilosophy/comments/ys7vtg/what_is_truly_the_meaning_of_life/)\n7. [The Meaning of Life: A Philosophical Perspective](https://www.linkedin.com/pulse/meaning-life-philosophical-perspective-kevin-halliday)\n8. [Finding Meaning and Purpose in Life: A Philosophical Perspective | by Edward Reid | Medium](https://medium.com/@edwardoreid/finding-meaning-and-purpose-in-life-a-philosophical-perspective-557f24709484)\n9. [nietzsche - Various Philosopher's Perspective on the Meaning or Purpose of Life - Philosophy Stack Exchange](https://philosophy.stackexchange.com/questions/40299/various-philosophers-perspective-on-the-meaning-or-purpose-of-life)\n10. [4 philosophical answers to the meaning of life - Big Think](https://bigthink.com/thinking/four-philosophical-answers-meaning-of-life/)\n11. [The meaning of life: exploring different philosophical perspectives](https://www.linkedin.com/pulse/meaning-life-exploring-different-philosophical-perspectives-lee)\n12. [Philosophies That Can Change The Way You Look At Life | by Valerie | Dare To Be Better | Medium](https://medium.com/dare-to-be-better/philosophies-that-can-change-the-way-you-look-at-life-92162c8427b5)\n13. [r/Existentialism on Reddit: What is the meaning of life? Why are we here?](https://www.reddit.com/r/Existentialism/comments/qhrf9q/what_is_the_meaning_of_life_why_are_we_here/)\n14. [What is the Meaning of Life: A Comprehensive Exploration and Analysis](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)\n15. [The Meaning of Life: What’s the Point? - 1000-Word Philosophy: An Introductory Anthology](https://1000wordphilosophy.com/2023/02/06/meaning-of-life/)\n16. [What Is Life? | Issue 101 | Philosophy Now](https://philosophynow.org/issues/101/What_Is_Life)\n17. [Why You’re (Probably) Wrong About The Meaning of Life | Issue 147 | Philosophy Now](https://philosophynow.org/issues/147/Why_Youre_Probably_Wrong_About_The_Meaning_of_Life)\n18. [What is the philosophical meaning of life? - Quora](https://www.quora.com/Whats-the-meaning-of-life-in-a-philosophical-sense)\n19. [The Meaning of Life Examine different philosophical perspectives on the meaning or purpose of human - CliffsNotes](https://www.cliffsnotes.com/study-notes/7377736)\n20. [Meaning of life | EBSCO Research Starters](https://www.ebsco.com/research-starters/religion-and-philosophy/meaning-life)\n21. [The Role of Meaning in Life Within the Relations of Religious Coping and Psychological Well-Being - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC4580713/)\n22. [r/religion on Reddit: Whats the meaning of life according to your religion?](https://www.reddit.com/r/religion/comments/rpzogc/whats_the_meaning_of_life_according_to_your/)\n23. [Meaning of life - New World Encyclopedia](https://www.newworldencyclopedia.org/entry/Meaning_of_life)\n24. [The Image of God, Religion, and the Meaning of Life: Toward a Christian Philosophical Anthropology – In Pursuit of Truth | A Journal of Christian Scholarship](https://www.cslewis.org/journal/the-image-of-god-religion-and-the-meaning-of-life-toward-a-christian-philosophical-anthropology/)\n25. [What Is the Meaning of Life? | Desiring God](https://www.desiringgod.org/interviews/what-is-the-meaning-of-life)\n26. [The Meaning of Life | Answers from World Religions and Philosophy | The Gallerist](https://thegallerist.art/meaning-of-life-answers-from-world-religions-and-philosophy/)\n27. [Religion gives life meaning. Can anything else take its place? | Psyche Ideas](https://psyche.co/ideas/religion-gives-life-meaning-can-anything-else-take-its-place)\n28. [The Meaning of Life According to Various Religions - Religion's Depths](https://religionsdepths.com/the-meaning-of-life-according-to-various-religions/)\n29. [Religion and life meaning: Differentiating between religious beliefs and religious community in constructing life meaning - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0890406504000064)\n30. [The Meaning of Life? – The Spiritual Naturalist Society](https://www.snsociety.org/the-meaning-of-life/)\n31. [Religion and the Meaning of Life](https://www.cambridge.org/core/books/religion-and-the-meaning-of-life/2C118CBF40B68F288B9010457F78571E)\n32. [You don’t need a faith to find the meaning of life | Letters | The Guardian](https://www.theguardian.com/world/2021/apr/02/you-dont-need-a-faith-to-find-the-meaning-of-life)\n33. [The psychology of purpose in life - Center for Healthy Aging](https://www.research.colostate.edu/healthyagingcenter/2021/07/13/the-psychology-of-purpose-in-life/)\n34. [Purpose Archives - John Templeton Foundation](https://www.templeton.org/discoveries/the-psychology-of-purpose)\n35. [Frontiers | Why Meaning in Life Matters for Societal Flourishing](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.601899/full)\n36. [Meaning in Life: An Important Factor for the Psychological Well-Being of Chronically Ill Patients? - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC4113206/)\n37. [What is life’s purpose? A Yale psychiatrist looks to science for answers | Yale News](https://news.yale.edu/2024/03/05/what-lifes-purpose-yale-psychiatrist-looks-science-answers)\n38. [‘What’s Your Purpose in Life?’ Psychology Prof Explains Why that Question Makes All the Difference - Cornellians | Cornell University](https://alumni.cornell.edu/cornellians/purpose-psychology/)\n39. [The Psychology of Purpose](https://www.templeton.org/wp-content/uploads/2020/02/Psychology-of-Purpose.pdf)\n40. [15 Ways to Find Your Purpose of Life & Realize Your Meaning](https://positivepsychology.com/find-your-purpose-of-life/)\n41. [Life Crafting as a Way to Find Purpose and Meaning in Life - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC6923189/)\n42. [Sense of Purpose in Life and Subsequent Physical, Behavioral, and Psychosocial Health: An Outcome-Wide Approach - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8669210/)\n43. [Purpose in life: A psychological construct that indicates positive development](https://journal.psych.ac.cn/xlkxjz/EN/10.3724/SP.J.1042.2017.02192)\n44. [Psychiatry.org - Purpose in Life Can Lead to Less Stress, Better Mental Well-being](https://www.psychiatry.org/news-room/apa-blogs/purpose-in-life-less-stress-better-mental-health)\n45. [The Power of Purpose and Meaning in Life | Psychology Today](https://www.psychologytoday.com/us/blog/brain-waves/201901/the-power-purpose-and-meaning-in-life)\n46. [Meaning and Purpose | The Human Flourishing Program](https://hfh.fas.harvard.edu/determinants-purpose)\n47. [Purpose in Life and Associated Cognitive and Affective Mechanisms | Journal of Happiness Studies](https://link.springer.com/article/10.1007/s10902-024-00771-6)\n48. [Frontiers | Life Crafting as a Way to Find Purpose and Meaning in Life](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02778/full)\n49. [Sense of Purpose in Life and Five Health Behaviors in Older Adults - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC7494628/)\n",
+      "results": "The question \"What is the meaning of life?\" has captivated thinkers across cultures and eras, inspiring a vast array of responses from philosophy, religion, science, and psychology. Each perspective offers unique insights, and together they reveal the complexity and richness of this enduring inquiry.\n\nPhilosophical Perspectives\n\nPhilosophers have long debated whether life has an inherent meaning or whether meaning must be created by individuals. Existentialists such as Jean-Paul Sartre and Albert Camus argue that life has no predetermined purpose; instead, individuals are free—and indeed compelled—to create their own meaning through choices and actions. Sartre’s dictum, “existence precedes essence,” encapsulates this view: humans are not born with a set purpose but must forge their own paths, embracing personal responsibility and authenticity in the face of an indifferent universe [[1](https://plato.stanford.edu/entries/life-meaning/)][[14](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)][[11](https://www.linkedin.com/pulse/meaning-life-exploring-different-philosophical-perspectives-lee)]. Camus, meanwhile, highlights the \"absurdity\" of seeking meaning in a universe that offers none, yet suggests that one can find value in the struggle itself, as illustrated by his famous metaphor of Sisyphus [[10](https://bigthink.com/thinking/four-philosophical-answers-meaning-of-life/)][[9](https://philosophy.stackexchange.com/questions/40299/various-philosophers-perspective-on-the-meaning-or-purpose-of-life)].\n\nIn contrast, virtue ethicists like Aristotle propose that the meaning of life is found in the pursuit of eudaimonia—flourishing or living in accordance with virtue. For Aristotle, a meaningful life is one that fulfills human potential through rational activity and moral excellence [[8](https://medium.com/@edwardoreid/finding-meaning-and-purpose-in-life-a-philosophical-perspective-557f24709484)][[7](https://www.linkedin.com/pulse/meaning-life-philosophical-perspective-kevin-halliday)][[16](https://philosophynow.org/issues/101/What_Is_Life)]. Utilitarian philosophers, on the other hand, suggest that meaning is derived from maximizing happiness and minimizing suffering for the greatest number of people [[11](https://www.linkedin.com/pulse/meaning-life-exploring-different-philosophical-perspectives-lee)].\n\nNihilism, as articulated by thinkers like Nietzsche, contends that life is inherently meaningless, and that traditional sources of meaning—such as religion or objective moral values—are illusory. However, even within nihilism, some philosophers argue for the possibility of creating subjective meaning despite the absence of objective purpose [[9](https://philosophy.stackexchange.com/questions/40299/various-philosophers-perspective-on-the-meaning-or-purpose-of-life)][[2](https://en.wikipedia.org/wiki/Meaning_of_life)].\n\nReligious and Spiritual Interpretations\n\nReligious traditions often provide structured answers to the question of life’s meaning, typically rooted in the existence of a higher power or ultimate reality. In the Abrahamic faiths (Judaism, Christianity, Islam), life’s purpose is often seen as serving God, cultivating virtue, and preparing for an afterlife or spiritual union with the divine [[23](https://www.newworldencyclopedia.org/entry/Meaning_of_life)][[30](https://religionsdepths.com/the-meaning-of-life-according-to-various-religions/)][[24](https://www.cslewis.org/journal/the-image-of-god-religion-and-the-meaning-of-life-toward-a-christian-philosophical-anthropology/)]. Many Eastern religions, such as Hinduism and Buddhism, emphasize spiritual growth, the pursuit of enlightenment, and liberation from the cycle of rebirth (moksha or nirvana) as central to life’s meaning [[30](https://religionsdepths.com/the-meaning-of-life-according-to-various-religions/)][[23](https://www.newworldencyclopedia.org/entry/Meaning_of_life)].\n\nDespite doctrinal differences, most religions share two core teachings: the ethic of reciprocity (the \"Golden Rule\") and the cultivation of spiritual qualities that prepare individuals for a higher state of being or afterlife [[23](https://www.newworldencyclopedia.org/entry/Meaning_of_life)]. Religious involvement and community also provide a sense of belonging and shared purpose, which can enhance psychological well-being and resilience [[21](https://pmc.ncbi.nlm.nih.gov/articles/PMC4580713/)][[28](https://www.sciencedirect.com/science/article/pii/S0890406504000064)][[27](https://psyche.co/ideas/religion-gives-life-meaning-can-anything-else-take-its-place)].\n\nSome spiritual traditions, including esoteric branches within major religions, focus less on external rewards and more on living deeply and authentically in the present, seeking wholeness and connection with the universe [[29](https://www.snsociety.org/the-meaning-of-life/)].Scientific and Psychological Perspectives\n\nModern scientific and psychological research approaches the question of life’s meaning by examining how individuals experience purpose, significance, and coherence in their lives. Rather than positing a universal or metaphysical answer, these disciplines focus on the tangible effects of meaning and purpose on human well-being and flourishing.\n\nPsychological studies consistently find that a sense of meaning in life is a fundamental human need, closely linked to positive mental and physical health outcomes. People who perceive their lives as meaningful report greater happiness, resilience, and life satisfaction, and are less likely to experience depression, addiction, or suicidal ideation [[35](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.601899/full)][[41](https://positivepsychology.com/find-your-purpose-of-life/)][[45](https://www.psychiatry.org/news-room/apa-blogs/purpose-in-life-less-stress-better-mental-health)][[46](https://www.psychologytoday.com/us/blog/brain-waves/201901/the-power-purpose-and-meaning-in-life)]. Meaning in life is typically defined by three components: significance (feeling that one’s life matters), purpose (having overarching life goals), and coherence (seeing one’s life as comprehensible and ordered) [[34](https://www.research.colostate.edu/healthyagingcenter/2021/07/13/the-psychology-of-purpose-in-life/)][[35](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.601899/full)][[44](https://hfh.fas.harvard.edu/determinants-purpose)].\n\nResearch shows that meaning can be found in diverse domains—relationships, work, creative pursuits, service to others, and personal growth. Viktor Frankl, a psychiatrist and Holocaust survivor, famously argued that even in the direst circumstances, the search for meaning is a primary human drive, and that those who find purpose are more resilient in the face of suffering [[33](https://www.templeton.org/discoveries/the-psychology-of-purpose)]. Interventions such as “life crafting”—reflecting on values, passions, and goals, and making concrete plans to pursue them—have been shown to help individuals discover and sustain a sense of purpose [[40](https://pmc.ncbi.nlm.nih.gov/articles/PMC6923189/)][[49](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02778/full)].\n\nFrom an evolutionary and biological perspective, some scientists suggest that the drive for meaning may be an adaptive trait, promoting survival, cooperation, and social cohesion [[38](https://news.yale.edu/2024/03/05/what-lifes-purpose-yale-psychiatrist-looks-science-answers)]. Others argue that, while evolution does not provide an ultimate purpose, humans are uniquely capable of creating meaning through conscious reflection and choice [[38](https://news.yale.edu/2024/03/05/what-lifes-purpose-yale-psychiatrist-looks-science-answers)][[36](https://www.templeton.org/wp-content/uploads/2020/02/Psychology-of-Purpose.pdf)].\n\nContemporary and Popular Culture Viewpoints\n\nIn popular culture, the search for meaning is often depicted as a personal journey, shaped by individual experiences, relationships, and aspirations. Many people draw on a mix of philosophical, religious, and scientific ideas, crafting their own answers to life’s big questions. The recurring themes—connection, growth, contribution, and authenticity—reflect the enduring human desire to live a life that feels worthwhile and significant [[17](https://philosophynow.org/issues/147/Why_Youre_Probably_Wrong_About_The_Meaning_of_Life)][[14](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)].\n\nConclusion\n\nThe meaning of life remains an open and deeply personal question, with no single answer that satisfies all perspectives. Philosophical traditions debate whether meaning is discovered or created; religious and spiritual paths offer frameworks rooted in transcendence and community; scientific and psychological research highlights the tangible benefits of purpose and meaning for well-being. Ultimately, the search for meaning is itself a vital part of the human experience—one that invites each person to reflect, connect, and contribute in ways that resonate with their deepest values and aspirations [[1](https://plato.stanford.edu/entries/life-meaning/)][[14](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)][[23](https://www.newworldencyclopedia.org/entry/Meaning_of_life)][[35](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.601899/full)][[46](https://www.psychologytoday.com/us/blog/brain-waves/201901/the-power-purpose-and-meaning-in-life)].\n\n\n\n## References\n\n1. [The Meaning of Life (Stanford Encyclopedia of Philosophy)](https://plato.stanford.edu/entries/life-meaning/)\n2. [Meaning of life - Wikipedia](https://en.wikipedia.org/wiki/Meaning_of_life)\n3. [Meaning of LIfe: Contemporary Analytic Perspectives | Internet Encyclopedia of Philosophy](https://iep.utm.edu/mean-ana/)\n4. [7 Philosophies of the Meaning of Life that I Find Interesting | by Rolend | Medium](https://medium.com/@rolendpetalcorin/7-philosophies-of-the-meaning-of-life-that-interest-me-4a2c5ca72daf)\n5. [Meaning of Life, The: Early Continental and Analytic Perspectives | Internet Encyclopedia of Philosophy](https://iep.utm.edu/mean-ear/)\n6. [r/askphilosophy on Reddit: What is truly the meaning of life?](https://www.reddit.com/r/askphilosophy/comments/ys7vtg/what_is_truly_the_meaning_of_life/)\n7. [The Meaning of Life: A Philosophical Perspective](https://www.linkedin.com/pulse/meaning-life-philosophical-perspective-kevin-halliday)\n8. [Finding Meaning and Purpose in Life: A Philosophical Perspective | by Edward Reid | Medium](https://medium.com/@edwardoreid/finding-meaning-and-purpose-in-life-a-philosophical-perspective-557f24709484)\n9. [nietzsche - Various Philosopher's Perspective on the Meaning or Purpose of Life - Philosophy Stack Exchange](https://philosophy.stackexchange.com/questions/40299/various-philosophers-perspective-on-the-meaning-or-purpose-of-life)\n10. [4 philosophical answers to the meaning of life - Big Think](https://bigthink.com/thinking/four-philosophical-answers-meaning-of-life/)\n11. [The meaning of life: exploring different philosophical perspectives](https://www.linkedin.com/pulse/meaning-life-exploring-different-philosophical-perspectives-lee)\n12. [r/Existentialism on Reddit: What is the meaning of life? Why are we here?](https://www.reddit.com/r/Existentialism/comments/qhrf9q/what_is_the_meaning_of_life_why_are_we_here/)\n13. [Philosophies That Can Change The Way You Look At Life | by Valerie | Dare To Be Better | Medium](https://medium.com/dare-to-be-better/philosophies-that-can-change-the-way-you-look-at-life-92162c8427b5)\n14. [What is the Meaning of Life: A Comprehensive Exploration and Analysis](https://achology.com/general-interest/what-is-the-meaning-of-life-a-comprehensive-exploration/)\n15. [The Meaning of Life: What’s the Point? - 1000-Word Philosophy: An Introductory Anthology](https://1000wordphilosophy.com/2023/02/06/meaning-of-life/)\n16. [What Is Life? | Issue 101 | Philosophy Now](https://philosophynow.org/issues/101/What_Is_Life)\n17. [Why You’re (Probably) Wrong About The Meaning of Life | Issue 147 | Philosophy Now](https://philosophynow.org/issues/147/Why_Youre_Probably_Wrong_About_The_Meaning_of_Life)\n18. [What is the philosophical meaning of life? - Quora](https://www.quora.com/Whats-the-meaning-of-life-in-a-philosophical-sense)\n19. [The Meaning of Life Examine different philosophical perspectives on the meaning or purpose of human - CliffsNotes](https://www.cliffsnotes.com/study-notes/7377736)\n20. [Meaning of life | EBSCO Research Starters](https://www.ebsco.com/research-starters/religion-and-philosophy/meaning-life)\n21. [The Role of Meaning in Life Within the Relations of Religious Coping and Psychological Well-Being - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC4580713/)\n22. [r/religion on Reddit: Whats the meaning of life according to your religion?](https://www.reddit.com/r/religion/comments/rpzogc/whats_the_meaning_of_life_according_to_your/)\n23. [Meaning of life - New World Encyclopedia](https://www.newworldencyclopedia.org/entry/Meaning_of_life)\n24. [The Image of God, Religion, and the Meaning of Life: Toward a Christian Philosophical Anthropology – In Pursuit of Truth | A Journal of Christian Scholarship](https://www.cslewis.org/journal/the-image-of-god-religion-and-the-meaning-of-life-toward-a-christian-philosophical-anthropology/)\n25. [What Is the Meaning of Life? | Desiring God](https://www.desiringgod.org/interviews/what-is-the-meaning-of-life)\n26. [The Meaning of Life | Answers from World Religions and Philosophy | The Gallerist](https://thegallerist.art/meaning-of-life-answers-from-world-religions-and-philosophy/)\n27. [Religion gives life meaning. Can anything else take its place? | Psyche Ideas](https://psyche.co/ideas/religion-gives-life-meaning-can-anything-else-take-its-place)\n28. [Religion and life meaning: Differentiating between religious beliefs and religious community in constructing life meaning - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0890406504000064)\n29. [The Meaning of Life? – The Spiritual Naturalist Society](https://www.snsociety.org/the-meaning-of-life/)\n30. [The Meaning of Life According to Various Religions - Religion's Depths](https://religionsdepths.com/the-meaning-of-life-according-to-various-religions/)\n31. [Religion and the Meaning of Life](https://www.cambridge.org/core/books/religion-and-the-meaning-of-life/2C118CBF40B68F288B9010457F78571E)\n32. [Symbols of Life - Their Spiritual Power and Meaning | DUBLEZ](https://www.dublez.com/symbols-of-life-their-spiritual-power-and-meaning-a154)\n33. [Purpose Archives - John Templeton Foundation](https://www.templeton.org/discoveries/the-psychology-of-purpose)\n34. [The psychology of purpose in life - Center for Healthy Aging](https://www.research.colostate.edu/healthyagingcenter/2021/07/13/the-psychology-of-purpose-in-life/)\n35. [Frontiers | Why Meaning in Life Matters for Societal Flourishing](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.601899/full)\n36. [The Psychology of Purpose](https://www.templeton.org/wp-content/uploads/2020/02/Psychology-of-Purpose.pdf)\n37. [Meaning in Life: An Important Factor for the Psychological Well-Being of Chronically Ill Patients? - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC4113206/)\n38. [What is life’s purpose? A Yale psychiatrist looks to science for answers | Yale News](https://news.yale.edu/2024/03/05/what-lifes-purpose-yale-psychiatrist-looks-science-answers)\n39. [‘What’s Your Purpose in Life?’ Psychology Prof Explains Why that Question Makes All the Difference - Cornellians | Cornell University](https://alumni.cornell.edu/cornellians/purpose-psychology/)\n40. [Life Crafting as a Way to Find Purpose and Meaning in Life - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC6923189/)\n41. [15 Ways to Find Your Purpose of Life & Realize Your Meaning](https://positivepsychology.com/find-your-purpose-of-life/)\n42. [Sense of Purpose in Life and Subsequent Physical, Behavioral, and Psychosocial Health: An Outcome-Wide Approach - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8669210/)\n43. [Purpose in life: A psychological construct that indicates positive development](https://journal.psych.ac.cn/xlkxjz/EN/10.3724/SP.J.1042.2017.02192)\n44. [Meaning and Purpose | The Human Flourishing Program](https://hfh.fas.harvard.edu/determinants-purpose)\n45. [Psychiatry.org - Purpose in Life Can Lead to Less Stress, Better Mental Well-being](https://www.psychiatry.org/news-room/apa-blogs/purpose-in-life-less-stress-better-mental-health)\n46. [The Power of Purpose and Meaning in Life | Psychology Today](https://www.psychologytoday.com/us/blog/brain-waves/201901/the-power-purpose-and-meaning-in-life)\n47. [Purpose in Life and Associated Cognitive and Affective Mechanisms | Journal of Happiness Studies](https://link.springer.com/article/10.1007/s10902-024-00771-6)\n48. [Sense of Purpose in Life and Five Health Behaviors in Older Adults - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC7494628/)\n49. [Frontiers | Life Crafting as a Way to Find Purpose and Meaning in Life](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02778/full)\n",
       "sources": [
             {
                   "title": "The Meaning of Life (Stanford Encyclopedia of Philosophy)",
@@ -242,26 +244,6 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "reference_number": 1
             },
             {
-                  "title": "Meaning of LIfe: Contemporary Analytic Perspectives | Internet Encyclopedia of Philosophy",
-                  "url": "https://iep.utm.edu/mean-ana/",
-                  "description": "Looking back further into the origin of <strong>the worldview</strong> concept strengthens the connection between worldview and life’s meaning, and offers important clues that a worldview provides a kind of sense-making meaning. Nineteenth century German historian and philosopher, Wilhelm Dilthey, spoke of ...",
-                  "content": null,
-                  "site_name": "Internet Encyclopedia of Philosophy",
-                  "site_long_name": "iep.utm.edu",
-                  "language": "en",
-                  "image_urls": [],
-                  "links": [],
-                  "is_safe": true,
-                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://iep.utm.edu&size=96",
-                  "snippets": [
-                        "Looking back further into the origin of the worldview concept strengthens the connection between worldview and life’s meaning, and offers important clues that a worldview provides a kind of sense-making meaning. Nineteenth century German historian and philosopher, Wilhelm Dilthey, spoke of a worldview as a concept that “. . . constitutes an overall perspective on life that sums up what we know about the world, how we evaluate it emotionally, and how we respond to it volitionally.” Worldviews possess three distinct yet interrelated dimensions: cognitive, affective, and practical.",
-                        "Seachris, Joshua W. “The Meaning of Life as Narrative: A New Proposal for Interpreting Philosophy’s ‘Primary’ Question.” Philo 12 (Spring-Summer 2009): 5-23. Seachris, Joshua W. “The Sub Specie Aeternitatis Perspective and Normative Evaluations of Life’s Meaningfulness: A Closer Look,” Ethical Theory and Moral Practice 16 (2013): 605-620.",
-                        "Depending on whom one asks, the question, “What is the meaning of life?” is either the most profound question of human existence or else nothing more than a nonsensical request built on conceptual confusion, much like, “What does the color red taste like?” or “What is heavier than the heaviest object?” Ask a non-philosopher, “What do philosophers discuss?” and a likely answer will be, “The meaning of life.” Ask the same question of a philosopher within the analytic tradition, and you will rarely get this answer.",
-                        "The sources of suspicion about the question within analytic philosophy, especially in earlier periods, are varied. First, the question of life’s meaning is conceptually challenging because of terms like “the” “meaning” and “life,” and especially given the grammatical form in which they are arranged."
-                  ],
-                  "reference_number": 2
-            },
-            {
                   "title": "Meaning of life - Wikipedia",
                   "url": "https://en.wikipedia.org/wiki/Meaning_of_life",
                   "description": "Wong has proposed that whether <strong>life</strong> is meaningful depends not only on subjective feelings but, more importantly, on whether a person&#x27;s goal-striving and <strong>life</strong> as a whole is meaningful according to some objective normative standard. <strong>The</strong> <strong>philosophical</strong> <strong>perspectives</strong> <strong>on</strong> <strong>the</strong> <strong>meaning</strong> <strong>of</strong> <strong>life</strong> are those ...",
@@ -280,6 +262,26 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "The meaning of life is the concept of an individual's life, or existence in general, having an inherent significance or a philosophical point. There is no consensus on the specifics of such a concept or whether the concept itself even exists in any objective sense.",
                         "Thinking and discourse on the topic is sought in the English language through questions such as—but not limited to—\"What is the meaning of life?\", \"What is the purpose of existence?\", and \"Why are we here?\". There have been many proposed answers to these questions from many different cultural and ideological backgrounds. The search for life's meaning has produced much philosophical, scientific, theological, and metaphysical speculation throughout history.",
                         "Since a man does not alter, and his moral character remains absolutely the same all through his life; since he must play out the part which he has received, without the least deviation from the character; since neither experience, nor philosophy, nor religion can effect any improvement in him, the question arises, What is the meaning of life at all?"
+                  ],
+                  "reference_number": 2
+            },
+            {
+                  "title": "Meaning of LIfe: Contemporary Analytic Perspectives | Internet Encyclopedia of Philosophy",
+                  "url": "https://iep.utm.edu/mean-ana/",
+                  "description": "Looking back further into the origin of <strong>the worldview</strong> concept strengthens the connection between worldview and life’s meaning, and offers important clues that a worldview provides a kind of sense-making meaning. Nineteenth century German historian and philosopher, Wilhelm Dilthey, spoke of ...",
+                  "content": null,
+                  "site_name": "Internet Encyclopedia of Philosophy",
+                  "site_long_name": "iep.utm.edu",
+                  "language": "en",
+                  "image_urls": [],
+                  "links": [],
+                  "is_safe": true,
+                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://iep.utm.edu&size=96",
+                  "snippets": [
+                        "Looking back further into the origin of the worldview concept strengthens the connection between worldview and life’s meaning, and offers important clues that a worldview provides a kind of sense-making meaning. Nineteenth century German historian and philosopher, Wilhelm Dilthey, spoke of a worldview as a concept that “. . . constitutes an overall perspective on life that sums up what we know about the world, how we evaluate it emotionally, and how we respond to it volitionally.” Worldviews possess three distinct yet interrelated dimensions: cognitive, affective, and practical.",
+                        "Seachris, Joshua W. “The Meaning of Life as Narrative: A New Proposal for Interpreting Philosophy’s ‘Primary’ Question.” Philo 12 (Spring-Summer 2009): 5-23. Seachris, Joshua W. “The Sub Specie Aeternitatis Perspective and Normative Evaluations of Life’s Meaningfulness: A Closer Look,” Ethical Theory and Moral Practice 16 (2013): 605-620.",
+                        "Depending on whom one asks, the question, “What is the meaning of life?” is either the most profound question of human existence or else nothing more than a nonsensical request built on conceptual confusion, much like, “What does the color red taste like?” or “What is heavier than the heaviest object?” Ask a non-philosopher, “What do philosophers discuss?” and a likely answer will be, “The meaning of life.” Ask the same question of a philosopher within the analytic tradition, and you will rarely get this answer.",
+                        "The sources of suspicion about the question within analytic philosophy, especially in earlier periods, are varied. First, the question of life’s meaning is conceptually challenging because of terms like “the” “meaning” and “life,” and especially given the grammatical form in which they are arranged."
                   ],
                   "reference_number": 3
             },
@@ -457,6 +459,28 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "reference_number": 11
             },
             {
+                  "title": "r/Existentialism on Reddit: What is the meaning of life? Why are we here?",
+                  "url": "https://www.reddit.com/r/Existentialism/comments/qhrf9q/what_is_the_meaning_of_life_why_are_we_here/",
+                  "description": "Neither asserting a meaning, nor negating meaning. ... <strong>Life appears to be a journey of self-discovery, growth, and connection from a human perspective</strong>. We find meaning in the people we meet, the experiences we have, and the impact we have on the world around us.",
+                  "content": null,
+                  "site_name": "Reddit",
+                  "site_long_name": "reddit.com",
+                  "age": "2021-10-28T16:58:42.000Z",
+                  "language": "en",
+                  "image_urls": [],
+                  "links": [],
+                  "is_safe": true,
+                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://reddit.com&size=96",
+                  "thumbnail": "https://share.redd.it/preview/post/qhrf9q",
+                  "snippets": [
+                        "Posted by u/kjwhimsical-91 - 345 votes and 467 comments",
+                        "The meaning of 2+2=4 4 is the answer, but we are not completely Understand the universe, the universe cannot be explained by mathematics, so as a human being, having feelings can bring meaning, and then if you fully understand the universe, it can also bring meaning, but at present, you don’t know what meaning is, or you can enter the third-person perspective. draw completely life is meaningless conclusions",
+                        "Neither asserting a meaning, nor negating meaning. ... Life appears to be a journey of self-discovery, growth, and connection from a human perspective. We find meaning in the people we meet, the experiences we have, and the impact we have on the world around us.",
+                        "Please note posts should relate to Existential philosophy and literature. See https://en.wikipedia.org/wiki/Existentialism if you are unsure, and the reading list. ... I'm just asking this question because after realizing that religion is nothing but a fantasy story made to be fun for grown-ups, this made me question my existence as a human being. Do you know what life really means?"
+                  ],
+                  "reference_number": 12
+            },
+            {
                   "title": "Philosophies That Can Change The Way You Look At Life | by Valerie | Dare To Be Better | Medium",
                   "url": "https://medium.com/dare-to-be-better/philosophies-that-can-change-the-way-you-look-at-life-92162c8427b5",
                   "description": "Philosophies That Can Change The Way You Look At <strong>Life</strong> Solipsism And Other Amazing Theories About <strong>Life</strong> A philosophy <strong>of</strong> <strong>life</strong> is any general attitude towards <strong>the</strong> <strong>meaning</strong> <strong>of</strong> <strong>life</strong> or of the way <strong>life</strong> …",
@@ -475,28 +499,6 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "All of us relate more to one or more philosophical views on the meaning of life, even if we don’t name them.",
                         "A life philosophy gives us an understanding of where we are going and what’s the point of it all. I’ve never heard of solipsism before so when I read an article about it, it got me thinking: What do people believe in? What are other popular philosophical views that shape who we are? This curious infographic can give you a general idea. For more, keep scrolling. ... If you are interested in philosophy but not to the point to become a Philosophy major, there is a fun little book by Paul Kleinman that I would recommend.",
                         "It covers the important philosophical ideas and milestones in a surprisingly non-boring way."
-                  ],
-                  "reference_number": 12
-            },
-            {
-                  "title": "r/Existentialism on Reddit: What is the meaning of life? Why are we here?",
-                  "url": "https://www.reddit.com/r/Existentialism/comments/qhrf9q/what_is_the_meaning_of_life_why_are_we_here/",
-                  "description": "345 votes, 467 comments. I&#x27;m just asking this question because after realizing that religion is nothing but a fantasy story made to be fun for…",
-                  "content": null,
-                  "site_name": "Reddit",
-                  "site_long_name": "reddit.com",
-                  "age": "2021-10-28T16:58:42.000Z",
-                  "language": "en",
-                  "image_urls": [],
-                  "links": [],
-                  "is_safe": true,
-                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://reddit.com&size=96",
-                  "thumbnail": "https://share.redd.it/preview/post/qhrf9q",
-                  "snippets": [
-                        "Posted by u/kjwhimsical-91 - 345 votes and 467 comments",
-                        "The meaning of 2+2=4 4 is the answer, but we are not completely Understand the universe, the universe cannot be explained by mathematics, so as a human being, having feelings can bring meaning, and then if you fully understand the universe, it can also bring meaning, but at present, you don’t know what meaning is, or you can enter the third-person perspective. draw completely life is meaningless conclusions",
-                        "Neither asserting a meaning, nor negating meaning. ... Life appears to be a journey of self-discovery, growth, and connection from a human perspective. We find meaning in the people we meet, the experiences we have, and the impact we have on the world around us.",
-                        "Please note posts should relate to Existential philosophy and literature. See https://en.wikipedia.org/wiki/Existentialism if you are unsure, and the reading list. ... I'm just asking this question because after realizing that religion is nothing but a fantasy story made to be fun for grown-ups, this made me question my existence as a human being. Do you know what life really means?"
                   ],
                   "reference_number": 13
             },
@@ -791,28 +793,6 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "reference_number": 27
             },
             {
-                  "title": "The Meaning of Life According to Various Religions - Religion's Depths",
-                  "url": "https://religionsdepths.com/the-meaning-of-life-according-to-various-religions/",
-                  "description": "What is <strong>the</strong> <strong>meaning</strong> <strong>of</strong> <strong>life</strong>? Does anyone know? Here&#x27;s what eight different religions from all around the world say.",
-                  "content": null,
-                  "site_name": "Religionsdepths",
-                  "site_long_name": "religionsdepths.com",
-                  "age": "2025-05-24T20:23:09.000Z",
-                  "language": "en",
-                  "image_urls": [],
-                  "links": [],
-                  "is_safe": true,
-                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://religionsdepths.com&size=96",
-                  "thumbnail": "https://religionsdepths.com/wp-content/uploads/2025/02/autumnpath.jpg",
-                  "snippets": [
-                        "The world’s religions, however, give a radically different, and radically truer-to-life, answer to the question of what the meaning of life is (regardless of how well or how badly their adherents live up to it, of course). Surely not coincidentally, they all give more or less the same answer, just expressed in different ways: the meaning of life is to get closer to the divine and, ultimately, to experience spiritual enlightenment.",
-                        "Let’s now consider examples from several religions from around the world. ... For thousands of years, Hinduism has taught that the meaning of life is to achieve moksha, “liberation,” the Hindu term for spiritual enlightenment. All living beings are continuously reincarnated in different bodies and circumstances depending on how much good or bad karma they’ve accumulated in this life and previous ones.",
-                        "Since these statements come from a religion different from those we’ve looked at so far, they’re naturally expressed in a different idiom. But the underlying theme is the same: the meaning of life is to live in a way that comports with, and leads up to, spiritual enlightenment, the direct experience of the oneness of all things in the immanent and transcendent divinity.",
-                        "In ancient Egyptian parlance, “to remember the West,” the direction of the setting sun, means to remember death and ultimate things more generally, which for the ancient Egyptians were deeply spiritual matters.[54] This is confirmed by the following line, “so that the local gods be brought offerings.” This poem therefore articulates the same notion of the meaning of life as that of the Enuma Elish, just expressed in what’s perhaps a more sophisticated way. ... Naturally but unfortunately, it’s not realistic to cite and discuss examples from every single religion that’s ever existed."
-                  ],
-                  "reference_number": 28
-            },
-            {
                   "title": "Religion and life meaning: Differentiating between religious beliefs and religious community in constructing life meaning - ScienceDirect",
                   "url": "https://www.sciencedirect.com/science/article/pii/S0890406504000064",
                   "description": "Religion is one of the major resources used to generate <strong>meaning</strong> <strong>in</strong> <strong>life</strong>. An individual&#x27;s religion involves not only a set of beliefs, but also an invo…",
@@ -832,7 +812,7 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "Religion is one of the major resources used to generate meaning in life. An individual's religion involves not only a set of beliefs, but also an involvement in a community of like-minded others. The purpose of this study is to differentiate between religious beliefs and religious community in constructing life meaning at the end stage of life.",
                         "Twelve women, who resided at various assisted-living facilities, participated in qualitative interviews about the current and past meaning of religion in their lives. They were distributed among fundamental Christian, Catholic, liberal Protestant, and Jewish faiths. Differences between and within the groups were the result of the content, as well as certainty, of belief. These differences influenced the sufficiency of a belief system to construct life meaning."
                   ],
-                  "reference_number": 29
+                  "reference_number": 28
             },
             {
                   "title": "The Meaning of Life? – The Spiritual Naturalist Society",
@@ -853,6 +833,28 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "By and large, people have looked to religion for such a cosmic purpose, though many people no longer find religious solutions tenable. Christianity, at least at the popular level, tells us that existence on this earth is only something of a trial run, and that the real existence is in another realm only accessible after death. In this view, we must live our life a certain way and hold certain beliefs to get to this real existence.",
                         "Presumably once we get to this other life, we will no longer be troubled by the meaning of existence. Most popular religions offer some sense of meaning or purpose to life, but most if not all suffer from the fact that you must believe un-provable and often absurd things in order to find that meaning.",
                         "In these esoteric traditions, sin by definition is what keeps us from being whole. The Universe has given us this brief moment of existence. Does it not make sense to try to life it wholly and completely? What are these “esoteric traditions”? They are found in all the major religions, though they are often hidden."
+                  ],
+                  "reference_number": 29
+            },
+            {
+                  "title": "The Meaning of Life According to Various Religions - Religion's Depths",
+                  "url": "https://religionsdepths.com/the-meaning-of-life-according-to-various-religions/",
+                  "description": "What is <strong>the</strong> <strong>meaning</strong> <strong>of</strong> <strong>life</strong>? Does anyone know? Here&#x27;s what eight different religions from all around the world say.",
+                  "content": null,
+                  "site_name": "Religionsdepths",
+                  "site_long_name": "religionsdepths.com",
+                  "age": "2025-05-24T20:23:09.000Z",
+                  "language": "en",
+                  "image_urls": [],
+                  "links": [],
+                  "is_safe": true,
+                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://religionsdepths.com&size=96",
+                  "thumbnail": "https://religionsdepths.com/wp-content/uploads/2025/02/autumnpath.jpg",
+                  "snippets": [
+                        "The world’s religions, however, give a radically different, and radically truer-to-life, answer to the question of what the meaning of life is (regardless of how well or how badly their adherents live up to it, of course). Surely not coincidentally, they all give more or less the same answer, just expressed in different ways: the meaning of life is to get closer to the divine and, ultimately, to experience spiritual enlightenment.",
+                        "Let’s now consider examples from several religions from around the world. ... For thousands of years, Hinduism has taught that the meaning of life is to achieve moksha, “liberation,” the Hindu term for spiritual enlightenment. All living beings are continuously reincarnated in different bodies and circumstances depending on how much good or bad karma they’ve accumulated in this life and previous ones.",
+                        "Since these statements come from a religion different from those we’ve looked at so far, they’re naturally expressed in a different idiom. But the underlying theme is the same: the meaning of life is to live in a way that comports with, and leads up to, spiritual enlightenment, the direct experience of the oneness of all things in the immanent and transcendent divinity.",
+                        "In ancient Egyptian parlance, “to remember the West,” the direction of the setting sun, means to remember death and ultimate things more generally, which for the ancient Egyptians were deeply spiritual matters.[54] This is confirmed by the following line, “so that the local gods be brought offerings.” This poem therefore articulates the same notion of the meaning of life as that of the Enuma Elish, just expressed in what’s perhaps a more sophisticated way. ... Naturally but unfortunately, it’s not realistic to cite and discuss examples from every single religion that’s ever existed."
                   ],
                   "reference_number": 30
             },
@@ -878,26 +880,46 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "reference_number": 31
             },
             {
-                  "title": "You don’t need a faith to find the meaning of life | Letters | The Guardian",
-                  "url": "https://www.theguardian.com/world/2021/apr/02/you-dont-need-a-faith-to-find-the-meaning-of-life",
-                  "description": "Letters: Hester Brown, Jane Stott, Michael Harrison and Richard Harries respond to an article by John Harris on the yearning for <strong>meaning</strong> in a secular society",
+                  "title": "Symbols of Life - Their Spiritual Power and Meaning | DUBLEZ",
+                  "url": "https://www.dublez.com/symbols-of-life-their-spiritual-power-and-meaning-a154",
+                  "description": "In this article, you will find: The secrets <strong>and</strong> <strong>meanings</strong> <strong>of</strong> symbol",
                   "content": null,
-                  "site_name": "The Guardian",
-                  "site_long_name": "theguardian.com",
-                  "age": "2021-04-03T04:21:18.000Z",
+                  "site_name": "DUBLEZ",
+                  "site_long_name": "dublez.com",
+                  "age": "2023-12-22T00:34:10.000Z",
                   "language": "en",
                   "image_urls": [],
                   "links": [],
                   "is_safe": true,
-                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://theguardian.com&size=96",
-                  "thumbnail": "https://i.guim.co.uk/img/media/a34141ed88637b7e740990e4a8c959f8af3f26a8/0_0_2950_1770/master/2950.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctYWdlLTIwMjEucG5n&enable=upscale&s=ec7e107aec7f427bd90cb5a0e8e5ee53",
+                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dublez.com&size=96",
+                  "thumbnail": "https://images-dublez-cdn.rshop.sk/sm/articles/cefb60bfdc57614f7614732cf083a913.jpg",
                   "snippets": [
-                        "Human rights and interfaith movements are leading the way in recognising equality between religious and non-religious worldviews and celebrating our shared values. Imagine the benefit to our mental health and society if we could end religious divides and belong together. Hester Brown London · Millions of people have a spiritual aspect to their lives that is not based on faith, but on experience.",
-                        "Organisations I have found helpful include GreenSpirit, the Spiritual Companions Trust and the Findhorn Foundation. I could never follow one of the established religions, as I find them too male-dominated, but do not want to throw out the spiritual baby with the no-longer-needed bathwater.",
-                        "John Harris highlights the eroded sense of community many of us feel (How do faithless people like me make sense of this past year of Covid?, 28 March), but part of the solution is to reject the binary of faith/non-faith. Religions did hoover up all the meaning in life – explanations of why it works, and practices for how to do it – but they are not homogeneous.",
-                        "They stretch across a fascinating landscape from monotheistic to “god-in-nature”, and from “ultimate redemption” to living a good life here and now. In that conversation, there have always been non-religious voices, sceptical about the supernatural, using reason and science to understand “why”, and human culture for “how”."
+                        "In this article, you will find: The secrets and meanings of symbols The Tree of Life - a sign of connection and growth Infinity - more than just",
+                        "Additional interpretations of the infinity symbol: Representation of Ouroboros: The circular shape of two components forming the infinity symbol is linked by some mystics to the Ouroboros, a snake depicted eating its own tail, creating a circle. Harmony and balance: Two interconnecting loops can represent opposing forces or individuals coming together in harmony and balance, symbolizing interconnectedness between all things. Regeneration: On a spiritual and metaphysical level, the infinity symbol can signify regeneration and eternal life after death.",
+                        "This Egyptian symbol of life is often depicted in the hands of prominent Egyptian figures, such as pharaohs and kings, as a way to preserve their immortality. It is also commonly seen in temples and in the hands of major Egyptian gods like Osiris, Isis, and Ra. The Ankh may also have a more physical interpretation—symbolizing water, air, and sunlight, which were essential for sustaining life in ancient Egyptian culture.",
+                        "Since ancient times, people have used symbols to represent every significant event in life. But what could be more important in life than life itself? Throughout history, regardless of culture or religion, people have embraced and recognized crucial signs and symbols that represent life."
                   ],
                   "reference_number": 32
+            },
+            {
+                  "title": "Purpose Archives - John Templeton Foundation",
+                  "url": "https://www.templeton.org/discoveries/the-psychology-of-purpose",
+                  "description": "In Korea, for instance, youth were ... of different socioeconomic backgrounds suggests that <strong>those in challenging circumstances are likely to have a difficult time discovering and pursuing personally meaningful aims</strong>....",
+                  "content": null,
+                  "site_name": "John Templeton Foundation",
+                  "site_long_name": "templeton.org",
+                  "language": "en",
+                  "image_urls": [],
+                  "links": [],
+                  "is_safe": true,
+                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://templeton.org&size=96",
+                  "snippets": [
+                        "Modern scientific research on human purpose has its origins in, of all places, a Holocaust survivor’s experiences in a series of Nazi concentration camps. While a prisoner at Theresienstadt, Auschwitz and two satellite camps of Dachau, Viennese psychologist Viktor Frankl noticed that fellow prisoners who had a sense of purpose showed greater resilience to the torture, slave labor, and starvation rations to which they were subjected.",
+                        "Although the majority of sociological work on purpose in life has focused on people in western, affluent societies, the literature contains a few interesting cross-cultural results that hint at how approaches to and benefits from purpose in life might differ around the world. In Korea, for instance, youth were shown to view purpose as less an individual pursuit and more as a collective matter, while explorations of Chinese concepts of purpose indicates that one’s sense of purpose is divided into senses of professional, moral, and social purpose. Research in the psychology of purpose among people of different socioeconomic backgrounds suggests that those in challenging circumstances are likely to have a difficult time discovering and pursuing personally meaningful aims.",
+                        "Indeed, as Viktor Frankl argued — based in part on what he had observed first-hand — experiencing adversity might actually contribute to the development of a purpose in life. Download the full research review on the psychology of purpose.",
+                        "Most world religions, as well as many secular systems of thought, also offer their adherents well-developed guidelines for developing purpose in life. Love of friends and family, and desire for meaningful work are common sources of purpose. Over the past few decades, psychologists and sociologists have developed a host of assessments that touch on people’s senses of purpose including the Life Regard Index, the Purpose in Life subscale of the Psychological Scales of Well-being, the Meaning in Life questionnaire, the Existence Subscale of the Purpose in Life Test, the Revised Youth Purpose Survey, the Claremont Purpose Scale and the Life Purpose Questionnaire, among others."
+                  ],
+                  "reference_number": 33
             },
             {
                   "title": "The psychology of purpose in life - Center for Healthy Aging",
@@ -918,26 +940,6 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "An individual may find meaning in various domains of life, including work, relationships, hobbies, and interests. Researchers actually consider meaning in life as a core component to living a successful and happy life. Having meaning in life has been associated with a wide range of benefits.",
                         "Remember, finding meaning does not have to be a complicated process, you can find it in the simplest of life’s joys. The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate, to have it make some difference that you have lived and lived well. —Ralph Waldo Emerson ... Click the icon to subscribe and receive CHA updates. ... Wenceslao (Wen) Martinez is a master’s student in the Translational Research on Aging and Chronic Disease Laboratory in CSU’s Department of Health and Exercise Science — and he finds a lot of purpose in doing science.",
                         "Allie Alayan is a Ph.D. student in Counseling Psychology at CSU. She finds purpose in researching how people find purpose in their lives."
-                  ],
-                  "reference_number": 33
-            },
-            {
-                  "title": "Purpose Archives - John Templeton Foundation",
-                  "url": "https://www.templeton.org/discoveries/the-psychology-of-purpose",
-                  "description": "In Korea, for instance, youth were ... of different socioeconomic backgrounds suggests that <strong>those in challenging circumstances are likely to have a difficult time discovering and pursuing personally meaningful aims</strong>....",
-                  "content": null,
-                  "site_name": "John Templeton Foundation",
-                  "site_long_name": "templeton.org",
-                  "language": "en",
-                  "image_urls": [],
-                  "links": [],
-                  "is_safe": true,
-                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://templeton.org&size=96",
-                  "snippets": [
-                        "Modern scientific research on human purpose has its origins in, of all places, a Holocaust survivor’s experiences in a series of Nazi concentration camps. While a prisoner at Theresienstadt, Auschwitz and two satellite camps of Dachau, Viennese psychologist Viktor Frankl noticed that fellow prisoners who had a sense of purpose showed greater resilience to the torture, slave labor, and starvation rations to which they were subjected.",
-                        "Although the majority of sociological work on purpose in life has focused on people in western, affluent societies, the literature contains a few interesting cross-cultural results that hint at how approaches to and benefits from purpose in life might differ around the world. In Korea, for instance, youth were shown to view purpose as less an individual pursuit and more as a collective matter, while explorations of Chinese concepts of purpose indicates that one’s sense of purpose is divided into senses of professional, moral, and social purpose. Research in the psychology of purpose among people of different socioeconomic backgrounds suggests that those in challenging circumstances are likely to have a difficult time discovering and pursuing personally meaningful aims.",
-                        "Indeed, as Viktor Frankl argued — based in part on what he had observed first-hand — experiencing adversity might actually contribute to the development of a purpose in life. Download the full research review on the psychology of purpose.",
-                        "Most world religions, as well as many secular systems of thought, also offer their adherents well-developed guidelines for developing purpose in life. Love of friends and family, and desire for meaningful work are common sources of purpose. Over the past few decades, psychologists and sociologists have developed a host of assessments that touch on people’s senses of purpose including the Life Regard Index, the Purpose in Life subscale of the Psychological Scales of Well-being, the Meaning in Life questionnaire, the Existence Subscale of the Purpose in Life Test, the Revised Youth Purpose Survey, the Claremont Purpose Scale and the Life Purpose Questionnaire, among others."
                   ],
                   "reference_number": 34
             },
@@ -964,6 +966,26 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "reference_number": 35
             },
             {
+                  "title": "The Psychology of Purpose",
+                  "url": "https://www.templeton.org/wp-content/uploads/2020/02/Psychology-of-Purpose.pdf",
+                  "description": "More recently, the advent of positive ... Csikszentmihalyi, 2000), has led to yet more scientific interest in ... <strong>purpose in life represents a stable and generalized intention to accomplish something that is at once</strong> · personally meaningful and at the same time leads to productive engagement ...",
+                  "content": null,
+                  "site_name": "John Templeton Foundation",
+                  "site_long_name": "templeton.org",
+                  "language": "en",
+                  "image_urls": [],
+                  "links": [],
+                  "is_safe": true,
+                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://templeton.org&size=96",
+                  "snippets": [
+                        "That means that individuals may find meaning in watching a shooting star, but they may find ... II. MEASURING PURPOSE · Many persons have a wrong idea of what constitutes true happiness. It is not attained through self-gratification but ... In conjunction with the growth of positive psychology, scientific attention to purpose has increased · dramatically over the past approximately twenty years. Before this, researchers largely believed it was",
+                        "More recently, the advent of positive psychology, a psychological · approach to understanding not only what can go wrong but also what can go right in the course of · human development (Seligman & Csikszentmihalyi, 2000), has led to yet more scientific interest in ... purpose in life represents a stable and generalized intention to accomplish something that is at once · personally meaningful and at the same time leads to productive engagement with some aspect of the",
+                        "Similarly, other researchers have included purpose as part of their definition of meaning along with the · extent to which people make sense of or see significance in their lives (Steger, 2009). Psychological · researchers argue that a purpose in life refers only to those sources of meaning that are both goal-",
+                        "Calling and vocation at work: Definitions and prospects for research · and practice. Counseling Psychologist, 37(3), 424-450. This article outlines purpose, in the form of a calling or vocation, for counseling psychologists. It · defines the term calling and explains how people can find meaning in the work they do. Dik, B. & Duffy, R. D. (2012). Make Your Job a Calling: How the Psychology of Vocation Can · Change Your Life at Work."
+                  ],
+                  "reference_number": 36
+            },
+            {
                   "title": "Meaning in Life: An Important Factor for the Psychological Well-Being of Chronically Ill Patients? - PMC",
                   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4113206/",
                   "description": "Previous research has shown that ... life often raises disquieting questions of meaning in life. <strong>Meaning in life refers to people&#x27;s concerns with the core significance and purpose of their personal existence</strong>....",
@@ -981,7 +1003,7 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "Previous research has shown that adaptation to a chronic condition requires individuals to revise one's life goals and expectations, given that serious illness often crosses valued goals and life plans (Pinquart, Silbereisen, & Frohlich, 2009). Such a profound revision of one's life often raises disquieting questions of meaning in life. Meaning in life refers to people's concerns with the core significance and purpose of their personal existence.",
                         "The multidimensional character of the concept resulted in a multitude of research tapping into different aspects of the construct (for a review, see Morgan & Farsides, 2009). Steger and colleagues made a successful attempt to remedy this lack of conceptual clarity by distinguishing between two components of meaning in life (Steger, Frazier, Oishi, & Kaler, 2006). The first aspect, Presence of Meaning, indicates whether individuals perceive their lives as significant and purposeful."
                   ],
-                  "reference_number": 36
+                  "reference_number": 37
             },
             {
                   "title": "What is life’s purpose? A Yale psychiatrist looks to science for answers | Yale News",
@@ -1003,7 +1025,7 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "Wilkinson: Certainly, I agree that different circumstances influence our decisions, but there’s compelling data showing how our conscious thoughts also influence our behavior. I like the metaphor from [social psychologist and writer] Jonathan Haidt of the elephant and the rider.",
                         "In a counterintuitive way, serving others often leads to more happiness than pursuing things for ourselves. Yet no one walks around thinking, If I could only find more people to help today, then I could be happier! But the evidence suggests such thinking would be more psychologically accurate than our natural intuitions."
                   ],
-                  "reference_number": 37
+                  "reference_number": 38
             },
             {
                   "title": "‘What’s Your Purpose in Life?’ Psychology Prof Explains Why that Question Makes All the Difference - Cornellians | Cornell University",
@@ -1023,27 +1045,27 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "Psychologist Anthony Burrow runs the Purpose and Identity Processes Lab, which studies the vital role that a sense of purpose plays in human wellbeing. Also director of Human Ecology’s Bronfenbrenner Center for Translational Research, Burrow has stressed the importance of purpose in such national media as Psychology Today and NPR’s podcast The Hidden Brain.",
                         "Do researchers know why purpose is so good for us?"
                   ],
-                  "reference_number": 38
+                  "reference_number": 39
             },
             {
-                  "title": "The Psychology of Purpose",
-                  "url": "https://www.templeton.org/wp-content/uploads/2020/02/Psychology-of-Purpose.pdf",
-                  "description": "More recently, the advent of positive ... Csikszentmihalyi, 2000), has led to yet more scientific interest in ... <strong>purpose in life represents a stable and generalized intention to accomplish something that is at once</strong> · personally meaningful and at the same time leads to productive engagement ...",
+                  "title": "Life Crafting as a Way to Find Purpose and Meaning in Life - PMC",
+                  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923189/",
+                  "description": "<strong>Positive psychology, or the scientific study of human flourishing that aims to optimize human functioning within communities and organizations</strong>, has become very influential both within and outside the scientific community (Gable and Haidt, 2005; Donaldson et al., 2015; Al Taher, 2019).",
                   "content": null,
-                  "site_name": "John Templeton Foundation",
-                  "site_long_name": "templeton.org",
+                  "site_name": "PubMed Central",
+                  "site_long_name": "pmc.ncbi.nlm.nih.gov",
                   "language": "en",
                   "image_urls": [],
                   "links": [],
                   "is_safe": true,
-                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://templeton.org&size=96",
+                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://pmc.ncbi.nlm.nih.gov&size=96",
                   "snippets": [
-                        "That means that individuals may find meaning in watching a shooting star, but they may find ... II. MEASURING PURPOSE · Many persons have a wrong idea of what constitutes true happiness. It is not attained through self-gratification but ... In conjunction with the growth of positive psychology, scientific attention to purpose has increased · dramatically over the past approximately twenty years. Before this, researchers largely believed it was",
-                        "More recently, the advent of positive psychology, a psychological · approach to understanding not only what can go wrong but also what can go right in the course of · human development (Seligman & Csikszentmihalyi, 2000), has led to yet more scientific interest in ... purpose in life represents a stable and generalized intention to accomplish something that is at once · personally meaningful and at the same time leads to productive engagement with some aspect of the",
-                        "Similarly, other researchers have included purpose as part of their definition of meaning along with the · extent to which people make sense of or see significance in their lives (Steger, 2009). Psychological · researchers argue that a purpose in life refers only to those sources of meaning that are both goal-",
-                        "Calling and vocation at work: Definitions and prospects for research · and practice. Counseling Psychologist, 37(3), 424-450. This article outlines purpose, in the form of a calling or vocation, for counseling psychologists. It · defines the term calling and explains how people can find meaning in the work they do. Dik, B. & Duffy, R. D. (2012). Make Your Job a Calling: How the Psychology of Vocation Can · Change Your Life at Work."
+                        "Positive psychology, or the scientific study of human flourishing that aims to optimize human functioning within communities and organizations, has become very influential both within and outside the scientific community (Gable and Haidt, 2005; Donaldson et al., 2015; Al Taher, 2019).",
+                        "Graybiel A. M., Smith K. S. (2014). Good habits, bad habits. Sci. Am. 310, 38–43. 10.1038/scientificamerican0614-38 [DOI] [PubMed] [Google Scholar] Hart J. (2014). Toward an integrative theory of psychological defense. Perspect. Psychol. Sci. 9, 19–39.",
+                        "This process ideally starts with an intervention that entails a combination of reflecting on one’s values, passions and goals, best possible self, goal attainment plans, and other positive psychology intervention techniques. Important elements of such an intervention are: (1) discovering values and passion, (2) reflecting on current and desired competencies and habits, (3) reflecting on present and future social life, (4) reflecting on a possible future career, (5) writing about the ideal future, (6) writing down specific goal attainment and “if-then” plans, and (7) making public commitments to the goals set. Prior research has shown that personal goal setting and goal attainment plans help people gain a direction or a sense of purpose in life.",
+                        "Research findings from the field of positive psychology, such as salutogenesis, implementation intentions, value congruence, broaden-and-build, and goal-setting literature, can help in building a comprehensive evidence-based life-crafting intervention. This intervention can aid individuals to find a purpose in life, while at the same time ensuring that they make concrete plans to work toward this purpose."
                   ],
-                  "reference_number": 39
+                  "reference_number": 40
             },
             {
                   "title": "15 Ways to Find Your Purpose of Life & Realize Your Meaning",
@@ -1064,26 +1086,6 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "Questions central to the complex topic of meaning & purpose of life.",
                         "Increasingly, psychologists have begun to realize the importance of meaning to our wellbeing and happiness. Recent research suggests that people with increased meaning are better off – they appear happier, exhibit increased life satisfaction, and report lowered depression (Huo et al., 2019; Ivtzan, Lomas, Hefferon, & Worth, 2016; Steger, 2009).",
                         "The Positive Psychology Toolkit© is a groundbreaking practitioner resource containing over 500 science-based exercises, activities, interventions, questionnaires, and assessments created by experts using the latest positive psychology research."
-                  ],
-                  "reference_number": 40
-            },
-            {
-                  "title": "Life Crafting as a Way to Find Purpose and Meaning in Life - PMC",
-                  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6923189/",
-                  "description": "<strong>Positive psychology, or the scientific study of human flourishing that aims to optimize human functioning within communities and organizations</strong>, has become very influential both within and outside the scientific community (Gable and Haidt, 2005; Donaldson et al., 2015; Al Taher, 2019).",
-                  "content": null,
-                  "site_name": "PubMed Central",
-                  "site_long_name": "pmc.ncbi.nlm.nih.gov",
-                  "language": "en",
-                  "image_urls": [],
-                  "links": [],
-                  "is_safe": true,
-                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://pmc.ncbi.nlm.nih.gov&size=96",
-                  "snippets": [
-                        "Positive psychology, or the scientific study of human flourishing that aims to optimize human functioning within communities and organizations, has become very influential both within and outside the scientific community (Gable and Haidt, 2005; Donaldson et al., 2015; Al Taher, 2019).",
-                        "Graybiel A. M., Smith K. S. (2014). Good habits, bad habits. Sci. Am. 310, 38–43. 10.1038/scientificamerican0614-38 [DOI] [PubMed] [Google Scholar] Hart J. (2014). Toward an integrative theory of psychological defense. Perspect. Psychol. Sci. 9, 19–39.",
-                        "This process ideally starts with an intervention that entails a combination of reflecting on one’s values, passions and goals, best possible self, goal attainment plans, and other positive psychology intervention techniques. Important elements of such an intervention are: (1) discovering values and passion, (2) reflecting on current and desired competencies and habits, (3) reflecting on present and future social life, (4) reflecting on a possible future career, (5) writing about the ideal future, (6) writing down specific goal attainment and “if-then” plans, and (7) making public commitments to the goals set. Prior research has shown that personal goal setting and goal attainment plans help people gain a direction or a sense of purpose in life.",
-                        "Research findings from the field of positive psychology, such as salutogenesis, implementation intentions, value congruence, broaden-and-build, and goal-setting literature, can help in building a comprehensive evidence-based life-crafting intervention. This intervention can aid individuals to find a purpose in life, while at the same time ensuring that they make concrete plans to work toward this purpose."
                   ],
                   "reference_number": 41
             },
@@ -1128,6 +1130,27 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "reference_number": 43
             },
             {
+                  "title": "Meaning and Purpose | The Human Flourishing Program",
+                  "url": "https://hfh.fas.harvard.edu/determinants-purpose",
+                  "description": "Sense of <strong>purpose</strong> <strong>in</strong> <strong>life</strong> <strong>and</strong> subsequent health and well-being in older adults: an outcome-wide analysis. American Journal of Health Promotion, 36:137-147. Hanson, J.A. and VanderWeele, T.J. (2021). The Comprehensive Measure of <strong>Meaning</strong>: <strong>psychological</strong> <strong>and</strong> philosophical foundations.",
+                  "content": null,
+                  "site_name": "Harvard",
+                  "site_long_name": "hfh.fas.harvard.edu",
+                  "language": "en",
+                  "image_urls": [],
+                  "links": [],
+                  "is_safe": true,
+                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hfh.fas.harvard.edu&size=96",
+                  "thumbnail": "https://hfh.fas.harvard.edu/sites/g/files/omnuum8886/files/pik/files/determinants_of_purpose_blogpost.jpg",
+                  "snippets": [
+                        "Chen, Y., Kim, E.S., Shields, A.E., and VanderWeele, T.J. (2020). Antecedents of purpose in life: evidence from a lagged exposure-wide analysis. Cogent Psychology, 7:1825043.",
+                        "The Measurement of Meaning project aims to make use of these important distinctions to develop comprehensive measures of meaning and purpose, useful both for personal reflection, and for empirical research. ... Padgett, R., Hanson, J.A., Nakamura, J.S., Ritchie-Dunham, J.L., Kim, E.S., and VanderWeele, T.J. (2024). Measuring meaning in life by combining philosophical and psychological distinctions: psychometric properties of the Comprehensive Measure of Meaning.",
+                        "Journal of Positive Psychology, in press. Nakamura, J.S., Ryff, C.D., Chen, Y., Folk, D., Heine, S.J., VanderWeele, T.J., and Kim, E.S. (2022). What makes life purposeful? Identifying the antecedents of a sense of purpose in life using a lagged exposure-wide approach.",
+                        "The Determinants of Purpose project seeks to understand what brings purpose in life. Nearly everyone desires purpose, and yet we know remarkably little empirically about what leads to purpose in life."
+                  ],
+                  "reference_number": 44
+            },
+            {
                   "title": "Psychiatry.org - Purpose in Life Can Lead to Less Stress, Better Mental Well-being",
                   "url": "https://www.psychiatry.org/news-room/apa-blogs/purpose-in-life-less-stress-better-mental-health",
                   "description": "What is <strong>purpose</strong> <strong>in</strong> <strong>life</strong>? <strong>It</strong> <strong>means</strong> having a central, organizing <strong>life</strong> aim, an overall sense of direction in one&#x27;<strong>s</strong> <strong>life</strong>, <strong>and</strong> a belief that one’<strong>s</strong> <strong>life</strong> activities are valuable and important — making a positive mark on the world. <strong>Research</strong> indicates that having a <strong>purpose</strong> <strong>in</strong> <strong>life</strong> is good for mental ...",
@@ -1146,7 +1169,7 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "More than half of young adults (58%) reported that they lacked “meaning or purpose” in their lives in the previous month and half of young adults reported that their mental health was negatively influenced by “not knowing what to do with my life.” · Importantly, the research does not explain how that connection is made.",
                         "Boreham, I.D., Schutte, N.S. 2023. The relationship between purpose in life and depression and anxiety: A meta-analysis. Journal of Clinical Psychology, volume 79, issue 12."
                   ],
-                  "reference_number": 44
+                  "reference_number": 45
             },
             {
                   "title": "The Power of Purpose and Meaning in Life | Psychology Today",
@@ -1167,27 +1190,6 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "And now a new study of older adults published in Proceedings of the National Academy of Sciences goes even further by revealing that the sense that one is living a worthwhile life appears to be positively linked to just about every aspect of our lives, not just health. The new study also followed people over time and found that the more worthwhile they found their lives the more positive changes they experienced over the following four years. “These associations seem quite pervasive, right across a whole spectrum of our experience,” says lead author Andrew Steptoe, a psychologist and epidemiologist at University College London who oversaw the study.",
                         "Lydia Denworth is a science journalist and author of Friendship: The Evolution, Biology, and Extraordinary Power of Life’s Fundamental Bond. ... Get the help you need from a therapist near you–a FREE service from Psychology Today.",
                         "Life never gets easier. Fortunately, psychology is keeping up, uncovering new ways to maintain mental and physical health, and positivity and confidence, through manageable daily habits like these. How many are you ready to try? Subscribe Issue Archive"
-                  ],
-                  "reference_number": 45
-            },
-            {
-                  "title": "Meaning and Purpose | The Human Flourishing Program",
-                  "url": "https://hfh.fas.harvard.edu/determinants-purpose",
-                  "description": "Sense of <strong>purpose</strong> <strong>in</strong> <strong>life</strong> <strong>and</strong> subsequent health and well-being in older adults: an outcome-wide analysis. American Journal of Health Promotion, 36:137-147. Hanson, J.A. and VanderWeele, T.J. (2021). The Comprehensive Measure of <strong>Meaning</strong>: <strong>psychological</strong> <strong>and</strong> philosophical foundations.",
-                  "content": null,
-                  "site_name": "Harvard",
-                  "site_long_name": "hfh.fas.harvard.edu",
-                  "language": "en",
-                  "image_urls": [],
-                  "links": [],
-                  "is_safe": true,
-                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hfh.fas.harvard.edu&size=96",
-                  "thumbnail": "https://hfh.fas.harvard.edu/sites/g/files/omnuum8886/files/pik/files/determinants_of_purpose_blogpost.jpg",
-                  "snippets": [
-                        "Chen, Y., Kim, E.S., Shields, A.E., and VanderWeele, T.J. (2020). Antecedents of purpose in life: evidence from a lagged exposure-wide analysis. Cogent Psychology, 7:1825043.",
-                        "The Measurement of Meaning project aims to make use of these important distinctions to develop comprehensive measures of meaning and purpose, useful both for personal reflection, and for empirical research. ... Padgett, R., Hanson, J.A., Nakamura, J.S., Ritchie-Dunham, J.L., Kim, E.S., and VanderWeele, T.J. (2024). Measuring meaning in life by combining philosophical and psychological distinctions: psychometric properties of the Comprehensive Measure of Meaning.",
-                        "Journal of Positive Psychology, in press. Nakamura, J.S., Ryff, C.D., Chen, Y., Folk, D., Heine, S.J., VanderWeele, T.J., and Kim, E.S. (2022). What makes life purposeful? Identifying the antecedents of a sense of purpose in life using a lagged exposure-wide approach.",
-                        "The Determinants of Purpose project seeks to understand what brings purpose in life. Nearly everyone desires purpose, and yet we know remarkably little empirically about what leads to purpose in life."
                   ],
                   "reference_number": 46
             },
@@ -1214,6 +1216,26 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "reference_number": 47
             },
             {
+                  "title": "Sense of Purpose in Life and Five Health Behaviors in Older Adults - PMC",
+                  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7494628/",
+                  "description": "Accumulating evidence shows that a higher sense of <strong>purpose</strong> <strong>in</strong> <strong>life</strong> is associated with lower risk of chronic conditions and premature mortality. Health behaviors might partially explain these findings, however, the prospective association between ...",
+                  "content": null,
+                  "site_name": "PubMed Central",
+                  "site_long_name": "pmc.ncbi.nlm.nih.gov",
+                  "language": "en",
+                  "image_urls": [],
+                  "links": [],
+                  "is_safe": true,
+                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://pmc.ncbi.nlm.nih.gov&size=96",
+                  "snippets": [
+                        "As a library, NLM provides access to scientific literature. Inclusion in an NLM database does not imply endorsement of, or agreement with, the contents by NLM or the National Institutes of Health. Learn more: PMC Disclaimer | PMC Copyright Notice · Prev Med. Author manuscript; available in PMC: 2021 Oct 1. Published in final edited form as: Prev Med. 2020 Jun 25;139:106172. doi: 10.1016/j.ypmed.2020.106172 ... 1Department of Psychology, University of British Columbia, Vancouver, Canada; Department of Social and Behavioral Sciences, Harvard T.H.",
+                        "Our results, suggest that a sense of purpose in life might emerge (with further research) as a valuable target to consider for interventions aimed at helping older adults maintain some health behaviors. Keywords: epidemiology, health psychology, purpose in life, psychological well-being, health behaviors, physical activity, smoking, body weight, sleep, alcohol consumption",
+                        "Early randomized controlled trials, ranging from volunteering to cognitive behavioral therapy in groups, preliminarily suggest that a sense of purpose can be enhanced.6–10 Results from this study suggest that a higher sense of purpose is associated with maintenance of some health behaviors; future experimental research might provide even stronger tests of this hypothesis. With additional work, policies and interventions aiming to enhance purpose might be a novel way of simultaneously enhancing the psychological, behavioral, and physical health of our rapidly aging population.",
+                        "Purpose was assessed at baseline (t1;2006/2008) and then at 4 year intervals after baseline (t3;2010/2012 and t5;2014/2016), using the validated 7-item purpose subscale of Ryff’’s Psychological Well-Being Scales.34 On a 6-point Likert scale, respondents rated the degree to which they endorsed items like “I have a sense of direction and purpose in my life.” Following HRS protocol, if respondents completed at least 5 of 7 items (96.9%), a purpose score was derived by calculating the mean of all items (Cronbach α=0.74)."
+                  ],
+                  "reference_number": 48
+            },
+            {
                   "title": "Frontiers | Life Crafting as a Way to Find Purpose and Meaning in Life",
                   "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02778/full",
                   "description": "Having a <strong>purpose</strong> <strong>in</strong> <strong>life</strong> is one of the most fundamental human needs. However, for most people finding their <strong>purpose</strong> <strong>in</strong> <strong>life</strong> is not obvious. Modern <strong>life</strong> has a...",
@@ -1233,26 +1255,6 @@ string responseBody = await response.Content.ReadAsStringAsync();
                         "This process ideally starts with an intervention that entails a combination of reflecting on one’s values, passions and goals, best possible self, goal attainment plans, and other positive psychology intervention techniques. Important elements of such an intervention are: (1) discovering values and passion, (2) reflecting on current and desired competencies and habits, (3) reflecting on present and future social life, (4) reflecting on a possible future career, (5) writing about the ideal future, (6) writing down specific goal attainment and “if-then” plans, and (7) making public commitments to the goals set. Prior research has shown that personal goal setting and goal attainment plans help people gain a direction or a sense of purpose in life.",
                         "Research findings from the field of positive psychology, such as salutogenesis, implementation intentions, value congruence, broaden-and-build, and goal-setting literature, can help in building a comprehensive evidence-based life-crafting intervention. This intervention can aid individuals to find a purpose in life, while at the same time ensuring that they make concrete plans to work toward this purpose."
                   ],
-                  "reference_number": 48
-            },
-            {
-                  "title": "Sense of Purpose in Life and Five Health Behaviors in Older Adults - PMC",
-                  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7494628/",
-                  "description": "Accumulating evidence shows that a higher sense of <strong>purpose</strong> <strong>in</strong> <strong>life</strong> is associated with lower risk of chronic conditions and premature mortality. Health behaviors might partially explain these findings, however, the prospective association between ...",
-                  "content": null,
-                  "site_name": "PubMed Central",
-                  "site_long_name": "pmc.ncbi.nlm.nih.gov",
-                  "language": "en",
-                  "image_urls": [],
-                  "links": [],
-                  "is_safe": true,
-                  "favicon": "https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://pmc.ncbi.nlm.nih.gov&size=96",
-                  "snippets": [
-                        "As a library, NLM provides access to scientific literature. Inclusion in an NLM database does not imply endorsement of, or agreement with, the contents by NLM or the National Institutes of Health. Learn more: PMC Disclaimer | PMC Copyright Notice · Prev Med. Author manuscript; available in PMC: 2021 Oct 1. Published in final edited form as: Prev Med. 2020 Jun 25;139:106172. doi: 10.1016/j.ypmed.2020.106172 ... 1Department of Psychology, University of British Columbia, Vancouver, Canada; Department of Social and Behavioral Sciences, Harvard T.H.",
-                        "Our results, suggest that a sense of purpose in life might emerge (with further research) as a valuable target to consider for interventions aimed at helping older adults maintain some health behaviors. Keywords: epidemiology, health psychology, purpose in life, psychological well-being, health behaviors, physical activity, smoking, body weight, sleep, alcohol consumption",
-                        "Early randomized controlled trials, ranging from volunteering to cognitive behavioral therapy in groups, preliminarily suggest that a sense of purpose can be enhanced.6–10 Results from this study suggest that a higher sense of purpose is associated with maintenance of some health behaviors; future experimental research might provide even stronger tests of this hypothesis. With additional work, policies and interventions aiming to enhance purpose might be a novel way of simultaneously enhancing the psychological, behavioral, and physical health of our rapidly aging population.",
-                        "Purpose was assessed at baseline (t1;2006/2008) and then at 4 year intervals after baseline (t3;2010/2012 and t5;2014/2016), using the validated 7-item purpose subscale of Ryff’’s Psychological Well-Being Scales.34 On a 6-point Likert scale, respondents rated the degree to which they endorsed items like “I have a sense of direction and purpose in my life.” Following HRS protocol, if respondents completed at least 5 of 7 items (96.9%), a purpose score was derived by calculating the mean of all items (Cronbach α=0.74)."
-                  ],
                   "reference_number": 49
             }
       ],
@@ -1265,8 +1267,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
             "https://cdn.sstatic.net/Sites/philosophy/Img/apple-touch-icon@2.png?v=e239f4595d67",
             "https://bigthink.com/wp-content/uploads/2023/05/pexels-nina-uhlikova-7252551.jpg?w=640",
             "https://media.licdn.com/dms/image/D5612AQFdoddGNAtOfg/article-cover_image-shrink_600_2000/0/1676765437552?e=2147483647&v=beta&t=nPIJ8dqMvc4FEI2wQYtqZxkkgccvRgkrSh5Bo-HtuGc",
-            "https://miro.medium.com/1*Z3zNN3qE2NIMdIcicTAo5Q.png",
             "https://share.redd.it/preview/post/qhrf9q",
+            "https://miro.medium.com/1*Z3zNN3qE2NIMdIcicTAo5Q.png",
             "https://cdn.achology.com/wp-content/uploads/20240626111216/JasperArt_2023-09-07_10.42.27_upscaled.jpg",
             "https://1000wordphilosophy.com/wp-content/uploads/2023/02/nasa-apollo8-dec24-earthrise.jpg?w=656",
             "https://qph.cf2.quoracdn.net/main-custom-t-1393708-600x315-gsgirfffbsvffwuivdrkesmeebmyaorq.jpeg",
@@ -1274,32 +1276,32 @@ string responseBody = await response.Content.ReadAsStringAsync();
             "https://s0.wp.com/i/blank.jpg",
             "https://dg.imgix.net/what-is-the-meaning-of-life-qppeg2oh-en/landscape/what-is-the-meaning-of-life-qppeg2oh-2dcf7586e52ec9379bdfe1c1e7ae8695.jpg?ts=1609879063&ixlib=rails-4.3.1&fit=crop&w=2000&h=1050",
             "https://thegallerist.art/wp-content/uploads/2021/06/The-Meaning-of-Life-_.jpg",
-            "https://images.aeonmedia.co/images/abab0af1-1cd5-433b-a380-473a8e832c98/panos_00155629.jpeg?top=656&left=0&cropWidth=2992&cropHeight=1683",
             "https://cdn.achology.com/wp-content/uploads/20240626111216/JasperArt_2023-09-07_10.42.27_upscaled.jpg",
+            "https://images.aeonmedia.co/images/abab0af1-1cd5-433b-a380-473a8e832c98/panos_00155629.jpeg?top=656&left=0&cropWidth=2992&cropHeight=1683",
             "https://qph.cf2.quoracdn.net/main-custom-t-1393708-600x315-gsgirfffbsvffwuivdrkesmeebmyaorq.jpeg",
-            "https://religionsdepths.com/wp-content/uploads/2025/02/autumnpath.jpg",
             "https://ars.els-cdn.com/content/image/1-s2.0-S0890406500X00680-cov150h.gif",
             "https://www.snsociety.org/wp-content/uploads/montypython-meaningoflife-300x169.jpg",
+            "https://religionsdepths.com/wp-content/uploads/2025/02/autumnpath.jpg",
             "https://assets.cambridge.org/97811084/32986/large_cover/9781108432986i.jpg",
             "https://share.redd.it/preview/post/qhrf9q",
-            "https://i.guim.co.uk/img/media/a34141ed88637b7e740990e4a8c959f8af3f26a8/0_0_2950_1770/master/2950.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctYWdlLTIwMjEucG5n&enable=upscale&s=ec7e107aec7f427bd90cb5a0e8e5ee53",
+            "https://images-dublez-cdn.rshop.sk/sm/articles/cefb60bfdc57614f7614732cf083a913.jpg",
             "https://www.research.colostate.edu/healthyagingcenter/wp-content/uploads/sites/32/2021/07/sunset-4238445_1920.jpg",
             "https://d2csxpduxe849s.cloudfront.net/media/E32629C6-9347-4F84-81FEAEF7BFA342B3/0F39389F-DE2D-4BF1-AFE71BA9B6F25024/918D96DB-F484-4EC1-8FBF9AB5F74B20F4/WebsiteWebP_XL-FPSYG_Main Visual_Green_Website.webp",
             "https://news.yale.edu/sites/default/files/styles/opengraph_image/public/sam-wilkinson.jpg?h=39b867e2&amp;itok=Ky-qRhFF",
             "https://alumni.cornell.edu/cornellians/wp-content/uploads/sites/2/2022/02/Burrow-Purpose-6b4.jpg",
             "https://positive.b-cdn.net/wp-content/uploads/2020/10/Ways-to-find-your-purpose-in-life.jpeg",
+            "https://hfh.fas.harvard.edu/sites/g/files/omnuum8886/files/pik/files/determinants_of_purpose_blogpost.jpg",
             "https://www.psychiatry.org:443/getmedia/bb2f4e0e-983f-4529-abce-49602121f1b2/iStock-purpose.jpg",
             "https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_91_1_1528x800/public/field_blog_entry_teaser_image/2019-01/joyful_cycling_couple.jpg?itok=wZ_urGgm",
-            "https://hfh.fas.harvard.edu/sites/g/files/omnuum8886/files/pik/files/determinants_of_purpose_blogpost.jpg",
             "https://static-content.springer.com/image/art%3A10.1007%2Fs10902-024-00771-6/MediaObjects/10902_2024_771_Fig1_HTML.png",
             "https://images-provider.frontiersin.org/api/ipx/w=1200&f=png/https://www.frontiersin.org/files/Articles/462158/fpsyg-10-02778-HTML/image_m/fpsyg-10-02778-t001.jpg"
       ],
       "links": [],
       "_usage": {
             "input_tokens": 11,
-            "output_tokens": 32986,
-            "inference_time_tokens": 134960,
-            "total_tokens": 167957
+            "output_tokens": 32839,
+            "inference_time_tokens": 105098,
+            "total_tokens": 137948
       }
 }
     ```

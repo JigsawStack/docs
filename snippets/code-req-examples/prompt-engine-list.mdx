@@ -179,22 +179,19 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://api.jigsawstack.com/v1/prompt_engine?limit=10");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("");
-request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     <ResponseExample>
@@ -202,6 +199,19 @@ string responseBody = await response.Content.ReadAsStringAsync();
 {
       "success": true,
       "prompt_engines": [
+            {
+                  "id": "0317e3c5-b441-42de-9bce-19d76812e459",
+                  "prompt": "Tell me a story about {about}",
+                  "inputs": [
+                        {
+                              "key": "about",
+                              "optional": false
+                        }
+                  ],
+                  "return_prompt": "Return the result in a markdown format",
+                  "return_prompt_type": "string",
+                  "created_at": "2025-09-15T22:31:54.575163+00:00"
+            },
             {
                   "id": "2fc1fa81-e7b4-4539-bc35-7a4349b61601",
                   "prompt": "Tell me a story about {about}",
@@ -308,19 +318,6 @@ string responseBody = await response.Content.ReadAsStringAsync();
                   "return_prompt": "Return the result in a markdown format",
                   "return_prompt_type": "string",
                   "created_at": "2025-09-09T01:58:32.641838+00:00"
-            },
-            {
-                  "id": "8ff7b640-a770-420c-b5a3-46ea7f73ce17",
-                  "prompt": "Tell me a story about {about}",
-                  "inputs": [
-                        {
-                              "key": "about",
-                              "optional": false
-                        }
-                  ],
-                  "return_prompt": "Return the result in a markdown format",
-                  "return_prompt_type": "string",
-                  "created_at": "2025-09-09T01:51:50.142939+00:00"
             }
       ],
       "page": 0,
@@ -329,8 +326,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 4,
             "output_tokens": 650,
-            "inference_time_tokens": 288,
-            "total_tokens": 942
+            "inference_time_tokens": 151,
+            "total_tokens": 805
       }
 }
     ```

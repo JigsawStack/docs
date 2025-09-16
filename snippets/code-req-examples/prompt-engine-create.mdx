@@ -243,35 +243,40 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://api.jigsawstack.com/v1/prompt_engine");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("{\"prompt\":\"Tell me a story about {about}\",\"inputs\":[{\"key\":\"about\",\"optional\":false,\"initial_value\":\"Leaning Tower of Pisa\"}],\"return_prompt\":\"Return the result in a markdown format\",\"prompt_guard\":[\"sexual_content\",\"defamation\"]}");
+request.Content = JsonContent.Create(new
+{
+    prompt = "Tell me a story about {about}",
+    inputs = new List<object> { {"key":"about","optional":false,"initial_value":"Leaning Tower of Pisa"} },
+    return_prompt = "Return the result in a markdown format",
+    prompt_guard = new List<string> { "sexual_content", "defamation" }
+});
 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     <ResponseExample>
     ```json Response
 {
       "success": true,
-      "prompt_engine_id": "0317e3c5-b441-42de-9bce-19d76812e459",
-      "optimized_prompt": "Please write a detailed and engaging story about {about}, including vivid descriptions, well-developed characters, and a clear beginning, middle, and end.",
+      "prompt_engine_id": "dea57da0-eea1-400f-b5df-2f6216a4c2b9",
+      "optimized_prompt": "Write a detailed and engaging story about {about}, including vivid descriptions, well-developed characters, and a clear beginning, middle, and end.",
       "_usage": {
             "input_tokens": 58,
-            "output_tokens": 63,
-            "inference_time_tokens": 1018,
-            "total_tokens": 1139
+            "output_tokens": 61,
+            "inference_time_tokens": 1121,
+            "total_tokens": 1240
       }
 }
     ```

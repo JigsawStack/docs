@@ -179,22 +179,19 @@ client.newCall(request).execute().use { response ->
 
     ```
     ```csharp C#
-using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 
 HttpClient client = new HttpClient();
 
 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "https://api.jigsawstack.com/v1/web/search/suggest?query=What+is+the+capital");
-
 request.Headers.Add("x-api-key", "your-api-key");
-
-request.Content = new StringContent("");
-request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
 HttpResponseMessage response = await client.SendAsync(request);
 response.EnsureSuccessStatusCode();
 string responseBody = await response.Content.ReadAsStringAsync();
 
+Console.WriteLine(responseBody);
     ```
     </RequestExample>
     <ResponseExample>
@@ -221,8 +218,8 @@ string responseBody = await response.Content.ReadAsStringAsync();
       "_usage": {
             "input_tokens": 8,
             "output_tokens": 134,
-            "inference_time_tokens": 217,
-            "total_tokens": 359
+            "inference_time_tokens": 250,
+            "total_tokens": 392
       }
 }
     ```
