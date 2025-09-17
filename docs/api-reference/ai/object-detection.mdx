@@ -29,6 +29,10 @@ import FilesParam from "/snippets/helpers/params/files-param.mdx";
   Format for returning images. Available options: `url`, `base64`.
 </ParamField>
 
+<ParamField body="return_masks" type="boolean" default="false">
+  Binary segmentation masks for detected objects. 
+</ParamField>
+
 <Info>Either `file_store_key` or `url` can be provided not both.</Info>
 
 <Snippet file="header.mdx" />
