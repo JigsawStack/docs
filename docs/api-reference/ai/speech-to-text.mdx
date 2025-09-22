@@ -49,6 +49,10 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
   The batch size to return. Maximum value is 40. This controls how the audio is chunked for processing.
 </ParamField>
 
+<ParamField body="chunk_duration" type="number" default="3">
+  The duration of each chunk in seconds. Maximum value is 15. This controls the duration of each chunk of audio that is processed.
+</ParamField>
+
 <Snippet file="header.mdx" />
 
 ## Response Structure
@@ -85,6 +89,14 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
       The transcribed text spoken by this speaker.
     </ResponseField>
   </Expandable>
+</ResponseField>
+
+<ResponseField name="language_detected" type="string">
+  The language detected in the audio/video file. Available if `language` parameter is not provided or set to "auto".
+</ResponseField>
+
+<ResponseField name="confidence" type="number">
+  The confidence score for the language detected. Available if `language` parameter is not provided or set to "auto".
 </ResponseField>
 
 ### Webhook Response
