@@ -22,9 +22,9 @@ import FileUploadSnippet from "/snippets/file-storage/upload.mdx";
 
 ### Query
 
-<ParamField query="key" type="string" required>
+<ParamField query="key" type="string">
   The key to store the file. We recommend you include the file extension in the
-  key. E.g `image-key.png`
+  key. E.g `image-key.png`. If not provided, the file will be stored with a random key.
 </ParamField>
 
 <ParamField query="overwrite" type="boolean" default="false">
