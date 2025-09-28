@@ -1,0 +1,60 @@
+---
+title: "Google Sheets"
+description: "Power up your Google Sheets with JigsawStack"
+---
+
+You can easily bring JigsawStack directly in your Google Sheets. Analyze your data with real-time, 
+AI-powered tools without writing a single line of code.
+
+<Note>
+  <p>
+    <strong>Note:</strong> Check out our [Google Sheets Demo](https://docs.google.com/spreadsheets/d/1wBrw7AtrU5Yd_8Be2CDgurEbSa40mRCsacxcpMDFtmY/edit?usp=sharing)
+    to see how you can use JigsawStack in your Google Sheets.
+  </p>
+</Note>
+
+## Setting up
+1. Install the add on from the [Google Sheets add-on page](https://workspace.google.com/u/0/marketplace/app/jigsawstack/46775261899?flow_type=2) 
+2. Get your API key from the [JigsawStack dashboard](https://jigsawstack.com/dashboard)
+3. In your Google Sheets, go to `Extensions` > `JigsawStack` > `Set up API key`
+<img src="/images/GSheets/setupAPIKey.png" alt="Setup API key" />
+4. Paste your API key in the input field and click `Save`
+<img src="/images/GSheets/saveKey.png" alt="Save API key" />
+
+## How to use the add-on 
+You can call all of JigsawStack’s AI tools just like a regular spreadsheet formula. Every function starts with:
+```
+=JSS_FUNCTION_NAME(parameter1, parameter2, ...)
+```
+
+For example: 
+```
+=JSS_SEARCH("What is the capital of France?")
+=JSS_TRANSLATE("Hello, how are you?", "fr")
+```
+
+## Parameters and Return Types
+Each JigsawStack function has a set of parameters and a return type. You can find more information on each parameter by clicking
+on the dropdown menu in the custom function.
+
+<img src="/images/GSheets/parameters.png" alt="Detailed parameters for custom functions" />
+
+<Info>
+  <p>
+    Some functions have different `return_type` which the user can choose from. 
+  </p>
+</Info>
+
+## Error Handling
+Errors are shown by hovering over the cell with the error. We try out best to provide a clear error message but there 
+are some limitations from Google Sheets. 
+
+Here is an example of an error message with incorrect parameters passed:
+<img src="/images/GSheets/errorParameter.png" alt="Error message with incorrect parameters" />
+
+<Note>
+  <p>
+    <strong>Note:</strong> Loading will also show a similar error message. This is unavoidable and is due to the way Google Sheets handles custom functions.
+  </p>
+  <img src="/images/GSheets/loading.png" alt="Loading error" />
+</Note>

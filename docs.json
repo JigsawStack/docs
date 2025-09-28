@@ -70,6 +70,7 @@
             "group": "Integration",
             "pages": [
               "/docs/integration/postman",
+              "/docs/integration/google-sheets",
               "/docs/integration/vercel",
               "/docs/integration/huggingface",
               "/docs/integration/replicate",
