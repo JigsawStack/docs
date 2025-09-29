@@ -155,7 +155,7 @@
         "groups": [
           {
             "group": "Core AI",
-            "pages": ["/docs/api-reference/ai/sentiment", "/docs/api-reference/ai/summary", "/docs/api-reference/ai/image-generation"]
+            "pages": ["/docs/api-reference/ai/sentiment", "/docs/api-reference/ai/summary"]
           },
           {
             "group": "Web Scrape",
@@ -208,6 +208,10 @@
               "/docs/api-reference/prompt-engine/delete",
               "/docs/api-reference/prompt-engine/run-direct"
             ]
+          },
+          {
+            "group": "Image Generation",
+            "pages": ["/docs/api-reference/ai/image-generation"]
           }
         ]
       },
