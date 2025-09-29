@@ -2,7 +2,24 @@
 title: "Product Updates"
 description: "JigsawStack updates and announcements"
 ---
-<Update label="September 19, 2025" description="Python v0.3.7, JavaScript v0.3.6" tags={["DOCS", "Fixes", "APIs"]}>
+<Update label="September 29, 2025" description="Python v0.3.7, JavaScript v0.3.6" tags={["DOCS", "Fixes", "APIs"]}>
+
+### Fixes
+- Fixed Embedding v1 where sometimes the model would fail inconsistently 
+
+### APIs
+- **Speech to Text (STT):** Added confidnece score for the language detected. Available if language parameter is not provided or set to “auto”. 
+- **Object to Detection:**: Improved the speed of the object detection model
+
+
+### DOCS
+- Introduced JigsawStack Google Sheets integration 
+- Added confidence score for the language detected in the STT API
+
+
+</Update>
+
+<Update label="September 19, 2025" description="Python v0.3.7, JavaScript v0.3.6" tags={["DOCS", "Fixes", "SDKs"]}>
 
 ### Fixes
 - Updated Object Detection API to accept "object" parameter as an alternative to "object_detection"
