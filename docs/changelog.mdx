@@ -2,17 +2,45 @@
 title: "Product Updates"
 description: "JigsawStack updates and announcements"
 ---
-<Update label="September 19, 2025" description="Python v0.3.7, JavaScript v0.3.6" tags={["DOCS", "Fixes", "APIs"]}>
+<Update label="September 29, 2025" description="API Fixes and Updates" tags={["DOCS", "Fixes", "APIs"]}>
 
 ### Fixes
-- Updated Object Detection API to accept "object" parameter as an alternative to "object_detection"
-- Fixed Object Detection API for pure GUI images
-- Improved Speech to Text (STT) webhook error handling with 400 status code for empty files
-- Enhanced Object Detection tag generation for more accurate and relevant results
+- Fixed **Embedding v1** API where sometimes the model would fail inconsistently 
+- Fixed **Classification** API where the model would fail inconsistently for certain images
+- Fixed **AI Scraper** where the model would fail for pdf with large amount of pages
+
+### APIs
+- **Speech to Text (STT):** Added confidnece score for the language detected. Available if language parameter is not provided or set to “auto”. 
+- **Object to Detection:**: Improved the speed of the object detection model
+- Improved the speed of APIs that involves processing binary data. This includes:
+    - Object Detection
+    - Speech to Text (STT)
+    - Embedding v1
+    - Embedding v2
+    - Image Translation
+    - vOCR
+    - NSFW 
+    - File Upload
+
+### DOCS
+- Introduced JigsawStack Google Sheets integration 
+- Added confidence score for the language detected in the STT API
+- Added warning for the deprecated Image Generation API
+
+
+</Update>
+
+<Update label="September 19, 2025" description="Python v0.3.7, JavaScript v0.3.6" tags={["DOCS", "Fixes", "SDKs"]}>
+
+### Fixes
+- Updated **Object Detection** API to accept "object" parameter as an alternative to "object_detection"
+- Fixed **Object Detection** API for pure GUI images
+- Improved **Speech to Text (STT)** webhook error handling with 400 status code for empty files
+- Enhanced **Object Detection** tag generation for more accurate and relevant results
 
 ### SDKs
-- Updated Object Detection now supports "object" parameter as an alternative to "object_detection"
-- Updated Speech to Text (STT) to return `language_detected` and `confidence` in the response
+- Updated **Object Detection** now supports "object" parameter as an alternative to "object_detection"
+- Updated **Speech to Text (STT)** to return `language_detected` and `confidence` in the response
 
 ### DOCS
 - Added documentation for [Embedding v2](/docs/embedding-v2) parameters: `instructions` and `query`
@@ -27,12 +55,12 @@ description: "JigsawStack updates and announcements"
 
 <Update label="September 15, 2025" description="v0.3.4 - v0.3.5" tags={["SDKs", "Fixes", "DOCS"]}>
 ### Fixes 
-- Added support for NSFW API when images are not available
-- Added support for HTML to Any now works with all HTML tags as input
-- Fixed File Upload now works with Embedding v2
-- Fixed VOCR for PDF in certain edge cases
-- Fixed AI Scraper returning invalid JSON for empty element_prompts 
-- Decrease latency for AI Scraper
+- Added support for **NSFW** API when images are not available
+- Added support for **HTML to Any** now works with all HTML tags as input
+- Fixed **File Upload** now works with Embedding v2
+- Fixed **VOCR** for PDF in certain edge cases
+- Fixed **AI Scraper** returning invalid JSON for empty element_prompts 
+- Decrease latency for **AI Scraper**
 
 ### DOCS
 - Updated File Uploads documentation (Handling Files)[/docs/handling-files]
@@ -43,14 +71,14 @@ description: "JigsawStack updates and announcements"
 - Renamed embeddingV2 method to embedding_v2 for consistency
 
 #### Python 
-- Fixed blob inputs for Object Detection where previously features params was not respected
-- Fixed blob inputs for VOCR where page range was not respected
+- Fixed blob inputs for **Object Detection** where previously features params was not respected
+- Fixed blob inputs for **VOCR** where page range was not respected
 - Established CI/CD pipeline for Python SDK
-- Updated to pass x-jigsaw-no-request-log through headers. (Security)[/docs/security]
+- Updated to pass **x-jigsaw-no-request-log** through headers. (Security)[/docs/security]
 
 #### JavaScript
-- Fixed blob inputs for Object Detection where previously features params was not respected
-- Fixed blob inputs for VOCR where page range was not respected
+- Fixed blob inputs for **Object Detection** where previously features params was not respected
+- Fixed blob inputs for **VOCR** where page range was not respected
 </Update>
 
 <Update label="September 8, 2025" description="Python v0.3.3, JavaScript v0.3.3" tags={["SDKs", "Features", "API", "Fixes", "DOCS"]}>
@@ -61,18 +89,18 @@ description: "JigsawStack updates and announcements"
 - response: `speaker_embeddings` a list of embeddings for the speaker.
 
 ### Fixes
-- fixed Speech to Text (STT) webhook 
-- fixed file upload overwrites error
+- fixed **Speech to Text (STT)** webhook 
+- fixed **file upload** overwrites error
 
 ### API
-- added embedding v2 API 
+- added **embedding v2** API 
 
 ### SDKs
 - additional type safety for all APIs 
-- added embedding v2 
-- added deep research 
-- removed Text to Speech (TTS) from SDKs
-- brought back prompt engine
+- added **embedding v2** 
+- added **deep research** 
+- removed **Text to Speech (TTS)** from SDKs
+- brought back **prompt engine**
 
 
 ### DOCS
