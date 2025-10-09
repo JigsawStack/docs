@@ -80,14 +80,15 @@ import FilesParam from "/snippets/helpers/params/files-param.mdx";
     <ResponseField name="text" type="string">
       The complete text content of this section.
     </ResponseField>
-    
     <ResponseField name="lines" type="array">
       Array of individual text lines within this section.
       <Expandable title="Line Object">
         <ResponseField name="text" type="string">
           The text content of this line.
         </ResponseField>
-
+        <ResponseField name="average_confidence" type="number">
+          The average confidence score for the line.
+        </ResponseField>
         <Bounds />
 
         <ResponseField name="words" type="array">
@@ -98,6 +99,9 @@ import FilesParam from "/snippets/helpers/params/files-param.mdx";
             </ResponseField>
             <ResponseField name="bounds" type="object">
               Bounding box coordinates for the word (same structure as line bounds).
+            </ResponseField>
+            <ResponseField name="confidence" type="number">
+              The confidence score for this word.
             </ResponseField>
           </Expandable>
         </ResponseField>
