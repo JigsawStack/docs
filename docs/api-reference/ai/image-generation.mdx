@@ -5,6 +5,7 @@ description: "Generate an image based on the given text by employing AI models l
 ---
 
 import ImageGenerationSnippet from "/snippets/code-req-examples/image-generation.mdx";
+import FilesParam from "/snippets/helpers/params/files-param.mdx";
 
 <Warning>
   <p>
@@ -55,13 +56,8 @@ import ImageGenerationSnippet from "/snippets/code-req-examples/image-generation
   - `svg`
 </ParamField>
 
-<ParamField body="url" type="string">
-  A valid URL where the generated image will be sent.
-</ParamField>
-
-<ParamField body="file_store_key" type="string">
-  Key to store the generated image in file storage.
-</ParamField>
+<FilesParam />
+<Info>Passing in files is used for image edits</Info>
 
 <ParamField body="advance_config" type="object">
   <Expandable title="advance_config" defaultOpen="false">
