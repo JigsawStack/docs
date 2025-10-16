@@ -2,6 +2,34 @@
 title: "Product Updates"
 description: "JigsawStack updates and announcements"
 ---
+<Update label="October 16, 2025" description="API Fixes and Updates" tags={["SDKs", "DOCs", "APIs", "Others"]}>
+
+### APIs
+- **VOCR:** 
+    - Fixed the issue where the lines and section output of ocr format was different when there is a prompt and no prompt. Fixed to standardize the format
+    - Added confidence score for the words detected in the ocr format
+- **Web Search**: Improved the speed and quality of the web search model significantly
+- **Speech to Text (STT)**: 
+    - Updated suppport for longer than 5+ hour audio clips with diariazation
+    - Fixed input validation for empty audio files
+- **Image Translate**: 
+    - Fixed input validation for the image translate API
+    - Fixed a temporary outage caused by a recent deployment that affected image generation requests
+- **AI Scraper**: Fixed issue of large broad element selection for scraping. Now supports things like "body" or "main" as the element prompts.
+
+### SDKs
+- **VOCR** Added confidence score for the words detected in the ocr format 
+
+
+### DOCS
+- Updated JigsawStack [Google Sheets integration](/docs/integration/google-sheets) 
+- Added confidence score for words detected in the [VOCR](/docs/api-reference/ai/vocr) API
+
+### Others
+- Updated our Postman Collection to include the most up to date APIs and features
+
+
+</Update>
 <Update label="September 29, 2025" description="API Fixes and Updates" tags={["DOCS", "Fixes", "APIs"]}>
 
 ### Fixes
