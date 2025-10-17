@@ -55,3 +55,20 @@ Here is an example of an error message with incorrect parameters passed:
   </p>
   <img src="/images/GSheets/loading.png" alt="Loading error" />
 </Note>
+
+## Cache
+### Refreshing a specific cell 
+By default JigsawStack's results are automatically cached in your sheets. To refresh the value of a specific cell, 
+- Click on the Cell you want to refresh 
+- On the keyboard type `cmd + r` (or `ctrl + r` for Windows) 
+
+This will trigger a new call to our API, refreshing the value of that cell.
+
+### Refreshing an entire sheet
+You can also refresh ALL cell in a sheet by navigating to Extensions > JigsawStack > Refresh All Formulas
+
+<Note>
+  <p>
+    <strong>Note:</strong> Refresh All Formulas, will clear all your existing cache. 
+  </p>
+</Note>
