@@ -1,0 +1,81 @@
+---
+title: "Cache"
+description: "JigsawStack's Caching"
+---
+
+JigsawStack implements caching to improve API performance and reduce latency for your applications. When a request is cached, subsequent identical requests will return faster by serving the cached response instead of processing the request again.
+
+
+## Cache Duration
+
+The cache automatically resets every **24 hours**. After this period, new requests will fetch fresh data and update the cache accordingly.
+
+<Note>
+  <p>
+    Skipping the cache may result in slightly increased response times as each request will be processed fresh. Use this option judiciously to balance between data freshness and performance.
+  </p>
+</Note>
+
+## How to Skip Cache
+
+If you need to bypass the cache and retrieve fresh data, you can include the `x-jigsaw-skip-cache` header in your requests.
+
+### JavaScript SDK
+
+To skip caching in the JavaScript SDK, pass the `x-jigsaw-skip-cache` header during initialization:
+
+```javascript setup.ts
+import { JigsawStack } from "jigsawstack";
+
+const jigsaw = JigsawStack({
+  apiKey: "your-api-key",
+  headers: {
+    "x-jigsaw-skip-cache": "true",
+  },
+});
+```
+
+### Python SDK
+
+In the Python SDK, include the `x-jigsaw-skip-cache` header when creating a JigsawStack instance:
+
+```python setup.py
+from jigsawstack import JigsawStack
+
+jigsaw = JigsawStack(
+    api_key="your-api-key",
+    headers={
+        "x-jigsaw-skip-cache": "true",
+    },
+)
+```
+
+### API
+
+When using the raw API, include the `x-jigsaw-skip-cache` header in your request:
+
+```javascript
+const headers = {
+  "x-api-key": "<your-api-key-here>",
+  "x-jigsaw-skip-cache": "true",
+};
+
+const baseUrl = "https://api.jigsawstack.com";
+
+const result = await fetch(`${baseUrl}/v1/ai/summary`, {
+  method: "POST",
+  body: JSON.stringify({
+    text: "The Leaning Tower of Pisa, or simply, the Tower of Pisa, is the campanile, or freestanding bell tower, of Pisa Cathedral",
+  }),
+  headers,
+});
+```
+
+## When to Skip Cache
+
+Consider skipping the cache in the following scenarios:
+
+- **Real-time data requirements**: When you need the absolute latest information and cannot tolerate any delay from cached data
+- **Critical updates**: After making changes that affect the data, and you need to verify the updated results immediately
+- **Testing and debugging**: When developing or troubleshooting to ensure you're seeing current behavior
+

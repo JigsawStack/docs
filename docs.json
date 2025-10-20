@@ -136,15 +136,20 @@
             "pages": [
               "/docs/api-reference/authentication",
               "/docs/api-reference/error",
+              "/docs/additional-resources/cache",
               "/docs/api-reference/handling-files",
-              "/docs/llms.txt",
-              "/docs/llms-full.txt",
-              "/docs/additional-resources/ai-dev-tools",
               "/docs/additional-resources/security",
-              "/docs/additional-resources/jigsawstack-badge",
               "/docs/additional-resources/size-preset",
               "/docs/additional-resources/selector",
               "/docs/additional-resources/languages"
+            ]
+          },
+          {
+            "group": "Others",
+            "pages": [
+              "/docs/llms.txt",
+              "/docs/llms-full.txt",
+              "/docs/additional-resources/jigsawstack-badge"
             ]
           }
         ]
