@@ -14,6 +14,11 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
 <ParamField body="dataset" type="Array<object>" required>
   The dataset to make predictions on. This is an array of objects with keys
   `date` and `value`. See example below for more information.
+  
+  <Note>
+    The `date` parameter must be in `YYYY-MM-DD` format (e.g., "2023-01-01").
+  </Note>
+  
   - Minimum: 5 data points
   - Maximum: 1000 data points
 
@@ -26,7 +31,7 @@ For best results, provide at least 20-30 data points with consistent intervals.
     </ParamField>
     
     <ParamField body="date" type="string" required>
-      The date/timestamp for the data point in string format.
+      The date for the data point in `YYYY-MM-DD` format (e.g., "2023-01-01").
     </ParamField>
   </Expandable>
 </ParamField>
@@ -65,7 +70,7 @@ const dataset: Array<Dataset> = [
   
   <Expandable title="Prediction Object Properties">
     <ResponseField name="date" type="string">
-      The date/timestamp for the predicted data point in string format.
+      The date for the predicted data point in `YYYY-MM-DD` format.
     </ResponseField>
     
     <ResponseField name="value" type="number">
