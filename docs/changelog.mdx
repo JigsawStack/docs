@@ -6,25 +6,25 @@ description: "JigsawStack updates and announcements"
 ### APIs
 
 - **Prediction**
-   - Improved overall reliability of the Prediction API
+   -  Resolved intermittent timeout issues.
 
 - **Speech-to-Text**
-   - Added support for Javanese
-   - M4a files are now supported
+   - Fixed a bug that caused Javanese audio requests to fail.
+   - Fixed an issue where m4a files failed to transcribe.
 
 - **VOCR**
-   - Resolved an issue where internal guardrail filters were incorrectly blocking valid requests.
+   - Improved error propagation for clearer, more actionable error details.
 
 - **Translate**
-   - Improved error messages for better clarity
+   - Fixed a bug where valid requests were incorrectly blocked.
 
 - **Log ID**
-   - Every request now includes a Request ID to make debugging and tracing issues easier
+   - Each request now comes with a Log ID to make support and debugging easier.
 
 ### INTERFAZE
 
-- Fixed a bug where urls were getting replaced with placeholders. 
-- Improved error propagation to provide more clear error details  
+- Fixed a bug where URLs returned were placeholders. 
+- Improved error propagation for clearer debugging.
 
 </Update>
 <Update label="Nov 11th, 2025" description="API Fixes and Updates" tags={["INTERFAZE", "APIs"]}>
