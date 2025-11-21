@@ -25,10 +25,17 @@ import FilesParam from "/snippets/helpers/params/files-param.mdx";
   - `audio`: Audio content
   - `pdf`: PDF document
 </ParamField>
+<ParamField body="dimensions" type="number" default="4096">
+  The dimensionality of the output embedding vectors. Higher dimensions can capture more nuanced semantic information but require more storage.
+  - Minimum: `32`
+  - Maximum: `4096`
+  - Default: `4096`
+</ParamField>
 
-<ParamField body="instruction" type="string">
-  Instruction for query embedding generation for higher retrival quality, works with type `text` only.
-  - Default instruction: `Given a query, retrieve relevant passages that answer the query`
+<ParamField body="instruction" type="string" default="Given a query, retrieve relevant passages that answer the query">
+  Custom instruction for query embedding generation to improve retrieval quality. Works with type `text` only. Maximum 400 characters.
+  - Use this to provide domain-specific context or retrieval objectives
+  - Default: `Given a query, retrieve relevant passages that answer the query`
 </ParamField>
 
 <ParamField body="query" type="boolean" default="false">
