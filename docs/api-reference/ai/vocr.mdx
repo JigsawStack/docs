@@ -15,9 +15,12 @@ import FilesParam from "/snippets/helpers/params/files-param.mdx";
 
 <FilesParam />
 
+<ParamField body="fine_grained" type="boolean">
+  Enables enhanced OCR processing to improve bounding box accuracy for detected text elements.
+</ParamField>
+
 <ParamField body="prompt" type="string | Array<string> | object">
   The prompt used to describe the image. Default prompt is `Describe the image in detail.`
-  
 </ParamField>
 
 <ParamField body="page_range" type="Array<number>">
