@@ -17,9 +17,10 @@ import FilesParam from "/snippets/helpers/params/files-param.mdx";
 
 <ParamField body="prompt" type="string | Array<string> | object">
   The prompt used to describe the image. Default prompt is `Describe the image in detail.`
-  
 </ParamField>
-
+<ParamField body="fine_grained" type="boolean">
+  Enables enhanced OCR processing to improve bounding box accuracy for detected text elements.
+</ParamField>
 <ParamField body="page_range" type="Array<number>">
   Specifies a range of pages to process with vOCR, provided as a two-element array: \[startPage, endPage]. For example, `[1,10]` processes pages 1
   through 10. The range must span 10 or fewer pages. If the specified endPage exceeds the document's total pages, the last available page will be used
