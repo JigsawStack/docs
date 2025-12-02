@@ -2,6 +2,47 @@
 title: "Product Updates"
 description: "JigsawStack updates and announcements"
 ---
+<Update label="1st Dec, 2025" description="API Fixes and Updates" tags={["INTERFAZE", "APIs", "SDKs"]}>
+### SDKs
+
+- **Javascript ( v0.4.0 )**
+  - Added optional file_store_key to TranslateImageParams for more flexible file handling.
+  - Added optional steps to PredictionParams to support customizable prediction flows.
+  - Added optional dimensions, instruction, and query to EmbeddingV2Params for enhanced embedding control.
+  - Added optional name to PromptCreateParams for more flexible prompt definition.
+  - Added fine_grained option to VOCRParams for high-fidelity bounding box extraction.
+  - Expanded element_prompts in AIScrapeParams to accept a dictionary for richer element extraction.
+
+- **Python ( v0.4.0 )**
+  - Added optional dimensions, instruction, and query to EmbeddingV2Params to support advanced embedding configurations.
+  - Made steps optional in PredictionParams, with improved documentation for valid ranges and defaults.
+  - Added optional name to PromptEngineCreateParams for clearer prompt identification.
+  - Added optional max_results to SearchParams, including request-side logic to honor the parameter.
+  - Added optional fine_grained to VOCRParams to enable high-fidelity, word-level bounding boxes.
+
+### APIs
+
+- **AI Scraper**
+   - Improved ad-blocking logic to reduce noise and improve DOM parsing reliability.
+
+- **Summary**
+   - Fixed unusual timeouts while processing requests with urls.
+
+- **Web Search**
+   - Enhanced geolocation searches in web search.
+
+### DEEP RESEARCH
+
+- Fixed a schema validation bug in reasoning-plan generation.
+
+### INTERFAZE
+
+- Resolved a bug that blocked user-defined overrides of the internal action layer.
+- Enhanced relevance and accuracy of financial data search results.
+
+</Update>
+
+
 <Update label="Nov 24th, 2025" description="API Fixes and Updates" tags={["INTERFAZE", "APIs"]}>
 ### APIs
 
