@@ -110,7 +110,9 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
   Cookies to set for the page request
   <Expandable title="Cookie Object Properties">
     <ParamField body="name" type="string" required>
-      Cookie name
+      Only the following cookies are allowed: `ADSHUFFLER`, `AWSALB`, `AWSALBCORS`, `AWSALBTG`,
+      `AWSALBTGCORS`, `CF_CLEARANCE`, `CONSENT`, `CUSTOMER_CONTEXT`, `LANG`, `REF`, `REMOVAL`,
+      `VISITS`, `VISIT_COUNT`
     </ParamField>
     <ParamField body="value" type="string" required>
       Cookie value
