@@ -136,6 +136,7 @@
             "pages": [
               "/docs/api-reference/authentication",
               "/docs/api-reference/error",
+              "/docs/additional-resources/rate-limit",
               "/docs/additional-resources/cache",
               "/docs/api-reference/handling-files",
               "/docs/additional-resources/security",
