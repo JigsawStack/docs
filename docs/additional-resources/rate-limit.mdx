@@ -3,15 +3,9 @@ title: "Rate Limits"
 description: "Understanding JigsawStack API rate limits"
 ---
 
-JigsawStack implements rate limiting to ensure fair usage and maintain API stability for all users. Rate limits are applied on a per-project basis and vary depending on your subscription plan.
+JigsawStack implements rate limiting to ensure fair usage and maintain API stability for all users. Rate limits are applied on a per-project basis.
 
-## Rate Limit Tiers
-
-| Plan | Rate Limit |
-|------|------------|
-| Free | 50 requests/second |
-| Pro | 100 requests/second |
-| Custom | Contact [support@jigsawstack.com](mailto:support@jigsawstack.com) |
+We support up to 50 requests per second. When exceeded, the API returns a 429 status code with corresponding headers. If you need higher limits, please [reach out to us](https://jigsawstack.com/help).
 
 \
 
@@ -33,11 +27,6 @@ x-jigsaw-rate-limit-remaining: 45
 x-jigsaw-rate-limit-reset: 1706025600000
 ```
 
-
-## Upgrading Your Plan
-
-If you consistently hit rate limits, consider upgrading to a Pro plan for higher limits. Visit your [dashboard](https://jigsawstack.com/dashboard) to manage your subscription.
-
 <Info>
-  Need even higher rate limits? Email us at [support@jigsawstack.com](mailto:support@jigsawstack.com) to discuss enterprise options with custom rate limits tailored to your needs.
+  Need even higher rate limits? [Reach out to us](https://jigsawstack.com/help) to discuss custom rate limits tailored to your needs.
 </Info>
