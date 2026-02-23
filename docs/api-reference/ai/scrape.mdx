@@ -23,6 +23,10 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
   Items on the page to scrape (maximum 5). Can be an array of strings (e.g. `["Plan price", "Plan title"]`) or an object with key-value pairs (e.g. `{"price": "Plan price", "title": "Plan title"}`).
 </ParamField>
 
+<ParamField body="scroll" type="boolean" default="false">
+  When enabled, automatically scrolls through the entire page to return full-page results.
+</ParamField>
+
 <ParamField body="selectors" type="array<string>">
   CSS elements on the page to scrape. E.g. "h2.title", "div.price"
 </ParamField>
