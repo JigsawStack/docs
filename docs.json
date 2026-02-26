@@ -51,27 +51,18 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "/docs/introduction",
-              "/docs/api-reference/all-models"
-            ]
+            "pages": ["/docs/introduction", "/docs/api-reference/all-models"]
           },
           {
             "group": "Quick Start",
             "pages": [
               {
                 "group": "Node.js",
-                "pages": [
-                  "/docs/quick-start/node/introduction",
-                  "/docs/quick-start/node/next",
-                  "/docs/quick-start/node/window-ai"
-                ]
+                "pages": ["/docs/quick-start/node/introduction", "/docs/quick-start/node/next", "/docs/quick-start/node/window-ai"]
               },
               {
                 "group": "Python",
-                "pages": [
-                  "/docs/quick-start/python/introduction"
-                ]
+                "pages": ["/docs/quick-start/python/introduction"]
               }
             ]
           },
@@ -91,16 +82,11 @@
           },
           {
             "group": "Core AI",
-            "pages": [
-              "/docs/examples/core-ai/summary"
-            ]
+            "pages": ["/docs/examples/core-ai/summary"]
           },
           {
             "group": "Web Scrape",
-            "pages": [
-              "/docs/examples/web-scrape/ai-scrape",
-              "/docs/examples/web-scrape/html-to-any"
-            ]
+            "pages": ["/docs/examples/web-scrape/ai-scrape", "/docs/examples/web-scrape/html-to-any"]
           },
           {
             "group": "Web Search",
@@ -112,30 +98,19 @@
           },
           {
             "group": "Translate",
-            "pages": [
-              "/docs/examples/translate/text-translation"
-            ]
+            "pages": ["/docs/examples/translate/text-translation"]
           },
           {
             "group": "Data",
-            "pages": [
-              "/docs/examples/data/embedding-v2",
-              "/docs/examples/data/prediction",
-              "/docs/examples/data/text-to-sql"
-            ]
+            "pages": ["/docs/examples/data/embedding-v2", "/docs/examples/data/prediction", "/docs/examples/data/text-to-sql"]
           },
           {
             "group": "Vision",
-            "pages": [
-              "/docs/examples/vision/vocr",
-              "/docs/examples/vision/object-detection"
-            ]
+            "pages": ["/docs/examples/vision/vocr", "/docs/examples/vision/object-detection"]
           },
           {
             "group": "Audio",
-            "pages": [
-              "/docs/examples/audio/speech-to-text"
-            ]
+            "pages": ["/docs/examples/audio/speech-to-text"]
           },
           {
             "group": "Classification",
@@ -156,10 +131,7 @@
           },
           {
             "group": "Webhooks",
-            "pages": [
-              "/docs/examples/webhook/introduction",
-              "/docs/examples/webhook/secure"
-            ]
+            "pages": ["/docs/examples/webhook/introduction", "/docs/examples/webhook/secure"]
           },
           {
             "group": "Resources",
@@ -202,51 +174,31 @@
         "groups": [
           {
             "group": "Core AI",
-            "pages": [
-              "/docs/api-reference/ai/summary"
-            ]
+            "pages": ["/docs/api-reference/ai/summary"]
           },
           {
             "group": "Web Scrape",
-            "pages": [
-              "/docs/api-reference/ai/scrape",
-              "/docs/api-reference/web/html-to-any"
-            ]
+            "pages": ["/docs/api-reference/ai/scrape", "/docs/api-reference/web/html-to-any"]
           },
           {
             "group": "Web Search",
-            "pages": [
-              "/docs/api-reference/web/ai-search",
-              "/docs/api-reference/web/search-suggestions",
-              "/docs/api-reference/web/deep-research"
-            ]
+            "pages": ["/docs/api-reference/web/ai-search", "/docs/api-reference/web/search-suggestions", "/docs/api-reference/web/deep-research"]
           },
           {
             "group": "Translate",
-            "pages": [
-              "/docs/api-reference/ai/translate/translate"
-            ]
+            "pages": ["/docs/api-reference/ai/translate/translate"]
           },
           {
             "group": "Data",
-            "pages": [
-              "/docs/api-reference/ai/embedding-v2",
-              "/docs/api-reference/ai/prediction",
-              "/docs/api-reference/ai/text-to-sql"
-            ]
+            "pages": ["/docs/api-reference/ai/embedding-v2", "/docs/api-reference/ai/prediction", "/docs/api-reference/ai/text-to-sql"]
           },
           {
             "group": "Vision",
-            "pages": [
-              "/docs/api-reference/ai/vocr",
-              "/docs/api-reference/ai/object-detection"
-            ]
+            "pages": ["/docs/api-reference/ai/vocr", "/docs/api-reference/ai/object-detection"]
           },
           {
             "group": "Audio",
-            "pages": [
-              "/docs/api-reference/ai/speech-to-text"
-            ]
+            "pages": ["/docs/api-reference/ai/speech-to-text"]
           },
           {
             "group": "Classification",
@@ -259,11 +211,7 @@
           },
           {
             "group": "File Store",
-            "pages": [
-              "/docs/api-reference/store/file/add",
-              "/docs/api-reference/store/file/get",
-              "/docs/api-reference/store/file/delete"
-            ]
+            "pages": ["/docs/api-reference/store/file/add", "/docs/api-reference/store/file/get", "/docs/api-reference/store/file/delete"]
           },
           {
             "group": "Others",
@@ -297,9 +245,7 @@
       {
         "anchor": "Changelog",
         "icon": "megaphone",
-        "pages": [
-          "/docs/changelog"
-        ]
+        "pages": ["/docs/changelog"]
       }
     ]
   },
