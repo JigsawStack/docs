@@ -23,15 +23,20 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
 
 <ParamField body="labels" type="array" required>
   Array of classification labels. Each label contains:
-  - `key`: Optional identifier for the label
-  - `type`: Either "text" or "image" 
+  - `key`: Optional identifier for the label (string or number). Labels sharing the same `key` are merged into a single combined label, so you can attach multiple text descriptions and/or example images to the same class.
+  - `type`: Either "text" or "image"
   - `value`: The label content (text string or image URL)
-  
-  Maximum of 24 labels allowed per request. At least 2 labels required.
+  - `text`: Optional text description for an image label, used to give the model extra context about what the image represents.
+
+  Maximum of 24 labels allowed per request. At least 2 distinct labels required (labels merged by `key` count as one).
 </ParamField>
 
 <ParamField body="multiple_labels" type="boolean" default="false">
   Whether to allow multiple labels per classification result. When false, each prediction returns a single label. When true, each prediction can return multiple labels.
+</ParamField>
+
+<ParamField body="task" type="string">
+  Optional natural-language instruction that describes the classification task (e.g. "Classify the sentiment of the following reviews"). When provided, it is prepended to the prompt to steer the model.
 </ParamField>
 
 <Snippet file="header.mdx" />
