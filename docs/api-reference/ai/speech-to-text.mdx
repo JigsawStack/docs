@@ -53,6 +53,18 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
   The duration of each chunk in seconds. Maximum value is 15. This controls the duration of each chunk of audio that is processed.
 </ParamField>
 
+<ParamField body="stream" type="boolean" default="false">
+  Returns results as the audio is transcribed, instead of waiting for the full result. Good for live microphone input. Only supports `language=en`.
+</ParamField>
+
+<ParamField body="vad" type="boolean" default="true">
+  Skip chunks that contain no speech. Only applies when `stream=true`.
+</ParamField>
+
+<ParamField body="vad_threshold" type="number" default="0.5">
+  Sensitivity of speech detection, between `0` and `1`. Lower values detect more speech; higher values are stricter. Only applies when `stream=true` and `vad=true`.
+</ParamField>
+
 <Snippet file="header.mdx" />
 
 ## Response Structure
@@ -150,5 +162,38 @@ Make sure your webhook endpoint is set up to:
 - Accept POST requests
 - Parse JSON content
 - Handle the same response format as the standard API response
+
+### Streaming
+
+Set `stream=true` to receive results as the audio is transcribed, instead of waiting for the full result. Good for live microphone input.
+
+**Requirements**
+
+- Pass `language=en` (streaming currently supports English only).
+- Send audio in the request body (raw bytes with the matching `Content-Type`, or as a `file` field in `multipart/form-data`).
+- `by_speaker` and `webhook_url` are not available with streaming.
+
+**Example request**
+
+```bash
+curl "https://api.jigsawstack.com/v1/ai/transcribe?stream=true&language=en" \
+  -X POST \
+  -H "x-api-key: your-api-key" \
+  -H "Content-Type: audio/wav" \
+  --data-binary @audio.wav
+```
+
+**Events**
+
+The response is a stream of events. Each event has a `type`:
+
+| Type | When it's sent | Useful fields |
+|---|---|---|
+| `transcript.start` | Once, when transcription begins | — |
+| `transcript.segment` | For each recognized segment | `chunk.timestamp`, `chunk.text` |
+| `transcript.delta` | Alongside each segment, as plain text | `delta` |
+| `transcript.done` | Once, with the full transcript text | `text` |
+| `transcript.final` | Once, with the full structured result | `text`, `chunks` |
+| `transcript.error` | If transcription fails | `message` |
 
 <SpeechToTextSnippet />
