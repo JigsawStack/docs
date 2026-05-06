@@ -53,6 +53,10 @@ import BasicResponse from "/snippets/helpers/basic-response.mdx";
   The duration of each chunk in seconds. Maximum value is 15. This controls the duration of each chunk of audio that is processed.
 </ParamField>
 
+<ParamField body="word_timestamps" type="boolean" default="false">
+  When set to true, returns each word as its own entry in the `chunks` array with its own start and end timestamp. Useful for caption alignment and word-accurate search. Cannot be combined with `stream=true`.
+</ParamField>
+
 <ParamField body="stream" type="boolean" default="false">
   Returns results as the audio is transcribed, instead of waiting for the full result. Good for live microphone input. Only supports `language=en`.
 </ParamField>
@@ -148,6 +152,23 @@ This is particularly useful for:
 - Interview transcriptions
 - Podcast transcriptions
 - Any multi-speaker audio content
+
+### Word-level timestamps
+
+When you enable the `word_timestamps` parameter, each entry in the `chunks` array is a single word with its own start and end timestamp, instead of a multi-word segment. The API will:
+
+1. Transcribe the audio as usual
+2. Align each word against the audio waveform
+3. Return one entry per word in the `chunks` array, in order
+
+This is particularly useful for:
+
+- Caption and subtitle alignment
+- Word-accurate jump-to-timestamp search
+- Video editors that cut on word boundaries
+- Karaoke-style highlighting
+
+`word_timestamps` cannot be combined with `stream=true`.
 
 ### Webhook Usage
 
